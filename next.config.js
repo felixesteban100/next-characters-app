@@ -1,4 +1,19 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+
+    images: {
+        // domains: ['cdn.jsdelivr.net', 'upload.wikimedia.org'], //make it 'your-domain.com'
+        remotePatterns: [
+          {
+            protocol: "https",
+            hostname: "**",
+          },
+          {
+            protocol: "http",
+            hostname: "**",
+          },
+        ],
+      },
+}
 
 module.exports = nextConfig
