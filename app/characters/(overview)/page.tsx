@@ -7,6 +7,7 @@ import LoadingCharactersContent from '@/app/ui/characters/loaders/LoadingCharact
 import { getTeamByUniverse } from '@/app/lib/constants';
 import Image from 'next/image';
 import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
+import { Atom } from 'lucide-react';
 
 // export const metadata: Metadata = {
 //     title: 'Characters',
@@ -119,14 +120,14 @@ export default async function Page({
                                 // className={`h-28 w-48 transition-all duration-300 bg-foreground/10 rounded-lg`}
                                 className={`h-28 w-48 transition-all duration-300 rounded-lg`}
                             /> */}
-                            <Image
+                            <Atom
                                 // src='https://i0.wp.com/beccabug.com/wp-content/uploads/2012/02/superherologos.jpg'
-                                src='https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-black-and-white.png'
+                                // src='https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-black-and-white.png'
                                 width={500}
                                 height={500}
                                 // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
                                 className={`h-40 w-auto animate-spin1 invert dark:invert-0`}
-                                alt='publisherLogo'
+                                // alt='publisherLogo'
                             />
                         </div>
             }

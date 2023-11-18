@@ -2,7 +2,7 @@
 type StatStringProps = {
     statName: string
     statValue: string
-    icon: string
+    icon: string | JSX.Element
 }
 
 export default function StatString({ statName, statValue, icon }: StatStringProps) {

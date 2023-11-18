@@ -17,7 +17,8 @@ export default async function CharacterInfo({ characterId, image }: { characterI
                     className='flex flex-col justify-center items-center gap-3'
                 >
                     <div
-                        className="relative w-64 md:w-72 lg:w-96 h-[25rem] md:h-[25rem] lg:h-[34rem]  shadow-xl rounded-md"
+                        // className="relative w-64 md:w-72 lg:w-96 h-[25rem] md:h-[25rem] lg:h-[34rem] hover:h-[50rem] hover:w-[40rem] shadow-xl rounded-md transition-all duration-300"
+                        className="relative w-64 md:w-72 lg:w-96 h-[25rem] md:h-[25rem] lg:h-[34rem] shadow-xl rounded-md transition-all duration-300"
                     >
                         <label className='group cursor-pointer w-full h-full' htmlFor={`my-modal-imageZoom`}>
                             <Image width={500} height={500} className={`transition-all duration-300 absolute w-full h-full object-cover blur-lg group-focus-visible:animate-pulse group-hover:animate-pulse `} src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md} alt={selectedCharacter.name} loading="lazy" />

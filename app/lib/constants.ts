@@ -371,7 +371,7 @@ export function getTeamByUniverse(universe: string): {name: string, value: strin
         {
           name: "Secret Society of Super Villains",
           value: "Secret Society of Super Villains",
-          img: "https://www.logolynx.com/images/logolynx/64/64f427a6fa6c1acd1ddbb4be2b5eac96.jpeg",
+          img: "https://static.wikia.nocookie.net/comicbookuniverse/images/f/f4/Villians.png/revision/latest?cb=20181017080909",
         },
         {
           name: "Suicide Squad",

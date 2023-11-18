@@ -5,6 +5,8 @@ import FeatureTabAppereance from "./FeatureTabAppereance";
 import FeatureTabBiography from "./FeatureTabBiography";
 import FeatureTabTeams from "./FeatureTabTeams";
 import FeatureTabComics from "./FeatureTabComics";
+import { BarChart4, Eye, Image, Library } from "lucide-react";
+import { GrGroup } from "react-icons/gr";
 
 type CharacterFeaturesProps = {
     selectedCharacter: Character
@@ -18,15 +20,15 @@ function CharacterFeatures({ selectedCharacter }: CharacterFeaturesProps) {
         >
             <TabsList className={`grid w-full grid-cols-5 bg-accent`}>
                 <TabsTrigger className='text-base-content hidden md:block' value="Stats">Stats</TabsTrigger>
-                <TabsTrigger className='text-base-content block md:hidden' value="Stats">📊</TabsTrigger>
+                <TabsTrigger className='text-base-content md:hidden flex justify-center' value="Stats"><BarChart4 size={20} /></TabsTrigger>
                 <TabsTrigger className='text-base-content hidden md:block' value="Appereance">Appereance</TabsTrigger>
-                <TabsTrigger className='text-base-content block md:hidden' value="Appereance">👀</TabsTrigger>
+                <TabsTrigger className='text-base-content md:hidden flex justify-center' value="Appereance"><Eye size={20} /></TabsTrigger>
                 <TabsTrigger className='text-base-content hidden md:block' value="Biography">Biography</TabsTrigger>
-                <TabsTrigger className='text-base-content block md:hidden' value="Biography">📜</TabsTrigger>
+                <TabsTrigger className='text-base-content md:hidden flex justify-center' value="Biography"><Library size={20} /></TabsTrigger>
                 <TabsTrigger className='text-base-content hidden md:block' value="Teams">Teams</TabsTrigger>
-                <TabsTrigger className='text-base-content block md:hidden' value="Teams">👪</TabsTrigger>
+                <TabsTrigger className='text-base-content md:hidden flex justify-center' value="Teams"><GrGroup size={20} /></TabsTrigger>
                 <TabsTrigger className='text-base-content hidden md:block' value="Comics">Comics</TabsTrigger>
-                <TabsTrigger className='text-base-content block md:hidden' value="Comics">📕</TabsTrigger>
+                <TabsTrigger className='text-base-content md:hidden flex justify-center' value="Comics"><Image size={20} /></TabsTrigger>
             </TabsList>
             <FeatureTabStats selectedCharacter={selectedCharacter}/>
             <FeatureTabAppereance selectedCharacter={selectedCharacter}/>

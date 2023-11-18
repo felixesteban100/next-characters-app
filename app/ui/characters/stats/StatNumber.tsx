@@ -5,7 +5,7 @@ import { useState } from 'react'
 type StatNumberProps = {
     statName: string
     statValue: number
-    icon: string
+    icon: string | JSX.Element
 }
 
 export default function StatNumber({ statName, statValue, icon }: StatNumberProps) {

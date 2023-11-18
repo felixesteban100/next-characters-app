@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/accordion"
 
 type StatCollapseProps = {
-    icon: string
+    icon: string | JSX.Element
     content: JSX.Element | JSX.Element[]
     title: string
     dataTest?: string
