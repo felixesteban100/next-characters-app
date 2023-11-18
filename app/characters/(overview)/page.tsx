@@ -96,8 +96,8 @@ export default async function Page({
                             width={500}
                             height={500}
                             // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                            // className={`group-hover/breadscrum:h-32 h-28 w-auto transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                            className={`h-28 w-auto transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
+                            // className={`h-28 w-auto transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
+                            className={`h-40 w-auto transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
                             alt={teamInfo.value}
                         />
                     </div>
@@ -109,15 +109,24 @@ export default async function Page({
                                 width={500}
                                 height={500}
                                 // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                                className={`group-hover/breadscrum:h-32 h-28 w-auto transition-all duration-300 ${GetColorLogosByPublisher(universe)}`}
+                                className={`h-40 w-auto transition-all duration-300 ${GetColorLogosByPublisher(universe)}`}
                                 alt='publisherLogo'
                             />
                         </div>
                         :
                         <div className='w-full flex justify-center items-center gap-5 my-5'>
-                            <div
+                            {/* <div
                                 // className={`h-28 w-48 transition-all duration-300 bg-foreground/10 rounded-lg`}
                                 className={`h-28 w-48 transition-all duration-300 rounded-lg`}
+                            /> */}
+                            <Image
+                                // src='https://i0.wp.com/beccabug.com/wp-content/uploads/2012/02/superherologos.jpg'
+                                src='https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-black-and-white.png'
+                                width={500}
+                                height={500}
+                                // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
+                                className={`h-40 w-auto animate-spin1 invert dark:invert-0`}
+                                alt='publisherLogo'
                             />
                         </div>
             }

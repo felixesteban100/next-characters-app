@@ -5,7 +5,7 @@ import StatString from "../stats/StatString"
 import { Separator } from "@/components/ui/separator"
 import { Accordion } from "@/components/ui/accordion"
 import StatAccordion from "../stats/StatAccordion"
-import { publisherIMG } from "@/app/lib/charactersUtils"
+import { GetColorLogosByPublisher, publisherIMG } from "@/app/lib/charactersUtils"
 
 type FeatureTabBiographyProps = {
     selectedCharacter: Character
@@ -37,7 +37,7 @@ function FeatureTabBiography({ selectedCharacter }: FeatureTabBiographyProps) {
                             <p className='text-2xl md:text-3xl'>📚</p>
                             <p className="hidden md:block">Publisher</p>
                         </div>
-                        <div className="font-bold capitalize"><img className="h-10" src={publisherIMG(selectedCharacter.biography.publisher)} alt="publisher" /></div>
+                        <div className="font-bold capitalize"><img className={`h-10 ${GetColorLogosByPublisher(selectedCharacter.biography.publisher)}`} src={publisherIMG(selectedCharacter.biography.publisher)} alt="publisher" /></div>
                     </div>
                     <Separator />
                     <Accordion type="single" collapsible className="w-full">

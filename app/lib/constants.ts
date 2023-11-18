@@ -80,7 +80,6 @@ export const ALLUNIVERSE = [
   { value: "South Park", name: "South Park" },
   { value: "Sony Pictures", name: "Sony Pictures" },
   { value: "Vindicator II", name: "Vindicator II" },
-  { value: "Image Comics", name: "Image Comics" },
   { value: "Titan Books", name: "Titan Books" },
   { value: "J. K. Rowling", name: "J. K. Rowling" },
   { value: "Microsoft", name: "Microsoft" },
