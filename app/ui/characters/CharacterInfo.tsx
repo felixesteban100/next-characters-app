@@ -11,7 +11,7 @@ export default async function CharacterInfo({ characterId, image }: { characterI
 
     return (
         <>
-            <div className="mx-auto w-[80vw] flex flex-col xl:flex-row justify-center gap-0 lg:gap-11">
+            <div className="mx-auto w-[80vw] flex flex-col xl:flex-row justify-center items-center lg:items-start gap-0 lg:gap-11">
                 <div
                     // w-[90%] md:w-[50%] lg:w-[30%] xl:h-[60%] mx-auto
                     className='flex flex-col justify-center items-center gap-3'

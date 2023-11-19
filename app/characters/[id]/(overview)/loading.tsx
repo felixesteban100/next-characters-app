@@ -1,11 +1,11 @@
-import Breadcrumbs from "@/app/ui/breadcrumbs";
+// import Breadcrumbs from "@/app/ui/breadcrumbs";
 import LoadingCharacterInfo from "@/app/ui/characters/loaders/LoadingCharacterInfo";
 
 export default function Loading() {
     return (
         <section>
             <div className='w-[80vw] mx-auto'>
-                <Breadcrumbs
+                {/* <Breadcrumbs
                     breadcrumbs={[
                         {
                             label: 'Characters',
@@ -16,9 +16,9 @@ export default function Loading() {
                             active: true,
                         },
                     ]}
-                />
+                /> */}
             </div>
-            <div className='mb-5 lg:mb-0'>
+            <div className='mb-5 mt-20 lg:mb-0'>
                 <LoadingCharacterInfo />
             </div>
         </section>

@@ -65,6 +65,7 @@ export const ALLUNIVERSE = [
   { value: "IDW Publishing", name: "IDW Publishing" },
   { value: "Image Comics", name: "Image Comics" },
   { value: "Warner Bros", name: "Warner Bros" },
+  { value: 'Super Sentai', name: 'Super Sentai' },
   // { value: "Angel", name: "Angel" },
   { value: "NBC - Heroes", name: "NBC - Heroes" },
   { value: "Tempest", name: "Tempest" },
@@ -96,7 +97,7 @@ export const ALLUNIVERSE = [
   //
 ];
 
-export function getTeamByUniverse(universe: string): {name: string, value: string, img: string}[] {
+export function getTeamByUniverse(universe: string): { name: string, value: string, img: string }[] {
   switch (universe) {
     case "Marvel Comics":
       return [
@@ -481,6 +482,15 @@ export function getTeamByUniverse(universe: string): {name: string, value: strin
         },
       ];
 
+    case 'Super Sentai':
+      return [
+        {
+          name: 'Power Rangers',
+          value: 'Power Rangers',
+          img: 'https://static.wikia.nocookie.net/logopedia/images/7/71/MMPR_Era_Logo.png/revision/latest?cb=20140212040130'
+        }
+      ]
+      break;
     default:
       return [];
   }

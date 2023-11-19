@@ -26,7 +26,7 @@ export default async function Page({ params, searchParams }: { params: { id: str
     return (
         <section>
             <div className='w-[80vw] mx-auto'>
-                <Breadcrumbs
+                {/* <Breadcrumbs
                     breadcrumbs={[
                         {
                             label: 'Characters',
@@ -37,9 +37,9 @@ export default async function Page({ params, searchParams }: { params: { id: str
                             active: true,
                         },
                     ]}
-                />
+                /> */}
             </div>
-            <div className='mb-5 lg:mb-0'>
+            <div className='mb-5 mt-20 lg:mb-0'>
                 <Suspense fallback={<LoadingCharacterInfo />}>
                     <CharacterInfo characterId={characterId} image={searchParams.image} />
                 </Suspense>

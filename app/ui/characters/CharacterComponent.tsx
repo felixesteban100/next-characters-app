@@ -15,6 +15,7 @@ export default function CharacterComponent({ currentCharacter }: CharacterProps)
             href={`/characters/${currentCharacter.id}`}
         >
             <div
+                //card-new
                 className={
                     `card-new
                     object-contain 
@@ -37,7 +38,7 @@ export default function CharacterComponent({ currentCharacter }: CharacterProps)
                     className={`absolute z-[12] ml-5 mt-7 w-[90%] h-[85%] flex flex-col justify-between items-start gap-[55%]`}
                 >
                     <h2
-                        className={`character_name font-bold text-muted-background text-xl xl:text-2xl`}
+                        className={`character_name font-bold text-white text-xl xl:text-2xl`}
                     >
                         {currentCharacter.name}
                     </h2>

@@ -3,11 +3,11 @@ import Characters from '@/app/ui/characters/Characters';
 import { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharacters';
 import { QueryOptions } from '@/app/lib/definitions';
 import { getQueryOptions } from '@/app/lib/data';
-import LoadingCharactersContent from '@/app/ui/characters/loaders/LoadingCharactersContent';
 import { getTeamByUniverse } from '@/app/lib/constants';
 import Image from 'next/image';
 import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
 import { Atom } from 'lucide-react';
+import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
 
 // export const metadata: Metadata = {
 //     title: 'Characters',
@@ -81,13 +81,13 @@ export default async function Page({
 
     return (
         <main>
-            <div className="w-[80vw] mx-auto hidden md:flex items-center justify-start mt-8 ">
-                <h1 className={`text-xl md:text-2xl`}>Characters</h1>
+            {/* <div className="w-[80vw] mx-auto hidden md:flex items-center justify-start mt-8 ">
+                <h1 className={`text-xl md:text-2xl ${universe === "All" ? "text-primary" : ""}`}>Characters</h1>
                 {universe !== "All" && <p>&nbsp; / &nbsp;</p>}
                 {universe !== "All" && <h1 className={`${team === "All" ? "text-primary" : ""} text-xl md:text-2xl`}>{universe}</h1>}
                 {team !== "All" && <p>&nbsp; / &nbsp;</p>}
                 {team !== "All" && <h1 className={`text-primary text-xl md:text-2xl`}>{team}</h1>}
-            </div>
+            </div> */}
 
             {
                 teamInfo?.img !== undefined ?
@@ -126,7 +126,7 @@ export default async function Page({
                                 width={500}
                                 height={500}
                                 // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                                className={`h-40 w-auto animate-spin1 invert dark:invert-0`}
+                                className={`h-40 w-auto animate-spin1 text-primary`}
                                 // alt='publisherLogo'
                             />
                         </div>
@@ -135,7 +135,7 @@ export default async function Page({
 
             <Suspense
                 key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
-                fallback={<LoadingCharactersContent />}
+                fallback={<LoadingCharacters />}
             >
                 <Characters
                     queryOptions={queryOptions}

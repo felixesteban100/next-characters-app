@@ -140,6 +140,21 @@ function organizedComicsProperty(
                     "https://storage.googleapis.com/hipcomic/p/007ce152f644d7971541cb74253b82cf.jpg",
                 ];
 
+            case 'Super Sentai':
+                return [
+                    "https://m.media-amazon.com/images/I/71eevKo5wwL._AC_UF1000,1000_QL80_.jpg",
+                    "https://m.media-amazon.com/images/I/91aypLcyUZL._AC_UF1000,1000_QL80_.jpg",
+                    "https://m.media-amazon.com/images/I/91nMdRAbRgL._AC_UF1000,1000_QL80_.jpg",
+                    "https://m.media-amazon.com/images/M/MV5BZmI1NWU4OTAtNGYxNi00NjUxLTgwNzktZTNiNTNjMWYzYmFlXkEyXkFqcGdeQXVyMTA1OTAyOTI@._V1_FMjpg_UX1000_.jpg",
+                    "https://rangercentral.com/database/2003_ninjastorm/images/data-top-prns.jpg",
+                    "https://down-id.img.susercontent.com/file/3ea0350a8f5740d63c9b52baa23df007",
+                    "https://preview.redd.it/so-spd-takes-place-in-2025-which-is-just-a-couple-years-v0-64wq5od2e5qa1.jpg?width=640&crop=smart&auto=webp&s=e28cbbb3a9f98c7e661efdda388dcf4a940b80ec",
+                    "https://static.wikia.nocookie.net/maswartz-powerverse/images/1/13/MysticForce.jpg/revision/latest?cb=20180815215643",
+                    "https://2.bp.blogspot.com/-mQYRzr3fJhU/T15nTBfC_5I/AAAAAAAAC8c/UOGc53cQcUA/s1600/Power+Rangers+Operation+Overdrive.jpg",
+                    "https://3.bp.blogspot.com/-n0hYRpfNkpY/TdOuacfwnfI/AAAAAAAABcs/dou6CuqyW8E/s1600/PowerRangersJungleWallpaper800.jpg",
+                    "https://images.purexbox.com/a24c51835112f/1280x720.jpg",
+                ]
+
             default:
                 return [
                     "https://img.freepik.com/free-vector/comics-poster-template_225004-800.jpg?w=2000",
