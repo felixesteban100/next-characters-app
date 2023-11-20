@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import Characters from '@/app/ui/characters/Characters';
 import { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharacters';
 import { QueryOptions } from '@/app/lib/definitions';
 import { getQueryOptions } from '@/app/lib/data';
@@ -7,7 +6,8 @@ import { getTeamByUniverse } from '@/app/lib/constants';
 import Image from 'next/image';
 import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
 import { Atom } from 'lucide-react';
-import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
+import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
+import LoadingCharactersNoPagination from '@/app/ui/characters/loaders/LoadingCharactersNoPagination';
 import Navbar from '@/app/ui/Navbar';
 
 // export const metadata: Metadata = {
@@ -83,7 +83,7 @@ export default async function Page({
     return (
         <main>
             <Navbar 
-                link="/characters"
+                link="/characters/no-pagination"
             />
             {/* <div className="w-[80vw] mx-auto hidden md:flex items-center justify-start mt-8 ">
                 <h1 className={`text-xl md:text-2xl ${universe === "All" ? "text-primary" : ""}`}>Characters</h1>
@@ -139,9 +139,9 @@ export default async function Page({
 
             <Suspense
                 key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
-                fallback={<LoadingCharacters />}
+                fallback={<LoadingCharactersNoPagination />}
             >
-                <Characters
+                <CharactersNoPagination
                     queryOptions={queryOptions}
                     currentPage={currentPage}
                     sortBy={sortBy}

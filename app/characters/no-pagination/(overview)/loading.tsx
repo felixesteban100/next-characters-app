@@ -1,4 +1,5 @@
 import LoadingCharacters from "@/app/ui/characters/loaders/LoadingCharacters";
+import LoadingPaginationCharacters from "@/app/ui/characters/loaders/LoadingPaginationCharacters";
 
 export default function Loading() {
     return (

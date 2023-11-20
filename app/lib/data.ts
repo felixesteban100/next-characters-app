@@ -42,6 +42,25 @@ export async function fetchCharacters(
   }
 }
 
+export async function fetchCharactersNoPagination(
+  queryOptions: QueryOptions,
+  sortBy: sortByType,
+  sortDirection: sortDirectionType
+) {
+  // noStore();
+  try {
+    const charactersToDisplay: Character[] = await collectionCharacters
+      .find({ ...queryOptions })
+      .sort({ [`${sortBy}`]: sortDirection as any })
+      // .limit(CHARACTERS_PER_PAGE)
+      .toArray()
+    return charactersToDisplay
+  } catch (error) {
+    console.error(error);
+    throw Error(`MongoDB Connection Error: ${error}`);
+  }
+}
+
 export async function fetchPages(
   queryOptions: QueryOptions
 ) {

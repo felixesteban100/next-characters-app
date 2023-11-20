@@ -39,7 +39,7 @@ const formSchema = z.object({
 export type sortByType = z.infer<typeof formSchema.shape.sortBy>
 export type sortDirectionType = z.infer<typeof formSchema.shape.sortDirection>
 
-export default function FilterCharacters() {
+export default function FilterCharacters({link}: {link: string}) {
     const searchParams = useSearchParams()
     // const pathname = usePathname()
     const { replace } = useRouter()
@@ -118,7 +118,7 @@ export default function FilterCharacters() {
         // console.log(`${pathname}?${params.toString()}`)
 
         // replace(`${pathname}?${params.toString()}`)
-        replace(`/characters?${params.toString()}`)
+        replace(`${link}?${params.toString()}`)
     }
 
     return (

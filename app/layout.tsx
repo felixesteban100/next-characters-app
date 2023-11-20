@@ -2,7 +2,7 @@ import '@/app/globals.css'
 import { inter } from '@/app/ui/fonts';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
-import Navbar from './ui/Navbar';
+// import Navbar from './ui/Navbar';    
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +38,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          {/* <Navbar 
+          
+          /> */}
           {children}
         </ThemeProvider>
       </body>
