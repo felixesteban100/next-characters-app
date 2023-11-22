@@ -8,9 +8,10 @@ type CharactersProps = {
     queryOptions: QueryOptions
     sortBy: sortByType
     sortDirection: sortDirectionType,
+    withPagination: boolean
 }
 
-export default async function CharactersNoPagination({ queryOptions, sortBy, sortDirection }: CharactersProps) {
+export default async function CharactersNoPagination({ queryOptions, sortBy, sortDirection, withPagination }: CharactersProps) {
     const charactersToDisplay: Character[] = await fetchCharactersNoPagination(queryOptions, sortBy, sortDirection)
 
     return (
@@ -24,6 +25,7 @@ export default async function CharactersNoPagination({ queryOptions, sortBy, sor
                                     <CharacterComponent
                                         key={currentCharacter.slug}
                                         currentCharacter={{ ...currentCharacter, _id: currentCharacter._id.toString() }}
+                                        withPagination={withPagination}
                                     />
                                 )
                             })

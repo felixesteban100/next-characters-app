@@ -158,6 +158,7 @@ export default async function Page({
                         queryOptions={queryOptions}
                         sortBy={sortBy}
                         sortDirection={sortDirection}
+                        withPagination={withPagination === "true"}
                     />
                 }
             </Suspense>
