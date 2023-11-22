@@ -12,7 +12,7 @@ type CharactersProps = {
 }
 
 export default async function CharactersNoPagination({ queryOptions, sortBy, sortDirection, withPagination }: CharactersProps) {
-    const charactersToDisplay: Character[] = await fetchCharactersNoPagination(queryOptions, sortBy, sortDirection)
+    const charactersToDisplay/* : Character[] */ = await fetchCharactersNoPagination(queryOptions, sortBy, sortDirection)
 
     return (
         <div className='mx-auto w-[90vw] flex flex-col justify-between mb-10'>

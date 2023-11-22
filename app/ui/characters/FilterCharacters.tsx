@@ -57,7 +57,7 @@ export default function FilterCharacters({link}: {link: string}) {
             gender: searchParams.get('gender') || 'both',
             race: searchParams.get('race') || 'All',
 
-            sortBy: searchParams.get('sortBy') ?? "id",
+            sortBy: searchParams.get('sortBy') ?? "_id",
             sortDirection: searchParams.get('sortDirection') ?? "desc"
         },
     })
@@ -192,6 +192,7 @@ export default function FilterCharacters({link}: {link: string}) {
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
+                                        {params.get('pagination') === "false" && <SelectItem value="random">Random</SelectItem>}
                                         {sortByValues.map((c) => (
                                             <SelectItem key={c} value={c}>{c}</SelectItem>
                                         ))}

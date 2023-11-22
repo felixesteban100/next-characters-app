@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 type CharacterProps = {
-    currentCharacter: Character;
+    currentCharacter: any;
     withPagination: boolean;
 }
 

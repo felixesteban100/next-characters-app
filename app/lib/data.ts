@@ -35,6 +35,7 @@ export async function fetchCharacters(
       .skip(offset)
       // .limit(CHARACTERS_PER_PAGE)
       .toArray()
+
     return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE)
   } catch (error) {
     console.error(error);
@@ -49,11 +50,25 @@ export async function fetchCharactersNoPagination(
 ) {
   // noStore();
   try {
-    const charactersToDisplay: Character[] = await collectionCharacters
-      .find({ ...queryOptions })
-      .sort({ [`${sortBy}`]: sortDirection as any })
-      .limit(40)
-      .toArray()
+    let charactersToDisplay/* : Character[] */
+
+    if (sortBy === "random") {
+      charactersToDisplay = await collectionCharacters
+        .aggregate([
+          { $match: { ...queryOptions } },
+          { $sample: { size: 40 } }
+        ])
+        // .find({ ...queryOptions })
+        // .sort({ [`${sortBy}`]: sortDirection as any })
+        // .limit(40)
+        .toArray()
+    } else {
+      charactersToDisplay = await collectionCharacters
+        .find({ ...queryOptions })
+        .sort({ [`${sortBy}`]: sortDirection as any })
+        .limit(40)
+        .toArray()
+    }
     return charactersToDisplay
   } catch (error) {
     console.error(error);
