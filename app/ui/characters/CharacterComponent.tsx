@@ -1,18 +1,19 @@
 import { publisherIMG } from '@/app/lib/charactersUtils';
 import { Character } from '@/app/lib/definitions';
-import { GetColorLogosByPublisher, GetDimentionsOfTheLogoForCard } from '@/app/lib/charactersUtils';
+import { GetDimentionsOfTheLogoForCard } from '@/app/lib/charactersUtils';
 import Image from 'next/image';
 import Link from 'next/link';
 
 type CharacterProps = {
     currentCharacter: Character;
+    withPagination: boolean;
 }
 
-export default function CharacterComponent({ currentCharacter }: CharacterProps) {
+export default function CharacterComponent({ currentCharacter, withPagination }: CharacterProps) {
     return (
         <Link
             className={`cursor-pointer group/item`}
-            href={`/characters/${currentCharacter.id}`}
+            href={`/characters/${currentCharacter.id}?name=${currentCharacter.name}&pagination=${withPagination}`}
         >
             <div
                 //card-new
@@ -43,8 +44,8 @@ export default function CharacterComponent({ currentCharacter }: CharacterProps)
                         {currentCharacter.name}
                     </h2>
                     <Image
+                            // ${GetColorLogosByPublisher(currentCharacter.biography.publisher)}
                         className={`
-                            ${GetColorLogosByPublisher(currentCharacter.biography.publisher)}
                             ${GetDimentionsOfTheLogoForCard(currentCharacter.biography.publisher)}
                         `}
                         src={publisherIMG(currentCharacter.biography.publisher)}

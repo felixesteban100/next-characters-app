@@ -13,40 +13,41 @@ export default function LoadingFeatureTab({value}: {value:string}){
                 <StatNumber
                     statName=""
                     statValue={0}
-                    icon=""
+                    // icon=""
+                    icon={<div className="h-9" />}
                 />
                 <Separator />
                 <StatNumber
                     statName=""
                     statValue={0}
-                    icon=""
+                    icon={<div className="h-9"/>}
                 />
                 <Separator />
                 <StatNumber
                     statName=""
                     statValue={0}
-                    icon=""
-                />
-                <Separator />
-
-                <StatNumber
-                    statName=""
-                    statValue={0}
-                    icon=""
+                    icon={<div className="h-9"/>}
                 />
                 <Separator />
 
                 <StatNumber
                     statName=""
                     statValue={0}
-                    icon=""
+                    icon={<div className="h-9"/>}
                 />
                 <Separator />
 
                 <StatNumber
                     statName=""
                     statValue={0}
-                    icon=""
+                    icon={<div className="h-9"/>}
+                />
+                <Separator />
+
+                <StatNumber
+                    statName=""
+                    statValue={0}
+                    icon={<div className="h-9"/>}
                 />
                 <Separator />
             </StatContainer>

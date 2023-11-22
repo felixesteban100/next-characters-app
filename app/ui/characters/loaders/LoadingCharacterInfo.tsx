@@ -3,7 +3,7 @@ import LoadingCharacterFeatures from "./LoadingCharacterFeatures";
 export default function LoadingCharacterInfo() {
     return (
         <>
-            <div className="mx-auto w-[80vw] flex flex-col xl:flex-row justify-center">
+            <div className="mx-auto w-[80vw] flex flex-col xl:flex-row justify-center items-center lg:items-start gap-0 lg:gap-11 translate-y-0 lg:translate-y-16">
                 <div className='flex flex-col items-center align-middle gap-3 w-[90%] md:w-[50%] lg:w-[30%] xl:h-[60%] mx-auto'>
                     <div
                         className="animate-pulse relative w-64 md:w-72 lg:w-96 h-[25rem] md:h-[25rem] lg:h-[34rem] bg-muted-foreground shadow-xl rounded-md"
@@ -20,7 +20,7 @@ export default function LoadingCharacterInfo() {
                     </div>
                 </div>
 
-                <div className="flex flex-col w-[70%] mx-auto mt-5 xl:mt-0 animate-pulse">
+                <div className="flex flex-col w-[90%] lg:w-[70%] mx-auto mt-5 xl:mt-0 animate-pulse">
                     <LoadingCharacterFeatures />
                 </div>
             </div>

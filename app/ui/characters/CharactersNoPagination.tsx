@@ -1,22 +1,16 @@
 import CharactersContainer from '@/app/ui/characters/CharactersContainer';
 import CharacterComponent from '@/app/ui/characters/CharacterComponent';
-import { fetchCharacters, fetchCharactersNoPagination, fetchPages } from '@/app/lib/data';
+import { fetchCharactersNoPagination } from '@/app/lib/data';
 import { Character, QueryOptions } from '@/app/lib/definitions';
 import { sortByType, sortDirectionType } from './FilterCharacters';
-import PaginationCharacters from './PaginationCharacters';
-// import { getTeamByUniverse } from '@/app/lib/constants';
-// import Image from 'next/image';
 
 type CharactersProps = {
     queryOptions: QueryOptions
-    currentPage: number,
     sortBy: sortByType
     sortDirection: sortDirectionType,
-    universe: string;
-    team: string
 }
 
-export default async function CharactersNoPagination({ queryOptions, currentPage, sortBy, sortDirection, universe, team }: CharactersProps) {
+export default async function CharactersNoPagination({ queryOptions, sortBy, sortDirection }: CharactersProps) {
     const charactersToDisplay: Character[] = await fetchCharactersNoPagination(queryOptions, sortBy, sortDirection)
 
     return (
@@ -25,7 +19,7 @@ export default async function CharactersNoPagination({ queryOptions, currentPage
                 <CharactersContainer>
                     <>
                         {
-                            charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
+                            charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter) => {
                                 return (
                                     <CharacterComponent
                                         key={currentCharacter.slug}
@@ -37,6 +31,7 @@ export default async function CharactersNoPagination({ queryOptions, currentPage
                     </>
                 </CharactersContainer>
             </div>
+            <p className='mx-auto text-lg font-bold mt-11'>The Limit = 40</p>
         </div>
     )
 }

@@ -256,7 +256,7 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
         {
           name: "X-Force",
           value: "X-Force",
-          img: "https://i.pinimg.com/originals/fd/d0/5e/fdd05ee150633abd43ed5ba6ca46dfe7.png",
+          img: "https://static.wikia.nocookie.net/logocomics/images/b/b4/X-Force%281991-2002%29.png/revision/latest?cb=20210914180116",
         },
         {
           name: "X-Men",
@@ -434,7 +434,7 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
         {
           name: "Jujutsu Kaisen",
           value: "Jujutsu Kaisen",
-          img: "https://johto.legiaodosherois.com.br/wp-content/uploads/2021/10/legiao_IC7yo83cx4YV.jpg",
+          img: "https://i.pinimg.com/originals/66/fd/03/66fd03b4ab97f1d45e2bfc5e00f94a2f.png",
         },
         {
           name: "Bleach",

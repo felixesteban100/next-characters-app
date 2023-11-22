@@ -9,6 +9,7 @@ import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from 
 import { Atom } from 'lucide-react';
 import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
 import Navbar from '@/app/ui/Navbar';
+import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
 
 // export const metadata: Metadata = {
 //     title: 'Characters',
@@ -44,6 +45,8 @@ export default async function Page({
 }: {
     searchParams?: {
         query?: string;
+
+        pagination?: string;
         page?: string;
         pageCharacters?: string;
 
@@ -60,6 +63,8 @@ export default async function Page({
         sortDirection?: sortDirectionType;
     }
 }) {
+    const withPagination = searchParams !== undefined ? searchParams.pagination === "true" : "true"
+
     const characterOrFullName = searchParams?.characterOrFullName === "true"
     const characterName = searchParams?.characterName || '';
     // const howMany = searchParams?.howMany || '714'
@@ -68,7 +73,6 @@ export default async function Page({
     const team = searchParams?.team || "All"
     const gender = searchParams?.gender || "both"
     const race = searchParams?.race || "All"
-
 
     const currentPage = Number(searchParams?.pageCharacters) || 1;
     const sortBy = searchParams?.sortBy || '_id';
@@ -82,7 +86,7 @@ export default async function Page({
 
     return (
         <main>
-            <Navbar 
+            <Navbar
                 link="/characters"
             />
             {/* <div className="w-[80vw] mx-auto hidden md:flex items-center justify-start mt-8 ">
@@ -100,8 +104,8 @@ export default async function Page({
                             src={teamInfo.img}
                             width={500}
                             height={500}
-                            // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                            // className={`h-28 w-auto transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
+                            // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300`}
+                            // className={`h-28 w-auto transition-all duration-300`}
                             className={`h-40 w-auto transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
                             alt={teamInfo.value}
                         />
@@ -131,7 +135,7 @@ export default async function Page({
                                 height={500}
                                 // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
                                 className={`h-40 w-auto animate-spin1 text-primary`}
-                                // alt='publisherLogo'
+                            // alt='publisherLogo'
                             />
                         </div>
             }
@@ -141,14 +145,21 @@ export default async function Page({
                 key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
                 fallback={<LoadingCharacters />}
             >
-                <Characters
-                    queryOptions={queryOptions}
-                    currentPage={currentPage}
-                    sortBy={sortBy}
-                    sortDirection={sortDirection}
-                    universe={universe}
-                    team={team}
-                />
+                {withPagination === true ?
+                    <Characters
+                        queryOptions={queryOptions}
+                        currentPage={currentPage}
+                        sortBy={sortBy}
+                        sortDirection={sortDirection}
+                        withPagination={withPagination}
+                    />
+                    :
+                    <CharactersNoPagination
+                        queryOptions={queryOptions}
+                        sortBy={sortBy}
+                        sortDirection={sortDirection}
+                    />
+                }
             </Suspense>
         </main>
     );

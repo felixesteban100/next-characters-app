@@ -12,11 +12,10 @@ type CharactersProps = {
     currentPage: number,
     sortBy: sortByType
     sortDirection: sortDirectionType,
-    universe: string;
-    team: string
+    withPagination: boolean
 }
 
-export default async function Characters({ queryOptions, currentPage, sortBy, sortDirection, universe, team }: CharactersProps) {
+export default async function Characters({ queryOptions, currentPage, sortBy, sortDirection, withPagination }: CharactersProps) {
     const charactersToDisplay: Character[] = await fetchCharacters(queryOptions, currentPage, sortBy, sortDirection)
     const totalPages = await fetchPages(queryOptions)
     
@@ -32,6 +31,7 @@ export default async function Characters({ queryOptions, currentPage, sortBy, so
                                     <CharacterComponent
                                         key={currentCharacter.slug}
                                         currentCharacter={{ ...currentCharacter, _id: currentCharacter._id.toString() }}
+                                        withPagination={withPagination}
                                     />
                                 )
                             })

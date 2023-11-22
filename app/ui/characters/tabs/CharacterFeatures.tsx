@@ -9,10 +9,11 @@ import { BarChart4, Eye, Image, Library } from "lucide-react";
 import { GrGroup } from "react-icons/gr";
 
 type CharacterFeaturesProps = {
-    selectedCharacter: Character
+    selectedCharacter: Character,
+    withPagination: boolean
 }
 
-function CharacterFeatures({ selectedCharacter }: CharacterFeaturesProps) {
+function CharacterFeatures({ selectedCharacter, withPagination }: CharacterFeaturesProps) {
     return (
         <Tabs
             defaultValue={'Stats'}
@@ -33,8 +34,8 @@ function CharacterFeatures({ selectedCharacter }: CharacterFeaturesProps) {
             <FeatureTabStats selectedCharacter={selectedCharacter}/>
             <FeatureTabAppereance selectedCharacter={selectedCharacter}/>
             <FeatureTabBiography selectedCharacter={selectedCharacter}/>
-            <FeatureTabTeams selectedCharacter={selectedCharacter}/>
-            <FeatureTabComics selectedCharacter={selectedCharacter} />
+            <FeatureTabTeams selectedCharacter={selectedCharacter} withPagination={withPagination}/>
+            <FeatureTabComics selectedCharacter={selectedCharacter} withPagination={withPagination} />
         </Tabs>
     )
 }

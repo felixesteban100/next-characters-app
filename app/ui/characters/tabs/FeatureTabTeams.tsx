@@ -7,10 +7,11 @@ import Image from "next/image"
 import { GetColorOfTheLogoByTeam } from "@/app/lib/charactersUtils"
 
 type FeatureTabTeamsProps = {
-    selectedCharacter: Character
+    selectedCharacter: Character,
+    withPagination: boolean
 }
 
-function FeatureTabTeams({ selectedCharacter }: FeatureTabTeamsProps) {
+function FeatureTabTeams({ selectedCharacter, withPagination }: FeatureTabTeamsProps) {
 
     return (
         <div>
@@ -28,7 +29,8 @@ function FeatureTabTeams({ selectedCharacter }: FeatureTabTeamsProps) {
                                     getTeamsImagesByCharacter(selectedCharacter).map((teamFound) => {
                                         return (
                                             <Link
-                                                href={`/characters?universe=${selectedCharacter.biography.publisher}&team=${teamFound.value}&howMany=700`}
+                                                // href={`/characters?universe=${selectedCharacter.biography.publisher}&team=${teamFound.value}&howMany=700`}
+                                                href={`/characters?universe=${selectedCharacter.biography.publisher}&team=${teamFound.value}&howMany=700&pagination=${withPagination}`}
                                                 key={teamFound.name}
                                                 className="mt-5 mx-auto flex gap-1 flex-col cursor-pointer group/items"
                                                 data-tip={teamFound.name}

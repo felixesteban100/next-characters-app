@@ -9,7 +9,7 @@ export default function NotFound() {
   const characterId = pathname.match(/\/(\d+)$/)?.[1] || '0'
 
   return (
-    <main className="flex h-full flex-col items-center justify-center gap-2">
+    <main className="min-h-screen flex h-full flex-col items-center justify-center gap-2">
       <ArrowDownNarrowWide className="w-10 text-gray-400" />
       <h2 className="text-xl font-semibold">404 Not Found</h2>
       <p>Could not find the requested character id: {characterId}.</p>

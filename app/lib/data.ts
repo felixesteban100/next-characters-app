@@ -52,7 +52,7 @@ export async function fetchCharactersNoPagination(
     const charactersToDisplay: Character[] = await collectionCharacters
       .find({ ...queryOptions })
       .sort({ [`${sortBy}`]: sortDirection as any })
-      // .limit(CHARACTERS_PER_PAGE)
+      .limit(40)
       .toArray()
     return charactersToDisplay
   } catch (error) {

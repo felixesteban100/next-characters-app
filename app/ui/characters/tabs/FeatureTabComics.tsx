@@ -6,10 +6,11 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import Link from "next/link"
 
 type FeatureTabComicsProps = {
-    selectedCharacter: Character
+    selectedCharacter: Character;
+    withPagination: boolean
 }
 
-function FeatureTabComics({ selectedCharacter }: FeatureTabComicsProps) {
+function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComicsProps) {
     const allImagesInfo: { property: string, img: string }[] = [
         { property: 'md', img: selectedCharacter.images.md },
         ...Object.entries(selectedCharacter.images).reduce((acc, currentValue) => {
@@ -40,7 +41,7 @@ function FeatureTabComics({ selectedCharacter }: FeatureTabComicsProps) {
                     <div className="flex w-max space-x-4 p-4 md:h-[450px]">
                         {allImagesInfo.map((imgInfo, index) => (
                             <figure key={index} className="shrink-0 w-[150px] md:w-max">
-                                <Link href={`/characters/${selectedCharacter.id}?image=${imgInfo.property}`} className="overflow-hidden rounded-md h-[90%] w-full">
+                                <Link href={`/characters/${selectedCharacter.id}?name=${selectedCharacter.name}&image=${imgInfo.property}&withPagination=${withPagination}`} className="overflow-hidden rounded-md h-[90%] w-full">
                                     <Image
                                         src={allImages[index]}
                                         alt={`Photo by ${selectedCharacter.name}-${index}`}

@@ -4,7 +4,7 @@ import { fetchCharacterById } from "@/app/lib/data";
 import CharacterFeatures from "./tabs/CharacterFeatures";
 import { notFound } from 'next/navigation';
 
-export default async function CharacterInfo({ characterId, image }: { characterId: string, image?: string }) {
+export default async function CharacterInfo({ characterId, image, withPagination }: { characterId: string, image?: string, withPagination: boolean }) {
     const selectedCharacter: Character | null = await fetchCharacterById(characterId)
 
     if (!selectedCharacter) notFound()
@@ -44,7 +44,7 @@ export default async function CharacterInfo({ characterId, image }: { characterI
                     // xl:h-[60vh] w-[90%] xl:w-[50%]
                     className="flex flex-col w-[90%] lg:w-[70%] mx-auto mt-5 xl:mt-0"
                 >
-                    <CharacterFeatures selectedCharacter={selectedCharacter} />
+                    <CharacterFeatures selectedCharacter={selectedCharacter} withPagination={withPagination} />
                 </div>
             </div>
         </>
