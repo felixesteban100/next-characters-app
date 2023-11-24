@@ -63,7 +63,7 @@ export default async function Page({
         sortDirection?: sortDirectionType;
     }
 }) {
-    const withPagination = searchParams !== undefined ? searchParams.pagination === "true" : "true"
+    const withPagination = searchParams?.pagination === undefined ? true : searchParams.pagination === "true"
 
     const characterOrFullName = searchParams?.characterOrFullName === "true"
     const characterName = searchParams?.characterName || '';
@@ -158,7 +158,7 @@ export default async function Page({
                         queryOptions={queryOptions}
                         sortBy={sortBy}
                         sortDirection={sortDirection}
-                        withPagination={withPagination === "true"}
+                        withPagination={withPagination}
                     />
                 }
             </Suspense>

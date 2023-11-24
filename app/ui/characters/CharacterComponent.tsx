@@ -1,5 +1,4 @@
 import { publisherIMG } from '@/app/lib/charactersUtils';
-import { Character } from '@/app/lib/definitions';
 import { GetDimentionsOfTheLogoForCard } from '@/app/lib/charactersUtils';
 import Image from 'next/image';
 import Link from 'next/link';

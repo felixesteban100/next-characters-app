@@ -10,13 +10,17 @@ function PaginationToggle() {
 
   const params = new URLSearchParams(searchParams)
   function changePagination() {
-    params.set("pagination", (!(params.get("pagination") === "true")).toString())
+    if(params.get("pagination")){
+      params.set("pagination", (!(params.get("pagination") === "true")).toString())
+    }else{
+      params.set("pagination", ("false"))
+    }
     replace(`${pathname}?${params.toString()}`)
   }
 
   return (
     <Button onClick={() => changePagination()} variant={"outline"}>
-      {params.get("pagination") === "true" ? "Pagination" : "No pagination"}
+      {params.get("pagination") === "true" || params.get("pagination") === null ? "Pagination" : "No pagination"}
     </Button>
   )
 }

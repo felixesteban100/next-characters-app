@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { ArrowDownNarrowWide } from 'lucide-react';
+import { FileWarning } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 export default function NotFound() {
@@ -10,7 +10,7 @@ export default function NotFound() {
 
   return (
     <main className="min-h-screen flex h-full flex-col items-center justify-center gap-2">
-      <ArrowDownNarrowWide className="w-10 text-gray-400" />
+      <FileWarning className="w-10 text-gray-400" />
       <h2 className="text-xl font-semibold">404 Not Found</h2>
       <p>Could not find the requested character id: {characterId}.</p>
       {/* <div className='flex gap-5'>

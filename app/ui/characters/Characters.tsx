@@ -4,6 +4,7 @@ import { fetchCharacters, fetchPages } from '@/app/lib/data';
 import { Character, QueryOptions } from '@/app/lib/definitions';
 import { sortByType, sortDirectionType } from './FilterCharacters';
 import PaginationCharacters from './PaginationCharacters';
+import NoCharactersFound from './NoCharactersFound';
 // import { getTeamByUniverse } from '@/app/lib/constants';
 // import Image from 'next/image';
 
@@ -18,26 +19,28 @@ type CharactersProps = {
 export default async function Characters({ queryOptions, currentPage, sortBy, sortDirection, withPagination }: CharactersProps) {
     const charactersToDisplay: Character[] = await fetchCharacters(queryOptions, currentPage, sortBy, sortDirection)
     const totalPages = await fetchPages(queryOptions)
-    
 
     return (
         <div className='mx-auto w-[90vw] flex flex-col justify-between mb-5'>
             <div className='flex flex-col gap-5 justify-between items-center -mt-5 md:mt-0'>
-                <CharactersContainer>
-                    <>
-                        {
-                            charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
-                                return (
-                                    <CharacterComponent
-                                        key={currentCharacter.slug}
-                                        currentCharacter={{ ...currentCharacter, _id: currentCharacter._id.toString() }}
-                                        withPagination={withPagination}
-                                    />
-                                )
-                            })
-                        }
-                    </>
-                </CharactersContainer>
+                {
+                    charactersToDisplay.length > 0 ?
+                        <CharactersContainer>
+                            <>
+                                {charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
+                                    return (
+                                        <CharacterComponent
+                                            key={currentCharacter.slug}
+                                            currentCharacter={{ ...currentCharacter, _id: currentCharacter._id.toString() }}
+                                            withPagination={withPagination}
+                                        />
+                                    )
+                                })}
+                            </>
+                        </CharactersContainer>
+                        :
+                        <NoCharactersFound />
+                }
 
                 <div className="my-5 flex w-full justify-center">
                     <PaginationCharacters totalPages={totalPages} />
