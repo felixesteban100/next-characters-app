@@ -161,10 +161,17 @@ export default async function Page({
                     />
                     :
                     <CharactersNoPagination
-                        queryOptions={queryOptions}
+                        // queryOptions={queryOptions}
+                        characterName={characterName} 
+                        side={side}
+                        universe={universe} 
+                        team={team}
+                        gender={gender} 
+                        race={race}
+                        characterOrFullName={characterOrFullName}
                         sortBy={sortBy}
                         sortDirection={sortDirection}
-                        withPagination={withPagination}
+                        // withPagination={withPagination}
                     />
                 }
             </Suspense>

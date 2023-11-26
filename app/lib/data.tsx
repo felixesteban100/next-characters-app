@@ -50,12 +50,25 @@ export async function fetchCharacters(
 }
 
 export async function fetchCharactersNoPagination(
-  queryOptions: QueryOptions,
+  // queryOptions: QueryOptions,
+  characterName: string,
+  side: string,
+  universe: string,
+  team: string,
+  gender: string,
+  race: string,
+  characterOrFullName: boolean,
+
   sortBy: sortByType,
   sortDirection: sortDirectionType,
   currentPage: number
 ) {
-  
+  const queryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
+
+  // console.log(queryOptions)
+  // if (queryOptions["connections.groupAffiliation"]) queryOptions["connections.groupAffiliation"] = new RegExp(queryOptions["connections.groupAffiliation"], 'ig')
+  // if (queryOptions["biography.fullName"]) queryOptions["biography.fullName"] = new RegExp(queryOptions["biography.fullName"], 'ig')
+  // if (queryOptions.name) queryOptions.name = new RegExp(queryOptions.name, 'ig')
   try {
     // let charactersToDisplay/* : Character[] */
 
@@ -67,13 +80,13 @@ export async function fetchCharactersNoPagination(
       .find({ ...queryOptions })
       .sort({ [`${sortBy}`]: sortDirection as any })
       .skip(offset)
-      .limit(CHARACTERS_PER_PAGE_NOPAGINATION)
+      // .limit(CHARACTERS_PER_PAGE_NOPAGINATION)
       .toArray()
 
-      // console.log(charactersToDisplay.length)
+    // console.log(charactersToDisplay.length)
 
     // return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
-    return charactersToDisplay/* .slice(0, CHARACTERS_PER_PAGE_NOPAGINATION) *//* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
+    return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
       return (
         <CharacterComponent
           key={currentCharacter.slug}

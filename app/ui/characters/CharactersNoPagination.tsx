@@ -1,18 +1,25 @@
-import { fetchCharactersNoPagination } from '@/app/lib/data';
+import { fetchCharactersNoPagination, getQueryOptions } from '@/app/lib/data';
 import { QueryOptions } from '@/app/lib/definitions';
 import { sortByType, sortDirectionType } from './FilterCharacters';
 import NoCharactersFound from './NoCharactersFound';
 import LoadMoreCharacters from './LoadMoreCharacters';
 
 type CharactersProps = {
-    queryOptions: QueryOptions
+    // queryOptions: QueryOptions
+    characterName: string
+    side: string
+    universe: string
+    team: string
+    gender: string
+    race: string
+    characterOrFullName: boolean
+
     sortBy: sortByType
     sortDirection: sortDirectionType,
-    withPagination: boolean
 }
 
-export default async function CharactersNoPagination({ queryOptions, sortBy, sortDirection, withPagination }: CharactersProps) {
-    const charactersToDisplay/* : Character[] */ = await fetchCharactersNoPagination(queryOptions, sortBy, sortDirection, 1)
+export default async function CharactersNoPagination({ characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection }: CharactersProps) {
+    const charactersToDisplay/* : Character[] */ = await fetchCharactersNoPagination(characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection, 1)
 
     return (
         <div
@@ -30,7 +37,14 @@ export default async function CharactersNoPagination({ queryOptions, sortBy, sor
                             </>
                         </CharactersContainer> */}
                         <LoadMoreCharacters
-                            queryOptions={JSON.parse(JSON.stringify(queryOptions))}
+                            // queryOptions={/* JSON.parse( */JSON.stringify(queryOptions)}
+                            characterName={characterName}
+                            side={side}
+                            universe={universe}
+                            team={team}
+                            gender={gender}
+                            race={race}
+                            characterOrFullName={characterOrFullName}
                             sortBy={sortBy}
                             sortDirection={sortDirection}
                         />
@@ -38,8 +52,6 @@ export default async function CharactersNoPagination({ queryOptions, sortBy, sor
                     :
                     <NoCharactersFound />
             }
-            {/* ADD INFINITE SCROLLING */}
-            {/* <p className='mx-auto text-lg font-bold mt-11'>The Limit = 40</p> */}
         </div>
     )
 }

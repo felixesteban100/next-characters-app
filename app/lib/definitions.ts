@@ -49,11 +49,11 @@ export type Character = {
 }
 
 export type QueryOptions = {
-  name?: RegExp | string;
-  "biography.fullName"?: RegExp | string;
+  name?:  string | RegExp;
+  "biography.fullName"?: string | RegExp;
   "biography.alignment"?: string;
   "biography.publisher"?: string;
-  "connections.groupAffiliation"?: RegExp;
+  "connections.groupAffiliation"?: string | RegExp;
   "appearance.gender"?: string;
   "appearance.race"?: string;
 };

@@ -1,16 +1,24 @@
 'use client'
 
 import { fetchCharactersNoPagination } from '@/app/lib/data'
-import { /* Character, */ QueryOptions } from '@/app/lib/definitions'
+// import { /* Character, */ QueryOptions } from '@/app/lib/definitions'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { sortByType, sortDirectionType } from './FilterCharacters'
 import CharactersContainer from './CharactersContainer'
-import CharacterComponent from './CharacterComponent'
+// import CharacterComponent from './CharacterComponent'
 // import { Signal, signal } from '@preact/signals-react';
 
 type LoadMoreCharactersProps = {
-    queryOptions: QueryOptions
+    // queryOptions: QueryOptions /* | string */
+    
+    characterName: string
+    side: string
+    universe: string
+    team: string
+    gender: string
+    race: string
+    characterOrFullName: boolean
     sortBy: sortByType
     sortDirection: sortDirectionType,
 }
@@ -19,17 +27,17 @@ type LoadMoreCharactersProps = {
 
 let page = 1;
 
-export default function LoadMoreCharacters({ queryOptions, sortBy, sortDirection }: LoadMoreCharactersProps) {
+export default function LoadMoreCharacters({ characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions,  */sortBy, sortDirection }: LoadMoreCharactersProps) {
     const [newCharacters, setNewCharacters] = useState<JSX.Element[]>([])
     const { ref, inView } = useInView()
     const [noMore, setNoMore] = useState(true)
+    // const [page, setPage] = useState(1)
 
     useEffect(() => {
         if (inView === true && noMore === true) {
-            fetchCharactersNoPagination(queryOptions, sortBy, sortDirection, page).then((data) => {
-                // console.log(data)
-
+            fetchCharactersNoPagination(characterName, side, universe, team, gender, race, characterOrFullName,/* JSON.parse(queryOptions), */ sortBy, sortDirection, page).then((data) => {
                 setNewCharacters([...newCharacters, ...data])
+                // setPage(prev => prev++);
                 page++;
                 if(data.length < 1) setNoMore(false)
             })
