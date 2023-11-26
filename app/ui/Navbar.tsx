@@ -7,7 +7,7 @@ import PaginationToggle from './characters/PaginationToggle';
 
 function Navbar({ link }: { link: string }) {
   return (
-    <nav className='w-[80vw] mx-auto flex justify-end gap-5 py-2'>
+    <nav className='mx-auto flex justify-end gap-5 py-5 pt-16 pr-5'>
       {
         link !== "" ?
           <PaginationToggle />

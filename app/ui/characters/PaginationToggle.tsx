@@ -19,7 +19,7 @@ function PaginationToggle() {
   }
 
   return (
-    <Button onClick={() => changePagination()} variant={"outline"}>
+    <Button /* className="text-foreground hover:text-primary hover:no-underline text-2xl"  */onClick={() => changePagination()} variant={"outline"}>
       {params.get("pagination") === "true" || params.get("pagination") === null ? "Pagination" : "No pagination"}
     </Button>
   )

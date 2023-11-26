@@ -1,7 +1,13 @@
+'use server'
+
 import { Character, QueryOptions } from "./definitions";
 import { sortByType, sortDirectionType } from "../ui/characters/FilterCharacters";
 import { CHARACTERS_PER_PAGE } from "./constants";
 import { collectionCharacters } from "./mongodb/mongodb";
+import CharacterComponent from "../ui/characters/CharacterComponent";
+import { unstable_noStore as noStore } from "next/cache";
+
+noStore();
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
@@ -46,30 +52,57 @@ export async function fetchCharacters(
 export async function fetchCharactersNoPagination(
   queryOptions: QueryOptions,
   sortBy: sortByType,
-  sortDirection: sortDirectionType
+  sortDirection: sortDirectionType,
+  currentPage: number
 ) {
-  // noStore();
+  
   try {
-    let charactersToDisplay/* : Character[] */
+    // let charactersToDisplay/* : Character[] */
 
-    if (sortBy === "random") {
-      charactersToDisplay = await collectionCharacters
-        .aggregate([
-          { $match: { ...queryOptions } },
-          { $sample: { size: 40 } }
-        ])
-        // .find({ ...queryOptions })
-        // .sort({ [`${sortBy}`]: sortDirection as any })
-        // .limit(40)
-        .toArray()
-    } else {
-      charactersToDisplay = await collectionCharacters
-        .find({ ...queryOptions })
-        .sort({ [`${sortBy}`]: sortDirection as any })
-        .limit(40)
-        .toArray()
-    }
-    return charactersToDisplay
+    const CHARACTERS_PER_PAGE_NOPAGINATION = 8
+
+    const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
+
+    const charactersToDisplay: Character[] = await collectionCharacters
+      .find({ ...queryOptions })
+      .sort({ [`${sortBy}`]: sortDirection as any })
+      .skip(offset)
+      .limit(CHARACTERS_PER_PAGE_NOPAGINATION)
+      .toArray()
+
+      // console.log(charactersToDisplay.length)
+
+    // return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
+    return charactersToDisplay/* .slice(0, CHARACTERS_PER_PAGE_NOPAGINATION) *//* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
+      return (
+        <CharacterComponent
+          key={currentCharacter.slug}
+          index={index}
+          currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
+          withPagination={false}
+        />
+      )
+    })
+
+
+    // if (sortBy === "random") {
+    //   charactersToDisplay = await collectionCharacters
+    //     .aggregate([
+    //       { $match: { ...queryOptions } },
+    //       { $sample: { size: 40 } }
+    //     ])
+    //     // .find({ ...queryOptions })
+    //     // .sort({ [`${sortBy}`]: sortDirection as any })
+    //     // .limit(40)
+    //     .toArray()
+    // } else {
+    //   charactersToDisplay = await collectionCharacters
+    //     .find({ ...queryOptions })
+    //     .sort({ [`${sortBy}`]: sortDirection as any })
+    //     .limit(40)
+    //     .toArray()
+    // }
+    // return charactersToDisplay
   } catch (error) {
     console.error(error);
     throw Error(`MongoDB Connection Error: ${error}`);
@@ -91,7 +124,7 @@ export async function fetchPages(
 
 }
 
-export function getQueryOptions(
+export async function getQueryOptions(
   characterName: string,
   side: string/* "All" | "good" | "bad" | "neutral" */,
   universe: string,

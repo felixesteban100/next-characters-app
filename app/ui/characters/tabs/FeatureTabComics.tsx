@@ -85,7 +85,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
 }
 
 
-function organizedComicsProperty(
+export function organizedComicsProperty(
     comics: string[] | null | undefined,
     publisher: string
 ): string[] {
@@ -106,8 +106,8 @@ function organizedComicsProperty(
 
             case "DC Comics":
                 return [
-                    "http://www.moviepostersetc.com/_staticProxy/content/ff808081163c05b001169d6655243ae9/Justice_League_of_America_poster_Issue_1.jpg",
                     "https://cdn.europosters.eu/image/1300/julisteet/dc-comics-collage-i15088.jpg",
+                    // "http://www.moviepostersetc.com/_staticProxy/content/ff808081163c05b001169d6655243ae9/Justice_League_of_America_poster_Issue_1.jpg",
                     "https://d.newsweek.com/en/full/975273/heroes-crisis-tom-king-clay-mann-dc-comics.jpg",
                     "https://i.pinimg.com/originals/02/fb/e3/02fbe3db4a82b9b15c9afefe2b9799a9.png",
                     "https://i0.wp.com/batman-news.com/wp-content/uploads/2018/05/9781608878321.jpg?fit=696%2C862&quality=80&strip=info&ssl=1",

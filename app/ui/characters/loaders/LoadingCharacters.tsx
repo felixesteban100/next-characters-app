@@ -5,8 +5,12 @@ import LoadingPaginationCharacters from "./LoadingPaginationCharacters"
 
 export default function LoadingCharacters() {
     return (
-        <div className='mx-auto w-[90vw] flex flex-col justify-between mb-5'>
-            <div className='flex flex-col gap-5 justify-between items-center -mt-5 md:mt-0'>
+        <div 
+            // className='mx-auto w-[90vw] flex flex-col justify-between mb-5'
+        >
+            <div 
+                // className='flex flex-col gap-5 justify-between items-center -mt-5 md:mt-0'
+            >
                 <CharactersContainer>
                     <>
                         {

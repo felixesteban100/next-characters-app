@@ -32,11 +32,11 @@ export default async function Page({ params, searchParams }: { params: { id: str
     const withPagination = searchParams?.pagination === "true"
 
     return (
-        <section>
+        <section className='w-[80vw] mx-auto'>
             <Navbar
                 link=""
             />
-            <div className='w-[80vw] mx-auto'>
+            <div className=''>
                 {/* <Breadcrumbs
                     breadcrumbs={[
                         {
@@ -50,7 +50,7 @@ export default async function Page({ params, searchParams }: { params: { id: str
                     ]}
                 /> */}
             </div>
-            <div className='mb-5 mt-10 ml-0 lg:ml-14 lg:mb-0'>
+            <div className=''>
                 <Suspense fallback={<LoadingCharacterInfo />}>
                     <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />
                 </Suspense>

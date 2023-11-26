@@ -17,6 +17,7 @@ export default function PaginationCharacters({ totalPages }: { totalPages: numbe
     const params = new URLSearchParams(searchParams)
     params.set('pageCharacters', pageNumber.toString())
     return `${pathname}?${params.toString()}`
+    // replace(`${pathname}?${params.toString()}`)
   }
 
   return (

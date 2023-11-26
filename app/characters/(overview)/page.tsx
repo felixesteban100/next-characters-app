@@ -4,12 +4,14 @@ import { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharact
 import { QueryOptions } from '@/app/lib/definitions';
 import { getQueryOptions } from '@/app/lib/data';
 import { getTeamByUniverse } from '@/app/lib/constants';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
-import { Atom } from 'lucide-react';
+// import { Atom } from 'lucide-react';
 import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
 import Navbar from '@/app/ui/Navbar';
 import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
+import Hero from '@/app/ui/Hero';
+import { organizedComicsProperty } from '@/app/ui/characters/tabs/FeatureTabComics';
 
 // export const metadata: Metadata = {
 //     title: 'Characters',
@@ -78,16 +80,29 @@ export default async function Page({
     const sortBy = searchParams?.sortBy || '_id';
     const sortDirection = searchParams?.sortDirection || 'desc';
 
-    const queryOptions: QueryOptions = getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
+    const queryOptions: QueryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
 
     const teamInfo = getTeamByUniverse(universe).filter((c) => c.name === team)[0]
 
     const publisherLogo = publisherIMG(universe)
 
+    const imagePublisherUnkown = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRykZHBER1nS5QMUGvv0qJCJFuqtf5wPrliiiE_1hMMbCwvONjVOaYloiVHMeCyH710z7g&usqp=CAU"
+
+    const imgLogo = teamInfo?.img !== undefined ? teamInfo.img : publisherLogo !== imagePublisherUnkown ? publisherLogo : null
+    const imgBg = universe !== "All" ? organizedComicsProperty(null, universe) : [null]
+    const altToHero = teamInfo?.img !== undefined ? teamInfo.value : publisherLogo !== imagePublisherUnkown ? universe : null
+    const classes = teamInfo?.img !== undefined ? GetColorOfTheLogoByTeam(teamInfo.name) : publisherLogo !== imagePublisherUnkown ? GetColorLogosByPublisher(universe) : null
+
     return (
-        <main>
+        <main className={`max-w-[80rem] mx-auto bg-secondary/10`}>
             <Navbar
                 link="/characters"
+            />
+            <Hero 
+                imgLogo={imgLogo}
+                imgBg={imgBg[/* Math.floor(Math.random() * imgBg.length) */0]}
+                alt={altToHero}
+                classes={classes}
             />
             {/* <div className="w-[80vw] mx-auto hidden md:flex items-center justify-start mt-8 ">
                 <h1 className={`text-xl md:text-2xl ${universe === "All" ? "text-primary" : ""}`}>Characters</h1>
@@ -97,7 +112,7 @@ export default async function Page({
                 {team !== "All" && <h1 className={`text-primary text-xl md:text-2xl`}>{team}</h1>}
             </div> */}
 
-            {
+            {/* {
                 teamInfo?.img !== undefined ?
                     <div className='w-full flex justify-center items-center gap-5 my-5'>
                         <Image
@@ -123,27 +138,18 @@ export default async function Page({
                             />
                         </div>
                         :
-                        <div className='w-full flex justify-center items-center gap-5 my-5'>
-                            {/* <div
-                                // className={`h-28 w-48 transition-all duration-300 bg-foreground/10 rounded-lg`}
-                                className={`h-28 w-48 transition-all duration-300 rounded-lg`}
-                            /> */}
-                            <Atom
-                                // src='https://i0.wp.com/beccabug.com/wp-content/uploads/2012/02/superherologos.jpg'
-                                // src='https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-black-and-white.png'
-                                width={500}
-                                height={500}
-                                // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                                className={`h-40 w-auto animate-spin1 text-primary`}
-                            // alt='publisherLogo'
-                            />
-                        </div>
-            }
+                        null
+            } */}
+
+            <div className='w-full flex justify-center items-center gap-5 my-10'>
+                <h2 className="text-3xl font-bold">Explore Characters</h2>
+            </div>
 
 
             <Suspense
                 key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
                 fallback={<LoadingCharacters />}
+            // fallback={<div>Loading...</div>}
             >
                 {withPagination === true ?
                     <Characters

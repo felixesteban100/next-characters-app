@@ -282,7 +282,7 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
         {
           name: "Aquaman Family",
           value: "Aquaman Family",
-          img: "https://sportshub.cbsistatic.com/i/2021/11/08/e2a46e72-9d65-4583-b8d8-14e1563b1e8a/aquamen-dc-logo.jpg",
+          img: "https://1000logos.net/wp-content/uploads/2018/12/Aquaman-logo.png",
         },
         {
           name: "Assorted Batman rogues",
@@ -387,7 +387,7 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
         {
           name: "Teen Titans",
           value: "Teen Titans",
-          img: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8bdcbc70089491.5b97ce31f3e7b.png",
+          img: "https://dccomicsnews.com/wp-content/uploads/2018/02/titans-logo-e1518302381244.png",
         },
       ];
 
@@ -419,7 +419,7 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
         {
           name: "Black Clover",
           value: "Black Clover",
-          img: "https://guiltybit.com/wp-content/uploads/2022/02/Manga-Black-Clover.webp",
+          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/76af57fc-7d8b-4116-8c09-75841b6d2da8/dbmt5i0-681aa9ed-9f39-43f6-9d29-cfb23030bf9e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzc2YWY1N2ZjLTdkOGItNDExNi04YzA5LTc1ODQxYjZkMmRhOFwvZGJtdDVpMC02ODFhYTllZC05ZjM5LTQzZjYtOWQyOS1jZmIyMzAzMGJmOWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8r1Wcr1xhY_GfHs_ljKeHjTmWd8AhzMSOpJFOeIhotk",
         },
         {
           name: "Dragon Ball",

@@ -21,8 +21,15 @@ export default async function Characters({ queryOptions, currentPage, sortBy, so
     const totalPages = await fetchPages(queryOptions)
 
     return (
-        <div className='mx-auto w-[90vw] flex flex-col justify-between mb-5'>
-            <div className='flex flex-col gap-5 justify-between items-center -mt-5 md:mt-0'>
+        <div
+            // className='mx-auto flex flex-col justify-between mb-5'
+            className=' px-8 flex flex-col gap-10'
+        >
+            
+
+            <div
+            // className='flex flex-col gap-5 justify-between items-center -mt-5 md:mt-0'
+            >
                 {
                     charactersToDisplay.length > 0 ?
                         <CharactersContainer>
@@ -31,7 +38,8 @@ export default async function Characters({ queryOptions, currentPage, sortBy, so
                                     return (
                                         <CharacterComponent
                                             key={currentCharacter.slug}
-                                            currentCharacter={{ ...currentCharacter, _id: currentCharacter._id.toString() }}
+                                            index={index}
+                                            currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
                                             withPagination={withPagination}
                                         />
                                     )

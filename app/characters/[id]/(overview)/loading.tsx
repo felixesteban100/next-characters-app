@@ -4,11 +4,11 @@ import LoadingCharacterInfo from "@/app/ui/characters/loaders/LoadingCharacterIn
 
 export default function Loading() {
     return (
-        <section>
+        <section className="w-[80vw] mx-auto">
             <Navbar
                 link=""
             />
-            <div className='w-[80vw] mx-auto'>
+            <div className=''>
                 {/* <Breadcrumbs
                     breadcrumbs={[
                         {
@@ -22,7 +22,7 @@ export default function Loading() {
                     ]}
                 /> */}
             </div>
-            <div className='mb-5 mt-20 lg:mb-0'>
+            <div>
                 <LoadingCharacterInfo />
             </div>
         </section>
