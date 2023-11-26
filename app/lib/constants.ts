@@ -1,4 +1,5 @@
-export const CHARACTERS_PER_PAGE = 4;
+export const CHARACTERS_PER_PAGE = 12;
+export const CHARACTERS_PER_PAGE_NOPAGINATION = 8
 
 export const ALLRACES = [
   { value: "All", name: "All races" },

@@ -13,20 +13,17 @@ type CharactersProps = {
     currentPage: number,
     sortBy: sortByType
     sortDirection: sortDirectionType,
-    withPagination: boolean
 }
 
-export default async function Characters({ queryOptions, currentPage, sortBy, sortDirection, withPagination }: CharactersProps) {
+export default async function Characters({ queryOptions, currentPage, sortBy, sortDirection }: CharactersProps) {
     const charactersToDisplay: Character[] = await fetchCharacters(queryOptions, currentPage, sortBy, sortDirection)
     const totalPages = await fetchPages(queryOptions)
 
     return (
         <div
             // className='mx-auto flex flex-col justify-between mb-5'
-            className=' px-8 flex flex-col gap-10'
+            className='px-8 flex flex-col gap-10'
         >
-            
-
             <div
             // className='flex flex-col gap-5 justify-between items-center -mt-5 md:mt-0'
             >
@@ -40,7 +37,7 @@ export default async function Characters({ queryOptions, currentPage, sortBy, so
                                             key={currentCharacter.slug}
                                             index={index}
                                             currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
-                                            withPagination={withPagination}
+                                            withPagination={true}
                                         />
                                     )
                                 })}

@@ -7,6 +7,7 @@ export default function LoadingCharacters() {
     return (
         <div 
             // className='mx-auto w-[90vw] flex flex-col justify-between mb-5'
+            className='px-8 flex flex-col gap-10'
         >
             <div 
                 // className='flex flex-col gap-5 justify-between items-center -mt-5 md:mt-0'

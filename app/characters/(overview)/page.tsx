@@ -4,9 +4,7 @@ import { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharact
 import { QueryOptions } from '@/app/lib/definitions';
 import { getQueryOptions } from '@/app/lib/data';
 import { getTeamByUniverse } from '@/app/lib/constants';
-// import Image from 'next/image';
 import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
-// import { Atom } from 'lucide-react';
 import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
 import Navbar from '@/app/ui/Navbar';
 import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
@@ -98,83 +96,48 @@ export default async function Page({
             <Navbar
                 link="/characters"
             />
-            <Hero 
+            <Hero
                 imgLogo={imgLogo}
                 imgBg={imgBg[/* Math.floor(Math.random() * imgBg.length) */0]}
                 alt={altToHero}
                 classes={classes}
             />
-            {/* <div className="w-[80vw] mx-auto hidden md:flex items-center justify-start mt-8 ">
-                <h1 className={`text-xl md:text-2xl ${universe === "All" ? "text-primary" : ""}`}>Characters</h1>
-                {universe !== "All" && <p>&nbsp; / &nbsp;</p>}
-                {universe !== "All" && <h1 className={`${team === "All" ? "text-primary" : ""} text-xl md:text-2xl`}>{universe}</h1>}
-                {team !== "All" && <p>&nbsp; / &nbsp;</p>}
-                {team !== "All" && <h1 className={`text-primary text-xl md:text-2xl`}>{team}</h1>}
-            </div> */}
-
-            {/* {
-                teamInfo?.img !== undefined ?
-                    <div className='w-full flex justify-center items-center gap-5 my-5'>
-                        <Image
-                            src={teamInfo.img}
-                            width={500}
-                            height={500}
-                            // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300`}
-                            // className={`h-28 w-auto transition-all duration-300`}
-                            className={`h-40 w-auto transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                            alt={teamInfo.value}
-                        />
-                    </div>
-                    :
-                    publisherLogo !== "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRykZHBER1nS5QMUGvv0qJCJFuqtf5wPrliiiE_1hMMbCwvONjVOaYloiVHMeCyH710z7g&usqp=CAU" ?
-                        <div className='w-full flex justify-center items-center gap-5 my-5'>
-                            <Image
-                                src={publisherLogo}
-                                width={500}
-                                height={500}
-                                // className={`group-hover/breadscrum:w-[30vw] w-28 transition-all duration-300 ${GetColorOfTheLogoByTeam(teamInfo.name)}`}
-                                className={`h-40 w-auto transition-all duration-300 ${GetColorLogosByPublisher(universe)}`}
-                                alt='publisherLogo'
-                            />
-                        </div>
-                        :
-                        null
-            } */}
 
             <div className='w-full flex justify-center items-center gap-5 my-10'>
                 <h2 className="text-3xl font-bold">Explore Characters</h2>
             </div>
 
 
-            <Suspense
-                key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
-                fallback={<LoadingCharacters />}
-            // fallback={<div>Loading...</div>}
-            >
-                {withPagination === true ?
+            {withPagination === true ?
+                <Suspense
+                    key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
+                    fallback={<LoadingCharacters />}
+                >
                     <Characters
                         queryOptions={queryOptions}
                         currentPage={currentPage}
                         sortBy={sortBy}
                         sortDirection={sortDirection}
-                        withPagination={withPagination}
                     />
-                    :
+                </Suspense>
+                :
+                <Suspense
+                    key={`CharactersNoPagination${characterName + side + universe + team + sortBy + sortDirection}`}
+                    fallback={<div></div>}
+                >
                     <CharactersNoPagination
-                        // queryOptions={queryOptions}
-                        characterName={characterName} 
+                        characterName={characterName}
                         side={side}
-                        universe={universe} 
+                        universe={universe}
                         team={team}
-                        gender={gender} 
+                        gender={gender}
                         race={race}
                         characterOrFullName={characterOrFullName}
                         sortBy={sortBy}
                         sortDirection={sortDirection}
-                        // withPagination={withPagination}
                     />
-                }
-            </Suspense>
+                </Suspense>
+            }
         </main>
     );
 }

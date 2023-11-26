@@ -1,19 +1,16 @@
-'use server'
+'use server' // I have to write this because this is a .jsx not .ts file
 
 import { Character, QueryOptions } from "./definitions";
 import { sortByType, sortDirectionType } from "../ui/characters/FilterCharacters";
-import { CHARACTERS_PER_PAGE } from "./constants";
+import { CHARACTERS_PER_PAGE, CHARACTERS_PER_PAGE_NOPAGINATION } from "./constants";
 import { collectionCharacters } from "./mongodb/mongodb";
 import CharacterComponent from "../ui/characters/CharacterComponent";
 import { unstable_noStore as noStore } from "next/cache";
-
-noStore();
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
-
     // console.log("fetchCharacterById")
     const selectedCharacter = await collectionCharacters.findOne({ id: parseInt(characterSelectedId) })
     return selectedCharacter
@@ -50,7 +47,6 @@ export async function fetchCharacters(
 }
 
 export async function fetchCharactersNoPagination(
-  // queryOptions: QueryOptions,
   characterName: string,
   side: string,
   universe: string,
@@ -64,28 +60,17 @@ export async function fetchCharactersNoPagination(
   currentPage: number
 ) {
   const queryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
+  // noStore();
 
-  // console.log(queryOptions)
-  // if (queryOptions["connections.groupAffiliation"]) queryOptions["connections.groupAffiliation"] = new RegExp(queryOptions["connections.groupAffiliation"], 'ig')
-  // if (queryOptions["biography.fullName"]) queryOptions["biography.fullName"] = new RegExp(queryOptions["biography.fullName"], 'ig')
-  // if (queryOptions.name) queryOptions.name = new RegExp(queryOptions.name, 'ig')
   try {
     // let charactersToDisplay/* : Character[] */
-
-    const CHARACTERS_PER_PAGE_NOPAGINATION = 8
-
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
-
     const charactersToDisplay: Character[] = await collectionCharacters
       .find({ ...queryOptions })
       .sort({ [`${sortBy}`]: sortDirection as any })
       .skip(offset)
-      // .limit(CHARACTERS_PER_PAGE_NOPAGINATION)
       .toArray()
 
-    // console.log(charactersToDisplay.length)
-
-    // return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
     return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
       return (
         <CharacterComponent
@@ -96,26 +81,6 @@ export async function fetchCharactersNoPagination(
         />
       )
     })
-
-
-    // if (sortBy === "random") {
-    //   charactersToDisplay = await collectionCharacters
-    //     .aggregate([
-    //       { $match: { ...queryOptions } },
-    //       { $sample: { size: 40 } }
-    //     ])
-    //     // .find({ ...queryOptions })
-    //     // .sort({ [`${sortBy}`]: sortDirection as any })
-    //     // .limit(40)
-    //     .toArray()
-    // } else {
-    //   charactersToDisplay = await collectionCharacters
-    //     .find({ ...queryOptions })
-    //     .sort({ [`${sortBy}`]: sortDirection as any })
-    //     .limit(40)
-    //     .toArray()
-    // }
-    // return charactersToDisplay
   } catch (error) {
     console.error(error);
     throw Error(`MongoDB Connection Error: ${error}`);
@@ -137,14 +102,13 @@ export async function fetchPages(
 
 }
 
-export async function getQueryOptions(
+export async /* make this async even though I am now using async code in here (becasuse it's a .tsx file not .ts) */ function getQueryOptions(
   characterName: string,
-  side: string/* "All" | "good" | "bad" | "neutral" */,
+  side: string,
   universe: string,
   team: string,
-  gender: string/* "Both" | "Male" | "Female" */,
+  gender: string,
   race: string,
-  // includeNameOrExactName: boolean,
   characterOrFullName: boolean
 ) {
   const queryOptions: QueryOptions = {};

@@ -1,17 +1,12 @@
-'use client'
+"use client";
 
 import { fetchCharactersNoPagination } from '@/app/lib/data'
-// import { /* Character, */ QueryOptions } from '@/app/lib/definitions'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { sortByType, sortDirectionType } from './FilterCharacters'
 import CharactersContainer from './CharactersContainer'
-// import CharacterComponent from './CharacterComponent'
-// import { Signal, signal } from '@preact/signals-react';
 
 type LoadMoreCharactersProps = {
-    // queryOptions: QueryOptions /* | string */
-    
     characterName: string
     side: string
     universe: string
@@ -23,28 +18,28 @@ type LoadMoreCharactersProps = {
     sortDirection: sortDirectionType,
 }
 
-// export const charactersSignal: Signal<Character[]> = signal([])
+// It seems like I can't use signals
+// const page: Signal<number> = signal(1)
+// function addPage(){
+//     page.value += 1
+// }
 
-let page = 1;
-
-export default function LoadMoreCharacters({ characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions,  */sortBy, sortDirection }: LoadMoreCharactersProps) {
+export default function LoadMoreCharacters({ characterName, side, universe, team, gender, race, characterOrFullName, sortBy, sortDirection }: LoadMoreCharactersProps) {
     const [newCharacters, setNewCharacters] = useState<JSX.Element[]>([])
     const { ref, inView } = useInView()
     const [noMore, setNoMore] = useState(true)
-    // const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1)
+    // console.log(page.value)
 
     useEffect(() => {
         if (inView === true && noMore === true) {
             fetchCharactersNoPagination(characterName, side, universe, team, gender, race, characterOrFullName,/* JSON.parse(queryOptions), */ sortBy, sortDirection, page).then((data) => {
                 setNewCharacters([...newCharacters, ...data])
-                // setPage(prev => prev++);
-                page++;
+                setPage(prev => prev + 1);
                 if(data.length < 1) setNoMore(false)
             })
         }
     }, [inView, newCharacters])
-
-    // console.log(newCharacters)
 
     return (
         <>
@@ -65,6 +60,8 @@ export default function LoadMoreCharacters({ characterName, side, universe, team
         </>
     )
 }
+
+/* <div ref={ref} className="w-full"><LoadingCharacters /></div> */
 
 /* 
 {
