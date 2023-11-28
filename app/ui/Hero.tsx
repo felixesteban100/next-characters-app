@@ -24,7 +24,7 @@ function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
     //bg-[url('/hero.png')]
     <header className="max-h-[48rem]">
       <Image
-        src={imgBg ?? "https://cdn-images-1.medium.com/max/1143/0*8PhN36R1SL9i5u_t.jpeg"}
+        src={imgBg ??"https://static1.cbrimages.com/wordpress/wp-content/uploads/2017/02/Justice-League-and-The-Avengers.jpg" /*  "https://cdn-images-1.medium.com/max/1143/0*8PhN36R1SL9i5u_t.jpeg" */}
         alt="logo"
         width={1000}
         height={1000}

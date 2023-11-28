@@ -11,6 +11,7 @@ import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
 import Hero from '@/app/ui/Hero';
 import { organizedComicsProperty } from '@/app/ui/characters/tabs/FeatureTabComics';
 import Particles from '@/app/ui/Particles';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 // export const metadata: Metadata = {
 //     title: 'Characters',
@@ -93,51 +94,53 @@ export default async function Page({
     const classes = teamInfo?.img !== undefined ? GetColorOfTheLogoByTeam(teamInfo.name) : publisherLogo !== imagePublisherUnkown ? GetColorLogosByPublisher(universe) : null
 
     return (
-        <main className={`max-w-[80rem] z-50 mx-auto bg-background`}>
-            <Navbar
-                link="/characters"
-            />
-            <Hero
-                imgLogo={imgLogo}
-                imgBg={imgBg[/* Math.floor(Math.random() * imgBg.length) */0]}
-                alt={altToHero}
-                classes={classes}
-            />
+        <main className='overflow-hidden'>
+            <ScrollArea className={`max-w-[80rem] h-[920px] z-50 mx-auto bg-background border-x`}>
+                <Navbar
+                    link="/characters"
+                />
+                <Hero
+                    imgLogo={imgLogo}
+                    imgBg={imgBg[/* Math.floor(Math.random() * imgBg.length) */0]}
+                    alt={altToHero}
+                    classes={classes}
+                />
 
-            <div className='w-full flex justify-center items-center gap-5 my-10'>
-                <h2 className="text-3xl font-bold">Explore Characters</h2>
-            </div>
+                <div className='w-full flex justify-center items-center gap-5 my-10'>
+                    <h2 className="text-3xl font-bold">Explore Characters</h2>
+                </div>
 
-            {withPagination === true ?
-                <Suspense
-                    key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
-                    fallback={<LoadingCharacters />}
-                >
-                    <Characters
-                        queryOptions={queryOptions}
-                        currentPage={currentPage}
-                        sortBy={sortBy}
-                        sortDirection={sortDirection}
-                    />
-                </Suspense>
-                :
-                <Suspense
-                    key={`CharactersNoPagination${characterName + side + universe + team + sortBy + sortDirection}`}
-                    fallback={<div></div>}
-                >
-                    <CharactersNoPagination
-                        characterName={characterName}
-                        side={side}
-                        universe={universe}
-                        team={team}
-                        gender={gender}
-                        race={race}
-                        characterOrFullName={characterOrFullName}
-                        sortBy={sortBy}
-                        sortDirection={sortDirection}
-                    />
-                </Suspense>
-            }
+                {withPagination === true ?
+                    <Suspense
+                        key={`Characters${characterName + side + universe + team + currentPage + sortBy + sortDirection}`}
+                        fallback={<LoadingCharacters />}
+                    >
+                        <Characters
+                            queryOptions={queryOptions}
+                            currentPage={currentPage}
+                            sortBy={sortBy}
+                            sortDirection={sortDirection}
+                        />
+                    </Suspense>
+                    :
+                    <Suspense
+                        key={`CharactersNoPagination${characterName + side + universe + team + sortBy + sortDirection}`}
+                        fallback={<div></div>}
+                    >
+                        <CharactersNoPagination
+                            characterName={characterName}
+                            side={side}
+                            universe={universe}
+                            team={team}
+                            gender={gender}
+                            race={race}
+                            characterOrFullName={characterOrFullName}
+                            sortBy={sortBy}
+                            sortDirection={sortDirection}
+                        />
+                    </Suspense>
+                }
+            </ScrollArea>
         </main>
     );
 }

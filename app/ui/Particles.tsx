@@ -228,7 +228,7 @@ export default function Particles({
 
 	return (
 		<div className={className} ref={canvasContainerRef} aria-hidden="true">
-			<canvas ref={canvasRef} />
+			<canvas /* height={100000} className="h-[100%] w-full" */ ref={canvasRef} />
 		</div>
 	);
 }
