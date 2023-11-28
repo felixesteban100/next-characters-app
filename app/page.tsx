@@ -2,32 +2,39 @@
 import Link from "next/link";
 import Particles from "./ui/Particles";
 import { Atom } from "lucide-react";
+import { unstable_noStore } from "next/cache";
+import { allIds } from './lib/ids'
+
+unstable_noStore()
+
+const randomId = allIds[Math.floor(Math.random() * allIds.length)]
 
 const navigation: { href: string, name: string }[] = [
   // { name: "Projects", href: "/projects" },
   // { name: "Contact", href: "/contact" },
-  { name: 'Characters', href: '/characters' },
-  { name: 'Random', href: `/characters/${Math.floor(Math.random()* 714)}`}
+  { name: 'all characters', href: '/characters' },
+  // { name: `random ${randomId}`, href: `/characters/${randomId}`}
+  { name: `batman`, href: `/characters/70?name=Batman`},
+  { name: `spider-man`, href: `/characters/620?name=Spider-Man`}
 ];
 
+const images: string[] = [
+  "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/01/every-marvel-hero-vs-every-dc-hero-who-wins.jpg",
+  "https://images.alphacoders.com/699/699194.jpg",
+  "https://images2.alphacoders.com/283/283340.jpg",
+  "https://images5.alphacoders.com/618/618710.jpg",
+  "https://images5.alphacoders.com/133/1330956.jpeg",
+  "https://images6.alphacoders.com/705/705204.jpg",
+  "https://images7.alphacoders.com/133/1330752.png",
+]
 
+const randomImage = images[Math.floor(Math.random() * images.length)]
+console.log(randomId, randomImage)
 
 export default function Home() {
-  const images: string[] = [
-    "https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/01/every-marvel-hero-vs-every-dc-hero-who-wins.jpg",
-    "https://images.alphacoders.com/699/699194.jpg",
-    "https://images2.alphacoders.com/283/283340.jpg",
-    "https://images5.alphacoders.com/618/618710.jpg",
-    "https://images5.alphacoders.com/133/1330956.jpeg",
-    "https://images6.alphacoders.com/705/705204.jpg",
-    "https://images7.alphacoders.com/133/1330752.png",
-  ]
-
-  //images[0]
-
   return (
     <div
-      style={{ background: `url(${images[Math.floor(Math.random()*images.length)]})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', }}
+      style={{ background: `url(${randomImage})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', }}
       // className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black"
       className={`overflow-hidden`}
     >
@@ -52,16 +59,22 @@ export default function Home() {
 
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
         <h1 className="z-10 text-4xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text font-bold">
-          characters
+          {/* characters */}
+          <Atom
+            width={200}
+            height={200}
+            // className={`object-contain animate-spin1 text-primary`}
+            className={`object-contain animate-spin1 text-white/50`}
+          />
         </h1>
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
         <div className="my-16 text-center animate-fade-in">
-          <Atom
+          {/* <Atom
             width={100}
             height={100}
             // className={`object-contain animate-spin1 text-primary`}
             className={`object-contain animate-spin1 text-white/50`}
-          />
+          /> */}
           {/* <h2 className="text-sm text-zinc-500 ">
           I'm building{" "}
           <Link

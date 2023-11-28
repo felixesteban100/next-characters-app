@@ -18,6 +18,8 @@ export const metadata: Metadata = {
 };
 
 //TODO:
+// make the particles cover the entire page but behind everything else
+// make the random really random in the home page
 // add all the filters in the sheet (filterCharacters.tsx) | it's done...?
 // add page transition
 // add google provider for auth use this docs for guidance: https://authjs.dev/reference/core/providers_google (nextjs 14 doesn't have support for that :-|)
