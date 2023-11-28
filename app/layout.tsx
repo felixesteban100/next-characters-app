@@ -2,6 +2,7 @@ import '@/app/globals.css'
 import { inter } from '@/app/ui/fonts';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
+import Particles from './ui/Particles';
 // import Navbar from './ui/Navbar';    
 
 export const metadata: Metadata = {
@@ -31,13 +32,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <Particles
+            className="absolute -z-10 inset-0 animate-fade-in min-h-[100vh]"
+            quantity={200}
+          />
           {children}
         </ThemeProvider>
       </body>

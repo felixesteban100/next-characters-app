@@ -10,6 +10,7 @@ import Navbar from '@/app/ui/Navbar';
 import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
 import Hero from '@/app/ui/Hero';
 import { organizedComicsProperty } from '@/app/ui/characters/tabs/FeatureTabComics';
+import Particles from '@/app/ui/Particles';
 
 // export const metadata: Metadata = {
 //     title: 'Characters',
@@ -92,7 +93,7 @@ export default async function Page({
     const classes = teamInfo?.img !== undefined ? GetColorOfTheLogoByTeam(teamInfo.name) : publisherLogo !== imagePublisherUnkown ? GetColorLogosByPublisher(universe) : null
 
     return (
-        <main className={`max-w-[80rem] mx-auto bg-secondary/10`}>
+        <main className={`max-w-[80rem] z-50 mx-auto bg-background`}>
             <Navbar
                 link="/characters"
             />
@@ -106,7 +107,6 @@ export default async function Page({
             <div className='w-full flex justify-center items-center gap-5 my-10'>
                 <h2 className="text-3xl font-bold">Explore Characters</h2>
             </div>
-
 
             {withPagination === true ?
                 <Suspense

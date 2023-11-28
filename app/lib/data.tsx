@@ -5,7 +5,7 @@ import { sortByType, sortDirectionType } from "../ui/characters/FilterCharacters
 import { CHARACTERS_PER_PAGE, CHARACTERS_PER_PAGE_NOPAGINATION } from "./constants";
 import { collectionCharacters } from "./mongodb/mongodb";
 import CharacterComponent from "../ui/characters/CharacterComponent";
-import { unstable_noStore as noStore } from "next/cache";
+// import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
@@ -31,6 +31,8 @@ export async function fetchCharacters(
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE;
+    // const allCharacters: Character[] = await collectionCharacters.find({ }).toArray()
+    // console.log(allCharacters.map(i => i.id).sort((a, b) => a - b))
 
     const charactersToDisplay: Character[] = await collectionCharacters
       .find({ ...queryOptions })

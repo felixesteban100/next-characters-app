@@ -93,6 +93,7 @@ export function organizedComicsProperty(
         switch (publisher) {
             case "Marvel Comics":
                 return [
+                    "https://cdn.marvel.com/u/prod/marvel/i/mg/8/c0/4cd03c90ea371/clean.jpg",
                     "https://i.annihil.us/u/prod/marvel/i/mg/5/04/5d5d4cbf869ff/clean.jpg",
                     "https://upload.wikimedia.org/wikipedia/en/1/19/Marvel_Universe_%28Civil_War%29.jpg",
                     "https://cdn.marvel.com/u/prod/marvel/i/mg/f/70/5d5aaf2e85d4d/clean.jpg",

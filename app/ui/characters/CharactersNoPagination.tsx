@@ -13,7 +13,7 @@ type CharactersProps = {
     characterOrFullName: boolean
 
     sortBy: sortByType
-    sortDirection: sortDirectionType,
+    sortDirection: sortDirectionType
 }
 
 export default async function CharactersNoPagination({ characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection }: CharactersProps) {

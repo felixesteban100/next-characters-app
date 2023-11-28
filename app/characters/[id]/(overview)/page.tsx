@@ -5,6 +5,7 @@ import LoadingCharacterInfo from '@/app/ui/characters/loaders/LoadingCharacterIn
 // import { linkToCharactersPage } from '@/app/lib/constants';
 // import { fetchCharacterById } from '@/app/lib/data';
 import Navbar from '@/app/ui/Navbar';
+import Particles from '@/app/ui/Particles';
 
 // type Props = {
 //     params: { id: string }
@@ -20,7 +21,7 @@ import Navbar from '@/app/ui/Navbar';
 // }
 
 
-export function generateMetadata({ params, searchParams }: { params: { id: string }, searchParams: { name: string, image?: string } }) {
+export function generateMetadata({ /* params, */ searchParams }: { params: { id: string }, searchParams: { name: string, image?: string } }) {
     return {
         // title: `${character ? character.name : "Not Found"}`,
         title: `${searchParams.name}`,
@@ -50,7 +51,11 @@ export default async function Page({ params, searchParams }: { params: { id: str
                     ]}
                 /> */}
             </div>
-            <div className=''>
+            <Particles
+                className="absolute inset-0 -z-10 animate-fade-in"
+                quantity={100}
+            />
+            <div className='z-10'>
                 <Suspense fallback={<LoadingCharacterInfo />}>
                     <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />
                 </Suspense>

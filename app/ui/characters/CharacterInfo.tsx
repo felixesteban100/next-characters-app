@@ -17,7 +17,8 @@ export default async function CharacterInfo({ characterId, image, withPagination
             >
                 <div
                     // className="relative w-64 md:w-72 lg:w-96 h-[25rem] md:h-[25rem] lg:h-[34rem] hover:h-[50rem] hover:w-[40rem] shadow-xl rounded-md transition-all duration-300"
-                    className="relative w-64 md:w-72 lg:w-96 h-[25rem] md:h-[25rem] lg:h-[34rem] shadow-xl rounded-md transition-all duration-300"
+                    //md:w-72 md:h-[25rem]
+                    className="relative h-[70vh] w-[85vw] lg:w-96 lg:h-[34rem]  shadow-xl rounded-md transition-all duration-300"
                 >
                     <label className='group cursor-pointer w-full h-full' htmlFor={`my-modal-imageZoom`}>
                         <Image width={500} height={500} className={`transition-all duration-300 absolute w-full h-full object-cover blur-lg group-focus-visible:animate-pulse group-hover:animate-pulse `} src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md} alt={selectedCharacter.name} loading="lazy" />
@@ -41,7 +42,7 @@ export default async function CharacterInfo({ characterId, image, withPagination
 
             <div
                 // xl:h-[60vh] w-[90%] xl:w-[50%]
-                className="flex flex-col w-[90%] lg:w-[70%] mx-auto mt-5 xl:mt-0"
+                className="flex flex-col w-[100%] lg:w-[70%] mx-auto mt-5 xl:mt-0 mb-10 md:mb-0"
             >
                 <CharacterFeatures selectedCharacter={selectedCharacter} withPagination={withPagination} />
             </div>
