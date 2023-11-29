@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useMousePosition } from "../lib/mouse";
-
+import { useTheme } from "next-themes";
 interface ParticlesProps {
 	className?: string;
 	quantity?: number;
@@ -18,6 +18,16 @@ export default function Particles({
 	ease = 50,
 	refresh = false,
 }: ParticlesProps) {
+
+	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light"
+
+	const { theme } = useTheme()
+
+	const [particleColor, setParticleColor] = useState<'255, 255, 255' | '0, 0, 0'>(theme === "dark" || (theme === "system" && systemTheme === "dark") ? "255, 255, 255" : "0, 0, 0") 
+
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const canvasContainerRef = useRef<HTMLDivElement>(null);
 	const context = useRef<CanvasRenderingContext2D | null>(null);
@@ -26,6 +36,15 @@ export default function Particles({
 	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+
+	useEffect(() => {
+		const themeSystem = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light"
+		// console.log(theme)
+		setParticleColor(theme === "dark" || (theme === "system" && themeSystem === "dark") ? "255, 255, 255" : "0, 0, 0")
+	}, [theme])
 
 	useEffect(() => {
 		if (canvasRef.current) {
@@ -124,7 +143,8 @@ export default function Particles({
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+			context.current.fillStyle = `rgba(${particleColor}, ${alpha})`;
+			// context.current.fillStyle = particleColor;
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -132,6 +152,7 @@ export default function Particles({
 				circles.current.push(circle);
 			}
 		}
+
 	};
 
 	const clearContext = () => {
@@ -228,7 +249,7 @@ export default function Particles({
 
 	return (
 		<div className={className} ref={canvasContainerRef} aria-hidden="true">
-			<canvas /* height={100000} className="h-[100%] w-full" */ ref={canvasRef} />
+			<canvas /* className="[&_p]-primary " */ /* height={100000} className="h-[100%] w-full" */ ref={canvasRef} />
 		</div>
 	);
 }

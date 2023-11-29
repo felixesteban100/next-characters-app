@@ -20,7 +20,7 @@ export default async function CharactersNoPagination({ characterName, side, univ
     const charactersToDisplay: JSX.Element[] = await fetchCharactersNoPagination(characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection, 1)
 
     return (
-        <div className=' px-8 flex flex-col gap-10'>
+        <div className='px-8 flex flex-col gap-10 bg-transparent md:bg-background'>
             {
                 charactersToDisplay.length > 0 ?
                     <div>

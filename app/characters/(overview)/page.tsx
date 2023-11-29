@@ -95,7 +95,7 @@ export default async function Page({
 
     return (
         <main className='overflow-hidden'>
-            <ScrollArea className={`max-w-[80rem] h-[920px] z-50 mx-auto bg-background border-x`}>
+            <ScrollArea className={`max-w-[80rem] h-[920px] z-50 mx-auto  border-x`}>
                 <Navbar
                     link="/characters"
                 />

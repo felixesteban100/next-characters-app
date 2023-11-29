@@ -51,10 +51,10 @@ export default async function Page({ params, searchParams }: { params: { id: str
                     ]}
                 /> */}
             </div>
-            <Particles
+            {/* <Particles
                 className="absolute inset-0 -z-10 animate-fade-in"
                 quantity={100}
-            />
+            /> */}
             <div className='z-10'>
                 <Suspense fallback={<LoadingCharacterInfo />}>
                     <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />
