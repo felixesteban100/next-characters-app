@@ -8,6 +8,7 @@ import StatAccordion from "../stats/StatAccordion"
 import { GetColorLogosByPublisher, publisherIMG } from "@/app/lib/charactersUtils"
 import { Angry, Briefcase, Calendar, CaseSensitive, CaseSensitiveIcon, Globe2, LibraryBig, Meh, Smile } from "lucide-react"
 import { GrGroup } from "react-icons/gr";
+import Image from "next/image"
 
 type FeatureTabBiographyProps = {
     selectedCharacter: Character
@@ -44,7 +45,7 @@ function FeatureTabBiography({ selectedCharacter }: FeatureTabBiographyProps) {
                             <p className='text-2xl md:text-3xl'><LibraryBig size={40}/></p>
                             <p className="hidden md:block">Publisher</p>
                         </div>
-                        <div className="font-bold capitalize"><img className={`h-10 ${GetColorLogosByPublisher(selectedCharacter.biography.publisher)}`} src={publisherIMG(selectedCharacter.biography.publisher)} alt="publisher" /></div>
+                        <div className="font-bold capitalize"><Image alt="publisherLogo" width={50} height={50} className={`h-10 ${GetColorLogosByPublisher(selectedCharacter.biography.publisher)}`} src={publisherIMG(selectedCharacter.biography.publisher)} /></div>
                     </div>
                     <Separator />
                     <Accordion type="single" collapsible className="w-full">
