@@ -3,19 +3,14 @@ import Characters from '@/app/ui/characters/Characters';
 import { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharacters';
 import { QueryOptions } from '@/app/lib/definitions';
 import { getQueryOptions } from '@/app/lib/data';
-import { getTeamByUniverse } from '@/app/lib/constants';
+import { getTeamBackgroundImageByUniverse, getTeamByUniverse } from '@/app/lib/constants';
 import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
 import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
 import Navbar from '@/app/ui/Navbar';
 import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
 import Hero from '@/app/ui/Hero';
 import { organizedComicsProperty } from '@/app/ui/characters/tabs/FeatureTabComics';
-import Particles from '@/app/ui/Particles';
 import { ScrollArea } from '@/components/ui/scroll-area';
-
-// export const metadata: Metadata = {
-//     title: 'Characters',
-// };
 
 export function generateMetadata({
     searchParams,
@@ -88,8 +83,12 @@ export default async function Page({
 
     const imagePublisherUnkown = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRykZHBER1nS5QMUGvv0qJCJFuqtf5wPrliiiE_1hMMbCwvONjVOaYloiVHMeCyH710z7g&usqp=CAU"
 
+    const allTeamsImagesByUniverse = getTeamBackgroundImageByUniverse(universe)
+
+    const teamImage = allTeamsImagesByUniverse !== undefined ? allTeamsImagesByUniverse.find(c => c.name === team) : undefined
+
     const imgLogo = teamInfo?.img !== undefined ? teamInfo.img : publisherLogo !== imagePublisherUnkown ? publisherLogo : null
-    const imgBg = universe !== "All" ? organizedComicsProperty(null, universe) : [null]
+    const imgBg = teamImage !== undefined ? teamImage.img : universe !== "All" ? organizedComicsProperty(null, universe)[0] : null
     const altToHero = teamInfo?.img !== undefined ? teamInfo.value : publisherLogo !== imagePublisherUnkown ? universe : null
     const classes = teamInfo?.img !== undefined ? GetColorOfTheLogoByTeam(teamInfo.name) : publisherLogo !== imagePublisherUnkown ? GetColorLogosByPublisher(universe) : null
 
@@ -101,7 +100,7 @@ export default async function Page({
                 />
                 <Hero
                     imgLogo={imgLogo}
-                    imgBg={imgBg[/* Math.floor(Math.random() * imgBg.length) */0]}
+                    imgBg={imgBg}
                     alt={altToHero}
                     classes={classes}
                 />

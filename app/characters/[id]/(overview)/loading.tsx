@@ -1,6 +1,7 @@
 // import Breadcrumbs from "@/app/ui/breadcrumbs";
 import Navbar from "@/app/ui/Navbar";
 import LoadingCharacterInfo from "@/app/ui/characters/loaders/LoadingCharacterInfo";
+import { Button } from "@/components/ui/button";
 
 export default function Loading() {
     return (
@@ -8,7 +9,7 @@ export default function Loading() {
             <Navbar
                 link=""
             />
-            <div className=''>
+            <div className='flex justify-end w-[95%] lg:w-[99%] mb-5'>
                 {/* <Breadcrumbs
                     breadcrumbs={[
                         {
@@ -21,6 +22,7 @@ export default function Loading() {
                         },
                     ]}
                 /> */}
+                <Button>Loading...</Button>
             </div>
             <div>
                 <LoadingCharacterInfo />

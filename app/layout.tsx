@@ -3,6 +3,7 @@ import { inter } from '@/app/ui/fonts';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
 import Particles from './ui/Particles';
+import { Toaster } from '@/components/ui/toaster';
 // import Navbar from './ui/Navbar';    
 
 export const metadata: Metadata = {
@@ -44,8 +45,15 @@ export default function RootLayout({
           <Particles
             className="absolute -z-10 inset-0 animate-fade-in min-h-[100vh]"
             quantity={200}
+            color="255, 255, 255"
+          />
+          <Particles
+            className="absolute -z-10 inset-0 animate-fade-in min-h-[100vh]"
+            quantity={200}
+            color="0, 0, 0"
           />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

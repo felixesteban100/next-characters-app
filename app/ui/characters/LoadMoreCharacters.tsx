@@ -39,7 +39,7 @@ export default function LoadMoreCharacters({ characterName, side, universe, team
                 if(data.length < 1) setNoMore(false)
             })
         }
-    }, [inView, newCharacters])
+    }, [inView, newCharacters, characterName, side, universe, team, gender, race, characterOrFullName])
 
     return (
         <>

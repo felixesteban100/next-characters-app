@@ -6,7 +6,7 @@ export default function LoadingCharacterInfo() {
             <div className="mx-auto w-[80vw] flex flex-col xl:flex-row justify-center items-center lg:items-start gap-0 lg:gap-11">
                 <div className='flex flex-col items-center align-middle gap-3 w-[90%] md:w-[50%] lg:w-[30%] xl:h-[60%] mx-auto'>
                     <div
-                        className="animate-pulse relative w-64 md:w-72 lg:w-96 h-[25rem] md:h-[25rem] lg:h-[34rem] bg-muted-foreground shadow-xl rounded-md"
+                        className="animate-pulse relative h-[70vh] w-[85vw] lg:w-96 lg:h-[34rem]  bg-muted-foreground shadow-xl rounded-md"
                     />
 
                     <div className='self-center mt-5'>

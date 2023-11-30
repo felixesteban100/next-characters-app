@@ -1,14 +1,14 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useMousePosition } from "../lib/mouse";
-import { useTheme } from "next-themes";
 interface ParticlesProps {
 	className?: string;
 	quantity?: number;
 	staticity?: number;
 	ease?: number;
 	refresh?: boolean;
+	color: string;
 }
 
 export default function Particles({
@@ -17,16 +17,12 @@ export default function Particles({
 	staticity = 50,
 	ease = 50,
 	refresh = false,
+	color
 }: ParticlesProps) {
 
-	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light"
-
-	const { theme } = useTheme()
-
-	const [particleColor, setParticleColor] = useState<'255, 255, 255' | '0, 0, 0'>(theme === "dark" || (theme === "system" && systemTheme === "dark") ? "255, 255, 255" : "0, 0, 0") 
+	// const systemTheme = typeof window !== "undefined" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : "dark"
+	// const { theme } = useTheme()
+	// const [particleColor, setParticleColor] = useState<'255, 255, 255' | '0, 0, 0'>(theme === "dark" || (theme === "system" && systemTheme === "dark") ? "255, 255, 255" : "0, 0, 0")
 
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const canvasContainerRef = useRef<HTMLDivElement>(null);
@@ -37,14 +33,9 @@ export default function Particles({
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
-	useEffect(() => {
-		const themeSystem = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light"
-		// console.log(theme)
-		setParticleColor(theme === "dark" || (theme === "system" && themeSystem === "dark") ? "255, 255, 255" : "0, 0, 0")
-	}, [theme])
+	// useEffect(() => {
+	// 	setParticleColor(theme === "dark" || (theme === "system" && systemTheme === "dark") ? "255, 255, 255" : "0, 0, 0")
+	// }, [theme])
 
 	useEffect(() => {
 		if (canvasRef.current) {
@@ -143,7 +134,8 @@ export default function Particles({
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			context.current.fillStyle = `rgba(${particleColor}, ${alpha})`;
+			// context.current.fillStyle = `rgba(${particleColor}, ${alpha})`;
+			context.current.fillStyle = `rgba(${color}, ${alpha})`;
 			// context.current.fillStyle = particleColor;
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useInView } from "react-intersection-observer";
 import { motion } from 'framer-motion'
 
 type HeroProps = {
@@ -17,7 +16,6 @@ const variants = {
 }
 
 function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
-  const { ref, inView } = useInView()
 
   return (
     // className="bg-hero bg-opacity-40 bg-center bg-cover bg-no-repeat sm:p-16 py-16 px-8 flex justify-center lg:items-center max-lg:flex-col w-full sm:gap-16 gap-0"
@@ -31,7 +29,6 @@ function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
         className="object-cover w-full h-[80vh] opacity-20"
       />
       <motion.div
-        ref={ref}
         className="-translate-y-[45rem] lg:-translate-y-[40rem] max-h-[45rem] z-[999] sm:p-16 py-16 px-8 flex justify-center lg:items-center max-lg:flex-col w-full sm:gap-16 gap-0"
         variants={variants}
         initial={'hidden'}

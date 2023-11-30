@@ -5,7 +5,7 @@ import LoadingCharacterInfo from '@/app/ui/characters/loaders/LoadingCharacterIn
 // import { linkToCharactersPage } from '@/app/lib/constants';
 // import { fetchCharacterById } from '@/app/lib/data';
 import Navbar from '@/app/ui/Navbar';
-import Particles from '@/app/ui/Particles';
+import FavoriteButton from '@/app/ui/FavoriteButton';
 
 // type Props = {
 //     params: { id: string }
@@ -28,7 +28,7 @@ export function generateMetadata({ /* params, */ searchParams }: { params: { id:
     }
 }
 
-export default async function Page({ params, searchParams }: { params: { id: string }, searchParams: { pagination?: string, image?: string } }) {
+export default async function Page({ params, searchParams }: { params: { id: string }, searchParams: { name: string, pagination?: string, image?: string } }) {
     const characterId = params.id || '70'
     const withPagination = searchParams?.pagination === "true"
 
@@ -37,7 +37,7 @@ export default async function Page({ params, searchParams }: { params: { id: str
             <Navbar
                 link=""
             />
-            <div className=''>
+            <div className='flex justify-end w-[95%] lg:w-[99%] mb-5'>
                 {/* <Breadcrumbs
                     breadcrumbs={[
                         {
@@ -50,6 +50,10 @@ export default async function Page({ params, searchParams }: { params: { id: str
                         },
                     ]}
                 /> */}
+                <FavoriteButton
+                    name={searchParams.name}
+                    id={characterId}
+                />
             </div>
             {/* <Particles
                 className="absolute inset-0 -z-10 animate-fade-in"
