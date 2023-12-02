@@ -44,12 +44,12 @@ export default function RootLayout({
         >
           <Particles
             className="absolute -z-10 inset-0 animate-fade-in min-h-[100vh]"
-            quantity={200}
+            quantity={1000}
             color="255, 255, 255"
           />
           <Particles
             className="absolute -z-10 inset-0 animate-fade-in min-h-[100vh]"
-            quantity={200}
+            quantity={1000}
             color="0, 0, 0"
           />
           {children}

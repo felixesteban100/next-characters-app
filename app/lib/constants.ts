@@ -1,7 +1,7 @@
 export const CHARACTERS_PER_PAGE = 4;
 export const CHARACTERS_PER_PAGE_NOPAGINATION = 4
 
-export const LOCAL_STORAGE_KEY = 'next-characters-app'
+export const STORAGE_KEY = 'next-characters-app'
 
 export const ALLRACES = [
   { value: "All", name: "All races" },
@@ -821,17 +821,17 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Black Clover",
           value: "Black Clover",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/76af57fc-7d8b-4116-8c09-75841b6d2da8/dbmt5i0-681aa9ed-9f39-43f6-9d29-cfb23030bf9e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzc2YWY1N2ZjLTdkOGItNDExNi04YzA5LTc1ODQxYjZkMmRhOFwvZGJtdDVpMC02ODFhYTllZC05ZjM5LTQzZjYtOWQyOS1jZmIyMzAzMGJmOWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8r1Wcr1xhY_GfHs_ljKeHjTmWd8AhzMSOpJFOeIhotk",
+          img: "https://www.animeesports.com/attachment.php?aid=2313",
         },
         {
           name: "Dragon Ball",
           value: "Dragon Ball",
-          img: "https://logos-world.net/wp-content/uploads/2021/02/Dragon-Ball-Logo.png",
+          img: "https://dotesports.com/wp-content/uploads/2022/07/11085819/dragon-ball-super-characters.jpg?w=1200",
         },
         {
           name: "Demon Slayer",
           value: "Demon Slayer",
-          img: "https://logos-world.net/wp-content/uploads/2021/12/Demon-Slayer-Logo.png",
+          img: "https://cdn.oneesports.gg/cdn-data/2023/01/Anime_DemonSlayer_AllHashira_2.jpg",
         },
         {
           name: "Jujutsu Kaisen",

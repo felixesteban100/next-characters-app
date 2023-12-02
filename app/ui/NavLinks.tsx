@@ -18,6 +18,8 @@ export default function NavLinks() {
         // { name: `spider-man`, href: `/characters/620?name=Spider-Man` }
     ];
 
+    // console.log(characters)
+
     return (
         <nav className="my-16 animate-fade-in ">
             <ul className="flex items-center justify-center gap-4">

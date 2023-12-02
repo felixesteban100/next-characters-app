@@ -32,36 +32,36 @@
        URL: https://gradient.page */
 
     /* CSS: .bg-gradient { background: var(--gradient) } */
-    --gradient: #11998e;
+    --gradient: #0052D4;
 
-    --background: 186 52% 2.64%;
-    --foreground: 186 8% 96.65%;
+    --background: 230 65% 3.36%;
+    --foreground: 230 10% 97.1%;
 
-    --muted: 186 40% 9.9%;
-    --muted-foreground: 186 8% 53.3%;
+    --muted: 230 50% 12.6%;
+    --muted-foreground: 230 10% 54.2%;
 
-    --popover: 186 49% 4.29%;
-    --popover-foreground: 186 8% 96.65%;
+    --popover: 230 45% 5.46%;
+    --popover-foreground: 230 10% 97.1%;
 
-    --card: 186 49% 4.29%;
-    --card-foreground: 186 8% 96.65%;
+    --card: 230 45% 5.46%;
+    --card-foreground: 230 10% 97.1%;
 
-    --border: 186 40% 9.9%;
-    --input: 186 40% 9.9%;
+    --border: 230 50% 12.6%;
+    --input: 230 50% 12.6%;
 
-    --primary: 186 80% 33%;
-    --primary-foreground: 186 8% 96.65%;
+    --primary: 230 100% 42%;
+    --primary-foreground: 230 10% 97.1%;
 
-    --secondary: 186 40% 9.9%;
-    --secondary-foreground: 186 8% 96.65%;
+    --secondary: 230 50% 12.6%;
+    --secondary-foreground: 230 10% 97.1%;
 
-    --accent: 186 40% 9.9%;
-    --accent-foreground: 186 8% 96.65%;
+    --accent: 230 50% 12.6%;
+    --accent-foreground: 230 10% 97.1%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 186 8% 96.65%;
+    --destructive-foreground: 230 10% 97.1%;
 
-    --ring: 186 80% 33%;
+    --ring: 230 100% 42%;
   }
 }
 

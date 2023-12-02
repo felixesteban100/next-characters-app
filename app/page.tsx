@@ -1,6 +1,6 @@
 // import Image from "next/image";
 // import Particles from "./ui/Particles";
-// import { Atom } from "lucide-react";
+import { Atom } from "lucide-react";
 // import theme from "./lib/useTailwind";
 // unstable_noStore()
 
@@ -36,8 +36,12 @@ export default function Home() {
         <NavLinks />
 
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-foreground/50 to-foreground/0" />
-        <h1 className="z-10 text-4xl text-transparent duration-1000 bg-primary cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text font-bold flex flex-col justify-center items-center gap-2">
-          characters
+        <h1 className="z-10 text-4xl text-transparent duration-1000 bg-primary cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text font-bold flex justify-center items-center gap-2">
+          ch<Atom
+            width={100}
+            height={100}
+            className={`object-contain text-primary animate-spin1`}
+          />r4c73
         </h1>
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-foreground/50 to-foreground/0" />
         {/* <Atom
