@@ -17,7 +17,8 @@ function CharacterFeatures({ selectedCharacter, withPagination }: CharacterFeatu
     return (
         <Tabs
             defaultValue={'Stats'}
-            className="w-full"
+            //col-span-5
+            className="h-[80vh] w-full lg:w-[70%] md:flex-initial"
         >
             <TabsList className={`grid w-full grid-cols-5 bg-accent`}>
                 <TabsTrigger className='text-base-content hidden md:block' value="Stats">Stats</TabsTrigger>

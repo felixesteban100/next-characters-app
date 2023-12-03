@@ -23,7 +23,7 @@ function FeatureTabAppereance({ selectedCharacter }: FeatureTabAppereanceProps) 
         <FeatureTabContainer
             valueTab="Appereance"
             // extraClassNames="md:max-h-[70vh] border-2"
-            extraClassNames="md:max-h-[70vh] border-2"
+            extraClassNames="border-2"
         >
             <>
                 <StatContainer>

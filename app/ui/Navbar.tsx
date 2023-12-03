@@ -6,7 +6,7 @@ function Navbar(/* { link }: { link: string } */) {
   return (
     <nav 
       // className='mx-auto flex justify-between gap-5 py-5 pt-16 px-5 max-w-[80rem]'
-      className='mx-auto flex justify-between gap-5 py-5 px-5 max-w-[80rem]'
+      className='mx-auto flex justify-between gap-5 py-5 px-5'
     >
       <div className='flex items-center justify-center gap-5'>
         {/* Radiation, Atom, ChevronsDown, Play*/}

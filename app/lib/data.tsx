@@ -10,7 +10,7 @@ import CharacterComponent from "../ui/characters/CharacterComponent";
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
   try {
-    // await new Promise((resolve) => setTimeout(resolve, 7000));
+    // await new Promise((resolve) => setTimeout(resolve, 3000));
     // console.log("fetchCharacterById")
     const selectedCharacter = await collectionCharacters.findOne({ id: parseInt(characterSelectedId) })
     return selectedCharacter
@@ -75,7 +75,7 @@ export async function fetchCharactersNoPagination(
 
     let charactersToDisplay/* : Character[] */
 
-    // figue a way out to make this random be saved so that when you refresh or go back have the same results
+    
 
     if (sortBy === "random") {
       charactersToDisplay = await collectionCharacters

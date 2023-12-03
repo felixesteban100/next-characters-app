@@ -11,7 +11,10 @@ function FeatureTabContainer({ children, valueTab, extraClassNames  }: FeatureTa
     return (
         <TabsContent value={valueTab}>
             <Card className={`${extraClassNames}`}>
-                <CardContent className="space-y-2">
+                <CardContent 
+                    //max-h-[30rem]
+                    className="h-[70vh] overflow-y-scroll"
+                >
                     {children}
                 </CardContent>
             </Card>

@@ -17,7 +17,7 @@ function FeatureTabTeams({ selectedCharacter, withPagination }: FeatureTabTeamsP
         <div>
             <FeatureTabContainer
                 valueTab="Teams"
-                extraClassNames="h-[51.5vh] md:h-[70vh] border-2 overflow-scroll"
+                extraClassNames="border-2"
             >
                 <StatContainer>
                     {

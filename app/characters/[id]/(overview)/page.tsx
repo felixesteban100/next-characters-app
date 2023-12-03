@@ -4,7 +4,6 @@ import LoadingCharacterInfo from '@/app/ui/characters/loaders/LoadingCharacterIn
 // import Breadcrumbs from "@/app/ui/breadcrumbs";
 // import { linkToCharactersPage } from '@/app/lib/constants';
 // import { fetchCharacterById } from '@/app/lib/data';
-import FavoriteButton from '@/app/ui/FavoriteButton';
 
 // type Props = {
 //     params: { id: string }
@@ -32,27 +31,10 @@ export default async function Page({ params, searchParams }: { params: { id: str
     const withPagination = searchParams?.pagination === "true"
 
     return (
-        <section className='w-[80vw] mx-auto'>
-            <div className='flex justify-end w-[95%] lg:w-[99%] mb-5'>
-                {/* <Breadcrumbs
-                    breadcrumbs={[
-                        {
-                            label: 'Characters',
-                            href: linkToCharactersPage
-                        },
-                        {
-                            label: `Character-${characterId}`,
-                            active: true,
-                        },
-                    ]}
-                /> */}
-                
-            </div>
-            <div className='z-10'>
-                <Suspense fallback={<LoadingCharacterInfo />}>
-                    <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />
-                </Suspense>
-            </div>
-        </section>
+        // <section className=''>
+            <Suspense fallback={<LoadingCharacterInfo />}>
+                <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />
+            </Suspense>
+        // </section>
     );
 }

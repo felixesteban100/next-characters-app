@@ -15,7 +15,7 @@ function FeatureTabStats({ selectedCharacter }: FeatureTabStatsProps) {
     return (
         <FeatureTabContainer
             valueTab="Stats"
-            extraClassNames="md:max-h-[70vh] border-2"
+            extraClassNames="border-2"
         >
             <StatContainer>
                 <StatNumber

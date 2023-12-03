@@ -123,8 +123,12 @@ export default function FilterCharacters({link}: {link: string}) {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <ScrollArea className="h-[700px] w-full p-5">
+            <form 
+                onSubmit={form.handleSubmit(onSubmit)} 
+                // className="space-y-8"
+                className="h-[78vh] overflow-y-scroll"
+            >
+                {/* <ScrollArea className="max-h-[700px] w-full p-5"> */}
                     <FormField
                         control={form.control}
                         name="name"
@@ -384,7 +388,7 @@ export default function FilterCharacters({link}: {link: string}) {
                             : null
                     }
 
-                </ScrollArea>
+                {/* </ScrollArea> */}
                 <div className="w-full flex justify-end">
                     <Button type="submit">Filter</Button>
                 </div>

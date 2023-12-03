@@ -14,7 +14,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
     const allImagesInfo: { property: string, img: string }[] = [
         { property: 'md', img: selectedCharacter.images.md },
         ...Object.entries(selectedCharacter.images).reduce((acc, currentValue) => {
-            if(currentValue[0] !== "md" && currentValue[1] !== "-" && currentValue[1] !== "" && !currentValue[1].includes('/api/images/xs/')){
+            if (currentValue[0] !== "md" && currentValue[1] !== "-" && currentValue[1] !== "" && !currentValue[1].includes('/api/images/xs/')) {
                 acc.push({
                     property: currentValue[0],
                     value: currentValue[1]
@@ -34,9 +34,10 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
     return (
         <FeatureTabContainer
             valueTab="Comics"
-            extraClassNames="h-[50vh] md:h-[70vh] border-2 overflow-scroll"
+            extraClassNames="border-2"
         >
-            <StatContainer>
+            {/* <StatContainer> */}
+            <>
                 <ScrollArea className="w-56 md:w-96 whitespace-nowrap rounded-md  mx-auto mb-5">
                     <div className="flex w-max space-x-4 p-4 md:h-[450px]">
                         {allImagesInfo.map((imgInfo, index) => (
@@ -79,7 +80,8 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                         })}
                     </div>
                 </div>
-            </StatContainer>
+            </>
+            {/* </StatContainer> */}
         </FeatureTabContainer>
     )
 }
