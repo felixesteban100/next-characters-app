@@ -97,9 +97,6 @@ export default async function Page({
 
     return (
         <main className='overflow-hidden'>
-            {/* <Navbar
-                link="/characters"
-            /> */}
             <ScrollArea className={`max-w-[80rem] h-[850px] mx-auto border-x`}>
                 <Hero
                     imgLogo={imgLogo}

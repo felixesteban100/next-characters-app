@@ -34,7 +34,7 @@ export async function fetchCharacters(
     // const allCharacters: Character[] = await collectionCharacters.find({ }).toArray()
     // console.log(allCharacters.map(i => i.id).sort((a, b) => a - b))
 
-    const charactersToDisplay: Character[] = await collectionCharacters
+    let charactersToDisplay: Character[] = await collectionCharacters
       .find({ ...queryOptions })
       .sort({ [`${sortBy}`]: sortDirection as any })
       .skip(offset)
@@ -67,11 +67,35 @@ export async function fetchCharactersNoPagination(
   try {
     // let charactersToDisplay/* : Character[] */
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
-    const charactersToDisplay: Character[] = await collectionCharacters
-      .find({ ...queryOptions })
-      .sort({ [`${sortBy}`]: sortDirection as any })
-      .skip(offset)
-      .toArray()
+    // const charactersToDisplay: Character[] = await collectionCharacters
+    //   .find({ ...queryOptions })
+    //   .sort({ [`${sortBy}`]: sortDirection as any })
+    //   .skip(offset)
+    //   .toArray()
+
+    let charactersToDisplay/* : Character[] */
+
+    // figue a way out to make this random be saved so that when you refresh or go back have the same results
+
+    if (sortBy === "random") {
+      charactersToDisplay = await collectionCharacters
+        // .find({ ...queryOptions })
+        .aggregate([
+          { $match: queryOptions }, // filter the results
+          { $sample: { size: 50 } } // You want to get 5 docs
+        ])
+        .skip(offset)
+        // .sort({ [`${sortBy}`]: sortDirection as any })
+        // .skip(offset)
+        // .limit(CHARACTERS_PER_PAGE)
+        .toArray()
+    } else {
+      charactersToDisplay = await collectionCharacters
+        .find({ ...queryOptions })
+        .sort({ [`${sortBy}`]: sortDirection as any })
+        .skip(offset)
+        .toArray()
+    }
 
     return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
       return (
@@ -101,7 +125,6 @@ export async function fetchPages(
     console.error(error);
     throw Error(`MongoDB Connection Error: ${error}`);
   }
-
 }
 
 export async /* make this async even though I am now using async code in here (becasuse it's a .tsx file not .ts) */ function getQueryOptions(

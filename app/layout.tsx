@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
 import Particles from './ui/Particles';
 import { Toaster } from '@/components/ui/toaster';
-// import Navbar from './ui/Navbar';    
 
 export const metadata: Metadata = {
   title: {
@@ -19,8 +18,7 @@ export const metadata: Metadata = {
 };
 
 //TODO:
-// make the particles cover the entire page but behind everything else
-// make the random really random in the home page
+// figue a way out to make this random be saved so that when you refresh or go back have the same results
 // add all the filters in the sheet (filterCharacters.tsx) | it's done...?
 // add page transition
 // add google provider for auth use this docs for guidance: https://authjs.dev/reference/core/providers_google (nextjs 14 doesn't have support for that :-|)
