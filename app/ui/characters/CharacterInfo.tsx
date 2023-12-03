@@ -3,6 +3,7 @@ import { Character } from "@/app/lib/definitions";
 import { fetchCharacterById } from "@/app/lib/data";
 import CharacterFeatures from "./tabs/CharacterFeatures";
 import { notFound } from 'next/navigation';
+import FavoriteButton from "../FavoriteButton";
 
 export default async function CharacterInfo({ characterId, image, withPagination }: { characterId: string, image?: string, withPagination: boolean }) {
     const selectedCharacter: Character | null = await fetchCharacterById(characterId)
@@ -10,7 +11,7 @@ export default async function CharacterInfo({ characterId, image, withPagination
     if (!selectedCharacter) notFound()
 
     return (
-        <div className="mx-auto w-[80vw] flex flex-col xl:flex-row justify-center items-center lg:items-start gap-0 lg:gap-11">
+        <div className="mx-auto w-[80vw] flex flex-col lg:flex-row justify-center items-center lg:items-start gap-0 lg:gap-11">
             <div
                 // w-[90%] md:w-[50%] lg:w-[30%] xl:h-[60%] mx-auto
                 className='flex flex-col justify-center items-center gap-3'
@@ -23,6 +24,10 @@ export default async function CharacterInfo({ characterId, image, withPagination
                     <label className='group cursor-pointer w-full h-full' htmlFor={`my-modal-imageZoom`}>
                         <Image width={500} height={500} className={`transition-all duration-300 absolute w-full h-full object-cover blur-lg group-focus-visible:animate-pulse group-hover:animate-pulse `} src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md} alt={selectedCharacter.name} loading="lazy" />
                         <Image width={500} height={500} className={`transition-all duration-300 absolute w-[90%] h-[90%] object-cover rounded-md ml-3 md:ml-5 mt-5`} src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md} alt={selectedCharacter.name} loading="lazy" />
+                        <FavoriteButton
+                            name={selectedCharacter.name}
+                            id={selectedCharacter.id.toString()}
+                        />
                     </label>
                 </div>
 

@@ -4,7 +4,6 @@ import LoadingCharacterInfo from '@/app/ui/characters/loaders/LoadingCharacterIn
 // import Breadcrumbs from "@/app/ui/breadcrumbs";
 // import { linkToCharactersPage } from '@/app/lib/constants';
 // import { fetchCharacterById } from '@/app/lib/data';
-import Navbar from '@/app/ui/Navbar';
 import FavoriteButton from '@/app/ui/FavoriteButton';
 
 // type Props = {
@@ -34,9 +33,6 @@ export default async function Page({ params, searchParams }: { params: { id: str
 
     return (
         <section className='w-[80vw] mx-auto'>
-            <Navbar
-                link=""
-            />
             <div className='flex justify-end w-[95%] lg:w-[99%] mb-5'>
                 {/* <Breadcrumbs
                     breadcrumbs={[
@@ -50,15 +46,8 @@ export default async function Page({ params, searchParams }: { params: { id: str
                         },
                     ]}
                 /> */}
-                <FavoriteButton
-                    name={searchParams.name}
-                    id={characterId}
-                />
+                
             </div>
-            {/* <Particles
-                className="absolute inset-0 -z-10 animate-fade-in"
-                quantity={100}
-            /> */}
             <div className='z-10'>
                 <Suspense fallback={<LoadingCharacterInfo />}>
                     <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />

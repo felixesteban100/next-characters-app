@@ -5,6 +5,7 @@ import { CharacterInfo } from "../lib/definitions";
 import { STORAGE_KEY } from "../lib/constants";
 import { useToast } from "@/components/ui/use-toast";
 import useCharacterStorage from "../hooks/useCharacterStorage";
+import { Star } from "lucide-react";
 
 type FavoriteButtonProps = {
     name: string,
@@ -44,9 +45,12 @@ export default function FavoriteButton({ name, id }: FavoriteButtonProps) {
     return (
         <Button
             onClick={handleToggle}
-            variant={"secondary"}
+            size={"icon"}
+            variant={"ghost"}
+            className="z-[100] absolute right-0 mt-10 mr-10 hover:bg-transparent"
         >
-            {characters.find((char) => char.id === characterInfo.id) ? 'Remove ' : 'Add '} ⭐
+            {/* {characters.find((char) => char.id === characterInfo.id) ? 'Remove ' : 'Add '} ⭐ */}
+            <Star size={800} className={`h-[5rem] ${characters.find((char) => char.id === characterInfo.id) !== undefined ? 'fill-primary hover:fill-transparent' : 'f transparent hover:fill-primary'}`} />
         </Button>
     )
 }

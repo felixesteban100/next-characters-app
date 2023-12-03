@@ -1,16 +1,19 @@
 import { Suspense } from 'react';
 import Characters from '@/app/ui/characters/Characters';
-import { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharacters';
+import FilterCharacters, { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharacters';
 import { QueryOptions } from '@/app/lib/definitions';
 import { getQueryOptions } from '@/app/lib/data';
 import { getTeamBackgroundImageByUniverse, getTeamByUniverse } from '@/app/lib/constants';
 import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
 import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
-import Navbar from '@/app/ui/Navbar';
 import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
 import Hero from '@/app/ui/Hero';
 import { organizedComicsProperty } from '@/app/ui/characters/tabs/FeatureTabComics';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Button } from '@/components/ui/button';
+import { SlidersHorizontal } from 'lucide-react';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import PaginationToggle from '@/app/ui/characters/PaginationToggle';
 
 export function generateMetadata({
     searchParams,
@@ -94,10 +97,10 @@ export default async function Page({
 
     return (
         <main className='overflow-hidden'>
-            <Navbar
+            {/* <Navbar
                 link="/characters"
-            />
-            <ScrollArea className={`max-w-[80rem] h-[800px] mx-auto border-x`}>
+            /> */}
+            <ScrollArea className={`max-w-[80rem] h-[850px] mx-auto border-x`}>
                 <Hero
                     imgLogo={imgLogo}
                     imgBg={imgBg}
@@ -105,8 +108,28 @@ export default async function Page({
                     classes={classes}
                 />
 
-                <div className='w-full flex justify-center items-center gap-5 my-10'>
+                <div className='w-full flex justify-between items-center gap-5 my-10 px-8'>
                     <h2 className="text-3xl font-bold">Explore Characters</h2>
+
+                    <div className='flex items-center gap-2'>
+                        <PaginationToggle />
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant={'outline'} size={'icon'}><SlidersHorizontal size={20} /></Button>
+                            </SheetTrigger>
+                            <SheetContent>
+                                <SheetHeader>
+                                    <SheetTitle>Features</SheetTitle>
+                                    <SheetDescription>
+                                        Here we can filter the characters
+                                    </SheetDescription>
+                                    <FilterCharacters
+                                        link='/characters'
+                                    />
+                                </SheetHeader>
+                            </SheetContent>
+                        </Sheet>
+                    </div>
                 </div>
 
                 {withPagination === true ?

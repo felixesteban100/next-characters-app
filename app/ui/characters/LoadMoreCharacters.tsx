@@ -48,6 +48,7 @@ export default function LoadMoreCharacters({ characterName, side, universe, team
                     {newCharacters}
                 </>
             </CharactersContainer>
+            
             {noMore === true && <div ref={ref} className="w-full flex justify-center mb-16">
                 <div role="status">
                     <svg aria-hidden="true" className="inline w-20 h-20 text-secondary animate-spin dark:text-secondary fill-primary" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
