@@ -40,16 +40,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Particles
-            className="absolute -z-10 inset-0 animate-fade-in min-h-[100vh]"
-            quantity={1000}
-            color="255, 255, 255"
-          />
-          <Particles
-            className="absolute -z-10 inset-0 animate-fade-in min-h-[100vh]"
-            quantity={1000}
-            color="0, 0, 0"
-          />
+          <div className='absolute inset-0 -z-10 min-h-screen'>
+            <Particles
+              className=" animate-fade-in"
+              quantity={1000}
+              color="255, 255, 255"
+            />
+            <Particles
+              className="absolute inset-0 -z-10 animate-fade-in"
+              quantity={1000}
+              color="0, 0, 0"
+            />
+          </div>
           {children}
           <Toaster />
         </ThemeProvider>

@@ -100,6 +100,11 @@ export default function Particles({
 			canvasRef.current.style.width = `${canvasSize.current.w}px`;
 			canvasRef.current.style.height = `${canvasSize.current.h}px`;
 			context.current.scale(dpr, dpr);
+
+			// canvasRef.current.height = 100;
+			// canvasRef.current.width = 100;
+			// canvasRef.current.style.width = '100vw'
+			// canvasRef.current.style.height = '100vh'
 		}
 	};
 
@@ -240,8 +245,8 @@ export default function Particles({
 	};
 
 	return (
-		<div className={className} ref={canvasContainerRef} aria-hidden="true">
-			<canvas /* className="[&_p]-primary " */ /* height={100000} className="h-[100%] w-full" */ ref={canvasRef} />
+		<div className={`${className}`} ref={canvasContainerRef} aria-hidden="true">
+			<canvas className="h-screen w-screen" /* className="[&_p]-primary " */ /* height={100000} className="h-[100%] w-full" */ ref={canvasRef} />
 		</div>
 	);
 }

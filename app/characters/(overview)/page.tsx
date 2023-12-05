@@ -67,7 +67,7 @@ export default async function Page({
 
     const characterOrFullName = searchParams?.characterOrFullName === "true"
     const characterName = searchParams?.characterName || '';
-    // const howMany = searchParams?.howMany || '714'
+    const howMany = searchParams?.howMany || '50'
     const side = searchParams?.side || "All"
     const universe = searchParams?.universe || "All"
     const team = searchParams?.team || "All"
@@ -156,6 +156,7 @@ export default async function Page({
                 >
                     <CharactersNoPagination
                         characterName={characterName}
+                        howMany={parseInt(howMany)}
                         side={side}
                         universe={universe}
                         team={team}

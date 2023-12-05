@@ -5,6 +5,7 @@ import LoadMoreCharacters from './LoadMoreCharacters';
 
 type CharactersProps = {
     characterName: string
+    howMany: number;
     side: string
     universe: string
     team: string
@@ -16,7 +17,7 @@ type CharactersProps = {
     sortDirection: sortDirectionType
 }
 
-export default async function CharactersNoPagination({ characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection }: CharactersProps) {
+export default async function CharactersNoPagination({ characterName, howMany, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection }: CharactersProps) {
     const charactersToDisplay: JSX.Element[] = await fetchCharactersNoPagination(characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection, 1)
 
     return (
@@ -26,6 +27,7 @@ export default async function CharactersNoPagination({ characterName, side, univ
                     <div>
                         <LoadMoreCharacters
                             characterName={characterName}
+                            howMany={howMany}
                             side={side}
                             universe={universe}
                             team={team}

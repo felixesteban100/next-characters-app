@@ -15,15 +15,16 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, getTeamByUniverse } from "@/app/lib/constants"
+import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, CHARACTERS_PER_PAGE, getTeamByUniverse } from "@/app/lib/constants"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
+import { Slider } from "@/components/ui/slider"
 
 const formSchema = z.object({
     name: z.string(),
     characterOrFullName: z.boolean(),
-    // howMany: z.string(),
+    howMany: z.string(),
     side: z.string(),
     universe: z.string(),
     team: z.string(),
@@ -50,7 +51,7 @@ export default function FilterCharacters({link}: {link: string}) {
         defaultValues: {
             name: searchParams.get('characterName') ?? "",
             characterOrFullName: searchParams.get('characterOrFullName') === "true",
-            // howMany: searchParams.get('howMany') ?? "16",
+            howMany: searchParams.get('howMany') ?? "50",
             side: searchParams.get('side') ?? "All",
             universe: searchParams.get('universe') ?? "All",
             team: searchParams.get('team') || 'All',
@@ -77,11 +78,11 @@ export default function FilterCharacters({link}: {link: string}) {
 
         params.set('characterOrFullName', values.characterOrFullName.toString())
 
-        /* if (values.howMany !== "") {
+        if (values.howMany !== "") {
             params.set('howMany', values.howMany)
         } else {
             params.delete('howMany')
-        } */
+        }
 
         if (values.side !== "") {
             params.set('side', values.side)
@@ -167,7 +168,7 @@ export default function FilterCharacters({link}: {link: string}) {
                             </FormItem>
                         )}
                     />
-                    {/* <FormField
+                    {params.get('pagination') === "false" && <FormField
                         control={form.control}
                         name="howMany"
                         render={({ field }) => (
@@ -182,7 +183,7 @@ export default function FilterCharacters({link}: {link: string}) {
                                 <FormMessage />
                             </FormItem>
                         )}
-                    /> */}
+                    />}
                     <FormField
                         control={form.control}
                         name="sortBy"
@@ -196,7 +197,7 @@ export default function FilterCharacters({link}: {link: string}) {
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        {params.get('pagination') === "false" && <SelectItem value="random">Random</SelectItem>}
+                                        {/* params.get('pagination') === "false" && */ <SelectItem value="random">Random</SelectItem>}
                                         {sortByValues.map((c) => (
                                             <SelectItem key={c} value={c}>{c}</SelectItem>
                                         ))}

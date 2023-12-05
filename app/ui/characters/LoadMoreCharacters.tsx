@@ -7,7 +7,8 @@ import { sortByType, sortDirectionType } from './FilterCharacters'
 import CharactersContainer from './CharactersContainer'
 
 type LoadMoreCharactersProps = {
-    characterName: string
+    characterName: string;
+    howMany: number;
     side: string
     universe: string
     team: string
@@ -24,7 +25,7 @@ type LoadMoreCharactersProps = {
 //     page.value += 1
 // }
 
-export default function LoadMoreCharacters({ characterName, side, universe, team, gender, race, characterOrFullName, sortBy, sortDirection }: LoadMoreCharactersProps) {
+export default function LoadMoreCharacters({ characterName, howMany, side, universe, team, gender, race, characterOrFullName, sortBy, sortDirection }: LoadMoreCharactersProps) {
     const [newCharacters, setNewCharacters] = useState<JSX.Element[]>([])
     const { ref, inView } = useInView()
     const [noMore, setNoMore] = useState(true)
@@ -32,14 +33,19 @@ export default function LoadMoreCharacters({ characterName, side, universe, team
     // console.log(page.value)
 
     useEffect(() => {
-        if (inView === true && noMore === true) {
+        if (inView === true && noMore === true && newCharacters.length < howMany) {
             fetchCharactersNoPagination(characterName, side, universe, team, gender, race, characterOrFullName,/* JSON.parse(queryOptions), */ sortBy, sortDirection, page).then((data) => {
                 setNewCharacters([...newCharacters, ...data])
                 setPage(prev => prev + 1);
-                if(data.length < 1) setNoMore(false)
+                if (data.length < 1) setNoMore(false)
             })
         }
-    }, [inView, newCharacters, characterName, side, universe, team, gender, race, characterOrFullName])
+
+        if(howMany < newCharacters.length){
+            setNewCharacters(newCharacters.slice(0, howMany))
+        }
+
+    }, [inView, newCharacters, howMany, characterName, side, universe, team, gender, race, characterOrFullName])
 
     return (
         <>
@@ -48,8 +54,8 @@ export default function LoadMoreCharacters({ characterName, side, universe, team
                     {newCharacters}
                 </>
             </CharactersContainer>
-            
-            {noMore === true && <div ref={ref} className="w-full flex justify-center mb-16">
+
+            {(noMore === true && newCharacters.length < howMany) ? <div ref={ref} className="w-full flex justify-center mb-16">
                 <div role="status">
                     <svg aria-hidden="true" className="inline w-20 h-20 text-secondary animate-spin dark:text-secondary fill-primary" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
@@ -57,7 +63,7 @@ export default function LoadMoreCharacters({ characterName, side, universe, team
                     </svg>
                     <span className="sr-only">Loading...</span>
                 </div>
-            </div>}
+            </div> : null}
         </>
     )
 }

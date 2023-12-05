@@ -9,14 +9,14 @@ import NoCharactersFound from './NoCharactersFound';
 // import Image from 'next/image';
 
 type CharactersProps = {
-    queryOptions: QueryOptions
+    queryOptions: QueryOptions,
     currentPage: number,
     sortBy: sortByType
     sortDirection: sortDirectionType,
 }
 
 export default async function Characters({ queryOptions, currentPage, sortBy, sortDirection }: CharactersProps) {
-    const charactersToDisplay: Character[] = await fetchCharacters(queryOptions, currentPage, sortBy, sortDirection)
+    const charactersToDisplay/* : Character[] */ = await fetchCharacters(queryOptions, currentPage, sortBy, sortDirection)
     const totalPages = await fetchPages(queryOptions)
 
     return (

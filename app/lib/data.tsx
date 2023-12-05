@@ -31,15 +31,29 @@ export async function fetchCharacters(
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE;
-    // const allCharacters: Character[] = await collectionCharacters.find({ }).toArray()
-    // console.log(allCharacters.map(i => i.id).sort((a, b) => a - b))
 
-    let charactersToDisplay: Character[] = await collectionCharacters
-      .find({ ...queryOptions })
-      .sort({ [`${sortBy}`]: sortDirection as any })
-      .skip(offset)
-      // .limit(CHARACTERS_PER_PAGE)
-      .toArray()
+    // let charactersToDisplay: Character[] = await collectionCharacters
+    //   .find({ ...queryOptions })
+    //   .sort({ [`${sortBy}`]: sortDirection as any })
+    //   .skip(offset)
+    //   .toArray()
+
+      let charactersToDisplay/* : Character[] */
+
+    if (sortBy === "random") {
+      charactersToDisplay = await collectionCharacters
+        .aggregate([
+          { $match: queryOptions }, // filter the results
+        ])
+        .skip(offset)
+        .toArray()
+    } else {
+      charactersToDisplay = await collectionCharacters
+        .find({ ...queryOptions })
+        .sort({ [`${sortBy}`]: sortDirection as any })
+        .skip(offset)
+        .toArray()
+    }
 
     return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE)
   } catch (error) {
@@ -75,19 +89,12 @@ export async function fetchCharactersNoPagination(
 
     let charactersToDisplay/* : Character[] */
 
-    
-
     if (sortBy === "random") {
       charactersToDisplay = await collectionCharacters
-        // .find({ ...queryOptions })
         .aggregate([
           { $match: queryOptions }, // filter the results
-          { $sample: { size: 50 } } // You want to get 5 docs
         ])
         .skip(offset)
-        // .sort({ [`${sortBy}`]: sortDirection as any })
-        // .skip(offset)
-        // .limit(CHARACTERS_PER_PAGE)
         .toArray()
     } else {
       charactersToDisplay = await collectionCharacters
@@ -144,6 +151,7 @@ export async /* make this async even though I am now using async code in here (b
       queryOptions["biography.fullName"] = new RegExp(characterName, "ig")
     }
   }
+
   if (side !== "All") queryOptions["biography.alignment"] = side;
   if (universe !== "All") {
     queryOptions["biography.publisher"] = universe;
