@@ -1,3 +1,4 @@
+import { ScrollArea } from "@/components/ui/scroll-area"
 import Navbar from "../ui/Navbar"
 
 export default function RootLayout({
@@ -6,12 +7,12 @@ export default function RootLayout({
     children: React.ReactNode
   }) {
     return (
-      <div 
+      <ScrollArea 
         // className="max-w-[80rem] overflow-hidden md:w-[80vw] md:overflow-auto mx-auto"
-        className="max-w-[80rem] md:w-[80vw] mx-auto"
+        className="max-w-[80rem] md:w-[80vw] mx-auto h-screen"
       >
         <Navbar />
         {children}
-      </div>       
+      </ScrollArea>       
     )
   }

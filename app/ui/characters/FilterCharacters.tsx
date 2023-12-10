@@ -197,7 +197,7 @@ export default function FilterCharacters({link}: {link: string}) {
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        {/* params.get('pagination') === "false" && */ <SelectItem value="random">Random</SelectItem>}
+                                        {/* params.get('pagination') === "false" && */ <SelectItem value="random">random</SelectItem>}
                                         {sortByValues.map((c) => (
                                             <SelectItem key={c} value={c}>{c}</SelectItem>
                                         ))}

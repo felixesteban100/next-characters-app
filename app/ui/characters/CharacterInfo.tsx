@@ -4,6 +4,7 @@ import { fetchCharacterById } from "@/app/lib/data";
 import CharacterFeatures from "./tabs/CharacterFeatures";
 import { notFound } from 'next/navigation';
 import FavoriteButton from "../FavoriteButton";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default async function CharacterInfo({ characterId, image, withPagination }: { characterId: string, image?: string, withPagination: boolean }) {
     const selectedCharacter: Character | null = await fetchCharacterById(characterId)
@@ -11,11 +12,12 @@ export default async function CharacterInfo({ characterId, image, withPagination
     if (!selectedCharacter) notFound()
 
     return (
-        <div
-            className="mx-auto flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10 lg:gap-5 px-5 lg:p-0"
+        <ScrollArea className="h-[90vh]">
+            <div
+                className="mx-auto flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10 lg:gap-5 px-5 lg:p-0"
             // className="grid grid-flow-row grid-rows-2 md:grid-flow-col md:grid-cols-7 gap-5"
-        >
-            {/* <div
+            >
+                {/* <div
                 className='h-[32rem] flex flex-col justify-between items-center gap-3 col-span-2'
             > */}
                 <div
@@ -36,9 +38,10 @@ export default async function CharacterInfo({ characterId, image, withPagination
                         {selectedCharacter.name}
                     </h1>
                 </div> */}
-            {/* </div> */}
+                {/* </div> */}
 
-            <CharacterFeatures selectedCharacter={selectedCharacter} withPagination={withPagination} />
-        </div>
+                <CharacterFeatures selectedCharacter={selectedCharacter} withPagination={withPagination} />
+            </div>
+        </ScrollArea>
     )
 }

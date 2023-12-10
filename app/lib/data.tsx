@@ -5,7 +5,7 @@ import { sortByType, sortDirectionType } from "../ui/characters/FilterCharacters
 import { CHARACTERS_PER_PAGE, CHARACTERS_PER_PAGE_NOPAGINATION } from "./constants";
 import { collectionCharacters } from "./mongodb/mongodb";
 import CharacterComponent from "../ui/characters/CharacterComponent";
-// import { unstable_noStore as noStore } from "next/cache";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
@@ -26,33 +26,22 @@ export async function fetchCharacters(
   sortBy: sortByType,
   sortDirection: sortDirectionType
 ) {
-  // noStore();
+  
 
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE;
 
-    // let charactersToDisplay: Character[] = await collectionCharacters
-    //   .find({ ...queryOptions })
-    //   .sort({ [`${sortBy}`]: sortDirection as any })
-    //   .skip(offset)
-    //   .toArray()
+    let charactersToDisplay: Character[] = await collectionCharacters
+      .find({ ...queryOptions })
+      .sort({ [`${sortBy}`]: sortDirection as any })
+      .skip(offset)
+      .toArray()
 
-      let charactersToDisplay/* : Character[] */
+    if (sortBy === 'random') {
+      noStore();
 
-    if (sortBy === "random") {
-      charactersToDisplay = await collectionCharacters
-        .aggregate([
-          { $match: queryOptions }, // filter the results
-        ])
-        .skip(offset)
-        .toArray()
-    } else {
-      charactersToDisplay = await collectionCharacters
-        .find({ ...queryOptions })
-        .sort({ [`${sortBy}`]: sortDirection as any })
-        .skip(offset)
-        .toArray()
+      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE)
     }
 
     return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE)
@@ -76,35 +65,32 @@ export async function fetchCharactersNoPagination(
   currentPage: number
 ) {
   const queryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
-  // noStore();
+  
 
   try {
-    // let charactersToDisplay/* : Character[] */
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
-    // const charactersToDisplay: Character[] = await collectionCharacters
-    //   .find({ ...queryOptions })
-    //   .sort({ [`${sortBy}`]: sortDirection as any })
-    //   .skip(offset)
-    //   .toArray()
-
-    let charactersToDisplay/* : Character[] */
+    const charactersToDisplay: Character[] = await collectionCharacters
+      .find({ ...queryOptions })
+      .sort({ [`${sortBy}`]: sortDirection as any })
+      .skip(offset)
+      .toArray()
 
     if (sortBy === "random") {
-      charactersToDisplay = await collectionCharacters
-        .aggregate([
-          { $match: queryOptions }, // filter the results
-        ])
-        .skip(offset)
-        .toArray()
-    } else {
-      charactersToDisplay = await collectionCharacters
-        .find({ ...queryOptions })
-        .sort({ [`${sortBy}`]: sortDirection as any })
-        .skip(offset)
-        .toArray()
+      noStore();
+
+      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).map((currentCharacter, index) => {
+        return (
+          <CharacterComponent
+            key={currentCharacter.slug}
+            index={index}
+            currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
+            withPagination={false}
+          />
+        )
+      })
     }
 
-    return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
+    return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).map((currentCharacter, index) => {
       return (
         <CharacterComponent
           key={currentCharacter.slug}
