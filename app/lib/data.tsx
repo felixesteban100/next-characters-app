@@ -41,7 +41,7 @@ export async function fetchCharacters(
     if (sortBy === 'random') {
       noStore();
 
-      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE)
+      return charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.slice(0, CHARACTERS_PER_PAGE)
     }
 
     return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE)

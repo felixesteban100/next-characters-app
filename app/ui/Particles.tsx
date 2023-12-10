@@ -246,7 +246,7 @@ export default function Particles({
 
 	return (
 		<div className={`${className}`} ref={canvasContainerRef} aria-hidden="true">
-			<canvas className="h-screen w-screen" /* className="[&_p]-primary " */ /* height={100000} className="h-[100%] w-full" */ ref={canvasRef} />
+			<canvas /* className="h-screen w-screen" */ /* className="[&_p]-primary " */ /* height={100000} className="h-[100%] w-full" */ ref={canvasRef} />
 		</div>
 	);
 }

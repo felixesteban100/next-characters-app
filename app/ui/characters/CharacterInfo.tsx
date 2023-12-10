@@ -24,8 +24,14 @@ export default async function CharacterInfo({ characterId, image, withPagination
                     //md:col-span-2
                     className="group cursor-pointer relative w-full lg:w-[30%] h-[75vh] shadow-xl rounded-md transition-all duration-300 lg:flex-none"
                 >
-                    <Image width={500} height={500} className={`transition-all duration-300 absolute w-full h-full object-cover blur-lg group-focus-visible:animate-pulse group-hover:animate-pulse `} src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md} alt={selectedCharacter.name} loading="lazy" />
-                    <Image width={500} height={500} className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`} src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md} alt={selectedCharacter.name} loading="lazy" />
+                    {/* <Image width={500} height={500} className={`transition-all duration-300 absolute w-full h-full object-cover blur-lg group-focus-visible:animate-pulse group-hover:animate-pulse `} src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md} alt={selectedCharacter.name} loading="lazy" /> */}
+                    <Image width={500} height={500}
+                        // className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`}
+                        className={`transition-all duration-300 absolute w-[100%] h-[100%] object-cover rounded-md md:object-top`}
+                        src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md}
+                        alt={selectedCharacter.name}
+                        loading="lazy"
+                    />
                     <FavoriteButton
                         name={selectedCharacter.name}
                         id={selectedCharacter.id.toString()}

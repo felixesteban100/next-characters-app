@@ -1,7 +1,7 @@
 import CharactersContainer from '@/app/ui/characters/CharactersContainer';
 import CharacterComponent from '@/app/ui/characters/CharacterComponent';
 import { fetchCharacters, fetchPages } from '@/app/lib/data';
-import { Character, QueryOptions } from '@/app/lib/definitions';
+import { QueryOptions } from '@/app/lib/definitions';
 import { sortByType, sortDirectionType } from './FilterCharacters';
 import PaginationCharacters from './PaginationCharacters';
 import NoCharactersFound from './NoCharactersFound';
