@@ -42,7 +42,7 @@ export default function RootLayout({
         >
           <div className='absolute inset-0 -z-10 min-h-screen'>
             <Particles
-              className=" animate-fade-in"
+              className="absolute inset-0 -z-10 animate-fade-in"
               quantity={1000}
               color="255, 255, 255"
             />
