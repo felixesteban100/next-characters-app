@@ -45,7 +45,7 @@ export default function LoadMoreCharacters({ characterName, howMany, side, unive
             setNewCharacters(newCharacters.slice(0, howMany))
         }
 
-    }, [inView, newCharacters, howMany, characterName, side, universe, team, gender, race, characterOrFullName])
+    }, [inView, newCharacters, howMany, characterName, side, universe, team, gender, race, characterOrFullName,   noMore, page, sortBy, sortDirection])
 
     return (
         <>

@@ -42,9 +42,9 @@ export default async function Teams() {
                 <Accordion type="single" collapsible className="w-full">
                     {allUniversesWithItsTeams.map(universe => {
                         return (
-                            <AccordionItem value={universe.info.value}>
+                            <AccordionItem key={universe.info.value} value={universe.info.value}>
                                 <AccordionTrigger>
-                                    <Image 
+                                    <Image
                                         src={universe.img}
                                         width={500}
                                         height={500}
@@ -55,8 +55,9 @@ export default async function Teams() {
                                 <AccordionContent>
                                     <div className='grid grid-cols-3 items-center'>
                                         {universe.teams.map((team) => {
-                                            return(
+                                            return (
                                                 <Link
+                                                    key={team.value}
                                                     href={`/characters?universe=${universe.info.value}&team=${team.value}&howMany=700&pagination=${false}`}
                                                     className='group/publisher'
                                                 >
@@ -67,7 +68,7 @@ export default async function Teams() {
                                                         alt={team.name}
                                                         className={`w-[80%] h-auto col-span-1 ${GetColorOfTheLogoByTeam(team.value)}`}
                                                     />
-                                                    <p className='group-hover/publisher:underline' key={team.value}>{team.name}</p>
+                                                    <p className='group-hover/publisher:underline'>{team.name}</p>
                                                 </Link>
                                             )
                                         })}
