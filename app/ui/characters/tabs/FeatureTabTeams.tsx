@@ -23,7 +23,7 @@ function FeatureTabTeams({ selectedCharacter, withPagination }: FeatureTabTeamsP
                     {
                         getTeamsImagesByCharacter(selectedCharacter).length > 0 ?
                             <div
-                                className="w-full flex flex-col flex-wrap justify-center items-center gap-5 my-5"
+                                className="w-full flex flex-col flex-wrap justify-center items-center gap-5 my-5 pb-10"
                             >
                                 {
                                     getTeamsImagesByCharacter(selectedCharacter).map((teamFound) => {

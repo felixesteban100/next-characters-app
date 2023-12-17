@@ -1,4 +1,5 @@
 import { ModeToggle } from '@/components/mode-toogle';
+import { Button } from '@/components/ui/button';
 import { Atom } from 'lucide-react';
 import Link from 'next/link';
 
@@ -19,6 +20,16 @@ function Navbar(/* { link }: { link: string } */) {
             // className={`object-contain animate-spin1 text-primary`}
             className={`object-contain animate-spin1 text-primary`}
           />
+        </Link>
+        <Link
+          href="/characters"
+        >
+          <Button variant={'link'}>Characters</Button>
+        </Link>
+        <Link
+          href="/teams"
+        >
+          <Button variant={'link'}>Teams</Button>
         </Link>
       </div>
 

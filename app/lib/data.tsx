@@ -39,9 +39,8 @@ export async function fetchCharacters(
       .toArray()
 
     if (sortBy === 'random') {
-      noStore();
-
-      return charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.slice(0, CHARACTERS_PER_PAGE)
+      // noStore();
+      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE)
     }
 
     return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE)
@@ -78,7 +77,10 @@ export async function fetchCharactersNoPagination(
     if (sortBy === "random") {
       noStore();
 
-      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).map((currentCharacter, index) => {
+      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).reduce((a, b) => { 
+        if(a.indexOf(b) < 0) a.push(b);
+        return a
+      }, new Array()).map((currentCharacter, index) => {
         return (
           <CharacterComponent
             key={currentCharacter.slug}

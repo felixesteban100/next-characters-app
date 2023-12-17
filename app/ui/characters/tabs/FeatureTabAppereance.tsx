@@ -41,11 +41,11 @@ function FeatureTabAppereance({ selectedCharacter }: FeatureTabAppereanceProps) 
                         icon={
                             selectedCharacter.appearance.gender?.toLowerCase() === "male" ?
                                 // "🚹"
-                                <FaFemale size={40} />
+                                <FaMale size={40} />
                                 :
                                 selectedCharacter.appearance.gender?.toLowerCase() === "female" ?
-                                    // "🚺"
-                                    <FaMale size={40} />
+                                // "🚺"
+                                <FaFemale size={40} />
                                     :
                                     ""
                         }

@@ -11,6 +11,7 @@ export default function NavLinks() {
         // { name: "Contact", href: "/contact" },
         
         { name: 'all characters', link: '/characters', id: '0' },
+        { name: 'teams', link: '/teams', id: '0' },
         ...characters,
         // { name: `random ${randomId}`, href: `/characters/${randomId}`}
 
