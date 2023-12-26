@@ -1,9 +1,7 @@
 import { Character } from "@/app/lib/definitions"
 import FeatureTabContainer from "./FeatureTabContainer"
-import StatContainer from "../stats/StatContainer"
 import Image from "next/image"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import Link from "next/link"
+import CarouselCharacterImages from "../CarouselCharacterImage"
 
 type FeatureTabComicsProps = {
     selectedCharacter: Character;
@@ -11,6 +9,8 @@ type FeatureTabComicsProps = {
 }
 
 function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComicsProps) {
+    const images = Object.entries(organizedComicsProperty(selectedCharacter.comics, selectedCharacter.biography.publisher).slice().sort(() => Math.random() - 0.5)).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
+
     const allImagesInfo: { property: string, img: string }[] = [
         { property: 'md', img: selectedCharacter.images.md },
         ...Object.entries(selectedCharacter.images).reduce((acc, currentValue) => {
@@ -29,8 +29,6 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
         ...Object.entries(selectedCharacter.images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
     ]
 
-    const images = Object.entries(organizedComicsProperty(selectedCharacter.comics, selectedCharacter.biography.publisher).slice().sort(() => Math.random() - 0.5)).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
-
     return (
         <FeatureTabContainer
             valueTab="Comics"
@@ -38,7 +36,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
         >
             {/* <StatContainer> */}
             <>
-                <ScrollArea className="w-56 md:w-96 whitespace-nowrap rounded-md  mx-auto mb-5">
+                {/* <ScrollArea className="w-56 md:w-96 whitespace-nowrap rounded-md  mx-auto mb-5">
                     <div className="flex w-max space-x-4 p-4 md:h-[450px]">
                         {allImagesInfo.map((imgInfo, index) => (
                             <figure key={index} className="shrink-0 w-[150px] md:w-max">
@@ -51,19 +49,20 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                                         height={400}
                                     />
                                 </Link>
-                                {/* <figcaption className="pt-2 text-xs text-muted-foreground">
-                                    Photo by{" "}
-                                    <span className="font-semibold text-foreground">
-                                        {selectedCharacter.name}
-                                    </span>
-                                </figcaption> */}
                             </figure>
                         ))}
                     </div>
                     <ScrollBar orientation="horizontal" />
-                </ScrollArea>
+                </ScrollArea> */}
+                <CarouselCharacterImages 
+                    allImagesInfo={allImagesInfo}
+                    allImages={allImages}
+                    withPagination={withPagination}
+                    characterName={selectedCharacter.name}
+                    characterId={selectedCharacter._id}
+                />
 
-                <div className='md:w-[50%] flex justify-center mx-auto'>
+                <div className='md:w-[50%] flex justify-center mx-auto mt-5'>
                     <div className="h-full w-full flex flex-col justify-center items-center gap-5">
                         {images.map((comic, index) => {
                             return (
