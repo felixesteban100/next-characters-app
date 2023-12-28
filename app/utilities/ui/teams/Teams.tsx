@@ -1,12 +1,11 @@
 'use client'
 
-import { ALLUNIVERSE, getTeamByUniverse } from '@/app/lib/constants';
-import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ALLUNIVERSE, UNIVERSES_WITH_TEAMS, getTeamByUniverse } from '../../lib/constants';
+import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '../../lib/charactersUtils';
 
-const universesWithTeams = ["Marvel Comics", "DC Comics", "Dark Horse Comics", "IDW Publishing", "Shueisha", "Warner Bros", "Super Sentai"]
 
 export type UniversesWithItsTeams = {
     info: {
@@ -19,7 +18,7 @@ export type UniversesWithItsTeams = {
 
 export default async function Teams() {
     const allUniversesWithItsTeams: UniversesWithItsTeams[] = ALLUNIVERSE.reduce((allUniverses, universe) => {
-        if (universesWithTeams.includes(universe.value)) {
+        if (UNIVERSES_WITH_TEAMS.includes(universe.value)) {
             allUniverses.push({
                 info: universe,
                 img: publisherIMG(universe.value),

@@ -1,4 +1,4 @@
-import { CHARACTERS_PER_PAGE } from "@/app/lib/constants"
+import { CHARACTERS_PER_PAGE } from "@/app/utilities/lib/constants"
 import CharactersContainer from "../CharactersContainer"
 import LoadingCharactersCard from "./LoadingCharactersCard"
 import LoadingPaginationCharacters from "./LoadingPaginationCharacters"

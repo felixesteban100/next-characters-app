@@ -1,19 +1,18 @@
 import { Suspense } from 'react';
-import Characters from '@/app/ui/characters/Characters';
-import FilterCharacters, { sortByType, sortDirectionType } from '@/app/ui/characters/FilterCharacters';
-import { QueryOptions } from '@/app/lib/definitions';
-import { getQueryOptions } from '@/app/lib/data';
-import { getTeamBackgroundImageByUniverse, getTeamByUniverse } from '@/app/lib/constants';
-import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/lib/charactersUtils';
-import LoadingCharacters from '@/app/ui/characters/loaders/LoadingCharacters';
-import CharactersNoPagination from '@/app/ui/characters/CharactersNoPagination';
-import Hero from '@/app/ui/Hero';
-import { organizedComicsProperty } from '@/app/ui/characters/tabs/FeatureTabComics';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { SlidersHorizontal } from 'lucide-react';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import PaginationToggle from '@/app/ui/characters/PaginationToggle';
+import FilterCharacters, { sortByType, sortDirectionType } from '@/app/utilities/ui/characters/FilterCharacters';
+import { getQueryOptions } from '@/app/utilities/lib/data';
+import { getTeamBackgroundImageByUniverse, getTeamByUniverse } from '@/app/utilities/lib/constants';
+import { QueryOptions } from '@/app/utilities/lib/definitions';
+import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/app/utilities/lib/charactersUtils';
+import { organizedComicsProperty } from '@/app/utilities/ui/characters/tabs/FeatureTabComics';
+import Hero from '@/app/utilities/ui/Hero';
+import Characters from '@/app/utilities/ui/characters/Characters';
+import LoadingCharacters from '@/app/utilities/ui/characters/loaders/LoadingCharacters';
+import CharactersNoPagination from '@/app/utilities/ui/characters/CharactersNoPagination';
+import PaginationToggle from '@/app/utilities/ui/characters/PaginationToggle';
 
 export function generateMetadata({
     searchParams,

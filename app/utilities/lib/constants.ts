@@ -58,6 +58,9 @@ export const ALLGENDERS = [
   },
 ];
 
+export const UNIVERSES_WITH_TEAMS = ["Marvel Comics", "DC Comics", "Dark Horse Comics", "IDW Publishing", "Shueisha", "Warner Bros", "Super Sentai", "SEGA"]
+
+
 export const ALLUNIVERSE = [
   { value: "All", name: "All universes" },
   { value: "Marvel Comics", name: "Marvel" },

@@ -1,8 +1,7 @@
+import CharacterInfo from '@/app/utilities/ui/characters/CharacterInfo';
+import LoadingCharacterInfo from '@/app/utilities/ui/characters/loaders/LoadingCharacterInfo';
 import { Suspense } from 'react';
-import CharacterInfo from '@/app/ui/characters/CharacterInfo';
-import LoadingCharacterInfo from '@/app/ui/characters/loaders/LoadingCharacterInfo';
 // import Breadcrumbs from "@/app/ui/breadcrumbs";
-// import { linkToCharactersPage } from '@/app/lib/constants';
 // import { fetchCharacterById } from '@/app/lib/data';
 
 // type Props = {

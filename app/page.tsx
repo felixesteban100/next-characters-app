@@ -4,7 +4,7 @@ import { Atom } from "lucide-react";
 // import theme from "./lib/useTailwind";
 // unstable_noStore()
 
-import NavLinks from "./ui/NavLinks";
+import NavLinks from "./utilities/ui/NavLinks";
 
 // const randomId = allIds[Math.floor(Math.random() * allIds.length)]
 

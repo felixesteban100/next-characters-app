@@ -1,4 +1,4 @@
-import Teams from '../ui/teams/Teams';
+import Teams from "../utilities/ui/teams/Teams";
 
 export function generateMetadata() {
     return {

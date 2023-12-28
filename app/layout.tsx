@@ -1,9 +1,9 @@
 import '@/app/globals.css'
-import { inter } from '@/app/ui/fonts';
+import { inter } from '@/app/utilities/ui/fonts';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
-import Particles from './ui/Particles';
 import { Toaster } from "@/components/ui/sonner"
+import Particles from './utilities/ui/Particles';
 
 export const metadata: Metadata = {
   title: {

@@ -15,11 +15,11 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, CHARACTERS_PER_PAGE, getTeamByUniverse } from "@/app/lib/constants"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Slider } from "@/components/ui/slider"
+import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, CHARACTERS_PER_PAGE, getTeamByUniverse } from "../../lib/constants"
 
 const formSchema = z.object({
     name: z.string(),

@@ -1,5 +1,5 @@
 import { ScrollArea } from "@/components/ui/scroll-area"
-import Navbar from "../ui/Navbar"
+import Navbar from "../utilities/ui/Navbar"
 
 export default function RootLayout({
     children,

@@ -1,11 +1,10 @@
-import CharactersContainer from '@/app/ui/characters/CharactersContainer';
-import CharacterComponent from '@/app/ui/characters/CharacterComponent';
-import { fetchCharacters, fetchPages } from '@/app/lib/data';
-import { QueryOptions } from '@/app/lib/definitions';
 import { sortByType, sortDirectionType } from './FilterCharacters';
 import PaginationCharacters from './PaginationCharacters';
 import NoCharactersFound from './NoCharactersFound';
-// import { getTeamByUniverse } from '@/app/lib/constants';
+import { QueryOptions } from '../../lib/definitions';
+import { fetchCharacters, fetchPages } from '../../lib/data';
+import CharactersContainer from './CharactersContainer';
+import CharacterComponent from './CharacterComponent';
 // import Image from 'next/image';
 
 type CharactersProps = {

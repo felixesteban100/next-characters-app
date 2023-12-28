@@ -1,10 +1,10 @@
-import { Character } from "@/app/lib/definitions"
+import { Character } from "@/app/utilities/lib/definitions"
 import FeatureTabContainer from "./FeatureTabContainer"
 import StatContainer from "../stats/StatContainer"
-import { getTeamByUniverse } from "@/app/lib/constants"
+import { getTeamByUniverse } from "@/app/utilities/lib/constants"
 import Link from "next/link"
 import Image from "next/image"
-import { GetColorOfTheLogoByTeam } from "@/app/lib/charactersUtils"
+import { GetColorOfTheLogoByTeam } from "@/app/utilities/lib/charactersUtils"
 
 type FeatureTabTeamsProps = {
     selectedCharacter: Character,
