@@ -59,7 +59,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                     allImages={allImages}
                     withPagination={withPagination}
                     characterName={selectedCharacter.name}
-                    characterId={selectedCharacter._id}
+                    characterId={selectedCharacter.id.toString()}
                 />
 
                 <div className='md:w-[50%] flex justify-center mx-auto mt-5'>

@@ -10,7 +10,7 @@ import { unstable_noStore as noStore } from "next/cache";
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
   try {
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     // console.log("fetchCharacterById")
     const selectedCharacter = await collectionCharacters.findOne({ id: parseInt(characterSelectedId) })
     return selectedCharacter

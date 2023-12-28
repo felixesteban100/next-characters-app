@@ -3,7 +3,7 @@ import { inter } from '@/app/ui/fonts';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
 import Particles from './ui/Particles';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
   title: {

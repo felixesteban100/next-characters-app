@@ -31,10 +31,8 @@ export default async function Page({ params, searchParams }: { params: { id: str
     const withPagination = searchParams?.pagination === "true"
 
     return (
-        // <section className=''>
-            <Suspense fallback={<LoadingCharacterInfo />}>
-                <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />
-            </Suspense>
-        // </section>
+        <Suspense fallback={<LoadingCharacterInfo />}>
+            <CharacterInfo characterId={characterId} image={searchParams.image} withPagination={withPagination} />
+        </Suspense>
     );
 }

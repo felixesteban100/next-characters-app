@@ -2,10 +2,8 @@
 
 import React from 'react'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { Card, CardContent } from "@/components/ui/card"
-import Link from "next/link"
-import { Character } from '@/app/lib/definitions'
 import Image from 'next/image'
+import Link from 'next/link'
 
 type CarouselCharacterImagesProps = {
     allImagesInfo: {
@@ -33,19 +31,12 @@ export default function CarouselCharacterImages({ allImages, allImagesInfo, char
                         <Link href={`/characters/${characterId}?name=${characterName}&image=${imgInfo.property}&withPagination=${withPagination}`} className="overflow-hidden rounded-md h-[90%] w-full">
                             <Image
                                 src={allImages[index]}
-                                alt={`Photo by ${characterName}-${index}`}
-                                className="aspect-[3/4] h-full w-fit object-cover"
-                                width={300}
-                                height={400}
+                                alt={`Photo #-${index}`}
+                                className="h-full object-cover"
+                                width={500}
+                                height={500}
                             />
                         </Link>
-                        {/* <div className="p-1">
-                            <Card>
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <span className="text-4xl font-semibold">{index + 1}</span>
-                                </CardContent>
-                            </Card>
-                        </div> */}
                     </CarouselItem>
                 ))}
             </CarouselContent>

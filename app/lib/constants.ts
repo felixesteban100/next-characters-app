@@ -1,4 +1,4 @@
-export const CHARACTERS_PER_PAGE = 4;
+export const CHARACTERS_PER_PAGE = 12;
 export const CHARACTERS_PER_PAGE_NOPAGINATION = 4
 
 export const STORAGE_KEY = 'next-characters-app'
@@ -65,6 +65,7 @@ export const ALLUNIVERSE = [
   { value: "Shueisha", name: "Shueisha" },
   { value: "Dark Horse Comics", name: "Dark Horse Comics" },
   { value: "George Lucas", name: "George Lucas" },
+  { value: "SEGA", name: "SEGA" },
   { value: "IDW Publishing", name: "IDW Publishing" },
   { value: "Image Comics", name: "Image Comics" },
   { value: "Warner Bros", name: "Warner Bros" },
@@ -249,7 +250,7 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
         {
           name: "Ultimates",
           value: "Ultimates",
-          img: "https://i0.wp.com/guiasdelectura.com/wp-content/uploads/2018/04/Ultimates_Vol_1_1.jpg?fit=1000%2C251&ssl=1",
+          img: "https://static.wikia.nocookie.net/marvelcrossroads/images/2/25/Ultimates_%285641%29.png/revision/latest?cb=20161227151528",
         },
         {
           name: "Weapon X",
@@ -493,7 +494,20 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
           img: 'https://static.wikia.nocookie.net/logopedia/images/7/71/MMPR_Era_Logo.png/revision/latest?cb=20140212040130'
         }
       ]
-      break;
+
+    case 'SEGA':
+      return [
+        {
+          name: 'Sonic Universe',
+          value: 'Sonic Universe',
+          img: 'https://static.wikia.nocookie.net/sonic/images/9/95/Sonic_Universe_Logo.png/revision/latest?cb=20140717161343'
+        },
+        {
+          name: 'Mario Universe',
+          value: 'Mario Universe',
+          img: 'https://ssb.wiki.gallery/images/9/96/MarioTitle.svg'
+        }
+      ]
     default:
       return [];
   }
@@ -890,6 +904,20 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
           name: 'Power Rangers',
           value: 'Power Rangers',
           img: 'https://static01.nyt.com/images/2012/06/22/arts/22GENZLINGER_SPAN/22GENZLINGER_SPAN-articleLarge.jpg?quality=75&auto=webp&disable=upscale'
+        }
+      ]
+
+    case 'SEGA':
+      return [
+        {
+          name: 'Sonic Universe',
+          value: 'Sonic Universe',
+          img: 'https://static.wikia.nocookie.net/heroism/images/b/bd/Green_Hill_Zone.png/revision/latest?cb=20230622040038'
+        },
+        {
+          name: 'Mario Universe',
+          value: 'Mario Universe',
+          img: 'https://static.vecteezy.com/system/resources/previews/021/100/565/non_2x/fantasy-world-game-background-free-vector.jpg'
         }
       ]
     default:

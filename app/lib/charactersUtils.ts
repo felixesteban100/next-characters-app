@@ -31,30 +31,34 @@ export function publisherIMG(publisher: string) {
 
     case 'Super Sentai':
       return "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0edd84a8-10d0-47e4-919d-bd37e670d24e/df8jt2a-c466bdae-03b1-4101-9b7d-ff9b390f3690.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBlZGQ4NGE4LTEwZDAtNDdlNC05MTlkLWJkMzdlNjcwZDI0ZVwvZGY4anQyYS1jNDY2YmRhZS0wM2IxLTQxMDEtOWI3ZC1mZjliMzkwZjM2OTAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.v7K-_yO7lBPO-ovgXQIZ3WQRIkamd7md2DajHQYv52w"
+
+    case 'SEGA':
+      return "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/SEGA_logo.svg/800px-SEGA_logo.svg.png"
+
     /**
-   * "Angel"
-   * "NBC - Heroes"
-   * Tempest
-   * SyFy
-   * ABC Studios
-   * Icon Comics
-   * Universal Studios
-   * Gemini V
-   * null
-   * Star Trek
-   * Goliath
-   * Deadpool
-   * Wildstorm
-   * South Park
-   * Sony Pictures
-   * Vindicator II
-   * Titan Books
-   * J. K. Rowling
-   * Microsoft
-   * She-Thing
-   * Rebellion
-   *
-   */
+* "Angel"
+* "NBC - Heroes"
+* Tempest
+* SyFy
+* ABC Studios
+* Icon Comics
+* Universal Studios
+* Gemini V
+* null
+* Star Trek
+* Goliath
+* Deadpool
+* Wildstorm
+* South Park
+* Sony Pictures
+* Vindicator II
+* Titan Books
+* J. K. Rowling
+* Microsoft
+* She-Thing
+* Rebellion
+*
+*/
 
     default:
       return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRykZHBER1nS5QMUGvv0qJCJFuqtf5wPrliiiE_1hMMbCwvONjVOaYloiVHMeCyH710z7g&usqp=CAU";
