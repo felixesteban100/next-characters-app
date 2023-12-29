@@ -1,11 +1,13 @@
 'use client'
 
-import { publisherIMG } from '@/app/lib/charactersUtils';
-import { GetDimentionsOfTheLogoForCard } from '@/app/lib/charactersUtils';
+import { publisherIMG } from '@/app/utilities/lib/charactersUtils';
+import { GetDimentionsOfTheLogoForCard } from '@/app/utilities/lib/charactersUtils';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { motion } from "framer-motion"
+import useCharacterStorage from '../../hooks/useCharacterStorage';
+import { CharacterInfo } from '../../lib/definitions';
 
 type CharacterProps = {
     index: number
@@ -19,44 +21,15 @@ const variants = {
 }
 
 export default function CharacterComponent({ index, currentCharacter, withPagination }: CharacterProps) {
+    // const [charactersFavorite] = useCharacterStorage('next-characters-app')
+    //// it is refreshing the array... why???
+    // const containsCharacter = (character: CharacterInfo) => [...charactersFavorite].some( ({id}) => character.id == id)
+
     return (
         <Link
             className={`cursor-pointer group/item`}
             href={`/characters/${currentCharacter.id}?name=${currentCharacter.name}&pagination=${withPagination}`}
         >
-            {/* <div className="max-w-sm rounded relative w-full">
-                <div className="relative w-full h-[37vh]">
-                    <Image
-                        src={currentCharacter.images.md}
-                        alt={currentCharacter.name}
-                        fill
-                        className="rounded-xl object-cover"
-                    />
-                </div>
-                <div className="py-4 flex flex-col gap-3">
-                    <div className="flex justify-between items-center gap-1">
-                        <h2 className="font-bold text-xl line-clamp-1 w-full">
-                            {currentCharacter.name}
-                        </h2>
-                        <div className="py-1 px-2 rounded-sm">
-                            <p className=" text-sm font-bold capitalize">
-                                {currentCharacter.biography.publisher}
-                            </p>
-                        </div>
-                    </div>
-                    <div className="flex gap-4 items-center">
-                        <div className="flex flex-row gap-2 items-center">
-                            <Image
-                                src={publisherIMG(currentCharacter.biography.publisher)}
-                                alt="episodes"
-                                width={20}
-                                height={20}
-                                className="object-contain"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div> */}
             <motion.div
                 //card-new
                 className={
@@ -89,13 +62,16 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
                 <div
                     className={`absolute z-[12] ml-5 mt-7 w-[90%] h-[85%] flex flex-col justify-between items-start gap-[55%]`}
                 >
-                    <h2
-                        className={`character_name font-bold text-white text-xl xl:text-2xl`}
-                    >
-                        {currentCharacter.name}
-                    </h2>
+                    <div className='w-full flex justify-between pr-5'>
+                        <h2
+                            className={`character_name font-bold text-white text-xl xl:text-2xl`}
+                        >
+                            {currentCharacter.name}
+                        </h2>
+                        {/* <p className={`text-xl xl:text-2xl ${containsCharacter(currentCharacter) === true ? "block" : "hidden"}`}>⭐</p> */}
+                    </div>
                     <Image
-                            // ${GetColorLogosByPublisher(currentCharacter.biography.publisher)}
+                        // ${GetColorLogosByPublisher(currentCharacter.biography.publisher)}
                         className={`
                             ${GetDimentionsOfTheLogoForCard(currentCharacter.biography.publisher)}
                         `}

@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchCharactersNoPagination } from '@/app/lib/data'
+import { fetchCharactersNoPagination } from '@/app/utilities/lib/data'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { sortByType, sortDirectionType } from './FilterCharacters'

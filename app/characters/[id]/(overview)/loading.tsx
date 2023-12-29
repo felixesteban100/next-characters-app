@@ -1,5 +1,5 @@
 // import Breadcrumbs from "@/app/ui/breadcrumbs";
-import LoadingCharacterInfo from "@/app/ui/characters/loaders/LoadingCharacterInfo";
+import LoadingCharacterInfo from "@/app/utilities/ui/characters/loaders/LoadingCharacterInfo";
 
 export default function Loading() {
     return (

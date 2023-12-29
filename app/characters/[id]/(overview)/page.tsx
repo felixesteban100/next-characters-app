@@ -2,7 +2,6 @@ import CharacterInfo from '@/app/utilities/ui/characters/CharacterInfo';
 import LoadingCharacterInfo from '@/app/utilities/ui/characters/loaders/LoadingCharacterInfo';
 import { Suspense } from 'react';
 // import Breadcrumbs from "@/app/ui/breadcrumbs";
-// import { fetchCharacterById } from '@/app/lib/data';
 
 // type Props = {
 //     params: { id: string }

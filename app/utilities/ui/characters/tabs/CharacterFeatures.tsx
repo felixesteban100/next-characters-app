@@ -1,4 +1,4 @@
-import { Character } from "@/app/lib/definitions";
+import { Character } from "@/app/utilities/lib/definitions";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FeatureTabStats from "./FeatureTabStats";
 import FeatureTabAppereance from "./FeatureTabAppereance";

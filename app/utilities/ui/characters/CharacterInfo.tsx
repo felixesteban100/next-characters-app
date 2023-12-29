@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Character } from "@/app/lib/definitions";
-import { fetchCharacterById } from "@/app/lib/data";
+import { Character } from "@/app/utilities/lib/definitions";
+import { fetchCharacterById } from "@/app/utilities/lib/data";
 import CharacterFeatures from "./tabs/CharacterFeatures";
 import { notFound } from 'next/navigation';
 import FavoriteButton from "../FavoriteButton";

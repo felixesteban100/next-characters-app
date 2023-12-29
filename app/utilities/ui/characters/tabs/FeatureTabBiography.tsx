@@ -1,11 +1,11 @@
-import { Character } from "@/app/lib/definitions"
+import { Character } from "@/app/utilities/lib/definitions"
 import FeatureTabContainer from "./FeatureTabContainer"
 import StatContainer from "../stats/StatContainer"
 import StatString from "../stats/StatString"
 import { Separator } from "@/components/ui/separator"
 import { Accordion } from "@/components/ui/accordion"
 import StatAccordion from "../stats/StatAccordion"
-import { GetColorLogosByPublisher, publisherIMG } from "@/app/lib/charactersUtils"
+import { GetColorLogosByPublisher, publisherIMG } from "@/app/utilities/lib/charactersUtils"
 import { Angry, Briefcase, Calendar, CaseSensitive, CaseSensitiveIcon, Globe2, LibraryBig, Meh, Smile } from "lucide-react"
 import { GrGroup } from "react-icons/gr";
 import Image from "next/image"

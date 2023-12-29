@@ -1,4 +1,4 @@
-import { Character } from "@/app/lib/definitions"
+import { Character } from "@/app/utilities/lib/definitions"
 import StatContainer from "../stats/StatContainer"
 import FeatureTabContainer from "./FeatureTabContainer"
 import StatString from "../stats/StatString"

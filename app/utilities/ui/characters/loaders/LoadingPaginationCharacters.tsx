@@ -1,5 +1,4 @@
 // import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
-// import { generatePagination } from '@/app/lib/utils';
 // import clsx from 'clsx';
 
 'use client';
