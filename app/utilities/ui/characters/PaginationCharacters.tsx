@@ -35,6 +35,8 @@ export default function PaginationCharacters({ totalPages }: { totalPages: numbe
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
+                // hidden={currentPage === 1}
+                className={`${currentPage === 1 ? "hidden" : ""}`}
                 href={createPageURL(currentPage - 1)}
               />
             </PaginationItem>
@@ -52,7 +54,12 @@ export default function PaginationCharacters({ totalPages }: { totalPages: numbe
               );
             })}
             <PaginationItem>
-              <PaginationNext href={createPageURL(currentPage + 1)} />
+              <PaginationNext
+                hidden={currentPage >= totalPages}
+                /* className={`${currentPage >= totalPages ? "" : ""}`} */
+                className={`${currentPage >= totalPages ? "hidden" : ""}`}
+                href={createPageURL(currentPage + 1)}
+              />
             </PaginationItem>
           </PaginationContent>
         </Pagination>
