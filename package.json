@@ -57,5 +57,11 @@
   },
   "browser": {
     "child_process": false
+  },
+  "workspaces": {
+    "nohoist": [
+      "@tailwindcss/forms",
+      "@tailwindcss/forms/**"
+    ]
   }
 }
