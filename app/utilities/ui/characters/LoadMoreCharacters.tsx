@@ -25,12 +25,13 @@ type LoadMoreCharactersProps = {
 //     page.value += 1
 // }
 
-export default function LoadMoreCharacters({ characterName, howMany, side, universe, team, gender, race, characterOrFullName, sortBy, sortDirection }: LoadMoreCharactersProps) {
+export default function LoadMoreCharacters({ characterName, howMany, side, universe, team, gender, race, characterOrFullName, sortBy, sortDirection }: LoadMoreCharactersProps) {    
     const [newCharacters, setNewCharacters] = useState<JSX.Element[]>([])
     const { ref, inView } = useInView()
     const [noMore, setNoMore] = useState(true)
     const [page, setPage] = useState(1)
-    // console.log(page.value)
+
+    // console.log("howMany", howMany)
 
     useEffect(() => {
         if (inView === true && noMore === true && newCharacters.length < howMany) {
@@ -45,7 +46,7 @@ export default function LoadMoreCharacters({ characterName, howMany, side, unive
             setNewCharacters(newCharacters.slice(0, howMany))
         }
 
-    }, [inView, newCharacters, howMany, characterName, side, universe, team, gender, race, characterOrFullName,   noMore, page, sortBy, sortDirection])
+    }, [inView, newCharacters, howMany, characterName, side, universe, team, gender, race, characterOrFullName,  noMore, page, sortBy, sortDirection])
 
     return (
         <>

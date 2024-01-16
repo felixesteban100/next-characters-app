@@ -25,6 +25,7 @@ export function generateMetadata({
         characterOrFullName?: string,
         characterName?: string;
         howMany?: string;
+        show_all?: string;
         side?: string;
         universe?: string;
         team?: string;
@@ -52,6 +53,7 @@ export default async function Page({
         characterOrFullName?: string,
         characterName?: string;
         howMany?: string;
+        show_all?: string;
         side?: string;
         universe?: string;
         team?: string;
@@ -67,6 +69,7 @@ export default async function Page({
     const characterOrFullName = searchParams?.characterOrFullName === "true"
     const characterName = searchParams?.characterName || '';
     const howMany = searchParams?.howMany || '50'
+    const show_all = searchParams?.show_all === "true"
     const side = searchParams?.side || "All"
     const universe = searchParams?.universe || "All"
     const team = searchParams?.team || "All"
@@ -74,7 +77,7 @@ export default async function Page({
     const race = searchParams?.race || "All"
 
     const currentPage = Number(searchParams?.pageCharacters) || 1;
-    const sortBy = searchParams?.sortBy || '_id';
+    const sortBy = searchParams?.sortBy || 'random';
     const sortDirection = searchParams?.sortDirection || 'desc';
 
     const queryOptions: QueryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
@@ -155,7 +158,7 @@ export default async function Page({
                 >
                     <CharactersNoPagination
                         characterName={characterName}
-                        howMany={parseInt(howMany)}
+                        howMany={show_all === true ? 700 : parseInt(howMany)}
                         side={side}
                         universe={universe}
                         team={team}

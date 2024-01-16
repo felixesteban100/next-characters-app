@@ -64,7 +64,6 @@ export async function fetchCharactersNoPagination(
   currentPage: number
 ) {
   const queryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
-  
 
   try {
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
