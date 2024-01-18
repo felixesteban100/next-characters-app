@@ -85,7 +85,7 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
                 <DialogHeader>
                     <DialogTitle>Select {urlParameterToChange} character</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Make changes to your profile here. Click save when youre done.
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
