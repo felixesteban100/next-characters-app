@@ -31,6 +31,16 @@ function Navbar(/* { link }: { link: string } */) {
         >
           <Button variant={'link'}>Teams</Button>
         </Link>
+        <Link
+          href="/fightCharacter"
+        >
+          <Button variant={'link'}>Fight characters</Button>
+        </Link>
+        {/* <Link
+          href="/fightTeam"
+        >
+          <Button variant={'link'}>Fight Teams</Button>
+        </Link> */}
       </div>
 
       <div className='flex justify-end gap-5'>

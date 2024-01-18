@@ -61,30 +61,30 @@ const config: Config = {
 
 
       typography: {
-				DEFAULT: {
-					css: {
-						"code::before": {
-							content: '""',
-						},
-						"code::after": {
-							content: '""',
-						},
-					},
-				},
-				quoteless: {
-					css: {
-						"blockquote p:first-of-type::before": { content: "none" },
-						"blockquote p:first-of-type::after": { content: "none" },
-					},
-				},
-			},
-			fontFamily: {
-				display: ["var(--font-calsans)"],
-			},
-			backgroundImage: {
-				"gradient-radial":
-					"radial-gradient(50% 50% at 50% 50%, var(--tw-gradient-stops))",
-			},
+        DEFAULT: {
+          css: {
+            "code::before": {
+              content: '""',
+            },
+            "code::after": {
+              content: '""',
+            },
+          },
+        },
+        quoteless: {
+          css: {
+            "blockquote p:first-of-type::before": { content: "none" },
+            "blockquote p:first-of-type::after": { content: "none" },
+          },
+        },
+      },
+      fontFamily: {
+        display: ["var(--font-calsans)"],
+      },
+      backgroundImage: {
+        "gradient-radial":
+          "radial-gradient(50% 50% at 50% 50%, var(--tw-gradient-stops))",
+      },
 
       keyframes: {
         "accordion-down": {
@@ -154,6 +154,32 @@ const config: Config = {
             opacity: "100%",
           },
         },
+
+        "fightRight": {
+          '0%': {
+            '-webkit-transform': "translateX(-1000px)",
+            transform: "translateX(-1000px)",
+            // opacity: '0',
+          },
+          "100%": {
+            '-webkit-transform': "translateX(0)",
+            transform: "translateX(0)",
+            // opacity: '1',
+          }
+        },
+
+        "fightLeft": {
+          '0%': {
+            '-webkit-transform': "translateX(1000px)",
+            transform: "translateX(1000px)",
+            // opacity: '0',
+          },
+          "100%": {
+            '-webkit-transform': "translateX(0)",
+            transform: "translateX(0)",
+            // opacity: '1',
+          }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -165,6 +191,9 @@ const config: Config = {
         title: "title 3s ease-out forwards",
         "fade-left": "fade-left 3s ease-in-out forwards",
         "fade-right": "fade-right 3s ease-in-out forwards",
+
+        "fightLeft" : "fightLeft 1s ease-in-out forwards",
+        "fightRight" : "fightRight 1s ease-in-out forwards",
       },
     },
   },
