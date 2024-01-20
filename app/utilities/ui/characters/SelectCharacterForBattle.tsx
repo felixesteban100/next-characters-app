@@ -71,7 +71,7 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
                     {
                         names.map((c) => {
                             return (
-                                <Button variant={"outline"} onClick={() => {
+                                <Button key={c.id} variant={"outline"} onClick={() => {
                                     // setName(c)
                                     setNames(new Array())
                                     onSubmit(c.id)
