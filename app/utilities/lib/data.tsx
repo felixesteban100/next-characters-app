@@ -10,10 +10,47 @@ import { unstable_noStore as noStore } from "next/cache";
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
   try {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    // console.log("fetchCharacterById")
     const selectedCharacter = await collectionCharacters.findOne({ id: parseInt(characterSelectedId) })
     return selectedCharacter
+  } catch (error) {
+    console.error(error);
+    throw Error(`MongoDB Connection Error: ${error}`);
+  }
+}
+
+export async function getRandomIdRecursively() {
+  // const randomCharacter = await fetchCharacterByName((Math.floor(Math.random() * 780) + 1).toString())
+  const randomCharacter = await fetchCharacterById((Math.floor(Math.random() * 780) + 1).toString())
+
+  if (!randomCharacter) {
+      return getRandomIdRecursively()
+  }
+
+  return randomCharacter?.id.toString()
+}
+
+export async function fetchCharacterByName(characterSelectedName: string) {
+  // noStore();
+  try {
+    const regex = new RegExp(`${characterSelectedName}`, "ig");
+    const selectedCharacter = await collectionCharacters.findOne({ name: regex })
+    return selectedCharacter
+  } catch (error) {
+    console.error(error);
+    throw Error(`MongoDB Connection Error: ${error}`);
+  }
+}
+
+export async function fetchCharacterByNameToSearch(characterSelectedName: string) {
+  // noStore();
+  try {
+    const regex = new RegExp(`${characterSelectedName}`, "ig");
+    const selectedCharacters = await collectionCharacters.find({ name: regex }).limit(10).toArray()
+    const result = selectedCharacters.map(c => {
+      return {name: c.name, id: c.id}
+    })
+
+    return result
   } catch (error) {
     console.error(error);
     throw Error(`MongoDB Connection Error: ${error}`);
@@ -73,6 +110,8 @@ export async function fetchCharactersNoPagination(
       .skip(offset)
       .toArray()
 
+
+      // it is repeting some characters when random is selected
     if (sortBy === "random") {
       noStore();
 

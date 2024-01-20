@@ -6,8 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { motion } from "framer-motion"
-import useCharacterStorage from '../../hooks/useCharacterStorage';
-import { CharacterInfo } from '../../lib/definitions';
+// import useCharacterStorage from '../../hooks/useCharacterStorage';
+// import { CharacterInfo } from '../../lib/definitions';
 
 type CharacterProps = {
     index: number

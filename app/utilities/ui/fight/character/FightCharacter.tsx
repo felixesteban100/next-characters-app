@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import CharacterInfoBattle from '../../characters/CharacterInfoBattle'
 import { Separator } from '@/components/ui/separator'
 import LoadingCharacterInfoBattle from '../../characters/loaders/LoadingCharacterInfoBattle'
@@ -10,16 +10,20 @@ type FightCharacterProps = {
 
 function FightCharacter({ first, second }: FightCharacterProps) {
     return (
-        <div className='h-full flex justify-center items-center gap-10 w-[90%] md:w-full'>
-            <Suspense fallback={<LoadingCharacterInfoBattle urlParameterToChange={'first'}/>}>
+        <div className='h-full flex justify-center items-start gap-10 w-[90%] md:w-full'>
+            {/* WHY THE HECK THIS SUSPENSE AIN'T WORKING??? -_- */}
+
+            <Suspense key={`first-${first}`} fallback={<LoadingCharacterInfoBattle key={`loading-first-${first}`}/>}>
                 <CharacterInfoBattle
+                    key={`CharacterInfoBattle-${first}`}
                     characterId={first}
                     urlParameterToChange={'first'}
                 />
             </Suspense>
             <Separator className='h-[20rem] md:h-[100vh] w-[0.2rem]' orientation='vertical' />
-            <Suspense fallback={<LoadingCharacterInfoBattle urlParameterToChange={'second'}/>}>
+            <Suspense key={`second-${second}`} fallback={<LoadingCharacterInfoBattle key={`loading-second-${second}`}/>}>
                 <CharacterInfoBattle
+                    key={`CharacterInfoBattle-${first}`}
                     characterId={second}
                     urlParameterToChange={'second'}
                 />

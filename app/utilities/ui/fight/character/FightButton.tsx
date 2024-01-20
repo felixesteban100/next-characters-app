@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import LoadingCharacterInfoBattle from "../../characters/loaders/LoadingCharacterInfoBattle";
-import { Suspense } from "react";
 import { Separator } from "@/components/ui/separator";
 import { fetchCharacterById } from "@/app/utilities/lib/data";
 import { Character } from "@/app/utilities/lib/definitions";
@@ -9,28 +7,31 @@ import Image from "next/image";
 import { WithId } from "mongodb";
 
 type FightButtonProps = {
-    first: string;
-    second: string;
+    first: string | undefined;
+    second: string | undefined;
 }
 
 export default async function FightButton({ first, second }: FightButtonProps) {
+    if (!first || !second) {
+        return <div className="flex items-center">Select two characters</div>
+    }
 
     const selectedCharacter1 = await fetchCharacterById(first)
     const selectedCharacter2 = await fetchCharacterById(second)
-
+    
     if (!selectedCharacter1 || !selectedCharacter2) {
-        return <div>Error</div>
+        return <div>Error fetchCharacterById</div>
     }
 
     const firstStats = getCharacterStatsNumber(selectedCharacter1)
     const secondStats = getCharacterStatsNumber(selectedCharacter2)
 
     function getWinnerBetweenTwoCharacters(first: Character, second: Character) {
-        return firstStats > secondStats ? first.name : second.name
+        return firstStats === secondStats ? "Tie" : firstStats > secondStats ? first.name : second.name
     }
 
     function getCharacterStatsNumber(selectedCharacter: Character) {
-        return Math.floor(Object.entries(selectedCharacter.powerstats).reduce((acc, [key, value]) => {
+        return Math.floor(Object.entries(selectedCharacter.powerstats).reduce((acc, [_, value]) => {
             acc += value
             return acc
         }, 0) / 6)
@@ -50,21 +51,17 @@ export default async function FightButton({ first, second }: FightButtonProps) {
                 </DialogHeader>
 
                 <div className='h-full flex justify-center items-center gap-10'>
-                    <Suspense fallback={<LoadingCharacterInfoBattle urlParameterToChange={'first'} />}>
-                        <CharacterInfoForMatch
-                            selectedCharacter={selectedCharacter1}
-                            stats={firstStats}
-                            classNames={"animate-fightRight"}
-                        />
-                    </Suspense>
+                    <CharacterInfoForMatch
+                        selectedCharacter={selectedCharacter1}
+                        stats={firstStats}
+                        classNames={"animate-fightRight"}
+                    />
                     <Separator className='h-[100%] w-[0.5rem]' orientation='vertical' />
-                    <Suspense fallback={<LoadingCharacterInfoBattle urlParameterToChange={'second'} />}>
-                        <CharacterInfoForMatch
-                            selectedCharacter={selectedCharacter2}
-                            stats={secondStats}
-                            classNames={"animate-fightLeft"}
-                        />
-                    </Suspense>
+                    <CharacterInfoForMatch
+                        selectedCharacter={selectedCharacter2}
+                        stats={secondStats}
+                        classNames={"animate-fightLeft"}
+                    />
                 </div>
             </DialogContent>
         </Dialog>

@@ -2,11 +2,11 @@ import { Character } from "@/app/utilities/lib/definitions";
 import Image from "next/image";
 import Stats from "../Stats";
 
-type CharacterInfoBattleProps = {
-    urlParameterToChange: string
-}
+// type CharacterInfoBattleProps = {
+//     urlParameterToChange: string
+// }
 
-export default async function LoadingCharacterInfoBattle({ urlParameterToChange }: CharacterInfoBattleProps) {
+export default async function LoadingCharacterInfoBattle(/* { urlParameterToChange }: CharacterInfoBattleProps */) {
     const emptyCharacter: Character = {
         powerstats: {
             intelligence: 0,
@@ -49,7 +49,7 @@ export default async function LoadingCharacterInfoBattle({ urlParameterToChange 
         },
         _id: "",
         id: 0,
-        name: `Loading ${urlParameterToChange} character ...`,
+        name: `Loading character ...`,
         slug: "",
         comics: [""]
     }

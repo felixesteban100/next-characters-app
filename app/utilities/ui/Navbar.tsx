@@ -2,8 +2,9 @@ import { ModeToggle } from '@/components/mode-toogle';
 import { Button } from '@/components/ui/button';
 import { Atom } from 'lucide-react';
 import Link from 'next/link';
+import { getRandomIdRecursively } from '../lib/data';
 
-function Navbar(/* { link }: { link: string } */) {
+async function Navbar(/* { link }: { link: string } */) {
   return (
     <nav 
       // className='mx-auto flex justify-between gap-5 py-5 pt-16 px-5 max-w-[80rem]'
@@ -32,7 +33,7 @@ function Navbar(/* { link }: { link: string } */) {
           <Button variant={'link'}>Teams</Button>
         </Link>
         <Link
-          href="/fightCharacter"
+          href={`/fightCharacter?first=${await getRandomIdRecursively()}&second=${await getRandomIdRecursively()}`}
         >
           <Button variant={'link'}>Fight characters</Button>
         </Link>

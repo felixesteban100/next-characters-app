@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import useCharacterStorage from "../hooks/useCharacterStorage";
+import { getRandomIdRecursively } from "../lib/data";
 
 export default function NavLinks() {
     const [characters] = useCharacterStorage('next-characters-app')
@@ -11,7 +12,8 @@ export default function NavLinks() {
         // { name: "Contact", href: "/contact" },
         
         { name: 'all characters', link: '/characters', id: '0' },
-        { name: 'teams', link: '/teams', id: '0' },
+        // { name: 'teams', link: '/teams', id: '0' },
+        // { name: 'fight', link: `/fightCharacters?first=${await getRandomIdRecursively()}second=${await getRandomIdRecursively()}`, id: '0' },
         ...characters,
         // { name: `random ${randomId}`, href: `/characters/${randomId}`}
 

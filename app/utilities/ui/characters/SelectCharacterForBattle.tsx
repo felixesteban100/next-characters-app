@@ -1,70 +1,44 @@
 "use client"
 
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Character } from "../../lib/definitions";
 import { useSearchParams, useRouter } from "next/navigation"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { fetchCharacterById } from "../../lib/data";
+import { fetchCharacterByNameToSearch, getRandomIdRecursively } from "../../lib/data";
+import { useState } from "react";
+
+import { Input } from "@/components/ui/input";
 
 type SelectCharacterForBattleProps = {
     selectedCharacter: Character;
     urlParameterToChange: string;
 }
 
-const formSchema = z.object({
-    id: z.string().min(1, {
-        message: "Id must be at least 1 characters.",
-    }),
-})
-
 export default function SelectCharacterForBattle({ selectedCharacter, urlParameterToChange }: SelectCharacterForBattleProps) {
+    // const [name, setName] = useState(selectedCharacter.name)
+    // const [names, setNames] = useState(["Batman", "Spider-Man"])
+    const [names, setNames] = useState(new Array())
+
     const searchParams = useSearchParams()
     // const pathname = usePathname()
     const { replace } = useRouter()
     const params = new URLSearchParams(searchParams)
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        params.set(urlParameterToChange, values.id);
+    function onSubmit(name: string) {
+        params.set(urlParameterToChange, name);
         replace(`/fightCharacter?${params.toString()}`)
     }
-
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            // id: selectedCharacter.id.toString(),
-            id: ""
-        },
-    })
-
-    async function getRandomIdRecursively() {
-        const randomCharacter = await fetchCharacterById((Math.floor(Math.random() * 780) + 1).toString())
-
-        if (!randomCharacter) {
-            return getRandomIdRecursively()
-        }
-
-        return randomCharacter?.id.toString()
-    }
-
 
     async function RandomCharacter() {
-        params.set(urlParameterToChange, await getRandomIdRecursively());
-        replace(`/fightCharacter?${params.toString()}`)
+        const randomName = await getRandomIdRecursively()
+        onSubmit(randomName)
+    }
+
+    async function searchNames(value: string) {
+        const names = await fetchCharacterByNameToSearch(value)
+        setNames(names)
     }
 
     return (
@@ -73,9 +47,7 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
                 <Image
                     width={500}
                     height={500}
-                    // className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`}
-                    // className={`transition-all duration-300 absolute w-[100%] h-[100%] object-cover rounded-md md:object-top`}
-                    className="w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
+                    className="rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
                     src={selectedCharacter.images.md}
                     alt={selectedCharacter.name}
                     loading="lazy"
@@ -88,32 +60,55 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
                         Make changes to your profile here. Click save when youre done.
                     </DialogDescription>
                 </DialogHeader>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                        <FormField
-                            control={form.control}
-                            name="id"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Id</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="70" {...field} />
-                                    </FormControl>
-                                    <FormDescription>
-                                        Write the id here
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <DialogClose className="flex justify-start items-center gap-2">
-                            <Button type="submit">Submit</Button>
-                            <Button onClick={() => RandomCharacter()}>Random</Button>
-                        </DialogClose>
-                    </form>
-                </Form>
+
+                {/* <Label>Name</Label> */}
+                <Input /* value={name} */ onChange={(e) => {
+                    // onSubmit(e.target.value)
+                    // use throttle here
+                    searchNames(e.target.value)
+                }} />
+                <div className="flex flex-col">
+                    {
+                        names.map((c) => {
+                            return (
+                                <Button variant={"outline"} onClick={() => {
+                                    // setName(c)
+                                    setNames(new Array())
+                                    onSubmit(c.id)
+                                }}>
+                                    <span>{c.name}</span>
+                                </Button>
+                            )
+                        })
+                    }
+                </div>
+                {/* <Command className="rounded-lg border shadow-md">
+                    <CommandInput value={name} onValueChange={(value) => {
+                        setName(value)
+                        // use throttle here
+                        searchNames(value)
+                    }} placeholder="Type a name for search..." />
+                    <CommandList>
+                        <CommandEmpty>No results found.</CommandEmpty>
+                        <CommandGroup heading="Suggestions">
+                            {
+                                names.map((c) => {
+                                    return (
+                                        <CommandItem onClick={() => setName(c)}>
+                                            <span>{c}</span>
+                                        </CommandItem>
+                                    )
+                                })
+                            }
+                        </CommandGroup>
+                    </CommandList>
+                </Command> */}
+                <DialogClose className="flex flex-col w-full gap-2">
+                    {/* <Button className="w-full" onClick={() => onSubmit()}>Change</Button> */}
+                    <Button className="w-full" variant={"secondary"} onClick={() => RandomCharacter()}>Random</Button>
+                </DialogClose>
+
                 <DialogFooter>
-                    {/* <Button onClick={() => RandomCharacter()}>Random</Button> */}
                 </DialogFooter>
             </DialogContent>
         </Dialog>
