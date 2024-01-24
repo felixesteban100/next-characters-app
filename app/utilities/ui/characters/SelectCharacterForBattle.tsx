@@ -11,6 +11,8 @@ import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 
+import { CldImage } from 'next-cloudinary';
+
 type SelectCharacterForBattleProps = {
     selectedCharacter: Character;
     urlParameterToChange: string;
@@ -41,13 +43,29 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
         setNames(names)
     }
 
+
     return (
         <Dialog>
             <DialogTrigger asChild>
+                {/* <CldImage
+                    deliveryType="fetch"
+                    width="500"
+                    height="500"
+                    // src={selectedCharacter.images.md}
+                    src="https://static.wikia.nocookie.net/marvel_dc/images/0/08/Batman_Vol_3_131_Textless_Fabok_Variant.jpg/revision/latest?cb=20230106222502"
+                    // src="cld-sample-5"
+                    // sizes="100vw"
+                    // className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
+                    // crop="thumb"
+                    alt={selectedCharacter.name}
+                    // removeBackground
+                    // pixelate
+                /> */}
+
                 <Image
                     width={500}
                     height={500}
-                    className="rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
+                    className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
                     src={selectedCharacter.images.md}
                     alt={selectedCharacter.name}
                     loading="lazy"

@@ -933,3 +933,21 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
 // export const linkToCharactersPage = `/characters?pageCharacters=${Math.floor(Math.random() * 179) + 1}&characterOrFullName=false&side=All&universe=All&sortBy=_id&sortDirection=desc&team=All`
 // export const linkToCharactersPage = `/characters?pageCharacters=1&characterOrFullName=false&side=All&universe=All&sortBy=_id&sortDirection=desc&team=All`
 export const linkToCharactersPage = `/characters`
+
+
+export const FixedAttributeTranslator: { [key: string]: string } = {
+  'powerstats.combat': 'Combat',
+  'powerstats.power': 'Power',
+  'powerstats.durability': 'Durability',
+  'powerstats.speed': 'Speed',
+  'powerstats.intelligence': 'Intelligence',
+  'powerstats.strength': 'Strength',
+}
+
+export const AttributeTranslator: { [key: string]: string } = {
+    'connections.groupAffiliations': 'Teams',
+    'biography.alignment': 'Side',
+    'appearance.gender': 'Gender',
+    'appearance.race': 'Race',
+    'biography.publisher': 'Universe'
+}

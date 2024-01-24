@@ -1,6 +1,6 @@
 'use server' // I have to write this because this is a .jsx not .ts file
 
-import { Character, QueryOptions } from "./definitions";
+import { Character, CharacterAttributes, QueryOptions } from "./definitions";
 import { sortByType, sortDirectionType } from "../ui/characters/FilterCharacters";
 import { CHARACTERS_PER_PAGE, CHARACTERS_PER_PAGE_NOPAGINATION } from "./constants";
 import { collectionCharacters } from "./mongodb/mongodb";
@@ -23,7 +23,7 @@ export async function getRandomIdRecursively() {
   const randomCharacter = await fetchCharacterById((Math.floor(Math.random() * 780) + 1).toString())
 
   if (!randomCharacter) {
-      return getRandomIdRecursively()
+    return getRandomIdRecursively()
   }
 
   return randomCharacter?.id.toString()
@@ -47,7 +47,7 @@ export async function fetchCharacterByNameToSearch(characterSelectedName: string
     const regex = new RegExp(`${characterSelectedName}`, "ig");
     const selectedCharacters = await collectionCharacters.find({ name: regex }).limit(10).toArray()
     const result = selectedCharacters.map(c => {
-      return {name: c.name, id: c.id}
+      return { name: c.name, id: c.id }
     })
 
     return result
@@ -63,7 +63,7 @@ export async function fetchCharacters(
   sortBy: sortByType,
   sortDirection: sortDirectionType
 ) {
-  
+
 
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
@@ -111,12 +111,12 @@ export async function fetchCharactersNoPagination(
       .toArray()
 
 
-      // it is repeting some characters when random is selected
+    // it is repeting some characters when random is selected
     if (sortBy === "random") {
       noStore();
 
-      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).reduce((a, b) => { 
-        if(a.indexOf(b) < 0) a.push(b);
+      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).reduce((a, b) => {
+        if (a.indexOf(b) < 0) a.push(b);
         return a
       }, new Array()).map((currentCharacter, index) => {
         return (
@@ -188,4 +188,27 @@ export async /* make this async even though I am now using async code in here (b
   if (race !== "All") queryOptions["appearance.race"] = race;
 
   return queryOptions;
+}
+
+export default async function fetchCharactersTop(attributes: CharacterAttributes, numberOfTop: number, fixedAttribute: string, order: 'asc' | 'desc') {
+  const removeAttributesWithAll = await removeAttributesAll(attributes)
+
+  try {
+    const characters: Character[] = await collectionCharacters
+      .find({ ...removeAttributesWithAll })
+      .sort({ [`${fixedAttribute}`]: order })
+      .limit(numberOfTop)
+      .toArray()
+
+    return characters
+  } catch (error) {
+    console.error(error);
+    throw Error(`MongoDB Connection Error: ${error}`);
+  }
+}
+
+export async function removeAttributesAll(attributes: CharacterAttributes){
+  return Object.fromEntries(
+    Object.entries(attributes).filter(([key, value]) => (value !== "All" && value !== 'both'))
+  );
 }

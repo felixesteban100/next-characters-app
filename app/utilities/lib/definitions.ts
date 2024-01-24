@@ -67,3 +67,11 @@ export type CharacterInfo = {
     id: string;
     link: string
 }
+
+export type CharacterAttributes = {
+    'connections.groupAffiliation': string,
+    'biography.alignment': string,
+    'appearance.gender': string,
+    'appearance.race': string,
+    'biography.publisher': string
+}

@@ -37,6 +37,11 @@ async function Navbar(/* { link }: { link: string } */) {
         >
           <Button variant={'link'}>Fight characters</Button>
         </Link>
+        <Link
+          href={`/rankings`}
+        >
+          <Button variant={'link'}>Rankings</Button>
+        </Link>
         {/* <Link
           href="/fightTeam"
         >

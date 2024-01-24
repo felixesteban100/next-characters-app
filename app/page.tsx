@@ -6,6 +6,7 @@ import { Atom } from "lucide-react";
 
 import NavLinks from "./utilities/ui/NavLinks";
 
+
 // const randomId = allIds[Math.floor(Math.random() * allIds.length)]
 
 // const images: string[] = [
