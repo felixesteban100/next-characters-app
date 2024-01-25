@@ -55,7 +55,7 @@ export type QueryOptions = {
     "biography.publisher"?: string;
     "connections.groupAffiliation"?: string | RegExp;
     "appearance.gender"?: string;
-    "appearance.race"?: string;
+    "appearance.race"?: string | RegExp;
 };
 /* {
     [key: string]: any;

@@ -9,6 +9,7 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
+  // await new Promise((resolve) => setTimeout(resolve, 7000));
   try {
     const selectedCharacter = await collectionCharacters.findOne({ id: parseInt(characterSelectedId) })
     return selectedCharacter
@@ -19,6 +20,7 @@ export async function fetchCharacterById(characterSelectedId: string) {
 }
 
 export async function getRandomIdRecursively() {
+  // await new Promise((resolve) => setTimeout(resolve, 7000));
   // const randomCharacter = await fetchCharacterByName((Math.floor(Math.random() * 780) + 1).toString())
   const randomCharacter = await fetchCharacterById((Math.floor(Math.random() * 780) + 1).toString())
 
@@ -185,7 +187,7 @@ export async /* make this async even though I am now using async code in here (b
       queryOptions["connections.groupAffiliation"] = new RegExp(team, "ig");
   }
   if (gender !== "both") queryOptions["appearance.gender"] = gender;
-  if (race !== "All") queryOptions["appearance.race"] = race;
+  if (race !== "All") queryOptions["appearance.race"] = new RegExp(race, 'ig');
 
   return queryOptions;
 }
@@ -207,8 +209,19 @@ export default async function fetchCharactersTop(attributes: CharacterAttributes
   }
 }
 
-export async function removeAttributesAll(attributes: CharacterAttributes){
-  return Object.fromEntries(
-    Object.entries(attributes).filter(([key, value]) => (value !== "All" && value !== 'both'))
-  );
+export async function removeAttributesAll(attributes: CharacterAttributes) {
+  return Object.entries(attributes).reduce((acc, [key, value]) => {
+    if ((value !== "All" && value !== 'both')) {
+      if (key === 'appearance.race' || key === 'connections.groupAffiliation') {
+        acc[key] = new RegExp(value, 'ig')
+      } else {
+        acc[key] = value
+      }
+    }
+    return acc
+  }, {} as Record<string, string | RegExp>)
+}
+
+export async function removeAttributesAllJustValues(attributes: CharacterAttributes) {
+  return Object.fromEntries(Object.entries(attributes).filter(([key, value]) => (value !== "All" && value !== 'both')));
 }

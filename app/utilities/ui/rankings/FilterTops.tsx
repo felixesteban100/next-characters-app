@@ -44,7 +44,7 @@ export default function FilterTops() {
             race: searchParams.get('race') ?? "All",
             publisher: searchParams.get('publisher') ?? 'All',
             gender: searchParams.get('gender') ?? 'both',
-            numberOfTop: searchParams.get('numberOfTop') ?? '10',
+            numberOfTop: searchParams.get('numberOfTop') ?? '100',
             order: searchParams.get('order') ?? "desc",
         },
     })
@@ -53,7 +53,7 @@ export default function FilterTops() {
     const teamByUniverse: { name: string, value: string }[] = getTeamByUniverse(form.watch().publisher)
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        if (values.numberOfTop !== "" && values.numberOfTop !== "10") {
+        if (values.numberOfTop !== "" && values.numberOfTop !== "100") {
             params.set('numberOfTop', values.numberOfTop)
         } else {
             params.delete('numberOfTop')

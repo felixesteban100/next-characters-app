@@ -6,6 +6,7 @@ import { GiMuscleUp } from "react-icons/gi";
 import StatNumber from "./stats/StatNumber";
 import StatContainer from "./stats/StatContainer";
 
+
 type StatsProps = {
     selectedCharacter: Character
 }

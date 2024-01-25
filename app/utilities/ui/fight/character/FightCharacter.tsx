@@ -10,7 +10,7 @@ type FightCharacterProps = {
 
 function FightCharacter({ first, second }: FightCharacterProps) {
     return (
-        <div className='h-full flex justify-center items-start gap-10 w-[90%] md:w-full'>
+        <div className='h-full flex justify-center items-start gap-2 md:gap-10 w-full'>
             {/* WHY THE HECK THIS SUSPENSE AIN'T WORKING??? -_- */}
 
             <Suspense key={`first-${first}`} fallback={<LoadingCharacterInfoBattle key={`loading-first-${first}`}/>}>
@@ -20,7 +20,7 @@ function FightCharacter({ first, second }: FightCharacterProps) {
                     urlParameterToChange={'first'}
                 />
             </Suspense>
-            <Separator className='h-[20rem] md:h-[100vh] w-[0.2rem]' orientation='vertical' />
+            <Separator className='min-h-[90vh] md:h-[100vh] w-[0.2rem]' orientation='vertical' />
             <Suspense key={`second-${second}`} fallback={<LoadingCharacterInfoBattle key={`loading-second-${second}`}/>}>
                 <CharacterInfoBattle
                     key={`CharacterInfoBattle-${first}`}

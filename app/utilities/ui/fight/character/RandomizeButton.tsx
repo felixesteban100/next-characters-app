@@ -9,10 +9,10 @@ export default function RandomizeButton() {
     const { replace } = useRouter()
     const params = new URLSearchParams(searchParams)
 
-    async function getRandomIdRecursively(){
+    async function getRandomIdRecursively() {
         const randomCharacter = await fetchCharacterById((Math.floor(Math.random() * 780) + 1).toString())
 
-        if(!randomCharacter){
+        if (!randomCharacter) {
             return getRandomIdRecursively()
         }
 
@@ -29,10 +29,14 @@ export default function RandomizeButton() {
         replace(`/fightCharacter?${params.toString()}`)
     }
 
-    return(
-        <Button onClick={async () => {
-            changeFirstCharacter(await getRandomIdRecursively())
-            changeSecondCharacter(await getRandomIdRecursively())
-        }}>Random 🔀</Button>
+    return (
+        <Button
+            onClick={async () => {
+                changeFirstCharacter(await getRandomIdRecursively())
+                changeSecondCharacter(await getRandomIdRecursively())
+            }}
+            variant={"outline"}
+            size={"icon"}
+        >🔀</Button>
     )
 }

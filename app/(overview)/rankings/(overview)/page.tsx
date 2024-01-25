@@ -2,6 +2,7 @@ import FilterTops from "@/app/utilities/ui/rankings/FilterTops";
 import Tops from "@/app/utilities/ui/rankings/Tops";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Settings2 } from "lucide-react";
 
 export function generateMetadata() {
     return {
@@ -29,17 +30,17 @@ export default async function Page({
     const race = searchParams?.race ?? 'All'
     const publisher = searchParams?.publisher ?? 'All'
     const gender = searchParams?.gender ?? 'both'
-    const numberOfTop = parseInt(searchParams?.numberOfTop ?? '10')
+    const numberOfTop = parseInt(searchParams?.numberOfTop ?? '100')
     const order = searchParams?.order === 'asc' ? 'asc' : 'desc'
 
     return (
         <main>
-            <div className='w-[80%] md:w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-5 my-10 md:px-8'>
-                <h2 className="text-xl md:text-3xl font-bold">Rankings Characters</h2>
+            <div className='w-full flex justify-between items-center gap-5 my-10 px-8' /* className='w-[80%] md:w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-5 my-10 md:px-8' */>
+                <h2 className="text-3xl font-bold">Rankings Characters</h2>
                 <div className="flex gap-2">
                     <Sheet>
                         <SheetTrigger asChild>
-                            <Button variant={'outline'}>Top Selector</Button>
+                            <Button variant={'outline'} size={"icon"}><Settings2/></Button>
                         </SheetTrigger>
                         <SheetContent>
                             <SheetHeader>

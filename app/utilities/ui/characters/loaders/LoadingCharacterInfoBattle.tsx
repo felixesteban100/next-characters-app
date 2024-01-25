@@ -59,13 +59,19 @@ export default async function LoadingCharacterInfoBattle(/* { urlParameterToChan
             <div
                 className="flex flex-col gap-5"
             >
-                <p className="text-2xl">{emptyCharacter.name}</p>
+                <p className="text-lg md:text-2xl">{emptyCharacter.name}</p>
+                <div className="flex flex-col gap-5 justify-center items-start">
+                    <div className="w-full flex justify-between ">
+                        <div className="flex gap-2 items-center md:ml-5">
+                            <p>.....</p>
+                            <Image alt={emptyCharacter.name} width={100} height={100} className="w-auto h-[2rem] animate-pulse rounded-md" src={emptyCharacter.images.md} />
+                        </div>
+                    </div>
+                </div>
                 <Image
                     width={500}
                     height={500}
-                    // className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`}
-                    // className={`transition-all duration-300 absolute w-[100%] h-[100%] object-cover rounded-md md:object-top`}
-                    className="w-[35rem] h-[35rem] object-cover animate-pulse"
+                    className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] animate-pulse`}
                     src={emptyCharacter.images.md}
                     alt={emptyCharacter.name}
                     loading="lazy"

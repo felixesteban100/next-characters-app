@@ -40,9 +40,9 @@ export default async function FightButton({ first, second }: FightButtonProps) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button>Fight ⚔</Button>
+                <Button variant={"secondary"}>Fight ⚔</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-sm md:sm:max-w-3xl">
+            <DialogContent className="max-w-md min-h-[75vh] md:max-w-3xl">
                 <DialogHeader>
                     <DialogTitle className="text-5xl text-center">Winner</DialogTitle>
                     <DialogDescription className="text-2xl animate-fade-in text-center">
@@ -50,13 +50,13 @@ export default async function FightButton({ first, second }: FightButtonProps) {
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className='h-full flex justify-center items-center gap-10'>
+                <div className='h-full flex flex-row justify-center gap-5 md:gap-10'>
                     <CharacterInfoForMatch
                         selectedCharacter={selectedCharacter1}
                         stats={firstStats}
                         classNames={"animate-fightRight"}
                     />
-                    <Separator className='h-[100%] w-[0.5rem]' orientation='vertical' />
+                    <Separator className='h-[100%] w-[2px] md:w-[0.5rem]' orientation='vertical' />
                     <CharacterInfoForMatch
                         selectedCharacter={selectedCharacter2}
                         stats={secondStats}
@@ -80,7 +80,7 @@ async function CharacterInfoForMatch({ selectedCharacter, stats, classNames }: C
             className={`flex flex-col gap-5 ${classNames}`}
         >
             <div className="flex flex-col gap-5 justify-center items-start">
-                <p className="text-2xl">{selectedCharacter.id} - {selectedCharacter.name}</p>
+                <p className="text-sm md:text-2xl">{selectedCharacter.id} - {selectedCharacter.name}</p>
                 <p>Stats: {stats} %</p>
                 {/* <div className="flex gap-2 items-center ml-5">
                     <p>{selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}</p>
@@ -94,7 +94,7 @@ async function CharacterInfoForMatch({ selectedCharacter, stats, classNames }: C
                 height={500}
                 // className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`}
                 // className={`transition-all duration-300 absolute w-[100%] h-[100%] object-cover rounded-md md:object-top`}
-                className="w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
+                className="w-[20rem] h-[35rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
                 src={selectedCharacter.images.md}
                 alt={selectedCharacter.name}
                 loading="lazy"

@@ -1,8 +1,9 @@
 import { ModeToggle } from '@/components/mode-toogle';
 import { Button } from '@/components/ui/button';
-import { Atom } from 'lucide-react';
+import { AreaChart, Atom, Swords, UserSquare, Users } from 'lucide-react';
 import Link from 'next/link';
 import { getRandomIdRecursively } from '../lib/data';
+
 
 async function Navbar(/* { link }: { link: string } */) {
   return (
@@ -25,22 +26,26 @@ async function Navbar(/* { link }: { link: string } */) {
         <Link
           href="/characters"
         >
-          <Button variant={'link'}>Characters</Button>
+          <Button className='hidden md:block' variant={'link'}>Characters</Button>
+          <Button className='block md:hidden' variant={'link'}><UserSquare/></Button>
         </Link>
         <Link
           href="/teams"
         >
-          <Button variant={'link'}>Teams</Button>
+          <Button className='hidden md:block' variant={'link'}>Teams</Button>
+          <Button className='block md:hidden' variant={'link'}><Users/></Button>
         </Link>
         <Link
           href={`/fightCharacter?first=${await getRandomIdRecursively()}&second=${await getRandomIdRecursively()}`}
         >
-          <Button variant={'link'}>Fight characters</Button>
+          <Button className='hidden md:block' variant={'link'}>Fight characters</Button>
+          <Button className='block md:hidden' variant={'link'}><Swords/></Button>
         </Link>
         <Link
           href={`/rankings`}
         >
-          <Button variant={'link'}>Rankings</Button>
+          <Button className='hidden md:block' variant={'link'}>Rankings</Button>
+          <Button className='block md:hidden' variant={'link'}><AreaChart/></Button>
         </Link>
         {/* <Link
           href="/fightTeam"

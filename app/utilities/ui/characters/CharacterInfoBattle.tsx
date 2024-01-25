@@ -97,7 +97,7 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
                             <p>{selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}</p>
                             <Image alt={selectedCharacter.biography.publisher} width={100} height={100} className="w-auto h-[2rem]" src={publisherIMG(selectedCharacter.biography.publisher)} />
                         </div>
-                        <div className="flex gap-2 items-center md:ml-5">
+                        <div className="gap-2 items-center md:ml-5 hidden md:flex">
                             {getTeamsImagesByCharacter(selectedCharacter).sort(() => Math.random() - 0.5).map((teamFound, index) => {
                                 if(index < 3){
                                     return (
@@ -121,15 +121,13 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
                             })}
                         </div>
                     </div>
-                    {/* <p>Aligmnent: {selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}</p> */}
-                    {/* <div className="flex gap-2 items-center"><p>Universe:</p> <Image alt={selectedCharacter.biography.publisher} width={100} height={100} className="w-auto h-[2rem]" src={publisherIMG(selectedCharacter.biography.publisher)} /></div> */}
                 </div>
                 <SelectCharacterForBattle
                     selectedCharacter={JSON.parse(JSON.stringify(selectedCharacter))}
                     urlParameterToChange={urlParameterToChange}
                 />
             </div>
-            <div className="w-[80%] hidden md:block">
+            <div className="w-[80%]" /* className="w-[80%] hidden md:block" */>
                 <Stats selectedCharacter={selectedCharacter} />
             </div>
         </div>

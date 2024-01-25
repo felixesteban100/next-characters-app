@@ -1,4 +1,4 @@
-import FightTeam from "../utilities/ui/fight/team/FightTeam";
+import FightTeam from "../../utilities/ui/fight/team/FightTeam";
 
 export function generateMetadata() {
     return {
