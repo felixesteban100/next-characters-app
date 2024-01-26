@@ -1,4 +1,5 @@
 'use client'
+// this is not so necessary because the parent component is client also 
 
 import { publisherIMG } from '@/app/utilities/lib/charactersUtils';
 import { GetDimentionsOfTheLogoForCard } from '@/app/utilities/lib/charactersUtils';

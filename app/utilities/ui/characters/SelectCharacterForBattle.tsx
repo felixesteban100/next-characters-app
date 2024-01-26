@@ -11,7 +11,7 @@ import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 
-import { CldImage } from 'next-cloudinary';
+// import { CldImage } from 'next-cloudinary';
 
 type SelectCharacterForBattleProps = {
     selectedCharacter: Character;

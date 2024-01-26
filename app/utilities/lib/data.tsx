@@ -90,6 +90,7 @@ export async function fetchCharacters(
 }
 
 export async function fetchCharactersNoPagination(
+  idsAlreadyFetched: number[],
   characterName: string,
   side: string,
   universe: string,
@@ -97,19 +98,17 @@ export async function fetchCharactersNoPagination(
   gender: string,
   race: string,
   characterOrFullName: boolean,
-
   sortBy: sortByType,
   sortDirection: sortDirectionType,
-  currentPage: number
+  // currentPage: number
 ) {
   const queryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
-
   try {
-    const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
+    // const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
     const charactersToDisplay: Character[] = await collectionCharacters
-      .find({ ...queryOptions })
+      .find({ ...queryOptions, id: { '$nin': idsAlreadyFetched } })
       .sort({ [`${sortBy}`]: sortDirection as any })
-      .skip(offset)
+      // .skip(offset)
       .toArray()
 
 
@@ -117,10 +116,32 @@ export async function fetchCharactersNoPagination(
     if (sortBy === "random") {
       noStore();
 
-      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).reduce((a, b) => {
-        if (a.indexOf(b) < 0) a.push(b);
-        return a
-      }, new Array()).map((currentCharacter, index) => {
+      const charactersToSend = charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
+
+      return {
+        otherIds: charactersToSend.map(c => c.id),
+        otherCharacters: /* .reduce((acc, character) => {
+          // if (a.indexOf(b) < 0) a.push(b);
+          if (acc.some(character) === false && currentCharactersDisplayed.some(character)) acc.push(character);
+          return acc
+        }, new Array() as Character[]) */charactersToSend.map((currentCharacter, index) => {
+          return (
+            <CharacterComponent
+              key={currentCharacter.slug}
+              index={index}
+              currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
+              withPagination={false}
+            />
+          )
+        })
+      }
+    }
+
+    const charactersToSend = charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
+
+    return {
+      otherIds: charactersToSend.map(c => c.id),
+      otherCharacters: charactersToSend.map((currentCharacter, index) => {
         return (
           <CharacterComponent
             key={currentCharacter.slug}
@@ -131,17 +152,6 @@ export async function fetchCharactersNoPagination(
         )
       })
     }
-
-    return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION).map((currentCharacter, index) => {
-      return (
-        <CharacterComponent
-          key={currentCharacter.slug}
-          index={index}
-          currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
-          withPagination={false}
-        />
-      )
-    })
   } catch (error) {
     console.error(error);
     throw Error(`MongoDB Connection Error: ${error}`);
@@ -172,6 +182,7 @@ export async /* make this async even though I am now using async code in here (b
   characterOrFullName: boolean
 ) {
   const queryOptions: QueryOptions = {};
+
   if (characterName !== "") {
     if (characterOrFullName === false) {
       queryOptions.name = new RegExp(characterName, "ig")

@@ -25,28 +25,32 @@ type LoadMoreCharactersProps = {
 //     page.value += 1
 // }
 
-export default function LoadMoreCharacters({ characterName, howMany, side, universe, team, gender, race, characterOrFullName, sortBy, sortDirection }: LoadMoreCharactersProps) {    
+export default function LoadMoreCharacters({ characterName, howMany, side, universe, team, gender, race, characterOrFullName, sortBy, sortDirection }: LoadMoreCharactersProps) {
     const [newCharacters, setNewCharacters] = useState<JSX.Element[]>([])
     const { ref, inView } = useInView()
     const [noMore, setNoMore] = useState(true)
-    const [page, setPage] = useState(1)
+    // const [page, setPage] = useState(1)
+    const [idsAlreadyFetched, setIdsAlreadyFetched] = useState<number[]>([])
 
     // console.log("howMany", howMany)
 
     useEffect(() => {
         if (inView === true && noMore === true && newCharacters.length < howMany) {
-            fetchCharactersNoPagination(characterName, side, universe, team, gender, race, characterOrFullName,/* JSON.parse(queryOptions), */ sortBy, sortDirection, page).then((data) => {
-                setNewCharacters([...newCharacters, ...data])
-                setPage(prev => prev + 1);
-                if (data.length < 1) setNoMore(false)
+            fetchCharactersNoPagination(idsAlreadyFetched, characterName, side, universe, team, gender, race, characterOrFullName,/* JSON.parse(queryOptions), */ sortBy, sortDirection/* , page */).then((data) => {
+                setNewCharacters([...newCharacters, ...data.otherCharacters])
+                setIdsAlreadyFetched((prev) => {
+                    return [...prev, ...data.otherIds]
+                })
+                // if (sortBy !== 'random') setPage(prev => prev + 1);
+                if (data.otherCharacters.length < 1) setNoMore(false)
             })
         }
 
-        if(howMany < newCharacters.length){
+        if (howMany < newCharacters.length) {
             setNewCharacters(newCharacters.slice(0, howMany))
         }
 
-    }, [inView, newCharacters, howMany, characterName, side, universe, team, gender, race, characterOrFullName,  noMore, page, sortBy, sortDirection])
+    }, [inView, newCharacters, howMany, characterName, side, universe, team, gender, race, characterOrFullName, noMore, /* page, */ sortBy, sortDirection])
 
     return (
         <>
