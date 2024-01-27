@@ -18,12 +18,12 @@ type CharactersProps = {
 }
 
 export default async function CharactersNoPagination({ characterName, howMany, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection }: CharactersProps) {
-    // const response: { otherIds: number[], otherCharacters: JSX.Element[] } = await fetchCharactersNoPagination([], characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection, 1)
+    const response: { otherIds: number[], otherCharacters: JSX.Element[] } = await fetchCharactersNoPagination([], characterName, side, universe, team, gender, race, characterOrFullName,/* queryOptions, */ sortBy, sortDirection)
 
     return (
         <div className='px-8 flex flex-col gap-10 bg-transparent'>
-            {/* {
-                response.otherCharacters.length > 0 ? */}
+            {
+                response.otherCharacters.length > 0 ?
                     <div>
                         <LoadMoreCharacters
                             characterName={characterName}
@@ -38,9 +38,9 @@ export default async function CharactersNoPagination({ characterName, howMany, s
                             sortDirection={sortDirection}
                         />
                     </div>
-                     {/* :
+                     :
                     <NoCharactersFound />
-            } */}
+            }
         </div>
     )
 }

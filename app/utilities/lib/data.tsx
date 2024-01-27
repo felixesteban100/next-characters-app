@@ -6,6 +6,7 @@ import { CHARACTERS_PER_PAGE, CHARACTERS_PER_PAGE_NOPAGINATION } from "./constan
 import { collectionCharacters } from "./mongodb/mongodb";
 import CharacterComponent from "../ui/characters/CharacterComponent";
 import { unstable_noStore as noStore } from "next/cache";
+import { Sort } from "mongodb";
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
@@ -73,16 +74,19 @@ export async function fetchCharacters(
 
     let charactersToDisplay: Character[] = await collectionCharacters
       .find({ ...queryOptions })
-      .sort({ [`${sortBy}`]: sortDirection as any })
+      .sort({ [`${sortBy}`]: sortDirection } as Sort)
+      .limit(CHARACTERS_PER_PAGE)
       .skip(offset)
       .toArray()
 
+    const characterOfThePage = charactersToDisplay
+
     if (sortBy === 'random') {
       // noStore();
-      return charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE)
+      return characterOfThePage.sort(() => 0.5 - Math.random())
     }
 
-    return charactersToDisplay.slice(0, CHARACTERS_PER_PAGE)
+    return characterOfThePage
   } catch (error) {
     console.error(error);
     throw Error(`MongoDB Connection Error: ${error}`);
@@ -195,7 +199,8 @@ export async /* make this async even though I am now using async code in here (b
   if (universe !== "All") {
     queryOptions["biography.publisher"] = universe;
     if (team !== "All")
-      queryOptions["connections.groupAffiliation"] = new RegExp(team, "ig");
+      // fix this so that the filters like the avengers doesn't add characters like green goblin because he has the dark avengers
+      queryOptions["connections.groupAffiliation"] = new RegExp(team, 'g');/* new RegExp(`^(\\b${team}\\b|[ ,]${team}\\b)`, "i"); */
   }
   if (gender !== "both") queryOptions["appearance.gender"] = gender;
   if (race !== "All") queryOptions["appearance.race"] = new RegExp(race, 'ig');

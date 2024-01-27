@@ -1,7 +1,7 @@
-export const CHARACTERS_PER_PAGE = 12;
-export const CHARACTERS_PER_PAGE_NOPAGINATION = 4
+export const CHARACTERS_PER_PAGE = 12 as const;
+export const CHARACTERS_PER_PAGE_NOPAGINATION = 4 as const
 
-export const STORAGE_KEY = 'next-characters-app'
+export const STORAGE_KEY = 'next-characters-app' as const
 
 export const ALLRACES = [
   { value: "All", name: "All races" },
@@ -22,7 +22,7 @@ export const ALLRACES = [
   { value: "Inhuman", name: "Inhuman 🧬" },
   { value: "Asgardian", name: "Asgardian 👽" },
   { value: "Cosmic Entity", name: "Cosmic Entity 🌌" },
-];
+] as const;
 
 export const ALLALIGMENTS = [
   {
@@ -41,7 +41,7 @@ export const ALLALIGMENTS = [
     value: "neutral",
     name: "Anti-hero 😐",
   },
-];
+] as const;
 
 export const ALLGENDERS = [
   {
@@ -56,9 +56,9 @@ export const ALLGENDERS = [
     value: "Male",
     name: "Male 🚹",
   },
-];
+] as const;
 
-export const UNIVERSES_WITH_TEAMS = ["Marvel Comics", "DC Comics", "Dark Horse Comics", "IDW Publishing", "Shueisha", "Warner Bros", "Super Sentai", "SEGA"]
+export const UNIVERSES_WITH_TEAMS = ["Marvel Comics", "DC Comics", "Dark Horse Comics", "IDW Publishing", "Shueisha", "Warner Bros", "Super Sentai", "SEGA"] as const
 
 
 export const ALLUNIVERSE = [
@@ -102,7 +102,7 @@ export const ALLUNIVERSE = [
   { value: "Real people", name: "Real people" },
 
   //
-];
+] as const;
 
 export function getTeamByUniverse(universe: string): { name: string, value: string, img: string }[] {
   switch (universe) {
