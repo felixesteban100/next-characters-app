@@ -17,7 +17,7 @@ export type UniversesWithItsTeams = {
 }
 
 export default async function Teams() {
-    const allUniversesWithItsTeams: UniversesWithItsTeams[] = ALLUNIVERSE.reduce((allUniverses, universe) => {
+    const allUniversesWithItsTeams: UniversesWithItsTeams[] = ALLUNIVERSE.slice(1, ALLUNIVERSE.length - 1).reduce((allUniverses, universe) => {
         if (UNIVERSES_WITH_TEAMS.includes(universe.value)) {
             allUniverses.push({
                 info: universe,
