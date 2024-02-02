@@ -16,7 +16,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Slider } from "@/components/ui/slider"
-import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, getTeamByUniverse } from "../../lib/constants"
+import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, DEFAULT_NUMBEROFTOP, getTeamByUniverse } from "../../lib/constants"
 
 const formSchema = z.object({
     fixedAttribute: z.string(),
@@ -44,7 +44,7 @@ export default function FilterTops() {
             race: searchParams.get('race') ?? "All",
             publisher: searchParams.get('publisher') ?? 'All',
             gender: searchParams.get('gender') ?? 'both',
-            numberOfTop: searchParams.get('numberOfTop') ?? '100',
+            numberOfTop: searchParams.get('numberOfTop') ?? DEFAULT_NUMBEROFTOP,
             order: searchParams.get('order') ?? "desc",
         },
     })
@@ -53,7 +53,7 @@ export default function FilterTops() {
     const teamByUniverse: { name: string, value: string }[] = getTeamByUniverse(form.watch().publisher)
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        if (values.numberOfTop !== "" && values.numberOfTop !== "100") {
+        if (values.numberOfTop !== "" && values.numberOfTop !== DEFAULT_NUMBEROFTOP) {
             params.set('numberOfTop', values.numberOfTop)
         } else {
             params.delete('numberOfTop')

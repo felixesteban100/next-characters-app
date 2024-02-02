@@ -4,20 +4,21 @@ import FeatureTabContainer from "./FeatureTabContainer"
 import StatString from "../stats/StatString"
 // import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
-import { Dna, Eye, Globe2, Rainbow, Ruler, Weight } from "lucide-react"
-import { FaFemale, FaMale, FaRobot } from "react-icons/fa";
-import { RiAliensFill } from 'react-icons/ri'
+import { Eye, Rainbow, Ruler, Weight } from "lucide-react"
+import { getGenderIcon, getRaceIcon } from "@/app/utilities/lib/charactersUtils"
 
 type FeatureTabAppereanceProps = {
     selectedCharacter: Character
 }
 
 function FeatureTabAppereance({ selectedCharacter }: FeatureTabAppereanceProps) {
+    // const allImages: string[] = [
+    //     selectedCharacter.images.md,
+    //     ...Object.entries(selectedCharacter.images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
+    // ]
 
-    const allImages: string[] = [
-        selectedCharacter.images.md,
-        ...Object.entries(selectedCharacter.images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
-    ]
+    const genderIcon = getGenderIcon(selectedCharacter.appearance.gender, 40)
+    const raceIcon = getRaceIcon(selectedCharacter.appearance.race ?? "", 40)
 
     return (
         <FeatureTabContainer
@@ -38,17 +39,7 @@ function FeatureTabAppereance({ selectedCharacter }: FeatureTabAppereanceProps) 
                     <StatString
                         statName="Gender"
                         statValue={selectedCharacter.appearance.gender}
-                        icon={
-                            selectedCharacter.appearance.gender?.toLowerCase() === "male" ?
-                                // "🚹"
-                                <FaMale size={40} />
-                                :
-                                selectedCharacter.appearance.gender?.toLowerCase() === "female" ?
-                                // "🚺"
-                                <FaFemale size={40} />
-                                    :
-                                    ""
-                        }
+                        icon={genderIcon}
                     />
                     <Separator />
 
@@ -79,30 +70,7 @@ function FeatureTabAppereance({ selectedCharacter }: FeatureTabAppereanceProps) 
                     <StatString
                         statName="Race"
                         statValue={selectedCharacter.appearance.race ?? "Unknown"}
-                        icon={
-                            selectedCharacter.appearance.race?.toLowerCase().includes("meta") ?
-                                // "🧬"
-                                <Dna size={40} />
-                                :
-                                selectedCharacter.appearance.race?.toLowerCase() === "human" ?
-                                    // "🌎"
-                                    <Globe2 size={40} />
-                                    :
-                                    selectedCharacter.appearance.race?.toLowerCase() === "mutant" ?
-                                        // "🧬"
-                                        <Dna size={40} />
-                                        :
-                                        selectedCharacter.appearance.race?.toLowerCase() === "android" || selectedCharacter.appearance.race?.toLowerCase() === "cyborg" && (selectedCharacter.appearance.race !== null) ?
-                                            // "🤖"
-                                            <FaRobot size={40} />
-                                            :
-                                            selectedCharacter.appearance.race?.toLowerCase() === "alien" || selectedCharacter.appearance.race?.toLowerCase() === "eternal" || selectedCharacter.appearance.race?.toLowerCase() === "asgardian" || selectedCharacter.appearance.race?.toLowerCase() === "kryptonian" && (selectedCharacter.appearance.race !== null) ?
-                                                // "👽"
-                                                <RiAliensFill size={40} />
-                                                :
-                                                // "🌎"
-                                                <Globe2 size={40} />
-                        }
+                        icon={raceIcon}
                     />
                     <Separator />
 

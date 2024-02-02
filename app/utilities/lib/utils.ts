@@ -1,3 +1,4 @@
+import { Character } from "./definitions";
 
 export const generatePagination = (currentPage: number, totalPages: number) => {
   // If the total number of pages is 7 or less,
@@ -32,3 +33,17 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
   ];
 };
 
+
+// export const generateYAxis = (characters: Character[], selectedStat: "power" | "speed" | "strength" | "intelligence" | "combat" | "durability") => {
+//   // Calculate what labels we need to display on the y-axis
+//   // based on highest record and in 1000s
+//   const yAxisLabels = [];
+//   const highestRecord = Math.max(...characters.map((character) => character.powerstats[`${selectedStat}`]));
+//   const topLabel = Math.ceil(highestRecord / 1000) * 1000;
+
+//   for (let i = topLabel; i >= 0; i -= 1000) {
+//     yAxisLabels.push(`$${i / 1000}K`);
+//   }
+
+//   return { yAxisLabels, topLabel };
+// };

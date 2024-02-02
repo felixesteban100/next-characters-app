@@ -5,8 +5,8 @@ import StatString from "../stats/StatString"
 import { Separator } from "@/components/ui/separator"
 import { Accordion } from "@/components/ui/accordion"
 import StatAccordion from "../stats/StatAccordion"
-import { GetColorLogosByPublisher, publisherIMG } from "@/app/utilities/lib/charactersUtils"
-import { Angry, Briefcase, Calendar, CaseSensitive, CaseSensitiveIcon, Globe2, LibraryBig, Meh, Smile } from "lucide-react"
+import { AlignmentTranslator, GetColorLogosByPublisher, getAlignmentIcon, publisherIMG } from "@/app/utilities/lib/charactersUtils"
+import { Briefcase, Calendar, CaseSensitive, Globe2, LibraryBig, } from "lucide-react"
 import { GrGroup } from "react-icons/gr";
 import Image from "next/image"
 
@@ -15,6 +15,8 @@ type FeatureTabBiographyProps = {
 }
 
 function FeatureTabBiography({ selectedCharacter }: FeatureTabBiographyProps) {
+    const aligmentIcon = getAlignmentIcon(selectedCharacter.biography.alignment, 40)
+
     return (
         <FeatureTabContainer
             valueTab="Biography"
@@ -29,20 +31,8 @@ function FeatureTabBiography({ selectedCharacter }: FeatureTabBiographyProps) {
                 <Separator />
                 <StatString
                     statName="Alignment"
-                    statValue={selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}
-                    icon={
-                        selectedCharacter.biography.alignment === "good" ?
-                            // "😃"
-                            <Smile size={40} />
-                            :
-                            selectedCharacter.biography.alignment === "bad" ?
-                                // "😡"
-                                <Angry size={40} />
-                                :
-                                // "😐"
-                                < Meh size={40} />
-
-                    }
+                    statValue={AlignmentTranslator(selectedCharacter.biography.alignment)}
+                    icon={aligmentIcon}
                 />
                 <Separator />
                 <div className="flex flex-row justify-between items-center gap-5 my-5">

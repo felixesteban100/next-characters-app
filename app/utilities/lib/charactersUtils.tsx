@@ -1,3 +1,8 @@
+import { FaFemale, FaMale } from "react-icons/fa";
+import { Dna, Globe2, Angry, Meh, Smile } from "lucide-react"
+import { FaRobot } from "react-icons/fa";
+import { RiAliensFill } from 'react-icons/ri'
+
 export function publisherIMG(publisher: string) {
   switch (publisher) {
     case "Marvel Comics":
@@ -107,4 +112,61 @@ export function GetDimentionsOfTheLogoForCard(publisher: string): string {
   //     return 'h-[7vw] w-[15vw] sm:h-[7vw] sm:w-[15vw] md:h-[3rem] md:w-[7rem] lg:h-[3rem] lg:w-[7rem]'
   // }
   return ""
+}
+
+
+export function getGenderIcon(gender: string, size: number) {
+  return gender.toLowerCase() === "male" ?
+    // "🚹"
+    <FaMale size={size} />
+    :
+    gender.toLowerCase() === "female" ?
+      // "🚺"
+      <FaFemale size={size} />
+      :
+      <div></div>
+
+}
+
+export function getRaceIcon(race: string, size: number) {
+  return race.toLowerCase().includes("meta") ?
+    // "🧬"
+    <Dna size={40} />
+    :
+    race?.toLowerCase() === "human" ?
+      // "🌎"
+      <Globe2 size={40} />
+      :
+      race?.toLowerCase() === "mutant" ?
+        // "🧬"
+        <Dna size={40} />
+        :
+        race?.toLowerCase() === "android" || race?.toLowerCase() === "cyborg" && (race !== null) ?
+          // "🤖"
+          <FaRobot size={40} />
+          :
+          race?.toLowerCase() === "alien" || race?.toLowerCase() === "eternal" || race?.toLowerCase() === "asgardian" || race?.toLowerCase() === "kryptonian" && (race !== null) ?
+            // "👽"
+            <RiAliensFill size={40} />
+            :
+            // "🌎"
+            <Globe2 size={40} />
+
+}
+
+export function getAlignmentIcon(alignment: string, size: number) {
+  return alignment === "good" ?
+      // "😃"
+      <Smile size={size} />
+      :
+      alignment === "bad" ?
+          // "😡"
+          <Angry size={size} />
+          :
+          // "😐"
+          < Meh size={size} />
+}
+
+export function AlignmentTranslator(alignment: string){
+  return alignment === "good" ? "Hero" : alignment === "bad" ? "Villain" : "Anti-Hero"
 }

@@ -213,9 +213,7 @@ export default function FilterCharacters({ link }: { link: string }) {
                                     <Label htmlFor="airplane-mode">Show all</Label>
                                 </div>
                             </FormControl>
-                            {/* <FormDescription>
-                                    Example: Batman|Iron Man|Spider-Man
-                                </FormDescription> */}
+                            
                             <FormMessage />
                         </FormItem>
                     )}

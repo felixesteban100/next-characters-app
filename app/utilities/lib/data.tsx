@@ -5,7 +5,7 @@ import { sortByType, sortDirectionType } from "../ui/characters/FilterCharacters
 import { CHARACTERS_PER_PAGE, CHARACTERS_PER_PAGE_NOPAGINATION } from "./constants";
 import { collectionCharacters } from "./mongodb/mongodb";
 import CharacterComponent from "../ui/characters/CharacterComponent";
-import { unstable_noStore as noStore } from "next/cache";
+// import { unstable_noStore as noStore } from "next/cache";
 import { Sort } from "mongodb";
 
 export async function fetchCharacterById(characterSelectedId: string) {
@@ -67,14 +67,13 @@ export async function fetchCharacters(
   sortDirection: sortDirectionType
 ) {
 
-
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
     const offset = (currentPage - 1) * CHARACTERS_PER_PAGE;
 
     let charactersToDisplay: Character[] = await collectionCharacters
       .find({ ...queryOptions })
-      .sort({ [`${sortBy}`]: sortDirection } as Sort)
+      .sort(sortBy !== 'random' ? { [`${sortBy}`]: sortDirection } as Sort : {})
       .limit(CHARACTERS_PER_PAGE)
       .skip(offset)
       .toArray()
@@ -94,7 +93,7 @@ export async function fetchCharacters(
 }
 
 export async function fetchCharactersNoPagination(
-  idsAlreadyFetched: number[],
+  alreadyFetchedIds: number[],
   characterName: string,
   side: string,
   universe: string,
@@ -104,62 +103,43 @@ export async function fetchCharactersNoPagination(
   characterOrFullName: boolean,
   sortBy: sortByType,
   sortDirection: sortDirectionType,
-  // currentPage: number
 ) {
   const queryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
   try {
-    // const offset = (currentPage - 1) * CHARACTERS_PER_PAGE_NOPAGINATION;
     const charactersToDisplay: Character[] = await collectionCharacters
-      .find({ ...queryOptions, id: { '$nin': idsAlreadyFetched } })
+      .find({ ...queryOptions, id: { '$nin': [...alreadyFetchedIds] } })
       .sort({ [`${sortBy}`]: sortDirection as any })
-      // .skip(offset)
       .toArray()
 
+    let charactersToSend = charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
 
-    // it is repeting some characters when random is selected
     if (sortBy === "random") {
-      noStore();
-
-      const charactersToSend = charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
-
-      return {
-        otherIds: charactersToSend.map(c => c.id),
-        otherCharacters: /* .reduce((acc, character) => {
-          // if (a.indexOf(b) < 0) a.push(b);
-          if (acc.some(character) === false && currentCharactersDisplayed.some(character)) acc.push(character);
-          return acc
-        }, new Array() as Character[]) */charactersToSend.map((currentCharacter, index) => {
-          return (
-            <CharacterComponent
-              key={currentCharacter.slug}
-              index={index}
-              currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
-              withPagination={false}
-            />
-          )
-        })
-      }
+      // noStore();
+      charactersToSend = charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
     }
-
-    const charactersToSend = charactersToDisplay.slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
 
     return {
       otherIds: charactersToSend.map(c => c.id),
-      otherCharacters: charactersToSend.map((currentCharacter, index) => {
-        return (
-          <CharacterComponent
-            key={currentCharacter.slug}
-            index={index}
-            currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
-            withPagination={false}
-          />
-        )
-      })
+      otherCharacters: await getCharacterComponents(charactersToSend)
     }
+
   } catch (error) {
     console.error(error);
     throw Error(`MongoDB Connection Error: ${error}`);
   }
+}
+
+async function getCharacterComponents(charactersToSend: Character[]) {
+  return charactersToSend.map((currentCharacter, index) => {
+    return (
+      <CharacterComponent
+        key={currentCharacter.slug}
+        index={index}
+        currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
+        withPagination={false}
+      />
+    )
+  })
 }
 
 export async function fetchPages(
@@ -238,6 +218,6 @@ export async function removeAttributesAll(attributes: CharacterAttributes) {
   }, {} as Record<string, string | RegExp>)
 }
 
-export async function removeAttributesAllJustValues(attributes: CharacterAttributes) {
+export async function removeAttributesAllJustValues(attributes: CharacterAttributes): Promise<{ [key: string]: string }> {
   return Object.fromEntries(Object.entries(attributes).filter(([key, value]) => (value !== "All" && value !== 'both')));
 }

@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { FixedAttributeTranslator } from "../../lib/constants";
 import fetchCharactersTop, { removeAttributesAllJustValues } from "../../lib/data";
 import { CharacterAttributes } from "../../lib/definitions";
 import Link from "next/link";
 import Image from "next/image";
+import { FixedAttributeTranslator } from "../../lib/constants";
 
 type TopsProps = {
     fixedAttribute: string;
@@ -20,8 +20,7 @@ export default async function Tops({ attributes, fixedAttribute, numberOfTop, or
 
     return (
         <div>
-            <div className="flex justify-center items-center my-5">
-                <p>Top {numberOfTop} {order === "desc" ? 'Highest' : 'Lowest'} {FixedAttributeTranslator[`${fixedAttribute}`]}</p>
+            <div className="flex justify-center items-center my-10">
                 {arrayCleanAttributes.length > 0 ?
                     <div>
                         <span className="flex gap-2">Attributes: {arrayCleanAttributes.map(([key, value]) => {
@@ -35,7 +34,7 @@ export default async function Tops({ attributes, fixedAttribute, numberOfTop, or
                 }
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 items-center justify-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 items-center justify-start mb-10">
                 {
                     characters.map((c, index) => {
                         const stats: { powerstats: { [key: string]: number } } = {

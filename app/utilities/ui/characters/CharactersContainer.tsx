@@ -2,7 +2,7 @@
 type CharactersContainerProps = {
     children: JSX.Element
 }
-function CharactersContainer({ children }: CharactersContainerProps) {
+export default function CharactersContainer({ children }: CharactersContainerProps) {
 
     return (
         <div
@@ -28,5 +28,3 @@ function CharactersContainer({ children }: CharactersContainerProps) {
         </div>
     )
 }
-
-export default CharactersContainer

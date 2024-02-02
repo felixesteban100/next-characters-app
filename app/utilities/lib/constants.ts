@@ -114,6 +114,11 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
           img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a21c2816-49d4-4a5b-b6db-7634a5ea8671/deqsmlv-740da833-0582-4672-9c63-a58f1f79565c.png/v1/fill/w_638,h_604/asgard_logo_by_spiderbyte64_deqsmlv-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjA0IiwicGF0aCI6IlwvZlwvYTIxYzI4MTYtNDlkNC00YTViLWI2ZGItNzYzNGE1ZWE4NjcxXC9kZXFzbWx2LTc0MGRhODMzLTA1ODItNDY3Mi05YzYzLWE1OGYxZjc5NTY1Yy5wbmciLCJ3aWR0aCI6Ijw9NjM4In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.R5bMAGrtXXim7EM_A84hkucgZewYCUOzB8_Uevmkwlc",
         },
         {
+          name: "Agents of Atlas",
+          value: "Agents of Atlas",
+          img: "https://static.wikia.nocookie.net/marveldatabase/images/7/7c/Agents_of_Atlas_Vol_3_4_Logo.png/revision/latest?cb=20200831062302",
+        },
+        {
           name: "Avengers",
           value: "Avengers",
           img: "https://1000logos.net/wp-content/uploads/2019/05/Avengers-Logo-2015.png",
@@ -256,9 +261,14 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
           img: "https://static.wikia.nocookie.net/marvelcrossroads/images/2/25/Ultimates_%285641%29.png/revision/latest?cb=20161227151528",
         },
         {
+          name: "Warriors of the Sky",
+          value: "Warriors of the Sky",
+          img: "https://media.pocketgamer.com/artwork/na-25218-1572349365/marvel-future-fight-ios-android-symbols_jpg_820.jpg",
+        },
+        {
           name: "Weapon X",
           value: "Weapon X",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/10795fa2-3dbe-470b-93ce-dada2e3e954e/dag852-48ba374e-4007-49ce-bc5a-5f843ccb960c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzEwNzk1ZmEyLTNkYmUtNDcwYi05M2NlLWRhZGEyZTNlOTU0ZVwvZGFnODUyLTQ4YmEzNzRlLTQwMDctNDljZS1iYzVhLTVmODQzY2NiOTYwYy5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.a-SwCvcA6JX9o8-CntlDCbl2OnNxnTjDi2tcbJyr0AQ",
+          img: "https://static.wikia.nocookie.net/logocomics/images/6/6c/Weapon-X_%281995%29-2.png/revision/latest/scale-to-width-down/250?cb=20230614094025",
         },
         {
           name: "X-Force",
@@ -526,6 +536,11 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
           img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a21c2816-49d4-4a5b-b6db-7634a5ea8671/deqsmlv-740da833-0582-4672-9c63-a58f1f79565c.png/v1/fill/w_638,h_604/asgard_logo_by_spiderbyte64_deqsmlv-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjA0IiwicGF0aCI6IlwvZlwvYTIxYzI4MTYtNDlkNC00YTViLWI2ZGItNzYzNGE1ZWE4NjcxXC9kZXFzbWx2LTc0MGRhODMzLTA1ODItNDY3Mi05YzYzLWE1OGYxZjc5NTY1Yy5wbmciLCJ3aWR0aCI6Ijw9NjM4In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.R5bMAGrtXXim7EM_A84hkucgZewYCUOzB8_Uevmkwlc",
         },
         {
+          name: "Agents of Atlas",
+          value: "Agents of Atlas",
+          img: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/11/Agents-of-Atlas.jpg",
+        },
+        {
           name: "Avengers",
           value: "Avengers",
           img: "https://images2.alphacoders.com/789/789095.jpg",
@@ -548,7 +563,7 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Dark avengers",
           value: "Dark avengers",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/02b60eed-d9c8-4b8e-b826-3ed0694bcf26/deezys0-ad61e4e7-f0b7-458c-a304-ce6a82883302.png/v1/fill/w_1181,h_591/dark_avengers_logo_by_lyriumrogue_deezys0-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTkxIiwicGF0aCI6IlwvZlwvMDJiNjBlZWQtZDljOC00YjhlLWI4MjYtM2VkMDY5NGJjZjI2XC9kZWV6eXMwLWFkNjFlNGU3LWYwYjctNDU4Yy1hMzA0LWNlNmE4Mjg4MzMwMi5wbmciLCJ3aWR0aCI6Ijw9MTE4MSJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.WGNpBaikwouoeHzsLf0ywqFGVrJKaErqEjuquOdU-14",
+          img: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/05/Featured-image-Dark-Avengers-Social-Media.jpg",
         },
         {
           name: "Defenders",
@@ -668,9 +683,14 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
           img: "https://i0.wp.com/guiasdelectura.com/wp-content/uploads/2018/04/Ultimates_Vol_1_1.jpg?fit=1000%2C251&ssl=1",
         },
         {
+          name: "Warriors of the Sky",
+          value: "Warriors of the Sky",
+          img: "https://cdn.gamerbraves.com/2020/01/marvel-future-fight-warriors-of-the-sky-feature.jpg",
+        },
+        {
           name: "Weapon X",
           value: "Weapon X",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/10795fa2-3dbe-470b-93ce-dada2e3e954e/dag852-48ba374e-4007-49ce-bc5a-5f843ccb960c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzEwNzk1ZmEyLTNkYmUtNDcwYi05M2NlLWRhZGEyZTNlOTU0ZVwvZGFnODUyLTQ4YmEzNzRlLTQwMDctNDljZS1iYzVhLTVmODQzY2NiOTYwYy5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.a-SwCvcA6JX9o8-CntlDCbl2OnNxnTjDi2tcbJyr0AQ",
+          img: "https://static.wikia.nocookie.net/marveldatabase/images/2/2a/Weapon_X_%28Earth-12151%29_from_Secret_Wars_Agents_of_Atlas_Vol_1_1_001.png/revision/latest?cb=20160430164734",
         },
         {
           name: "X-Force",
@@ -692,7 +712,7 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Young avengers",
           value: "Young avengers",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f835025f-aa9a-4a6f-bf26-b084438b2053/dfa4dao-424bffc3-fca8-4342-a9f2-cb2eae86efff.jpg/v1/fill/w_1342,h_595,q_70,strp/marvel_studios__young_avengers__logo_png__by_thescarletwitch1989_dfa4dao-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzI3IiwicGF0aCI6IlwvZlwvZjgzNTAyNWYtYWE5YS00YTZmLWJmMjYtYjA4NDQzOGIyMDUzXC9kZmE0ZGFvLTQyNGJmZmMzLWZjYTgtNDM0Mi1hOWYyLWNiMmVhZTg2ZWZmZi5qcGciLCJ3aWR0aCI6Ijw9MTYzOSJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.JtuXXo7s7xs_xJYyI5xTBDymrR3JxXC9vf90NZcB_HY",
+          img: "https://discussingfilm.net/wp-content/uploads/2021/01/ya2-1-scaled.jpg",
         },
       ];
 
@@ -951,3 +971,5 @@ export const AttributeTranslator: { [key: string]: string } = {
     'appearance.race': 'Race',
     'biography.publisher': 'Universe'
 }
+
+export const DEFAULT_NUMBEROFTOP = "10" 
