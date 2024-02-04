@@ -190,7 +190,7 @@ export function getCharacterStatsNumber(selectedCharacter: Character) {
 const baseUrl =
   process.env.VERCEL_ENV === 'development'
     ? 'http://localhost:3000/'
-    : process.env.VERCEL_URL;
+    : `https://${process.env.VERCEL_URL}`;
 
 export async function dynamicBlurDataUrl(url: string) {
 
