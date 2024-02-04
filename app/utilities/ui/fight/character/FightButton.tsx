@@ -3,8 +3,9 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Separator } from "@/components/ui/separator";
 import { fetchCharacterById } from "@/app/utilities/lib/data";
 import { Character } from "@/app/utilities/lib/definitions";
-import Image from "next/image";
+// import Image from "next/image";
 import { WithId } from "mongodb";
+import { getCharacterStatsNumber, getWinnerBetweenTwoCharacters } from "@/app/utilities/lib/charactersUtils";
 
 type FightButtonProps = {
     first: string | undefined;
@@ -26,16 +27,6 @@ export default async function FightButton({ first, second }: FightButtonProps) {
     const firstStats = getCharacterStatsNumber(selectedCharacter1)
     const secondStats = getCharacterStatsNumber(selectedCharacter2)
 
-    function getWinnerBetweenTwoCharacters(first: Character, second: Character) {
-        return firstStats === secondStats ? "Tie" : firstStats > secondStats ? first.name : second.name
-    }
-
-    function getCharacterStatsNumber(selectedCharacter: Character) {
-        return Math.floor(Object.entries(selectedCharacter.powerstats).reduce((acc, [_, value]) => {
-            acc += value
-            return acc
-        }, 0) / 6)
-    }
 
     return (
         <Dialog>
@@ -46,7 +37,7 @@ export default async function FightButton({ first, second }: FightButtonProps) {
                 <DialogHeader>
                     <DialogTitle className="text-5xl text-center">Winner</DialogTitle>
                     <DialogDescription className="text-2xl animate-fade-in text-center">
-                        {getWinnerBetweenTwoCharacters(selectedCharacter1, selectedCharacter2)}
+                        {getWinnerBetweenTwoCharacters(selectedCharacter1, selectedCharacter2, firstStats, secondStats)}
                     </DialogDescription>
                 </DialogHeader>
 
@@ -89,7 +80,7 @@ async function CharacterInfoForMatch({ selectedCharacter, stats, classNames }: C
                 {/* <p>Aligmnent: {selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}</p> */}
                 {/* <div className="flex gap-2 items-center"><p>Universe:</p> <Image alt={selectedCharacter.biography.publisher} width={100} height={100} className="w-auto h-[2rem]" src={publisherIMG(selectedCharacter.biography.publisher)} /></div> */}
             </div>
-            <Image
+           {/*  <Image
                 width={500}
                 height={500}
                 // className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`}
@@ -98,7 +89,7 @@ async function CharacterInfoForMatch({ selectedCharacter, stats, classNames }: C
                 src={selectedCharacter.images.md}
                 alt={selectedCharacter.name}
                 loading="lazy"
-            />
+            /> */}
         </div>
     )
 }

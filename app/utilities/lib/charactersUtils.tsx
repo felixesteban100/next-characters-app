@@ -2,6 +2,7 @@ import { FaFemale, FaMale } from "react-icons/fa";
 import { Dna, Globe2, Angry, Meh, Smile } from "lucide-react"
 import { FaRobot } from "react-icons/fa";
 import { RiAliensFill } from 'react-icons/ri'
+import { Character } from "./definitions";
 
 export function publisherIMG(publisher: string) {
   switch (publisher) {
@@ -156,17 +157,64 @@ export function getRaceIcon(race: string, size: number) {
 
 export function getAlignmentIcon(alignment: string, size: number) {
   return alignment === "good" ?
-      // "😃"
-      <Smile size={size} />
+    // "😃"
+    <Smile size={size} />
+    :
+    alignment === "bad" ?
+      // "😡"
+      <Angry size={size} />
       :
-      alignment === "bad" ?
-          // "😡"
-          <Angry size={size} />
-          :
-          // "😐"
-          < Meh size={size} />
+      // "😐"
+      < Meh size={size} />
 }
 
-export function AlignmentTranslator(alignment: string){
+export function AlignmentTranslator(alignment: string) {
   return alignment === "good" ? "Hero" : alignment === "bad" ? "Villain" : "Anti-Hero"
+}
+
+export function getJustTheImagesFromTheImagesObject(images: { [key: string]: string }) {
+  return Object.entries(images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
+}
+
+export function getWinnerBetweenTwoCharacters(first: Character, second: Character, firstStats: number, secondStats: number) {
+  return firstStats === secondStats ? "Tie" : firstStats > secondStats ? first.name : second.name
+}
+
+export function getCharacterStatsNumber(selectedCharacter: Character) {
+  return Math.floor(Object.entries(selectedCharacter.powerstats).reduce((acc, [_, value]) => {
+      acc += value
+      return acc
+  }, 0) / 6)
+}
+
+const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000/'
+    : process.env.NEXT_PUBLIC_DOMAIN;
+
+export async function dynamicBlurDataUrl(url: string) {
+
+  const base64str = await fetch(
+    `${baseUrl}/_next/image?url=${url}&w=16&q=75`
+  ).then(async (res) =>
+    Buffer.from(await res.arrayBuffer()).toString('base64')
+  );
+
+  const blurSvg = `
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'>
+      <filter id='b' color-interpolation-filters='sRGB'>
+        <feGaussianBlur stdDeviation='1' />
+      </filter>
+
+      <image preserveAspectRatio='none' filter='url(#b)' x='0' y='0' height='100%' width='100%' 
+      href='data:image/avif;base64,${base64str}' />
+    </svg>
+  `;
+
+  const toBase64 = (str: string) =>
+    typeof window === 'undefined'
+      ? Buffer.from(str).toString('base64')
+      : window.btoa(str);
+
+  return `data:image/svg+xml;base64,${toBase64(blurSvg)}`;
 }

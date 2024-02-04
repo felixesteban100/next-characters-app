@@ -1,4 +1,5 @@
-import FightButton from "../../../utilities/ui/fight/character/FightButton";
+import FightResults from "@/app/utilities/ui/fight/character/FightResults";
+// import FightButton from "../../../utilities/ui/fight/character/FightButton";
 import FightCharacter from "../../../utilities/ui/fight/character/FightCharacter";
 import RandomizeButton from "../../../utilities/ui/fight/character/RandomizeButton";
 
@@ -27,10 +28,12 @@ export default async function Page({
                 {/* <h2 className="text-xl md:text-3xl font-bold">Fight Characters</h2> */}
                 <h2 className="text-3xl font-bold">Fight Characters</h2>
                 <div className="flex gap-2">
-                    <FightButton first={first} second={second} />
+                    {/* <FightButton first={first} second={second} /> */}
                     <RandomizeButton />
                 </div>
             </div>
+
+            {/* <FightResults first={first} second={second} /> */}
 
             <FightCharacter
                 first={first}

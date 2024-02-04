@@ -36,7 +36,6 @@ export default function RandomizeButton() {
                 changeSecondCharacter(await getRandomIdRecursively())
             }}
             variant={"outline"}
-            size={"icon"}
-        >🔀</Button>
+        >Randomize 🔀</Button>
     )
 }

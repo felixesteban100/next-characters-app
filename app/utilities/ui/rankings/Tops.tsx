@@ -4,6 +4,7 @@ import { CharacterAttributes } from "../../lib/definitions";
 import Link from "next/link";
 import Image from "next/image";
 import { FixedAttributeTranslator } from "../../lib/constants";
+import { getJustTheImagesFromTheImagesObject } from "../../lib/charactersUtils";
 
 type TopsProps = {
     fixedAttribute: string;
@@ -17,6 +18,7 @@ export default async function Tops({ attributes, fixedAttribute, numberOfTop, or
 
     const cleanAttributes = await removeAttributesAllJustValues(attributes)
     const arrayCleanAttributes = Object.entries(cleanAttributes)
+
 
     return (
         <div>
@@ -41,6 +43,11 @@ export default async function Tops({ attributes, fixedAttribute, numberOfTop, or
                             powerstats: { ...c.powerstats }
                         }
 
+                        const allImages = [
+                            c.images.md,
+                            ...getJustTheImagesFromTheImagesObject(c.images)
+                        ]
+
                         return (
                             <div key={c.id} className="flex flex-col items-center gap-2">
                                 {/* <p>{index + 1}</p> */}
@@ -50,7 +57,8 @@ export default async function Tops({ attributes, fixedAttribute, numberOfTop, or
                                     </Button>
                                 </Link>
                                 <Image
-                                    src={c.images.md}
+                                    // src={c.images.md}
+                                    src={allImages[Math.floor(Math.random() * allImages.length)]}
                                     className={`rounded-md w-[20rem] h-[20rem] md:w-[20rem] md:h-[25rem] object-cover object-top`}
                                     width={150}
                                     height={150}

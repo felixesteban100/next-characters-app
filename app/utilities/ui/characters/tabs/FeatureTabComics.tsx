@@ -2,6 +2,7 @@ import { Character } from "@/app/utilities/lib/definitions"
 import FeatureTabContainer from "./FeatureTabContainer"
 import Image from "next/image"
 import CarouselCharacterImages from "../CarouselCharacterImage"
+import { getJustTheImagesFromTheImagesObject } from "@/app/utilities/lib/charactersUtils"
 
 type FeatureTabComicsProps = {
     selectedCharacter: Character;
@@ -26,7 +27,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
 
     const allImages: string[] = [
         selectedCharacter.images.md,
-        ...Object.entries(selectedCharacter.images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
+        ...getJustTheImagesFromTheImagesObject(selectedCharacter.images)
     ]
 
     return (

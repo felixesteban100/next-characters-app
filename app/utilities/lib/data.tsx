@@ -21,6 +21,7 @@ export async function fetchCharacterById(characterSelectedId: string) {
 }
 
 export async function getRandomIdRecursively() {
+  // noStore();
   // await new Promise((resolve) => setTimeout(resolve, 7000));
   // const randomCharacter = await fetchCharacterByName((Math.floor(Math.random() * 780) + 1).toString())
   const randomCharacter = await fetchCharacterById((Math.floor(Math.random() * 780) + 1).toString())
@@ -66,6 +67,7 @@ export async function fetchCharacters(
   sortBy: sortByType,
   sortDirection: sortDirectionType
 ) {
+  
 
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
@@ -104,6 +106,8 @@ export async function fetchCharactersNoPagination(
   sortBy: sortByType,
   sortDirection: sortDirectionType,
 ) {
+  // noStore();
+
   const queryOptions = await getQueryOptions(characterName, side, universe, team, gender, race, characterOrFullName)
   try {
     const charactersToDisplay: Character[] = await collectionCharacters

@@ -10,15 +10,18 @@ import { fetchCharacterByNameToSearch, getRandomIdRecursively } from "../../lib/
 import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
+import { debounce } from "lodash"
 
 // import { CldImage } from 'next-cloudinary';
 
 type SelectCharacterForBattleProps = {
     selectedCharacter: Character;
     urlParameterToChange: string;
+    selectedRandomImage: string;
+    blurSelectedRandomImage: string;
 }
 
-export default function SelectCharacterForBattle({ selectedCharacter, urlParameterToChange }: SelectCharacterForBattleProps) {
+export default function SelectCharacterForBattle({ selectedCharacter, urlParameterToChange, selectedRandomImage, blurSelectedRandomImage }: SelectCharacterForBattleProps) {
     // const [name, setName] = useState(selectedCharacter.name)
     // const [names, setNames] = useState(["Batman", "Spider-Man"])
     const [names, setNames] = useState(new Array())
@@ -38,16 +41,24 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
         onSubmit(randomName)
     }
 
-    async function searchNames(value: string) {
+    // async function searchNames(value: string) {
+    //     const names = debounce(async () => {
+    //         // const names = await fetchCharacterByNameToSearch(value)
+    //         setNames(prev => [...prev, value])
+    //         console.log("ok")
+    //     }, 1000)
+    // }
+
+    const searchNames = debounce(async (value: string) => {
         const names = await fetchCharacterByNameToSearch(value)
         setNames(names)
-    }
+    }, 1000)
 
 
-    return (
-        <Dialog>
-            <DialogTrigger asChild>
-                {/* <CldImage
+        return (
+            <Dialog>
+                <DialogTrigger asChild>
+                    {/* <CldImage
                     deliveryType="fetch"
                     width="500"
                     height="500"
@@ -62,45 +73,47 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
                     // pixelate
                 /> */}
 
-                <Image
-                    width={500}
-                    height={500}
-                    className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
-                    src={selectedCharacter.images.md}
-                    alt={selectedCharacter.name}
-                    loading="lazy"
-                />
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                    <DialogTitle>Select {urlParameterToChange} character</DialogTitle>
-                    <DialogDescription>
-                        Make changes to your profile here. Click save when youre done.
-                    </DialogDescription>
-                </DialogHeader>
+                    <Image
+                        width={500}
+                        height={500}
+                        className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
+                        // src={selectedCharacter.images.md}
+                        src={selectedRandomImage}
+                        // src={blurSelectedRandomImage}
+                        alt={selectedCharacter.name}
+                        loading="lazy"
+                        // onLoad={(e) => console.log(e.target.naturalWidth)}
+                        placeholder="blur"
+                        blurDataURL={blurSelectedRandomImage}
+                    />
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Select {urlParameterToChange} character</DialogTitle>
+                        <DialogDescription>
+                            Make changes to your profile here. Click save when youre done.
+                        </DialogDescription>
+                    </DialogHeader>
 
-                {/* <Label>Name</Label> */}
-                <Input /* value={name} */ onChange={(e) => {
-                    // onSubmit(e.target.value)
-                    // use throttle here
-                    searchNames(e.target.value)
-                }} />
-                <div className="flex flex-col">
-                    {
-                        names.map((c) => {
-                            return (
-                                <Button key={c.id} variant={"outline"} onClick={() => {
-                                    // setName(c)
-                                    setNames(new Array())
-                                    onSubmit(c.id)
-                                }}>
-                                    <span>{c.name}</span>
-                                </Button>
-                            )
-                        })
-                    }
-                </div>
-                {/* <Command className="rounded-lg border shadow-md">
+                    <Input onChange={(e) => {
+                        searchNames(e.target.value)
+                    }} />
+                    <div className="flex flex-col">
+                        {
+                            names.map((c) => {
+                                return (
+                                    <Button key={c.id} variant={"outline"} onClick={() => {
+                                        // setName(c)
+                                        setNames(new Array())
+                                        onSubmit(c.id)
+                                    }}>
+                                        <span>{c.name}</span>
+                                    </Button>
+                                )
+                            })
+                        }
+                    </div>
+                    {/* <Command className="rounded-lg border shadow-md">
                     <CommandInput value={name} onValueChange={(value) => {
                         setName(value)
                         // use throttle here
@@ -121,14 +134,14 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
                         </CommandGroup>
                     </CommandList>
                 </Command> */}
-                <DialogClose className="flex flex-col w-full gap-2">
-                    {/* <Button className="w-full" onClick={() => onSubmit()}>Change</Button> */}
-                    <Button className="w-full" variant={"secondary"} onClick={() => RandomCharacter()}>Random</Button>
-                </DialogClose>
+                    <DialogClose className="flex flex-col w-full gap-2">
+                        {/* <Button className="w-full" onClick={() => onSubmit()}>Change</Button> */}
+                        <Button className="w-full" variant={"secondary"} onClick={() => RandomCharacter()}>Random</Button>
+                    </DialogClose>
 
-                <DialogFooter>
-                </DialogFooter>
-            </DialogContent>
-        </Dialog>
-    )
-}
+                    <DialogFooter>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+        )
+    }

@@ -1,7 +1,7 @@
 'use client'
 // this is not so necessary because the parent component is client also 
 
-import { publisherIMG } from '@/app/utilities/lib/charactersUtils';
+import { getJustTheImagesFromTheImagesObject, publisherIMG } from '@/app/utilities/lib/charactersUtils';
 import { GetDimentionsOfTheLogoForCard } from '@/app/utilities/lib/charactersUtils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +25,11 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
     // const [charactersFavorite] = useCharacterStorage('next-characters-app')
     //// it is refreshing the array... why???
     // const containsCharacter = (character: CharacterInfo) => [...charactersFavorite].some( ({id}) => character.id == id)
+
+    const allImages: string[] = [
+        currentCharacter.images.md,
+        ...getJustTheImagesFromTheImagesObject(currentCharacter.images)
+    ]
 
     return (
         <Link
@@ -55,7 +60,7 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
             >
                 <Image
                     className={`absolute object-top md:object-center object-cover w-full h-full transition-opacity duration-200 ease-in-out rounded-md md:group-hover/item:blur-sm`}
-                    src={currentCharacter.images.md}
+                    src={allImages[Math.floor(Math.random() * allImages.length)]}
                     alt={currentCharacter.name}
                     width={300}
                     height={300}
