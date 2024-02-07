@@ -8,7 +8,7 @@ import useCharacterStorage from '../../hooks/useCharacterStorage';
 type FavoriteCharactersProps = {};
 
 export default function FavoriteCharacters({ }: FavoriteCharactersProps) {
-    const [charactersFavorite] = useCharacterStorage('next-characters-app');
+    const [charactersFavorite] = useCharacterStorage();
 
     return (
         <div className="px-8 flex flex-col gap-10 bg-transparent">

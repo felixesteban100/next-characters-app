@@ -1,27 +1,10 @@
-"use client"
-
 import Link from "next/link";
-import useCharacterStorage from "../hooks/useCharacterStorage";
-// import { getRandomIdRecursively } from "../lib/data";
 
 export default function NavLinks() {
-    // const [characters] = useCharacterStorage('next-characters-app')
     
     const navigation: { link: string, name: string, id: string }[] = [
-        // { name: "Projects", href: "/projects" },
-        // { name: "Contact", href: "/contact" },
-        
-        { name: 'all characters', link: '/characters', id: '0' },
-        // { name: 'teams', link: '/teams', id: '0' },
-        // { name: 'fight', link: `/fightCharacters?first=${await getRandomIdRecursively()}second=${await getRandomIdRecursively()}`, id: '0' },
-        // ...characters,
-        // { name: `random ${randomId}`, href: `/characters/${randomId}`}
-
-        // { name: `batman`, href: `/characters/70?name=Batman` },
-        // { name: `spider-man`, href: `/characters/620?name=Spider-Man` }
+        { name: 'Start', link: '/characters', id: '0' },
     ];
-
-    // console.log(characters)
 
     return (
         <nav className="my-16 animate-fade-in ">

@@ -2,7 +2,7 @@ import FightTeam from "../../utilities/ui/fight/team/FightTeam";
 
 export function generateMetadata() {
     return {
-        title: `Fight Character`,
+        title: `Fight Teams`,
     }
 }
 

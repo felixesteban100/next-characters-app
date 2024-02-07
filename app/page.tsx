@@ -42,7 +42,7 @@ export default function Home() {
             width={100}
             height={100}
             className={`object-contain text-primary animate-spin1`}
-          />r4c73
+          />r4c732
         </h1>
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-foreground/50 to-foreground/0" />
         {/* <Atom

@@ -7,8 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { motion } from "framer-motion"
-// import useCharacterStorage from '../../hooks/useCharacterStorage';
-// import { CharacterInfo } from '../../lib/definitions';
 
 type CharacterProps = {
     index: number
@@ -22,8 +20,7 @@ const variants = {
 }
 
 export default function CharacterComponent({ index, currentCharacter, withPagination }: CharacterProps) {
-    // const [charactersFavorite] = useCharacterStorage('next-characters-app')
-    //// it is refreshing the array... why???
+    //// using the localStorage of favorites it is refreshing the array... why???
     // const containsCharacter = (character: CharacterInfo) => [...charactersFavorite].some( ({id}) => character.id == id)
 
     const allImages: {key: string, value: string}[] = [
