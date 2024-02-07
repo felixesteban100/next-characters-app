@@ -33,8 +33,9 @@ export default async function CharacterInfo({ characterId, image, withPagination
                         loading="lazy"
                     />
                     <FavoriteButton
-                        name={selectedCharacter.name}
-                        id={selectedCharacter.id.toString()}
+                        // name={selectedCharacter.name}
+                        // id={selectedCharacter.id.toString()}
+                        character={selectedCharacter}
                     />
                 </div>
                 <CharacterFeatures selectedCharacter={selectedCharacter} withPagination={withPagination} />

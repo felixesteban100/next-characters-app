@@ -18,7 +18,7 @@ function FightCharacter({ first, second }: FightCharacterProps) {
                     key={`CharacterInfoBattle-${first}`}
                     characterId={first}
                     urlParameterToChange={'first'}
-                    classNames={"animate-fightRight"}
+                    // classNames={"animate-fightRight"}
                 />
             </Suspense>
             <Separator className='min-h-[90vh] md:h-[100vh] w-[0.2rem]' orientation='vertical' />
@@ -27,7 +27,7 @@ function FightCharacter({ first, second }: FightCharacterProps) {
                     key={`CharacterInfoBattle-${first}`}
                     characterId={second}
                     urlParameterToChange={'second'}
-                    classNames={"animate-fightLeft"}
+                    // classNames={"animate-fightLeft"}
                 />
             </Suspense>
         </div>

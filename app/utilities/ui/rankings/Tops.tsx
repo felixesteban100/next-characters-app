@@ -44,21 +44,26 @@ export default async function Tops({ attributes, fixedAttribute, numberOfTop, or
                         }
 
                         const allImages = [
-                            c.images.md,
+                            {
+                                key: 'md',
+                                value: c.images.md,
+                            },
                             ...getJustTheImagesFromTheImagesObject(c.images)
                         ]
+
+                        const randomImage = allImages[Math.floor(Math.random() * allImages.length)]
 
                         return (
                             <div key={c.id} className="flex flex-col items-center gap-2">
                                 {/* <p>{index + 1}</p> */}
-                                <Link href={`/characters/${c.id}?name=${c.name}`}>
+                                <Link href={`/characters/${c.id}?name=${c.name}&image=${randomImage.key}`}>
                                     <Button variant={"link"}>
                                         <p>{index + 1/* {c.id} */} - {c.name}</p>
                                     </Button>
                                 </Link>
                                 <Image
                                     // src={c.images.md}
-                                    src={allImages[Math.floor(Math.random() * allImages.length)]}
+                                    src={randomImage.value}
                                     className={`rounded-md w-[20rem] h-[20rem] md:w-[20rem] md:h-[25rem] object-cover object-top`}
                                     width={150}
                                     height={150}

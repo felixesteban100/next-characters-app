@@ -10,7 +10,7 @@ type CarouselCharacterImagesProps = {
         property: string;
         img: string;
     }[];
-    allImages: string[],
+    allImages: {key: string, value: string}[],
     characterName: string,
     characterId: string;
     withPagination: boolean
@@ -30,7 +30,7 @@ export default function CarouselCharacterImages({ allImages, allImagesInfo, char
                     <CarouselItem key={index}>
                         <Link href={`/characters/${characterId}?name=${characterName}&image=${imgInfo.property}&withPagination=${withPagination}`} className="overflow-hidden rounded-md h-[90%] w-full">
                             <Image
-                                src={allImages[index]}
+                                src={allImages[index].value}
                                 alt={`Photo #-${index}`}
                                 className="h-full object-cover"
                                 width={500}

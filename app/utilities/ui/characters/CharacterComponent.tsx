@@ -26,15 +26,20 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
     //// it is refreshing the array... why???
     // const containsCharacter = (character: CharacterInfo) => [...charactersFavorite].some( ({id}) => character.id == id)
 
-    const allImages: string[] = [
-        currentCharacter.images.md,
+    const allImages: {key: string, value: string}[] = [
+        {
+            key: 'md',
+            value: currentCharacter.images.md,
+        },
         ...getJustTheImagesFromTheImagesObject(currentCharacter.images)
     ]
+
+    const randomImage = allImages[Math.floor(Math.random() * allImages.length)]
 
     return (
         <Link
             className={`cursor-pointer group/item`}
-            href={`/characters/${currentCharacter.id}?name=${currentCharacter.name}&pagination=${withPagination}`}
+            href={`/characters/${currentCharacter.id}?name=${currentCharacter.name}&image=${randomImage.key}&pagination=${withPagination}`}
         >
             <motion.div
                 //card-new
@@ -60,7 +65,7 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
             >
                 <Image
                     className={`absolute object-top md:object-center object-cover w-full h-full transition-opacity duration-200 ease-in-out rounded-md md:group-hover/item:blur-sm`}
-                    src={allImages[Math.floor(Math.random() * allImages.length)]}
+                    src={randomImage.value}
                     alt={currentCharacter.name}
                     width={300}
                     height={300}

@@ -20,6 +20,18 @@ export async function fetchCharacterById(characterSelectedId: string) {
   }
 }
 
+export async function fetchCharacterByIds(charactersIds: number[]) {
+  // noStore();
+  // await new Promise((resolve) => setTimeout(resolve, 7000));
+  try {
+    const selectedCharacter = await collectionCharacters.find({ id: { '$in': charactersIds } }).toArray()
+    return selectedCharacter
+  } catch (error) {
+    console.error(error);
+    throw Error(`MongoDB Connection Error: ${error}`);
+  }
+}
+
 export async function getRandomIdRecursively() {
   // noStore();
   // await new Promise((resolve) => setTimeout(resolve, 7000));

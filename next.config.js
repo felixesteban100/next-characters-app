@@ -1,3 +1,5 @@
+// import withPlaiceholder from "@plaiceholder/next";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 
@@ -21,4 +23,4 @@ const nextConfig = {
       },
 }
 
-module.exports = nextConfig
+module.exports = /* withPlaiceholder( */nextConfig/* ) */

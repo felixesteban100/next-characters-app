@@ -25,8 +25,11 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
         }, new Array())
     ]
 
-    const allImages: string[] = [
-        selectedCharacter.images.md,
+    const allImages: {key: string, value: string}[] = [
+        {
+            key: 'md',
+            value: selectedCharacter.images.md,
+        },
         ...getJustTheImagesFromTheImagesObject(selectedCharacter.images)
     ]
 

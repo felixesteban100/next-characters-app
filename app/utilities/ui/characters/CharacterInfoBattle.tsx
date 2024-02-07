@@ -13,10 +13,10 @@ import { dynamicBlurDataUrl } from "../../lib/charactersUtils";
 type CharacterInfoBattleProps = {
     characterId: string | undefined,
     urlParameterToChange: string;
-    classNames: string
+    classNames?: string
 }
 
-export default async function CharacterInfoBattle({ characterId, urlParameterToChange, classNames }: CharacterInfoBattleProps) {
+export default async function CharacterInfoBattle({ characterId, urlParameterToChange, classNames = "" }: CharacterInfoBattleProps) {
     const selectedCharacter: Character | null = await fetchCharacterById(characterId ?? "0")
 
     const emptyCharacter: Character = {
@@ -87,13 +87,16 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
         </div>
     )
 
-    const allImages: string[] = [
-        selectedCharacter.images.md,
+    const allImages: {key: string, value: string}[] = [
+        {
+            key: 'md',
+            value: selectedCharacter.images.md,
+        },
         ...getJustTheImagesFromTheImagesObject(selectedCharacter.images)
     ]
 
     
-    const selectedRandomImage = allImages[Math.floor(Math.random() * allImages.length)]
+    const selectedRandomImage = allImages[Math.floor(Math.random() * allImages.length)].value
     const blurSelectedRandomImage = await dynamicBlurDataUrl(selectedRandomImage)
     
     return (

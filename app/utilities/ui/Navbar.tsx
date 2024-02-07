@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { AreaChart, Atom, Swords, UserSquare, Users } from 'lucide-react';
 import Link from 'next/link';
 import { getRandomIdRecursively } from '../lib/data';
-
+import FavoriteLink from './FavoriteLink';
 
 async function Navbar(/* { link }: { link: string } */) {
   return (
@@ -11,7 +11,7 @@ async function Navbar(/* { link }: { link: string } */) {
       // className='mx-auto flex justify-between gap-5 py-5 pt-16 px-5 max-w-[80rem]'
       className='mx-auto flex justify-between gap-5 py-5 px-5'
     >
-      <div className='flex items-center justify-center gap-5'>
+      <div className='flex items-center justify-center gap-2 md:gap-5'>
         {/* Radiation, Atom, ChevronsDown, Play*/}
         <Link
           href="/"
@@ -47,6 +47,7 @@ async function Navbar(/* { link }: { link: string } */) {
           <Button className='hidden md:block' variant={'link'}>Rankings</Button>
           <Button className='block md:hidden' variant={'link'}><AreaChart/></Button>
         </Link>
+        <FavoriteLink />
         {/* <Link
           href="/fightTeam"
         >

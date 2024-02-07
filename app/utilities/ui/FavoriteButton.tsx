@@ -1,21 +1,22 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CharacterInfo } from "../lib/definitions";
+import { Character, CharacterInfo } from "../lib/definitions";
 import { STORAGE_KEY } from "../lib/constants";
 import { toast } from "sonner"
 import { Star } from "lucide-react";
 import useCharacterStorage from "../hooks/useCharacterStorage";
 
 type FavoriteButtonProps = {
-    name: string,
-    id: string
+    // name: string,
+    // id: string
+    character: Character
 }
 
 
-export default function FavoriteButton({ name, id }: FavoriteButtonProps) {
+export default function FavoriteButton({ /* name, id */character }: FavoriteButtonProps) {
     const [characters, setCharacters] = useCharacterStorage(STORAGE_KEY)
-    const characterInfo: CharacterInfo = { name, id, link: `/characters/${id}?name=${name}` }
+    const characterInfo: CharacterInfo = { ...character, link: `/characters/${character.id}?name=${character.name}` }
 
     const handleToggle = () => {
         const existingCharacter = characters.find((char) => char.id === characterInfo.id);
@@ -33,7 +34,7 @@ export default function FavoriteButton({ name, id }: FavoriteButtonProps) {
             })
         } else {
             // Add character if not already added
-            const updatedCharacters = [...characters, characterInfo];
+            const updatedCharacters = [characterInfo, ...characters];
             setCharacters(updatedCharacters);
             toast(`${characterInfo.name} added`, {
                 description: `${JSON.stringify(characterInfo)}`,

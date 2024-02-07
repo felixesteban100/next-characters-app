@@ -3,6 +3,7 @@ import { Dna, Globe2, Angry, Meh, Smile } from "lucide-react"
 import { FaRobot } from "react-icons/fa";
 import { RiAliensFill } from 'react-icons/ri'
 import { Character } from "./definitions";
+import { getPlaiceholder } from "plaiceholder";
 
 export function publisherIMG(publisher: string) {
   switch (publisher) {
@@ -70,7 +71,6 @@ export function publisherIMG(publisher: string) {
       return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRykZHBER1nS5QMUGvv0qJCJFuqtf5wPrliiiE_1hMMbCwvONjVOaYloiVHMeCyH710z7g&usqp=CAU";
   }
 }
-
 
 /* CHARACTERS PAGE */
 
@@ -173,7 +173,9 @@ export function AlignmentTranslator(alignment: string) {
 }
 
 export function getJustTheImagesFromTheImagesObject(images: { [key: string]: string }) {
-  return Object.entries(images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => c[1])
+  return Object.entries(images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => {
+    return { key: c[0], value: c[1] }
+  })
 }
 
 export function getWinnerBetweenTwoCharacters(first: Character, second: Character, firstStats: number, secondStats: number) {
@@ -182,11 +184,46 @@ export function getWinnerBetweenTwoCharacters(first: Character, second: Characte
 
 export function getCharacterStatsNumber(selectedCharacter: Character) {
   return Math.floor(Object.entries(selectedCharacter.powerstats).reduce((acc, [_, value]) => {
-      acc += value
-      return acc
+    acc += value
+    return acc
   }, 0) / 6)
 }
 
+// export const dynamicBlurDataUrl = async (url: string) => {
+//   try {
+//     const buffer = await fetch(url).then(async (res) =>
+//     Buffer.from(await res.arrayBuffer())
+//   );
+ 
+//   const { base64 } = await getPlaiceholder(buffer);
+
+//   return base64
+//   } catch (error: unknown) {
+//     //error handling
+//     if (error instanceof Error) return error.message
+//     else if (error && typeof error === "object" && "message" in error)
+//       return error.message as string
+//     else if (typeof error === "string") return error;
+//     else return "Unexpected error!"
+//   }
+// }
+
+// export async function dynamicBlurDataUrl(url: string) {
+//   const res = await fetch(url)
+
+//   if (!res.ok) {
+//     throw new Error(`Failed to fetch image: ${res.status} ${res.statusText}`)
+//   }
+
+//   const buffer = await res.arrayBuffer()
+
+//   const { base64 } = await getPlaiceholder(Buffer.from(buffer))
+
+//   return base64
+// }
+
+
+// this blur image thing doesn't work on production (vercel) :-|
 const baseUrl =
   process.env.VERCEL_ENV === 'development'
     ? 'http://localhost:3000/'
@@ -206,7 +243,7 @@ export async function dynamicBlurDataUrl(url: string) {
         <feGaussianBlur stdDeviation='1' />
       </filter>
 
-      <image preserveAspectRatio='none' filter='url(#b)' x='0' y='0' height='100%' width='100%' 
+      <image preserveAspectRatio='none' filter='url(#b)' x='0' y='0' height='100%' width='100%'
       href='data:image/avif;base64,${base64str}' />
     </svg>
   `;

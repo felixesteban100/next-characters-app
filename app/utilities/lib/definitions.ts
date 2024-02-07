@@ -63,10 +63,10 @@ export type QueryOptions = {
 
 
 export type CharacterInfo = {
-    name: string;
-    id: string;
+    // name: string;
+    // id: string;
     link: string
-}
+} & Character
 
 export type CharacterAttributes = {
     'connections.groupAffiliation': string,
