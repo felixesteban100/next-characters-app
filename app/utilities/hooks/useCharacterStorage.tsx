@@ -17,7 +17,7 @@ function useCharacterStorage(key: string): ReturnType {
       const storedcharacters = JSON.parse(charactersFromLocal);
       setCharacters([...characters, ...storedcharacters]);
     }
-  }, []);
+  }, [characters, key]);
 
   useEffect(() => {
     if (initialRender.current) {
@@ -25,7 +25,7 @@ function useCharacterStorage(key: string): ReturnType {
       return;
     }
     localStorage.setItem(key, JSON.stringify(characters));
-  }, [characters]);
+  }, [characters, key]);
 
   return [characters, setCharacters];
 }

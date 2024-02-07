@@ -16,7 +16,7 @@ export type UniversesWithItsTeams = {
     teams: { name: string, value: string, img: string }[],
 }
 
-export default async function Teams() {
+export default function Teams() {
     const allUniversesWithItsTeams: UniversesWithItsTeams[] = ALLUNIVERSE.slice(1, ALLUNIVERSE.length - 1).reduce((allUniverses, universe) => {
         if (UNIVERSES_WITH_TEAMS.includes(universe.value)) {
             allUniverses.push({
