@@ -96,8 +96,8 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
     ]
 
     
-    const selectedRandomImage = allImages[Math.floor(Math.random() * allImages.length)].value
-    const blurSelectedRandomImage = await dynamicBlurDataUrl(selectedRandomImage)
+    const selectedRandomImage = allImages[Math.floor(Math.random() * allImages.length)]
+    const blurSelectedRandomImage = await dynamicBlurDataUrl(selectedRandomImage.value)
     
     return (
         <div className={`flex flex-col gap-2 justify-center items-center mb-10 ${classNames}`}>
@@ -106,7 +106,7 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
             >
                 <div className="flex flex-col gap-5 justify-center items-start">
                     <div className="flex flex-col md:flex-row gap-5 mb-5 md:mb-0">
-                        <Link href={`/characters/${selectedCharacter.id}?name=${selectedCharacter.name}`}>
+                        <Link href={`/characters/${selectedCharacter.id}?name=${selectedCharacter.name}&image=${selectedRandomImage.key}`}>
                             <Button variant={"link"} className="m-0 p-0">
                                 <p className="text-lg md:text-2xl">{selectedCharacter.id} - {selectedCharacter.name}</p>
                             </Button>
@@ -146,7 +146,7 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
                 <SelectCharacterForBattle
                     selectedCharacter={JSON.parse(JSON.stringify(selectedCharacter))}
                     urlParameterToChange={urlParameterToChange}
-                    selectedRandomImage={selectedRandomImage}
+                    selectedRandomImage={selectedRandomImage.value}
                     blurSelectedRandomImage={blurSelectedRandomImage}
                 />
             </div>
