@@ -18,8 +18,11 @@ export default function useCharacterStorage(): [Character[], Dispatch<SetStateAc
     //   //   return new Array();
     //   // }
     // }
-    const item = localStorage.getItem(STORAGE_KEY);
-    return item ? JSON.parse(item) as Character[] : new Array() as Character[];
+    if (typeof window !== 'undefined') {
+      const item = localStorage.getItem(STORAGE_KEY);
+      return item ? JSON.parse(item) as Character[] : new Array() as Character[];
+    }
+    return fromLocal()
   };
 
   const [storedValue, setStoredValue] = useState(/* initialValue */fromLocal);
