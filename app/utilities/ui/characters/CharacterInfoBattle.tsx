@@ -69,7 +69,7 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
     if (!selectedCharacter) return (
         <div className="flex flex-col gap-2 justify-center items-center mb-10">
             <div
-                className="flex flex-col md:flex-row gap-5"
+                className="flex flex-col gap-5"
             >
                 {/* <p className="text-2xl">Character doesn't exits</p> */}
                 <p className="text-2xl">{emptyCharacter.name}</p>

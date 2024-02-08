@@ -3,7 +3,7 @@ import { Dna, Globe2, Angry, Meh, Smile } from "lucide-react"
 import { FaRobot } from "react-icons/fa";
 import { RiAliensFill } from 'react-icons/ri'
 import { Character } from "./definitions";
-import { getPlaiceholder } from "plaiceholder";
+// import { getPlaiceholder } from "plaiceholder";
 
 export function publisherIMG(publisher: string) {
   switch (publisher) {

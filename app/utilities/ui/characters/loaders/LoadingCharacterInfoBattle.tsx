@@ -59,8 +59,12 @@ export default async function LoadingCharacterInfoBattle(/* { urlParameterToChan
             <div
                 className="flex flex-col gap-5"
             >
-                <p className="text-lg md:text-2xl">{emptyCharacter.name}</p>
+
                 <div className="flex flex-col gap-5 justify-center items-start">
+                    <div className="flex flex-col md:flex-row gap-5 mb-5 md:mb-0">
+                        <p className="text-lg md:text-2xl">{emptyCharacter.name}</p>
+                        <p className="text-lg md:text-2xl bg-secondary p-1 rounded-md w-fit">{0} %</p>
+                    </div>
                     <div className="w-full flex justify-between ">
                         <div className="flex gap-2 items-center md:ml-5">
                             <p>.....</p>

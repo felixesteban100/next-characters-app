@@ -1,11 +1,11 @@
 // import Image from "next/image";
 // import Particles from "./ui/Particles";
-import { Atom } from "lucide-react";
 // import theme from "./lib/useTailwind";
 // unstable_noStore()
-
-import NavLinks from "./utilities/ui/NavLinks";
-
+// import NavLinks from "./utilities/ui/NavLinks";
+import { HeroParallaxDemo } from '@/app/utilities/ui/aceternity-ui/HeroParallax';
+import { fetchCharacterByIds, getRandomIdRecursively } from "./utilities/lib/data";
+import Navbar from "./utilities/ui/Navbar";
 
 // const randomId = allIds[Math.floor(Math.random() * allIds.length)]
 
@@ -24,7 +24,16 @@ import NavLinks from "./utilities/ui/NavLinks";
 // const randomImage = images[0] //images[Math.floor(Math.random() * images.length)]
 // console.log(randomId, randomImage)
 
-export default function Home() {
+export default async function Home() {
+  const randomIds = []
+
+  for (let i = 0; i < 16; i++) {
+    const id = await getRandomIdRecursively()
+    randomIds.push(parseInt(id))
+  }
+
+  const randomCharacters = await fetchCharacterByIds(randomIds)
+
   return (
     <div
       // style={{ background: `url(${randomImage})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', }}
@@ -32,8 +41,14 @@ export default function Home() {
       // className={`overflow-hidden bg-gradient-to-tl from-background via-foreground/20 to-background`}
       className={`overflow-hidden`}
     >
+      <div className="max-w-[80rem] md:w-[80vw] mx-auto">
+        <Navbar />
+      </div>
+      <HeroParallaxDemo
+        randomCharacters={randomCharacters}
+      />
 
-      <div className="z-50 flex flex-col items-center justify-center w-screen h-screen ">
+      {/* <div className="z-50 flex flex-col items-center justify-center w-screen h-screen ">
         <NavLinks />
 
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-foreground/50 to-foreground/0" />
@@ -45,31 +60,10 @@ export default function Home() {
           />r4c732
         </h1>
         <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-foreground/50 to-foreground/0" />
-        {/* <Atom
-          width={200}
-          height={200}
-          // className={`object-contain animate-spin1 text-primary`}
-          className={`object-contain text-primary animate-spin1`}
-        /> */}
         <div className="my-16 text-center animate-fade-in">
-          {/* <Atom
-            width={100}
-            height={100}
-            // className={`object-contain animate-spin1 text-primary`}
-            className={`object-contain animate-spin1 text-white/50`}
-          /> */}
-          {/* <h2 className="text-sm ">
-            I'm building{" "}
-            <Link
-              target="_blank"
-              href="https://unkey.dev"
-              className="underline duration-500 hover:text-primary"
-            >
-              unkey.dev
-            </Link> to solve API authentication and authorization for developers.
-          </h2> */}
+
         </div>
-      </div>
+      </div> */}
 
 
 
@@ -107,13 +101,6 @@ export default function Home() {
           </h2>
         </div>
       </div> */}
-
-
-
-
-
-
-
     </div>
   )
 }

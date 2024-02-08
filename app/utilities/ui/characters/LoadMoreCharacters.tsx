@@ -42,7 +42,9 @@ export default function LoadMoreCharacters({ /* initialCharacters, */ howMany, c
             setCharacters(characters.slice(0, howMany))
         }
 
-    }, [inView, characters, howMany, characterName, side, universe, team, gender, race, characterOrFullName, noMore, sortBy, sortDirection, idsAlreadyFetched])
+        // console.log("use effect executing...")
+
+    }, [inView, characters, howMany, characterName, side, universe, team, gender, race, characterOrFullName, noMore, sortBy, sortDirection/* , idsAlreadyFetched */])
 
 
     return (

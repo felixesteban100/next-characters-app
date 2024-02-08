@@ -271,6 +271,23 @@ const config: Config = {
             // opacity: '1',
           }
         },
+
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
+
+
+        'loop-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
+
+        'loop-scroll2': {
+          from: { transform: 'translateX(-100%)' },
+          to: { transform: 'translateX(0)' },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -283,8 +300,12 @@ const config: Config = {
         "fade-left": "fade-left 3s ease-in-out forwards",
         "fade-right": "fade-right 3s ease-in-out forwards",
 
-        "fightLeft" : "fightLeft 1s ease-in-out forwards",
-        "fightRight" : "fightRight 1s ease-in-out forwards",
+        "fightLeft": "fightLeft 1s ease-in-out forwards",
+        "fightRight": "fightRight 1s ease-in-out forwards",
+        scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+
+        'loop-scroll': 'loop-scroll 50s linear infinite',
+        'loop-scroll2': 'loop-scroll2 50s linear infinite',
       },
     },
   },

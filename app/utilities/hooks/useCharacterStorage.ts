@@ -5,7 +5,24 @@ import { Character } from '../lib/definitions';
 import { STORAGE_KEY } from '../lib/constants';
 
 export default function useCharacterStorage(): [Character[], Dispatch<SetStateAction<Character[]>>] {
-  const [storedValue, setStoredValue] = useState(/* initialValue */new Array());
+  const fromLocal = (): Character[] => {
+    // if (typeof window === 'undefined') {
+    //   // return new Array();
+    //   return fromLocal()
+    // } else {
+    //   // try {
+    //   const item = window.localStorage.getItem(STORAGE_KEY);
+    //   return item ? JSON.parse(item) as Character[] : new Array() as Character[];
+    //   // } catch (error) {
+    //   //   console.error(error);
+    //   //   return new Array();
+    //   // }
+    // }
+    const item = localStorage.getItem(STORAGE_KEY);
+    return item ? JSON.parse(item) as Character[] : new Array() as Character[];
+  };
+
+  const [storedValue, setStoredValue] = useState(/* initialValue */fromLocal);
   // We will use this flag to trigger the reading from localStorage
   const [firstLoadDone, setFirstLoadDone] = useState(false);
 
@@ -13,19 +30,18 @@ export default function useCharacterStorage(): [Character[], Dispatch<SetStateAc
   // This will update the state with the value from the local storage after
   // the first initial value is applied.
   useEffect(() => {
-    const fromLocal = (): Character[] => {
-      if (typeof window === 'undefined') {
-        return new Array();
-      }
-      try {
-        const item = window.localStorage.getItem(STORAGE_KEY);
-        return item ? JSON.parse(item) as Character[] : new Array() as Character[];
-      } catch (error) {
-        console.error(error);
-        return new Array();
-      }
-    };
-
+    // const fromLocal = (): Character[] => {
+    //   if (typeof window === 'undefined') {
+    //     return new Array();
+    //   }
+    //   try {
+    //     const item = window.localStorage.getItem(STORAGE_KEY);
+    //     return item ? JSON.parse(item) as Character[] : new Array() as Character[];
+    //   } catch (error) {
+    //     console.error(error);
+    //     return new Array();
+    //   }
+    // };
     // Set the value from localStorage
     setStoredValue(fromLocal);
     // First load is done
