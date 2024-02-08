@@ -41,10 +41,7 @@ export default function LoadMoreCharacters({ /* initialCharacters, */ howMany, c
         if (howMany < characters.length) {
             setCharacters(characters.slice(0, howMany))
         }
-
-        // console.log("use effect executing...")
-
-    }, [inView, characters, howMany, characterName, side, universe, team, gender, race, characterOrFullName, noMore, sortBy, sortDirection/* , idsAlreadyFetched */])
+    }, [inView, characters, howMany, characterName, side, universe, team, gender, race, characterOrFullName, noMore, sortBy, sortDirection, idsAlreadyFetched])
 
 
     return (
