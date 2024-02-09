@@ -1,4 +1,4 @@
-// import FavoriteCharacters from '@/app/utilities/ui/favorite/FavoriteCharacters';
+import FavoriteCharacters from '@/app/utilities/ui/favorite/FavoriteCharacters';
 
 export function generateMetadata() {
     return {
@@ -16,7 +16,7 @@ export default async function Page({
     }) {
     return (
         <main>
-            {/* <FavoriteCharacters /> */}
+            <FavoriteCharacters />
         </main>
     );
 }

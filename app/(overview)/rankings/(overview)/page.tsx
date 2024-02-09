@@ -60,7 +60,7 @@ export default async function Page({
                 </div>
             </div>
 
-            {/* <Suspense fallback={<LoadingChartRankings />}>
+            <Suspense fallback={<LoadingChartRankings />}>
                 <ChartRankings
                     fixedAttribute={fixedAttribute}
                     attributes={{
@@ -73,7 +73,7 @@ export default async function Page({
                     numberOfTop={numberOfTop}
                     order={order}
                 />
-            </Suspense> */}
+            </Suspense>
 
             <Suspense fallback={<div className="flex justify-center items-center my-10"><LoaderSpinner /></div>}>
                 <Tops
