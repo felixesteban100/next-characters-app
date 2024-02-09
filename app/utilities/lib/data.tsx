@@ -48,7 +48,7 @@ export async function getRandomIdRecursively() {
 export async function fetchCharacterByName(characterSelectedName: string) {
   // noStore();
   try {
-    const regex = new RegExp(`${characterSelectedName}`, "ig");
+    const regex = new RegExp(characterSelectedName, "ig");
     const selectedCharacter = await collectionCharacters.findOne({ name: regex })
     return selectedCharacter
   } catch (error) {
@@ -60,7 +60,7 @@ export async function fetchCharacterByName(characterSelectedName: string) {
 export async function fetchCharacterByNameToSearch(characterSelectedName: string) {
   // noStore();
   try {
-    const regex = new RegExp(`${characterSelectedName}`, "ig");
+    const regex = new RegExp(characterSelectedName, "ig");
     const selectedCharacters = await collectionCharacters.find({ name: regex }).limit(10).toArray()
     const result = selectedCharacters.map(c => {
       return { name: c.name, id: c.id }
@@ -235,5 +235,5 @@ export async function removeAttributesAll(attributes: CharacterAttributes) {
 }
 
 export async function removeAttributesAllJustValues(attributes: CharacterAttributes): Promise<{ [key: string]: string }> {
-  return Object.fromEntries(Object.entries(attributes).filter(([key, value]) => (value !== "All" && value !== 'both')));
+  return Object.fromEntries(Object.entries(attributes).filter(([_, value]) => (value !== "All" && value !== 'both')));
 }
