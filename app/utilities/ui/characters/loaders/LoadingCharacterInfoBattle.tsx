@@ -68,7 +68,14 @@ export default async function LoadingCharacterInfoBattle(/* { urlParameterToChan
                     <div className="w-full flex justify-between ">
                         <div className="flex gap-2 items-center md:ml-5">
                             <p>.....</p>
-                            <Image alt={emptyCharacter.name} width={100} height={100} className="w-auto h-[2rem] animate-pulse rounded-md" src={emptyCharacter.images.md} />
+                            <Image
+                                alt={emptyCharacter.name}
+                                width={100}
+                                height={100}
+                                className="w-auto h-[2rem] animate-pulse rounded-md"
+                                src={emptyCharacter.images.md}
+                                unoptimized
+                            />
                         </div>
                     </div>
                 </div>

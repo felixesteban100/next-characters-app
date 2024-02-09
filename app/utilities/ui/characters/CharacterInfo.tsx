@@ -31,6 +31,7 @@ export default async function CharacterInfo({ characterId, image, withPagination
                         src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md}
                         alt={selectedCharacter.name}
                         loading="lazy"
+                        unoptimized
                     />
                     <FavoriteButton
                         // name={selectedCharacter.name}

@@ -30,6 +30,7 @@ async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
         className="object-cover w-full h-full opacity-20"
         placeholder="blur"
         blurDataURL={blurImgBg}
+        unoptimized
       />
       <div
         className="absolute w-full h-full flex justify-between"
@@ -55,6 +56,7 @@ async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
           src={imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"}
           alt={alt ?? "publisher"}
           className={`object-contain  ${classes}`}
+          unoptimized
         />
       </div>
     </header>

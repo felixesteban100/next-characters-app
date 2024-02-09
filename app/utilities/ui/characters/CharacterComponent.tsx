@@ -66,6 +66,7 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
                     alt={currentCharacter.name}
                     width={300}
                     height={300}
+                    unoptimized
                 />
                 <div
                     className={`absolute z-[12] ml-5 mt-7 w-[90%] h-[85%] flex flex-col justify-between items-start gap-[55%]`}
@@ -87,6 +88,7 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
                         alt={`Logo ${currentCharacter.biography.publisher}`}
                         width={100}
                         height={150}
+                        unoptimized
                     />
                 </div>
             </motion.div>

@@ -68,6 +68,7 @@ export default async function Tops({ attributes, fixedAttribute, numberOfTop, or
                                     width={150}
                                     height={150}
                                     alt={c.name}
+                                    unoptimized
                                 />
                                 <p>{FixedAttributeTranslator[`${fixedAttribute}`]}: {stats.powerstats[fixedAttribute.split('.')[1]]}</p>
                             </div>

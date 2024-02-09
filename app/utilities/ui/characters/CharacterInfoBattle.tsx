@@ -87,7 +87,7 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
         </div>
     )
 
-    const allImages: {key: string, value: string}[] = [
+    const allImages: { key: string, value: string }[] = [
         {
             key: 'md',
             value: selectedCharacter.images.md,
@@ -95,10 +95,10 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
         ...getJustTheImagesFromTheImagesObject(selectedCharacter.images)
     ]
 
-    
+
     const selectedRandomImage = allImages[Math.floor(Math.random() * allImages.length)]
     const blurSelectedRandomImage = await dynamicBlurDataUrl(selectedRandomImage.value)
-    
+
     return (
         <div className={`flex flex-col gap-2 justify-center items-center mb-10 ${classNames}`}>
             <div
@@ -116,7 +116,14 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
                     <div className="w-full flex justify-between ">
                         <div className="flex gap-2 items-center md:ml-5">
                             <p>{selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}</p>
-                            <Image alt={selectedCharacter.biography.publisher} width={100} height={100} className="w-auto h-[2rem]" src={publisherIMG(selectedCharacter.biography.publisher)} />
+                            <Image
+                                alt={selectedCharacter.biography.publisher}
+                                width={100}
+                                height={100}
+                                className="w-auto h-[2rem]"
+                                src={publisherIMG(selectedCharacter.biography.publisher)}
+                                unoptimized
+                            />
                         </div>
                         <div className="gap-2 items-center md:ml-5 hidden md:flex">
                             {getTeamsImagesByCharacter(selectedCharacter).sort(() => Math.random() - 0.5).map((teamFound, index) => {
@@ -135,6 +142,7 @@ export default async function CharacterInfoBattle({ characterId, urlParameterToC
                                                 height={100}
                                                 src={teamFound?.img}
                                                 alt={teamFound?.name}
+                                                unoptimized
                                             />
                                         </Link>
                                     )

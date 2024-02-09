@@ -49,6 +49,7 @@ export default function Teams() {
                                         height={500}
                                         alt={universe.info.value}
                                         className={`w-[20%] h-auto mx-auto ${GetColorLogosByPublisher(universe.info.value)}`}
+                                        unoptimized
                                     />
                                 </AccordionTrigger>
                                 <AccordionContent>
@@ -66,6 +67,7 @@ export default function Teams() {
                                                         width={500}
                                                         alt={team.name}
                                                         className={`w-[80%] h-auto col-span-1 ${GetColorOfTheLogoByTeam(team.value)}`}
+                                                        unoptimized
                                                     />
                                                     <p className='group-hover/publisher:underline'>{team.name}</p>
                                                 </Link>

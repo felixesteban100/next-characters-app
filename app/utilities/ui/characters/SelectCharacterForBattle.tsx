@@ -85,6 +85,7 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
                         // onLoad={(e) => console.log(e.target.naturalWidth)}
                         placeholder="blur"
                         blurDataURL={blurSelectedRandomImage}
+                        unoptimized
                     />
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">

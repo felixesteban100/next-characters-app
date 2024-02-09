@@ -35,6 +35,7 @@ export default function CarouselCharacterImages({ allImages, allImagesInfo, char
                                 className="h-full object-cover"
                                 width={500}
                                 height={500}
+                                unoptimized
                             />
                         </Link>
                     </CarouselItem>
