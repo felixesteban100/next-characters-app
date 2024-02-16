@@ -78,7 +78,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                                     width={300}
                                     height={300}
                                     alt={`comic-${index}`}
-                                    unoptimized
+                                    
                                 />
                             )
                         })}

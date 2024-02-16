@@ -75,3 +75,5 @@ export type CharacterAttributes = {
     'appearance.race': string,
     'biography.publisher': string
 }
+
+export type RandomImage = { selectedRandomImage: { key: string, value: string }, blurSelectedRandomImage: string }

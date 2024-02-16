@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 //TODO:
+// repplicate the image optimization of next js Image component so that I don´t have to pay for it to show the images webp when deploy to vercel
 // make a rankings moduels that also has a filtering system. i.e: the strongest mutants in marvel or the smartest heroes in dc...
 // figue a way out to make this random be saved so that when you refresh or go back have the same results
 // add all the filters in the sheet (filterCharacters.tsx) | it's done...?

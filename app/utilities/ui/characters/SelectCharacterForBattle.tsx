@@ -11,6 +11,7 @@ import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { debounce } from "lodash"
+import { DrawerDialogDemo } from "../dialog-drawer";
 
 // import { CldImage } from 'next-cloudinary';
 
@@ -55,94 +56,64 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
     }, 1000)
 
 
-        return (
-            <Dialog>
-                <DialogTrigger asChild>
-                    {/* <CldImage
-                    deliveryType="fetch"
-                    width="500"
-                    height="500"
-                    // src={selectedCharacter.images.md}
-                    src="https://static.wikia.nocookie.net/marvel_dc/images/0/08/Batman_Vol_3_131_Textless_Fabok_Variant.jpg/revision/latest?cb=20230106222502"
-                    // src="cld-sample-5"
-                    // sizes="100vw"
-                    // className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
-                    // crop="thumb"
-                    alt={selectedCharacter.name}
-                    // removeBackground
-                    // pixelate
-                /> */}
+    return (
+        <DrawerDialogDemo
+            title={`Select ${urlParameterToChange} character`}
+            description={` Make changes to your profile here. Click save when youre done.`}
+            triggerClose={<Button className="w-full" variant={"secondary"} onClick={() => RandomCharacter()}>Random</Button>}
+            trigger={<Image
+                width={500}
+                height={500}
+                className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
+                src={selectedRandomImage}
+                alt={selectedCharacter.name}
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={blurSelectedRandomImage}
+            />}
+        >
+            <Input onChange={(e) => {
+                searchNames(e.target.value)
+            }} />
+            <div className="flex flex-col">
+                {
+                    names.map((c) => {
+                        return (
+                            <Button key={c.id} variant={"outline"} onClick={() => {
+                                // setName(c)
+                                setNames(new Array())
+                                onSubmit(c.id)
+                            }}>
+                                <span>{c.name}</span>
+                            </Button>
+                        )
+                    })
+                }
+            </div>
+        </DrawerDialogDemo>
+    )
+}
 
-                    <Image
-                        width={500}
-                        height={500}
-                        className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
-                        // src={selectedCharacter.images.md}
-                        src={selectedRandomImage}
-                        // src={blurSelectedRandomImage}
-                        alt={selectedCharacter.name}
-                        loading="lazy"
-                        // onLoad={(e) => console.log(e.target.naturalWidth)}
-                        placeholder="blur"
-                        blurDataURL={blurSelectedRandomImage}
-                        unoptimized
-                    />
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle>Select {urlParameterToChange} character</DialogTitle>
-                        <DialogDescription>
-                            Make changes to your profile here. Click save when youre done.
-                        </DialogDescription>
-                    </DialogHeader>
+/* <Dialog>
+            
+            <DialogTrigger asChild>
 
-                    <Input onChange={(e) => {
-                        searchNames(e.target.value)
-                    }} />
-                    <div className="flex flex-col">
-                        {
-                            names.map((c) => {
-                                return (
-                                    <Button key={c.id} variant={"outline"} onClick={() => {
-                                        // setName(c)
-                                        setNames(new Array())
-                                        onSubmit(c.id)
-                                    }}>
-                                        <span>{c.name}</span>
-                                    </Button>
-                                )
-                            })
-                        }
-                    </div>
-                    {/* <Command className="rounded-lg border shadow-md">
-                    <CommandInput value={name} onValueChange={(value) => {
-                        setName(value)
-                        // use throttle here
-                        searchNames(value)
-                    }} placeholder="Type a name for search..." />
-                    <CommandList>
-                        <CommandEmpty>No results found.</CommandEmpty>
-                        <CommandGroup heading="Suggestions">
-                            {
-                                names.map((c) => {
-                                    return (
-                                        <CommandItem onClick={() => setName(c)}>
-                                            <span>{c}</span>
-                                        </CommandItem>
-                                    )
-                                })
-                            }
-                        </CommandGroup>
-                    </CommandList>
-                </Command> */}
-                    <DialogClose className="flex flex-col w-full gap-2">
-                        {/* <Button className="w-full" onClick={() => onSubmit()}>Change</Button> */}
-                        <Button className="w-full" variant={"secondary"} onClick={() => RandomCharacter()}>Random</Button>
-                    </DialogClose>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                    <DialogTitle></DialogTitle>
+                    <DialogDescription>
 
-                    <DialogFooter>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
-        )
-    }
+                    </DialogDescription>
+                </DialogHeader>
+
+
+
+                <DialogClose className="flex flex-col w-full gap-2">
+                    <Button className="w-full" onClick={() => onSubmit()}>Change</Button>
+                </DialogClose>
+
+                <DialogFooter>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog> */

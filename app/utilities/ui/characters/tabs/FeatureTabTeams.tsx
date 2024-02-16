@@ -41,7 +41,7 @@ function FeatureTabTeams({ selectedCharacter, withPagination }: FeatureTabTeamsP
                                                     height={500}
                                                     src={teamFound?.img}
                                                     alt={teamFound?.name}
-                                                    unoptimized
+                                                    
                                                 />
                                                 <p className="font-semibold text-primary text-xl group-hover/items:underline">{teamFound?.name}</p>
                                             </Link>

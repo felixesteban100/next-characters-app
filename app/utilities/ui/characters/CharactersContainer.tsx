@@ -19,7 +19,7 @@ export default function CharactersContainer({ children }: CharactersContainerPro
                 */
         className={
                 `
-                grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10
+                grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 gap-y-28
                 mb-10
                 `
             }

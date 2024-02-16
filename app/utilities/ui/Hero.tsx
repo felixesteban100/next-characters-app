@@ -19,6 +19,8 @@ const variants = {
 async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
   const blurImgBg = await dynamicBlurDataUrl(imgBg ?? "https://static1.cbrimages.com/wordpress/wp-content/uploads/2017/02/Justice-League-and-The-Avengers.jpg")
 
+  const blurLogo = await dynamicBlurDataUrl(imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png")
+
   return (
     // className="bg-hero bg-opacity-40 bg-center bg-cover bg-no-repeat sm:p-16 py-16 px-8 flex justify-center lg:items-center max-lg:flex-col w-full sm:gap-16 gap-0"
     //bg-[url('/hero.png')]
@@ -30,19 +32,18 @@ async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
         className="object-cover w-full h-full opacity-20"
         placeholder="blur"
         blurDataURL={blurImgBg}
-        unoptimized
       />
       <div
-        className="absolute w-full h-full flex justify-between"
-        // variants={variants}
-        // initial={'hidden'}
-        // animate={'visible'}
-        // transition={{
-        //   delay: /* index * */ 0.25,
-        //   ease: 'easeInOut',
-        //   duration: 0.5,
-        // }}
-        // viewport={{ amount: 0 }}
+        className="absolute w-full h-full flex justify-between "
+      // variants={variants}
+      // initial={'hidden'}
+      // animate={'visible'}
+      // transition={{
+      //   delay: /* index * */ 0.25,
+      //   ease: 'easeInOut',
+      //   duration: 0.5,
+      // }}
+      // viewport={{ amount: 0 }}
       >
         {/* <div className="flex-1 flex flex-col gap-10">
           <h1 className="text-4xl lg:max-w-lg font-bold leading-[120%]">
@@ -50,14 +51,21 @@ async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
             {alt !== null ? `\n${alt}` : `\nFictional Characters`}
           </h1>
         </div> */}
+
         <Image
           height={350}
           width={350}
           src={imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"}
           alt={alt ?? "publisher"}
-          className={`object-contain  ${classes}`}
-          unoptimized
+          className={`object-contain  ${classes} animate-fade-in`}
         />
+        {/* <source
+          srcSet={imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"}
+          type="image/webp"
+          height={350}
+          width={350}
+          className={`object-contain  ${classes}`}
+        /> */}
       </div>
     </header>
   );

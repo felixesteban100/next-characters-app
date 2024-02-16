@@ -5,6 +5,7 @@ import { QueryOptions } from '../../lib/definitions';
 import { fetchCharacters, fetchPages } from '../../lib/data';
 import CharactersContainer from './CharactersContainer';
 import CharacterComponent from './CharacterComponent';
+import { getRandomImage } from '../../lib/charactersUtils';
 // import Image from 'next/image';
 
 type CharactersProps = {
@@ -30,13 +31,16 @@ export default async function Characters({ queryOptions, currentPage, sortBy, so
                     charactersToDisplay.length > 0 ?
                         <CharactersContainer>
                             <>
-                                {charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.map((currentCharacter, index) => {
+                                {charactersToDisplay/* .sort(() => 0.5 - Math.random()) */.map(async (currentCharacter, index) => {
+                                    const randomImage = await getRandomImage(currentCharacter)
+                                    
                                     return (
                                         <CharacterComponent
                                             key={currentCharacter.slug}
                                             index={index}
                                             currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
                                             withPagination={true}
+                                            randomImage={randomImage}
                                         />
                                     )
                                 })}
@@ -46,7 +50,7 @@ export default async function Characters({ queryOptions, currentPage, sortBy, so
                         <NoCharactersFound />
                 }
 
-                <div className="my-5 flex w-full justify-center">
+                <div className="my-5 flex w-full justify-center mt-24">
                     <PaginationCharacters totalPages={totalPages} />
                 </div>
             </div>

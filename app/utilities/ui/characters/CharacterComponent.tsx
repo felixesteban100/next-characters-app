@@ -1,44 +1,93 @@
 'use client'
-// this is not so necessary because the parent component is client also 
+// this is not so necessary because the parent component is client also (but later I realized it is in on place in other the parent component is server)
 
-import { getJustTheImagesFromTheImagesObject, publisherIMG } from '@/app/utilities/lib/charactersUtils';
+import { GetColorLogosByPublisher, publisherIMG } from '@/app/utilities/lib/charactersUtils';
 import { GetDimentionsOfTheLogoForCard } from '@/app/utilities/lib/charactersUtils';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
+import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
+import { Character, RandomImage } from '../../lib/definitions';
 
 type CharacterProps = {
     index: number
-    currentCharacter: any//Character;
+    currentCharacter: Character;
     withPagination: boolean;
+    randomImage: RandomImage
 }
 
-const variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-}
+// const variants = {
+//     hidden: { opacity: 0 },
+//     visible: { opacity: 1 }
+// }
 
-export default function CharacterComponent({ index, currentCharacter, withPagination }: CharacterProps) {
+export default function CharacterComponent({ /* index,  */currentCharacter, withPagination, randomImage }: CharacterProps) {
     //// using the localStorage of favorites it is refreshing the array... why???
-    // const containsCharacter = (character: CharacterInfo) => [...charactersFavorite].some( ({id}) => character.id == id)
+    // const containsCharacter = (character: CharacterInfo) => [...charactersFavorite].some( ({id}) => character.id == id)   
 
-    const allImages: {key: string, value: string}[] = [
-        {
-            key: 'md',
-            value: currentCharacter.images.md,
-        },
-        ...getJustTheImagesFromTheImagesObject(currentCharacter.images)
-    ]
-
-    const randomImage = allImages[Math.floor(Math.random() * allImages.length)]
+    const characterNameLenght = (currentCharacter.name.length)
 
     return (
         <Link
             className={`cursor-pointer group/item`}
-            href={`/characters/${currentCharacter.id}?name=${currentCharacter.name}&image=${randomImage.key}&pagination=${withPagination}`}
+            href={`/characters/${currentCharacter.id}?name=${currentCharacter.name}&image=${randomImage.selectedRandomImage.key}&pagination=${withPagination}`}
         >
-            <motion.div
+            <CardContainer className="inter-var">
+                {/* w-auto sm:w-[30rem] h-auto p-6 */}
+                {/* bg-gray-50  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]  rounded-xl  border   */}
+                <CardBody
+                    // max-w-[17rem]
+                    className={` relative group/card  rounded-md h-[23rem] xl:h-[25rem] `}
+                >
+                    <CardItem
+                        translateZ="150"
+                        //group-hover/item:box-hover
+                        className="w-full rounded-md mt-5 box characterComponent overflow-hidden max-w-[17rem]"
+                    >
+                        <Image
+                            //md:group-hover/item:blur-sm
+                            // h-[20rem] md:h-[20rem] xl:h-[22rem]  
+                            // md:group-hover/item:blur-sm
+                            className={`object-top md:object-center object-cover  w-full h-[23rem] xl:h-[25rem] transition-opacity duration-200 ease-in-out rounded-md group-hover/item:opacity-50`}
+                            src={randomImage.selectedRandomImage.value}
+                            alt={currentCharacter.name}
+                            width={200}
+                            height={150}
+                            placeholder="blur"
+                            blurDataURL={randomImage.blurSelectedRandomImage}
+                        />
+                    </CardItem>
+                    <div
+                        // mt-[-85%] md:mt-[-160%] xl:mt-[-135%]
+                        className={` mx-8 p-2 flex flex-col justify-center items-start ${characterNameLenght > 30 ? "gap-[10rem] mt-[-25rem] xl:mt-[-25rem]" : characterNameLenght > 14 ? "gap-[12rem] mt-[-22rem] xl:mt-[-24rem]" : "gap-[14rem] mt-[-21rem] xl:mt-[-23rem]"}`}
+                    >
+                        <CardItem
+                            translateZ="300"
+                            //drop-shadow-[5px_5px_5px_white]
+                            // mt-[-21rem] xl:mt-[-23rem] mb-[11rem] xl:mb-[14rem]
+                            // mt-[-85%] md:mt-[-160%] xl:mt-[-135%] mb-[50%] md:mb-[85%] xl:mb-[70%] 
+                            className={`text-center text-2xl md:text-xl xl:text-2xl font-extrabold text-stroke-custom ${characterNameLenght < 14 ? "whitespace-nowrap " : "text-wrap"} `}
+                        >
+                            {currentCharacter.name}
+                        </CardItem>
+                        <CardItem
+                            translateZ={300}
+                            as="button"
+                            className="rounded-xl text-xs font-normal"
+                        >
+                            <Image
+                                className={`${GetDimentionsOfTheLogoForCard(currentCharacter.biography.publisher)} ${GetColorLogosByPublisher(currentCharacter.biography.publisher)}`}
+                                src={publisherIMG(currentCharacter.biography.publisher)}
+                                alt={`Logo ${currentCharacter.biography.publisher}`}
+                                width={100}
+                                height={150}
+                            />
+                        </CardItem>
+                    </div>
+                </CardBody>
+            </CardContainer>
+            {/* <motion.div
                 //card-new
                 className={
                     `card-new
@@ -66,7 +115,7 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
                     alt={currentCharacter.name}
                     width={300}
                     height={300}
-                    unoptimized
+                    
                 />
                 <div
                     className={`absolute z-[12] ml-5 mt-7 w-[90%] h-[85%] flex flex-col justify-between items-start gap-[55%]`}
@@ -77,10 +126,8 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
                         >
                             {currentCharacter.name}
                         </h2>
-                        {/* <p className={`text-xl xl:text-2xl ${containsCharacter(currentCharacter) === true ? "block" : "hidden"}`}>⭐</p> */}
                     </div>
                     <Image
-                        // ${GetColorLogosByPublisher(currentCharacter.biography.publisher)}
                         className={`
                             ${GetDimentionsOfTheLogoForCard(currentCharacter.biography.publisher)}
                         `}
@@ -88,10 +135,9 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
                         alt={`Logo ${currentCharacter.biography.publisher}`}
                         width={100}
                         height={150}
-                        unoptimized
                     />
                 </div>
-            </motion.div>
+            </motion.div> */}
         </Link>
     );
 }

@@ -287,7 +287,7 @@ const config: Config = {
         'loop-scroll2': {
           from: { transform: 'translateX(-100%)' },
           to: { transform: 'translateX(0)' },
-        }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

@@ -50,11 +50,11 @@ export default async function ChartRankings({ attributes, fixedAttribute, number
                 />}
                 {attributesCleaner['biography.publisher'] && <AttributeCardHover
                     text={attributesCleaner['biography.publisher']}
-                    content={<Image width={50} height={50} src={publisherImg} alt={attributesCleaner['biography.publisher']} unoptimized/>}
+                    content={<Image width={50} height={50} src={publisherImg} alt={attributesCleaner['biography.publisher']} />}
                 />}
                 {attributesCleaner['connections.groupAffiliation'] && <AttributeCardHover
                     text={attributesCleaner['connections.groupAffiliation']}
-                    content={<Image width={50} height={50} src={teamImg.img} alt={attributesCleaner['connections.groupAffiliation']} unoptimized/>}
+                    content={<Image width={50} height={50} src={teamImg.img} alt={attributesCleaner['connections.groupAffiliation']} />}
                 />}
             </div>
 

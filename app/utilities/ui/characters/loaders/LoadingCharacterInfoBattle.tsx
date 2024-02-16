@@ -74,7 +74,7 @@ export default async function LoadingCharacterInfoBattle(/* { urlParameterToChan
                                 height={100}
                                 className="w-auto h-[2rem] animate-pulse rounded-md"
                                 src={emptyCharacter.images.md}
-                                unoptimized
+                                
                             />
                         </div>
                     </div>

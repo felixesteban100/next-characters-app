@@ -964,11 +964,61 @@ export const FixedAttributeTranslator: { [key: string]: string } = {
 }
 
 export const AttributeTranslator: { [key: string]: string } = {
-    'connections.groupAffiliations': 'Teams',
-    'biography.alignment': 'Side',
-    'appearance.gender': 'Gender',
-    'appearance.race': 'Race',
-    'biography.publisher': 'Universe'
+  'connections.groupAffiliations': 'Teams',
+  'biography.alignment': 'Side',
+  'appearance.gender': 'Gender',
+  'appearance.race': 'Race',
+  'biography.publisher': 'Universe'
 }
 
-export const DEFAULT_NUMBEROFTOP = "10" 
+export const DEFAULT_NUMBEROFTOP = "10"
+
+export const emptyCharacter = {
+  powerstats: {
+    intelligence: 0,
+    strength: 0,
+    speed: 0,
+    durability: 0,
+    power: 0,
+    combat: 0,
+  },
+  appearance: {
+    gender: "",
+    race: "",
+    height: ["", ""],
+    weight: ["", "",],
+    eyeColor: "",
+    hairColor: "",
+  },
+  biography: {
+    fullName: "",
+    alterEgos: "",
+    aliases: [],
+    placeOfBirth: "",
+    firstAppearance: "",
+    publisher: "",
+    alignment: "neutral",
+  },
+  work: {
+    occupation: "",
+    base: "",
+  },
+  connections: {
+    groupAffiliation: "",
+    relatives: "",
+  },
+  images: {
+    xs: "",
+    sm: "",
+    md: "https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png",
+    lg: "",
+  },
+  _id: "",
+  id: 0,
+  // name: `Select ${urlParameterToChange} character 👇`,
+  name: "",
+  slug: "",
+  comics: [""]
+}
+
+// export const BASE_42_IMAGE = 

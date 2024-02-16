@@ -49,7 +49,7 @@ export default function Teams() {
                                         height={500}
                                         alt={universe.info.value}
                                         className={`w-[20%] h-auto mx-auto ${GetColorLogosByPublisher(universe.info.value)}`}
-                                        unoptimized
+                                        
                                     />
                                 </AccordionTrigger>
                                 <AccordionContent>
@@ -67,7 +67,7 @@ export default function Teams() {
                                                         width={500}
                                                         alt={team.name}
                                                         className={`w-[80%] h-auto col-span-1 ${GetColorOfTheLogoByTeam(team.value)}`}
-                                                        unoptimized
+                                                        
                                                     />
                                                     <p className='group-hover/publisher:underline'>{team.name}</p>
                                                 </Link>
@@ -95,3 +95,38 @@ export default function Teams() {
         </div>
     )
 }
+
+/* const allUniversesWithItsTeams: UniversesWithItsTeams[] = ALLUNIVERSE.slice(1, ALLUNIVERSE.length - 1).reduce((allUniverses, universe) => {
+        if (UNIVERSES_WITH_TEAMS.includes(universe.value)) {
+            allUniverses.push({
+                info: universe,
+                img: publisherIMG(universe.value),
+                teams: []
+            })
+        }
+
+        return allUniverses
+    }, new Array())
+
+    function getAllTeams() {
+        const allTeams = []
+
+        for (let index = 0; index < allUniversesWithItsTeams.length; index++) {
+            const currentUniverse = allUniversesWithItsTeams[index]
+
+            const element = await getTeamByUniverse(currentUniverse.info.value).map(async (c) => {
+                const imgBlur = await dynamicBlurDataUrl(c.img)
+                return {
+                    ...c,
+                    imgBlur: imgBlur
+                }
+            });
+
+        }
+    }
+
+    allUniversesWithItsTeams.teams = allUniversesWithItsTeams
+
+
+
+    console.log(allUniversesWithItsTeams) */

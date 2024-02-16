@@ -3,6 +3,7 @@ import { Dna, Globe2, Angry, Meh, Smile } from "lucide-react"
 import { FaRobot } from "react-icons/fa";
 import { RiAliensFill } from 'react-icons/ri'
 import { Character } from "./definitions";
+import { WithId } from "mongodb";
 // import { getPlaiceholder } from "plaiceholder";
 
 export function publisherIMG(publisher: string) {
@@ -84,7 +85,9 @@ export function GetColorOfTheLogoByTeam(teamName: string): string {
     case 'Justice League-Original':
       return 'invert-0 dark:invert';
 
-    // return 'rounded-full invert dark:invert-0';
+    case "Inhumans":
+    case "Symbiotes":
+      return 'rounded-full invert dark:invert-0';
 
     default: return '';
   }
@@ -105,13 +108,16 @@ export function GetColorLogosByPublisher(publisher: string): string {
 }
 
 export function GetDimentionsOfTheLogoForCard(publisher: string): string {
-  // switch (publisher) {
-  //   case 'DC Comics' || 'Warner Bros' || 'Microsoft':
-  //     return 'h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] md:h-[5rem] md:w-[5rem] lg:h-[5rem] lg:w-[5rem]'
+  switch (publisher) {
+    case 'DC Comics'  || 'Microsoft':
+      return 'h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] md:h-[5rem] md:w-[5rem] lg:h-[5rem] lg:w-[5rem]'
 
-  //   default:
-  //     return 'h-[7vw] w-[15vw] sm:h-[7vw] sm:w-[15vw] md:h-[3rem] md:w-[7rem] lg:h-[3rem] lg:w-[7rem]'
-  // }
+    case 'Warner Bros':
+      return 'h-[3rem] w-[3rem] sm:h-[5rem] sm:w-[5rem] md:h-[5rem] md:w-[5rem] lg:h-[5rem] lg:w-[5rem]'
+
+    default:
+      return 'h-[7vw] w-[15vw] sm:h-[7vw] sm:w-[15vw] md:h-[3rem] md:w-[7rem] lg:h-[3rem] lg:w-[7rem]'
+  }
   return ""
 }
 
@@ -194,7 +200,7 @@ export function getCharacterStatsNumber(selectedCharacter: Character) {
 //     const buffer = await fetch(url).then(async (res) =>
 //     Buffer.from(await res.arrayBuffer())
 //   );
- 
+
 //   const { base64 } = await getPlaiceholder(buffer);
 
 //   return base64
@@ -231,13 +237,14 @@ const baseUrl =
 
 export async function dynamicBlurDataUrl(url: string) {
 
-  const base64str = await fetch(
-    `${baseUrl}/_next/image?url=${url}&w=16&q=75`
-  ).then(async (res) =>
-    Buffer.from(await res.arrayBuffer()).toString('base64')
-  );
+  try {
+    const base64str = await fetch(
+      `${baseUrl}/_next/image?url=${url}&w=16&q=75`
+    ).then(async (res) =>
+      Buffer.from(await res.arrayBuffer()).toString('base64')
+    );
 
-  const blurSvg = `
+    const blurSvg = `
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'>
       <filter id='b' color-interpolation-filters='sRGB'>
         <feGaussianBlur stdDeviation='1' />
@@ -254,4 +261,51 @@ export async function dynamicBlurDataUrl(url: string) {
       : window.btoa(str);
 
   return `data:image/svg+xml;base64,${toBase64(blurSvg)}`;
+  } catch (error) {
+    
+    console.log(error)
+    const base64str = await fetch(
+      `${baseUrl}/_next/image?url=${"https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png"}&w=16&q=75`
+    ).then(async (res) =>
+      Buffer.from(await res.arrayBuffer()).toString('base64')
+    );
+
+    const blurSvg = `
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'>
+      <filter id='b' color-interpolation-filters='sRGB'>
+        <feGaussianBlur stdDeviation='1' />
+      </filter>
+
+      <image preserveAspectRatio='none' filter='url(#b)' x='0' y='0' height='100%' width='100%'
+      href='data:image/avif;base64,${base64str}' />
+    </svg>
+  `;
+
+  const toBase64 = (str: string) =>
+    typeof window === 'undefined'
+      ? Buffer.from(str).toString('base64')
+      : window.btoa(str);
+
+      return `data:image/svg+xml;base64,${toBase64(blurSvg)}`;
+  }
+
+  
+}
+
+export async function getRandomImage(character: Character) {
+  const allImages: { key: string, value: string }[] = [
+    {
+      key: 'md',
+      value: character?.images.md,
+    },
+    ...getJustTheImagesFromTheImagesObject(character?.images)
+  ]
+
+  const selectedRandomImage = allImages[Math.floor(Math.random() * allImages.length)]
+  const blurSelectedRandomImage = await dynamicBlurDataUrl(selectedRandomImage.value)
+
+  return {
+    selectedRandomImage,
+    blurSelectedRandomImage
+  }
 }

@@ -7,6 +7,7 @@ import { collectionCharacters } from "./mongodb/mongodb";
 import CharacterComponent from "../ui/characters/CharacterComponent";
 // import { unstable_noStore as noStore } from "next/cache";
 import { Sort } from "mongodb";
+import { getRandomImage } from "./charactersUtils";
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
@@ -79,7 +80,7 @@ export async function fetchCharacters(
   sortBy: sortByType,
   sortDirection: sortDirectionType
 ) {
-  
+
 
   try {
     // await new Promise((resolve) => setTimeout(resolve, 7000));
@@ -134,9 +135,11 @@ export async function fetchCharactersNoPagination(
       charactersToSend = charactersToDisplay.sort(() => 0.5 - Math.random()).slice(0, CHARACTERS_PER_PAGE_NOPAGINATION)
     }
 
+    const otherCharacters = await getCharacterComponents(charactersToSend)
+
     return {
       otherIds: charactersToSend.map(c => c.id),
-      otherCharacters: await getCharacterComponents(charactersToSend)
+      otherCharacters: otherCharacters
     }
 
   } catch (error) {
@@ -145,17 +148,27 @@ export async function fetchCharactersNoPagination(
   }
 }
 
+
 async function getCharacterComponents(charactersToSend: Character[]) {
-  return charactersToSend.map((currentCharacter, index) => {
-    return (
+  const result: JSX.Element[] = []
+
+  for (let index = 0; index < charactersToSend.length; index++) {
+    const currentCharacter = charactersToSend[index]
+    const randomImage = await getRandomImage(currentCharacter)
+
+    result.push((
       <CharacterComponent
         key={currentCharacter.slug}
         index={index}
         currentCharacter={JSON.parse(JSON.stringify({ ...currentCharacter, _id: currentCharacter._id.toString() }))}
         withPagination={false}
+        // randomImage={{ selectedRandomImage: allImages[Math.floor(Math.random() * allImages.length)], blurSelectedRandomImage: BASE_42_IMAGE }}
+        randomImage={randomImage}
       />
-    )
-  })
+    ))
+  }
+
+  return result
 }
 
 export async function fetchPages(

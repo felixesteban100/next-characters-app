@@ -1,25 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { fetchCharacterById } from "@/app/utilities/lib/data";
 import { Character } from "@/app/utilities/lib/definitions";
-// import Image from "next/image";
+import Image from "next/image";
 import { WithId } from "mongodb";
 import { getCharacterStatsNumber, getWinnerBetweenTwoCharacters } from "@/app/utilities/lib/charactersUtils";
+import { DrawerDialogDemo } from "../../dialog-drawer";
 
 type FightButtonProps = {
     first: string | undefined;
+    imageKey1: string;
     second: string | undefined;
+    imageKey2: string;
 }
 
-export default async function FightButton({ first, second }: FightButtonProps) {
+export default async function FightButton({ first, second, imageKey1, imageKey2 }: FightButtonProps) {
     if (!first || !second) {
         return <div className="flex items-center">Select two characters</div>
     }
 
     const selectedCharacter1 = await fetchCharacterById(first)
     const selectedCharacter2 = await fetchCharacterById(second)
-    
+
     if (!selectedCharacter1 || !selectedCharacter2) {
         return <div>Error fetchCharacterById</div>
     }
@@ -28,44 +30,60 @@ export default async function FightButton({ first, second }: FightButtonProps) {
     const secondStats = getCharacterStatsNumber(selectedCharacter2)
 
 
+    const winner: string = getWinnerBetweenTwoCharacters(selectedCharacter1, selectedCharacter2, firstStats, secondStats)
+
     return (
-        <Dialog>
+        <DrawerDialogDemo
+            title="Winner"
+            description={winner}
+            trigger={<Button variant={"secondary"}>Fight ⚔</Button>}
+            classNamesDialog="sm:max-w-[800px]"
+        >
+            <div className='h-full flex flex-row justify-center gap-5 md:gap-10 p-5'>
+                <CharacterInfoForMatch
+                    selectedCharacter={selectedCharacter1}
+                    stats={firstStats}
+                    classNames={"animate-fightRight"}
+                    imageKey={imageKey1}
+                />
+                <Separator className='h-[100%] w-[2px] md:w-[0.5rem]' orientation='vertical' />
+                <CharacterInfoForMatch
+                    selectedCharacter={selectedCharacter2}
+                    stats={secondStats}
+                    classNames={"animate-fightLeft"}
+                    imageKey={imageKey2}
+                />
+            </div>
+        </DrawerDialogDemo>
+
+    )
+}
+
+/* <Dialog>
+            
             <DialogTrigger asChild>
-                <Button variant={"secondary"}>Fight ⚔</Button>
+
             </DialogTrigger>
             <DialogContent className="max-w-md min-h-[75vh] md:max-w-3xl">
                 <DialogHeader>
-                    <DialogTitle className="text-5xl text-center">Winner</DialogTitle>
+                    <DialogTitle className="text-5xl text-center"></DialogTitle>
                     <DialogDescription className="text-2xl animate-fade-in text-center">
-                        {getWinnerBetweenTwoCharacters(selectedCharacter1, selectedCharacter2, firstStats, secondStats)}
+
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className='h-full flex flex-row justify-center gap-5 md:gap-10'>
-                    <CharacterInfoForMatch
-                        selectedCharacter={selectedCharacter1}
-                        stats={firstStats}
-                        classNames={"animate-fightRight"}
-                    />
-                    <Separator className='h-[100%] w-[2px] md:w-[0.5rem]' orientation='vertical' />
-                    <CharacterInfoForMatch
-                        selectedCharacter={selectedCharacter2}
-                        stats={secondStats}
-                        classNames={"animate-fightLeft"}
-                    />
-                </div>
+
             </DialogContent>
-        </Dialog>
-    )
-}
+        </Dialog> */
 
 type CharacterInfoForMatchProps = {
     selectedCharacter: WithId<Character>,
     stats: number;
-    classNames: string
+    classNames: string;
+    imageKey: string
 }
 
-async function CharacterInfoForMatch({ selectedCharacter, stats, classNames }: CharacterInfoForMatchProps) {
+async function CharacterInfoForMatch({ selectedCharacter, stats, classNames, imageKey }: CharacterInfoForMatchProps) {
     return (
         <div
             className={`flex flex-col gap-5 ${classNames}`}
@@ -73,23 +91,15 @@ async function CharacterInfoForMatch({ selectedCharacter, stats, classNames }: C
             <div className="flex flex-col gap-5 justify-center items-start">
                 <p className="text-sm md:text-2xl">{selectedCharacter.id} - {selectedCharacter.name}</p>
                 <p>Stats: {stats} %</p>
-                {/* <div className="flex gap-2 items-center ml-5">
-                    <p>{selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}</p>
-                    <Image alt={selectedCharacter.biography.publisher} width={100} height={100} className="w-auto h-[2rem]" src={publisherIMG(selectedCharacter.biography.publisher)} />
-                </div> */}
-                {/* <p>Aligmnent: {selectedCharacter.biography.alignment === "good" ? "Hero" : selectedCharacter.biography.alignment === "bad" ? "Villain" : "Anti-Hero"}</p> */}
-                {/* <div className="flex gap-2 items-center"><p>Universe:</p> <Image alt={selectedCharacter.biography.publisher} width={100} height={100} className="w-auto h-[2rem]" src={publisherIMG(selectedCharacter.biography.publisher)} /></div> */}
             </div>
-           {/*  <Image
+             <Image
                 width={500}
                 height={500}
-                // className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`}
-                // className={`transition-all duration-300 absolute w-[100%] h-[100%] object-cover rounded-md md:object-top`}
                 className="w-[20rem] h-[35rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
-                src={selectedCharacter.images.md}
+                src={selectedCharacter.images[imageKey]}
                 alt={selectedCharacter.name}
                 loading="lazy"
-            /> */}
+            />
         </div>
     )
 }
