@@ -17,7 +17,7 @@ type CharacterInfoBattleProps = {
 
 export default function CharacterInfoBattle({ selectedCharacter, urlParameterToChange, classNames = "", randomImage }: CharacterInfoBattleProps) {
     return (
-        <div className={`flex flex-col gap-2 justify-center items-center mb-10 ${classNames}`}>
+        <div className={`flex-shrink flex flex-col gap-2 justify-center items-center mb-10 ${classNames}`}>
             <div
                 className="flex flex-col gap-5"
             >
@@ -25,10 +25,10 @@ export default function CharacterInfoBattle({ selectedCharacter, urlParameterToC
                     <div className="flex flex-col md:flex-row gap-5 mb-5 md:mb-0">
                         <Link href={`/characters/${selectedCharacter.id}?name=${selectedCharacter.name}&image=${randomImage.selectedRandomImage.key}`}>
                             <Button variant={"link"} className="m-0 p-0">
-                                <p className="text-lg md:text-2xl">{selectedCharacter.id} - {selectedCharacter.name ?? `Select ${urlParameterToChange} character 👇`}</p>
+                                <p className="text-lg md:text-2xl text-ellipsis">{selectedCharacter.id} - {selectedCharacter.name ?? `Select ${urlParameterToChange} character 👇`}</p>
                             </Button>
                         </Link>
-                        <p className="text-lg md:text-2xl bg-secondary p-1 rounded-md w-fit">{getCharacterStatsNumber(selectedCharacter)} %</p>
+                        {/* <p className="text-lg md:text-2xl bg-secondary p-1 rounded-md w-fit">{getCharacterStatsNumber(selectedCharacter)} %</p> */}
                     </div>
                     <div className="w-full flex justify-between ">
                         <div className="flex gap-2 items-center md:ml-5">
@@ -50,7 +50,7 @@ export default function CharacterInfoBattle({ selectedCharacter, urlParameterToC
                                             // href={`/characters?universe=${selectedCharacter.biography.publisher}&team=${teamFound.value}&howMany=700`}
                                             href={`/characters?universe=${selectedCharacter.biography.publisher}&team=${teamFound.value}&howMany=700`}
                                             key={teamFound.name}
-                                            className="mx-auto flex gap-1 flex-col cursor-pointer group/items"
+                                            className="mx-auto flex gap-1 flex-col cursor-pointer group/items "
                                             data-tip={teamFound.name}
                                         >
                                             <Image
@@ -59,7 +59,6 @@ export default function CharacterInfoBattle({ selectedCharacter, urlParameterToC
                                                 height={100}
                                                 src={teamFound?.img}
                                                 alt={teamFound?.name}
-                                                
                                             />
                                         </Link>
                                     )

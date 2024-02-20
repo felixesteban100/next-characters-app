@@ -148,6 +148,11 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
           img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c566b360-dcc0-4f8d-8154-05e8123d0d36/d6nq2rp-d52122fd-909a-4eaa-963e-3268cc5595a8.png/v1/fill/w_1024,h_442,q_80,strp/marvel_s_the_defenders___logo_by_mrsteiners_d6nq2rp-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDQyIiwicGF0aCI6IlwvZlwvYzU2NmIzNjAtZGNjMC00ZjhkLTgxNTQtMDVlODEyM2QwZDM2XC9kNm5xMnJwLWQ1MjEyMmZkLTkwOWEtNGVhYS05NjNlLTMyNjhjYzU1OTVhOC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.MFsU6vsmf_xeeiPuf_qwGy6HrYqunWGwqxJEs6JJql8",
         },
         {
+          name: "Eternals",
+          value: "Eternals",
+          img: "https://www.firstcomicsnews.com/wp-content/uploads/2019/07/Eternals-Logo.png",
+        },
+        {
           name: "Fantastic Four",
           value: "Fantastic Four",
           img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/82d0ec62-144a-47ae-aebb-f112f2a3b50b/ddghfpv-954536f0-f6f2-45c9-9f3a-468e21363b42.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzgyZDBlYzYyLTE0NGEtNDdhZS1hZWJiLWYxMTJmMmEzYjUwYlwvZGRnaGZwdi05NTQ1MzZmMC1mNmYyLTQ1YzktOWYzYS00NjhlMjEzNjNiNDIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.cfqvk-n8nviTwKKScn8a-iJ-Qx1sR_fa9DWOKXx9TBA",
@@ -532,7 +537,7 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Asgardians",
           value: "Asgardians",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a21c2816-49d4-4a5b-b6db-7634a5ea8671/deqsmlv-740da833-0582-4672-9c63-a58f1f79565c.png/v1/fill/w_638,h_604/asgard_logo_by_spiderbyte64_deqsmlv-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjA0IiwicGF0aCI6IlwvZlwvYTIxYzI4MTYtNDlkNC00YTViLWI2ZGItNzYzNGE1ZWE4NjcxXC9kZXFzbWx2LTc0MGRhODMzLTA1ODItNDY3Mi05YzYzLWE1OGYxZjc5NTY1Yy5wbmciLCJ3aWR0aCI6Ijw9NjM4In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.R5bMAGrtXXim7EM_A84hkucgZewYCUOzB8_Uevmkwlc",
+          img: "https://static.wikia.nocookie.net/marveldatabase/images/8/8c/Asgardians_%28Earth-9997%29_from_Universe_X_Vol_1_4_001.jpg/revision/latest?cb=20150816221632",
         },
         {
           name: "Agents of Atlas",
@@ -568,6 +573,11 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
           name: "Defenders",
           value: "Defenders",
           img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c566b360-dcc0-4f8d-8154-05e8123d0d36/d6nq2rp-d52122fd-909a-4eaa-963e-3268cc5595a8.png/v1/fill/w_1024,h_442,q_80,strp/marvel_s_the_defenders___logo_by_mrsteiners_d6nq2rp-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDQyIiwicGF0aCI6IlwvZlwvYzU2NmIzNjAtZGNjMC00ZjhkLTgxNTQtMDVlODEyM2QwZDM2XC9kNm5xMnJwLWQ1MjEyMmZkLTkwOWEtNGVhYS05NjNlLTMyNjhjYzU1OTVhOC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.MFsU6vsmf_xeeiPuf_qwGy6HrYqunWGwqxJEs6JJql8",
+        },
+        {
+          name: "Eternals",
+          value: "Eternals",
+          img: "https://www.comicbooktreasury.com/wp-content/uploads/2021/04/Marvel-Eternals-Reading-Order.jpg",
         },
         {
           name: "Fantastic Four",
@@ -613,7 +623,7 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Inhumans",
           value: "Inhumans",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e5fd7346-eed0-4416-8203-58b0d230afe3/dfejcpg-e927c215-be44-4640-8c81-a88090ef5163.png/v1/fill/w_1280,h_578/inhumans_logo_png___disney__variant_by_bats66_dfejcpg-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc4IiwicGF0aCI6IlwvZlwvZTVmZDczNDYtZWVkMC00NDE2LTgyMDMtNThiMGQyMzBhZmUzXC9kZmVqY3BnLWU5MjdjMjE1LWJlNDQtNDY0MC04YzgxLWE4ODA5MGVmNTE2My5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.dlImHRVc7dcYDiwRhYU5rff0xaUDBwpfIXMXVtfrgmY",
+          img: "https://cdn.marvel.com/content/1x/062inh_com_mas_dsk_02_1.jpg",
         },
         {
           name: "Legion of Monsters",
@@ -659,7 +669,7 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Sinister Six",
           value: "Sinister Six",
-          img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a21c2816-49d4-4a5b-b6db-7634a5ea8671/deuucix-26734fb7-e2d7-4f87-8a43-08db5a598984.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2EyMWMyODE2LTQ5ZDQtNGE1Yi1iNmRiLTc2MzRhNWVhODY3MVwvZGV1dWNpeC0yNjczNGZiNy1lMmQ3LTRmODctOGE0My0wOGRiNWE1OTg5ODQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.IZ7FEozXuyy4NOOqmj9ARb9Xh0k3eVDwMGBamAkOwWo",
+          img: "https://cdn.mos.cms.futurecdn.net/DwCBJW63yjskDt6Q9AfSAD-1200-80.jpg",
         },
         {
           name: "Spider-Army",

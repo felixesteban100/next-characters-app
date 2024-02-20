@@ -83,26 +83,6 @@ function FeatureTabAppereance({ selectedCharacter }: FeatureTabAppereanceProps) 
                     <Separator />
 
                 </StatContainer>
-
-                {/* <StatContainer>
-                <div className='md:w-[50%] flex justify-center mx-auto'>
-                    <div className="h-full w-full flex flex-col justify-center items-center gap-5">
-                        {allImages.map((img, index) => {
-                            return (
-                                <Image
-                                    key={`img-${index}`}
-                                    className="h-auto w-full"
-                                    src={img}
-                                    loading="lazy"
-                                    width={300}
-                                    height={300}
-                                    alt={`img-${index}`}
-                                />
-                            )
-                        })}
-                    </div>
-                </div>
-            </StatContainer> */}
             </>
         </FeatureTabContainer>
     )

@@ -8,12 +8,17 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Settings2 } from "lucide-react";
 import { Suspense } from "react";
+import type { Metadata } from 'next'
+import TitlePage from "@/app/utilities/ui/TitlePage";
 
-export function generateMetadata() {
+export const metadata: Metadata = {
+    title: 'Rankings Characters',
+}
+/* export function generateMetadata() {
     return {
         title: `Rankins Characters`,
     }
-}
+} */
 
 export default async function Page({
     searchParams,
@@ -40,9 +45,9 @@ export default async function Page({
 
     return (
         <main>
-            <div className='w-full flex justify-between items-center gap-5 my-10 px-8' /* className='w-[80%] md:w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-5 my-10 md:px-8' */>
-                <h2 className="text-3xl font-bold">Rankings Characters</h2>
-                <div className="flex gap-2">
+            <TitlePage
+                label={'Rankings Characters'}
+                secondPart={<div className="flex gap-2">
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button variant={'outline'} size={"icon"}><Settings2 /></Button>
@@ -57,8 +62,8 @@ export default async function Page({
                             </SheetHeader>
                         </SheetContent>
                     </Sheet>
-                </div>
-            </div>
+                </div>}
+            />
 
             <Suspense fallback={<LoadingChartRankings />}>
                 <ChartRankings

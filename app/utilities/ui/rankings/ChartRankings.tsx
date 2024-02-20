@@ -3,7 +3,7 @@ import fetchCharactersTop, { removeAttributesAllJustValues } from "../../lib/dat
 import { Subtitle, BarChart, Card, AreaChart } from "@tremor/react";
 import { FixedAttributeTranslator, getTeamByUniverse } from "../../lib/constants";
 import { AlignmentTranslator, getAlignmentIcon, getGenderIcon, getRaceIcon, publisherIMG } from "../../lib/charactersUtils";
-import Image from "next/image";
+// import Image from "next/image";
 import {
     HoverCard,
     HoverCardContent,
@@ -48,14 +48,14 @@ export default async function ChartRankings({ attributes, fixedAttribute, number
                     text={attributesCleaner['appearance.race']}
                     content={raceIcon}
                 />}
-                {attributesCleaner['biography.publisher'] && <AttributeCardHover
+                {/* {attributesCleaner['biography.publisher'] && <AttributeCardHover
                     text={attributesCleaner['biography.publisher']}
-                    content={<Image width={50} height={50} src={publisherImg} alt={attributesCleaner['biography.publisher']} />}
+                    content={< width={50} height={50} src={publisherImg} alt={attributesCleaner['biography.publisher']} />}
                 />}
                 {attributesCleaner['connections.groupAffiliation'] && <AttributeCardHover
                     text={attributesCleaner['connections.groupAffiliation']}
-                    content={<Image width={50} height={50} src={teamImg.img} alt={attributesCleaner['connections.groupAffiliation']} />}
-                />}
+                    content={< width={50} height={50} src={teamImg.img} alt={attributesCleaner['connections.groupAffiliation']} />}
+                />} */}
             </div>
 
             <Card>

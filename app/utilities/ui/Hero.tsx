@@ -3,6 +3,8 @@
 import Image from "next/image";
 // import { motion } from 'framer-motion'
 import { dynamicBlurDataUrl } from "../lib/charactersUtils";
+import { TwicImg } from "@twicpics/components/react";
+import ImagesNextCloudinary from "./ImagesNextCloudinary";
 
 type HeroProps = {
   imgLogo: string | null;
@@ -17,24 +19,36 @@ const variants = {
 }
 
 async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
-  const blurImgBg = await dynamicBlurDataUrl(imgBg ?? "https://static1.cbrimages.com/wordpress/wp-content/uploads/2017/02/Justice-League-and-The-Avengers.jpg")
+  const img = imgBg ?? "https://assets-global.website-files.com/5ed7d58749f36f18d80eaf28/5ed7f9ac334769f96b230007_dc-vs.-marvel-1024x661.jpeg"
+  const logo = imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"
 
-  const blurLogo = await dynamicBlurDataUrl(imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png")
+  const blurImgBg = await dynamicBlurDataUrl(img)
+  // const blurLogo = await dynamicBlurDataUrl(logo)
+
+  // https://www.twicpics.com/docs/components/next
+  // https://account.twicpics.com/workspace/271a0f00-cd24-11ee-9dae-e32389fc533f
+
+  // https://next.cloudinary.dev/installation
+  // https://console.cloudinary.com/console/c-e9d7f1ee63e1607a0564cacb179db0/media_library/search?q=&view_mode=mosaic
 
   return (
     // className="bg-hero bg-opacity-40 bg-center bg-cover bg-no-repeat sm:p-16 py-16 px-8 flex justify-center lg:items-center max-lg:flex-col w-full sm:gap-16 gap-0"
     //bg-[url('/hero.png')]
-    <header data-test="hero" className="relative max-w-[80rem] h-[25rem] overflow-hidden bg-background ">
+    <header data-test="hero" className="relative max-w-[80rem] h-[25rem] overflow-visible bg-background group">
       <Image
-        src={imgBg ?? "https://static1.cbrimages.com/wordpress/wp-content/uploads/2017/02/Justice-League-and-The-Avengers.jpg"}
-        alt="logo"
+        src={img}
+        alt="bg-hero"
         fill
-        className="object-cover w-full h-full opacity-20"
+        className="object-cover w-full h-full group-hover:opacity-40 transition-all duration-300"
+
         placeholder="blur"
         blurDataURL={blurImgBg}
+
+        // placeholder="maincolor"
+        // transition="fade"
       />
       <div
-        className="absolute w-full h-full flex justify-between "
+        className="absolute w-full h-full flex justify-start items-end pb-20 pl-20"
       // variants={variants}
       // initial={'hidden'}
       // animate={'visible'}
@@ -53,19 +67,13 @@ async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
         </div> */}
 
         <Image
-          height={350}
-          width={350}
-          src={imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"}
+          height={200}
+          width={200}
+          src={logo}
           alt={alt ?? "publisher"}
-          className={`object-contain  ${classes} animate-fade-in`}
+          // group-hover:animate-bounce-z-16
+          className={`object-contain ${classes} group-hover:scale3d-150 transition-all duration-300`}
         />
-        {/* <source
-          srcSet={imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"}
-          type="image/webp"
-          height={350}
-          width={350}
-          className={`object-contain  ${classes}`}
-        /> */}
       </div>
     </header>
   );
@@ -88,7 +96,7 @@ export default Hero;
         viewport={{ amount: 0 }}
       >
         
-        <Image
+        <image
           height={350}
           width={350}
           src={imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"}

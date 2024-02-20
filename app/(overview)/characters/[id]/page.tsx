@@ -21,11 +21,18 @@ import { notFound } from 'next/navigation';
 // }
 
 
-export function generateMetadata({ /* params, */ searchParams }: { params: { id: string }, searchParams: { name: string, image?: string } }) {
-    return {
-        // title: `${character ? character.name : "Not Found"}`,
-        title: `${searchParams.name}`,
-    }
+// export function generateMetadata({ /* params, */ searchParams }: { params: { id: string }, searchParams: { name: string, image?: string } }) {
+//     return {
+//         // title: `${character ? character.name : "Not Found"}`,
+//         title: `${searchParams.name}`,
+//     }
+// }
+
+import type { Metadata } from 'next'
+import TitlePage from '@/app/utilities/ui/TitlePage';
+ 
+export const metadata: Metadata = {
+  title: 'Character',
 }
 
 export default async function Page({ params, searchParams }: { params: { id: string }, searchParams: { name: string, pagination?: string, image?: string } }) {
@@ -37,15 +44,14 @@ export default async function Page({ params, searchParams }: { params: { id: str
     if (!selectedCharacter) notFound()
 
     return (
-        <main>
-            <div className='w-full flex justify-between items-center gap-5 my-7 px-8' /* className='w-[80%] md:w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-5 my-10 md:px-8' */>
-                <h2 className="text-3xl font-bold">{searchParams.name}</h2>
-                <div /* className="flex gap-2" */>
-                    <FavoriteButton
-                        character={selectedCharacter}
-                    />
-                </div>
-            </div>
+        <main className='p-0 md:px-5'>
+            <TitlePage
+                label={searchParams.name}
+                secondPart={<FavoriteButton
+                    character={selectedCharacter}
+                />}
+                classesContainer='mb-5'
+            />
 
             <CharacterInfo
                 selectedCharacter={selectedCharacter}

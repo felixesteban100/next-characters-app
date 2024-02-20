@@ -45,7 +45,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                         {allImagesInfo.map((imgInfo, index) => (
                             <figure key={index} className="shrink-0 w-[150px] md:w-max">
                                 <Link href={`/characters/${selectedCharacter.id}?name=${selectedCharacter.name}&image=${imgInfo.property}&withPagination=${withPagination}`} className="overflow-hidden rounded-md h-[90%] w-full">
-                                    <Image
+                                    <image
                                         src={allImages[index]}
                                         alt={`Photo by ${selectedCharacter.name}-${index}`}
                                         className="aspect-[3/4] h-full w-fit object-cover"
@@ -78,7 +78,6 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                                     width={300}
                                     height={300}
                                     alt={`comic-${index}`}
-                                    
                                 />
                             )
                         })}

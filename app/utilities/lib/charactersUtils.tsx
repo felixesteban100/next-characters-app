@@ -230,7 +230,7 @@ export function getCharacterStatsNumber(selectedCharacter: Character) {
 
 
 // this blur image thing doesn't work on production (vercel) :-|
-const baseUrl =
+export const baseUrl =
   process.env.VERCEL_ENV === 'development'
     ? 'http://localhost:3000/'
     : `https://${process.env.VERCEL_URL}`;

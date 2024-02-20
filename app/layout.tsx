@@ -4,6 +4,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
 import { Toaster } from "@/components/ui/sonner"
 import Particles from './utilities/ui/Particles';
+import { TwicInstall } from "@twicpics/components/react";
+import "@twicpics/components/style.css";
+// import { baseUrl } from './utilities/lib/charactersUtils';
 
 export const metadata: Metadata = {
   title: {
@@ -18,6 +21,8 @@ export const metadata: Metadata = {
 };
 
 //TODO:
+// learn how to use the getstaticprops function in nextjs
+// learn how to use the getserversideprops function in nextjs
 // repplicate the image optimization of next js Image component so that I don´t have to pay for it to show the images webp when deploy to vercel
 // make a rankings moduels that also has a filtering system. i.e: the strongest mutants in marvel or the smartest heroes in dc...
 // figue a way out to make this random be saved so that when you refresh or go back have the same results
@@ -27,7 +32,6 @@ export const metadata: Metadata = {
 // in the [id] page save the tab selected using params
 // modify the database and remove the teams with parentesis in the names [DONE, FOR THE MOST PART I GUESS]
 
-
 export default function RootLayout({
   children,
 }: {
@@ -35,6 +39,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <TwicInstall
+        // domain is mandatory
+        // domain={baseUrl}
+        // domain={"https://pngimg.com/d/"}
+        domain='https://next-characters-app.twic.pics/'
+      />
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
@@ -42,6 +52,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+
           <div className='absolute inset-0 -z-10 min-h-screen'>
             <Particles
               className="absolute inset-0 -z-10 animate-fade-in"

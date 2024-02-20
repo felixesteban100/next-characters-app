@@ -92,14 +92,16 @@ async function CharacterInfoForMatch({ selectedCharacter, stats, classNames, ima
                 <p className="text-sm md:text-2xl">{selectedCharacter.id} - {selectedCharacter.name}</p>
                 <p>Stats: {stats} %</p>
             </div>
-             <Image
-                width={500}
-                height={500}
-                className="w-[20rem] h-[35rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
-                src={selectedCharacter.images[imageKey]}
-                alt={selectedCharacter.name}
-                loading="lazy"
-            />
+            <div className="relative overflow-hidden box characterId">
+                <Image
+                    width={500}
+                    height={500}
+                    className="w-[20rem] h-[35rem] md:w-[35rem] md:h-[35rem] object-cover object-top"
+                    src={selectedCharacter.images[imageKey]}
+                    alt={selectedCharacter.name}
+                    loading="lazy"
+                />
+            </div>
         </div>
     )
 }

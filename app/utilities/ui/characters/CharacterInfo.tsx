@@ -16,7 +16,7 @@ export default async function CharacterInfo({ selectedCharacter, /* characterId,
     return (
         <ScrollArea className="h-[80vh]">
             <div
-                className="mx-auto flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10 lg:gap-5 px-5 lg:p-0"
+                className="mx-auto flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10 md:gap-5 px-5 md:p-0"
             >
                 <div
                     className="group cursor-pointer relative w-full lg:w-[30%] h-[75vh] shadow-xl rounded-md transition-all duration-300 lg:flex-none box characterId"

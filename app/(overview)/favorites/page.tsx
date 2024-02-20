@@ -1,9 +1,8 @@
 import FavoriteCharacters from '@/app/utilities/ui/favorite/FavoriteCharacters';
-
-export function generateMetadata() {
-    return {
-        title: `Favorites Characters`,
-    }
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Favorite character',
 }
 
 export default async function Page({

@@ -13,8 +13,9 @@ import Characters from '@/app/utilities/ui/characters/Characters';
 import LoadingCharacters from '@/app/utilities/ui/characters/loaders/LoadingCharacters';
 import CharactersNoPagination from '@/app/utilities/ui/characters/CharactersNoPagination';
 import PaginationToggle from '@/app/utilities/ui/characters/PaginationToggle';
+import TitlePage from '@/app/utilities/ui/TitlePage';
 
-export function generateMetadata({
+/* export function generateMetadata({
     searchParams,
 }: {
     searchParams?: {
@@ -38,7 +39,7 @@ export function generateMetadata({
     return {
         title: `${searchParams?.team && searchParams?.team !== "All" ? searchParams?.team : searchParams?.universe && searchParams?.universe !== "All" ? searchParams?.universe : "Characters"}`,
     }
-}
+} */
 
 export default async function Page({
     searchParams,
@@ -65,6 +66,7 @@ export default async function Page({
     }
 }) {
     const withPagination = searchParams?.pagination === undefined ? true : searchParams.pagination === "true"
+
 
     const characterOrFullName = searchParams?.characterOrFullName === "true"
     const characterName = searchParams?.characterName || '';
@@ -99,10 +101,7 @@ export default async function Page({
 
     return (
         <main
-        // className='overflow-hidden max-w-[80rem] mx-auto border-x'
-        // className='mx-auto border-x'
         >
-            {/* <ScrollArea className={`max-w-[80rem] h-[850px] mx-auto border-x`}> */}
             <Hero
                 imgLogo={imgLogo}
                 imgBg={imgBg}
@@ -110,15 +109,10 @@ export default async function Page({
                 classes={classes}
             />
 
-            {/* <div className="relative w-[80rem] h-[20rem] overflow-hidden bg-background">
-                <img src="https://previewsworld.com/SiteImage/MainImage/STL262356.jpg" alt="Avatar" className="object-cover w-full h-full opacity-25" />
-                <div className="absolute w-full top-1/2 bottom-1/2 text-white text-xs text-center leading-4">this is a text</div>
-            </div> */}
-
-            <div className='w-full flex justify-between items-center gap-5 my-10 px-8'>
-                <h2 className="text-3xl font-bold">Explore Characters</h2>
-
-                <div className='flex items-center gap-2'>
+            <TitlePage
+                label={'Explore Characters'}
+                classesLabel={"py-11"}
+                secondPart={<div className='flex items-center gap-2'>
                     <PaginationToggle />
                     <Sheet>
                         <SheetTrigger asChild>
@@ -136,8 +130,8 @@ export default async function Page({
                             </SheetHeader>
                         </SheetContent>
                     </Sheet>
-                </div>
-            </div>
+                </div>}
+            />
 
             {withPagination === true ?
                 <Suspense
@@ -170,7 +164,6 @@ export default async function Page({
                     />
                 </Suspense>
             }
-            {/* </ScrollArea> */}
         </main>
     );
 }

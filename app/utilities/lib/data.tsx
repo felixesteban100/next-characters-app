@@ -11,7 +11,7 @@ import { getRandomImage } from "./charactersUtils";
 
 export async function fetchCharacterById(characterSelectedId: string) {
   // noStore();
-  // await new Promise((resolve) => setTimeout(resolve, 7000));
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
   try {
     const selectedCharacter = await collectionCharacters.findOne({ id: parseInt(characterSelectedId) })
     return selectedCharacter
@@ -196,11 +196,30 @@ export async /* make this async even though I am now using async code in here (b
 ) {
   const queryOptions: QueryOptions = {};
 
-  if (characterName !== "") {
+  const characterNames = characterName.split(',')
+
+  if (characterNames.length > 1) {
+    const names: string = characterNames.reduce((acc, name, index) => {
+      if(index > 0){
+        acc = `${acc}|${name.trim()}`
+      }else{
+        acc = `${name}`
+      }
+      return acc
+    }, "")
+
     if (characterOrFullName === false) {
-      queryOptions.name = new RegExp(characterName, "ig")
+      queryOptions.name = new RegExp(names, "ig")
     } else {
-      queryOptions["biography.fullName"] = new RegExp(characterName, "ig")
+      queryOptions["biography.fullName"] = new RegExp(names, "ig")
+    }
+  } else {
+    if (characterName !== "") {
+      if (characterOrFullName === false) {
+        queryOptions.name = new RegExp(characterName, "ig")
+      } else {
+        queryOptions["biography.fullName"] = new RegExp(characterName, "ig")
+      }
     }
   }
 

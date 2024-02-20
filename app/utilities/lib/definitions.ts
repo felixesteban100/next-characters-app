@@ -49,8 +49,8 @@ export type Character = {
 }
 
 export type QueryOptions = {
-    name?: string | RegExp;
-    "biography.fullName"?: string | RegExp;
+    name?: /* string | */ RegExp /* | string[] */ /* | RegExp[] */;
+    "biography.fullName"?: /* string | */ RegExp /* | RegExp[] */;
     "biography.alignment"?: string;
     "biography.publisher"?: string;
     "connections.groupAffiliation"?: string | RegExp;

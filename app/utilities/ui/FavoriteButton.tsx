@@ -51,7 +51,7 @@ export default function FavoriteButton({ character }: FavoriteButtonProps) {
             variant={"ghost"}
             className="hover:bg-transparent"
         >
-            <Star size={800} className={`h-[5rem] ${characters.find((char) => char.id === characterInfo.id) !== undefined ? 'fill-primary hover:fill-transparent' : 'transparent hover:fill-primary'}`} />
+            <Star /* size={800} */ className={`h-[5rem] ${characters.find((char) => char.id === characterInfo.id) !== undefined ? 'fill-primary hover:fill-transparent' : 'transparent hover:fill-primary'}`} />
         </Button>
     )
 }

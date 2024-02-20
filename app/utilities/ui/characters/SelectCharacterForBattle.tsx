@@ -61,16 +61,21 @@ export default function SelectCharacterForBattle({ selectedCharacter, urlParamet
             title={`Select ${urlParameterToChange} character`}
             description={` Make changes to your profile here. Click save when youre done.`}
             triggerClose={<Button className="w-full" variant={"secondary"} onClick={() => RandomCharacter()}>Random</Button>}
-            trigger={<Image
-                width={500}
-                height={500}
-                className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
-                src={selectedRandomImage}
-                alt={selectedCharacter.name}
-                loading="lazy"
-                placeholder="blur"
-                blurDataURL={blurSelectedRandomImage}
-            />}
+            trigger={
+            <div className="relative w-full box characterId overflow-hidden">
+
+                <Image
+                    width={500}
+                    height={500}
+                    className={`rounded-md w-[10rem] h-[15rem] md:w-[35rem] md:h-[35rem] object-cover object-top`}
+                    src={selectedRandomImage}
+                    alt={selectedCharacter.name}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={blurSelectedRandomImage}
+                />
+            </div>
+        }
         >
             <Input onChange={(e) => {
                 searchNames(e.target.value)
