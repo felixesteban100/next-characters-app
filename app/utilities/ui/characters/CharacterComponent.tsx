@@ -100,7 +100,7 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
                                 // mt-[-85%] md:mt-[-160%] xl:mt-[-135%] mb-[50%] md:mb-[85%] xl:mb-[70%] 
 
                                 //text-center text-2xl md:text-xl xl:text-3xl ${characterNameLenght < 14 ? "lg:whitespace-nowrap " : "text-wrap"} 
-                                className={`text-ellipsis text-3xl font-extrabold text-stroke-custom `}
+                                className={`text-ellipsis text-3xl font-extrabold text-stroke-custom overflow-hidden max-w-full lg:max-w-[8rem] xl:max-w-[10rem] 2xl:max-w-full `}
                             >
                                 {currentCharacter.name}
                             </CardItem>

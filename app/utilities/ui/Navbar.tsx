@@ -13,7 +13,7 @@ async function Navbar() {
 
   return (
     <nav
-      className='mx-auto flex justify-between gap-5 py-5 px-5'
+      className='mx-auto flex justify-between gap-5 py-5 w-full'
     >
       <div className='hidden md:flex items-center justify-center gap-2 md:gap-5'>
         <LinkNavBar

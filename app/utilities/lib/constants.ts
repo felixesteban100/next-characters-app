@@ -308,7 +308,8 @@ export function getTeamByUniverse(universe: string): { name: string, value: stri
         {
           name: "Assorted Batman rogues",
           value: "Assorted Batman rogues",
-          img: "https://w0.peakpx.com/wallpaper/555/276/HD-wallpaper-batman-villains-joker-comics-scarecrow-peguin-superheroes-catwoman-two-face-dc-comics-batman-villains-poison-ivy.jpg",
+          // img: "https://w0.peakpx.com/wallpaper/555/276/HD-wallpaper-batman-villains-joker-comics-scarecrow-peguin-superheroes-catwoman-two-face-dc-comics-batman-villains-poison-ivy.jpg",
+          img: "https://i.imgur.com/dpV2h6W.png",
         },
         {
           name: "Batman Family",
@@ -638,7 +639,7 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Midnight Sons",
           value: "Midnight Sons",
-          img: "https://image.api.playstation.com/vulcan/ap/rnd/202108/1723/0gPKGnGXftV59bXu6NgH9wXA.png",
+          img: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/11/MARVEL-TEAMS-Midnight-Sons.jpg",
         },
         {
           name: "MCU Villains",
@@ -735,7 +736,7 @@ export function getTeamBackgroundImageByUniverse(universe: string): { name: stri
         {
           name: "Assorted Batman rogues",
           value: "Assorted Batman rogues",
-          img: "https://w0.peakpx.com/wallpaper/555/276/HD-wallpaper-batman-villains-joker-comics-scarecrow-peguin-superheroes-catwoman-two-face-dc-comics-batman-villains-poison-ivy.jpg",
+          img: "https://media.distractify.com/brand-img/3l49H3oCw/0x0/the-long-halloween-cover-1646510373227.jpg",
         },
         {
           name: "Batman Family",

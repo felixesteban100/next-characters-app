@@ -30,9 +30,11 @@ import { notFound } from 'next/navigation';
 
 import type { Metadata } from 'next'
 import TitlePage from '@/app/utilities/ui/TitlePage';
- 
+import LoadingCharacterInfo from '@/app/utilities/ui/characters/loaders/LoadingCharacterInfo';
+import { Suspense } from 'react';
+
 export const metadata: Metadata = {
-  title: 'Character',
+    title: 'Character',
 }
 
 export default async function Page({ params, searchParams }: { params: { id: string }, searchParams: { name: string, pagination?: string, image?: string } }) {
@@ -53,11 +55,13 @@ export default async function Page({ params, searchParams }: { params: { id: str
                 classesContainer='mb-5'
             />
 
-            <CharacterInfo
-                selectedCharacter={selectedCharacter}
-                image={searchParams.image}
-                withPagination={withPagination}
-            />
+            <Suspense key={searchParams.name} fallback={<LoadingCharacterInfo />}>
+                <CharacterInfo
+                    selectedCharacter={selectedCharacter}
+                    image={searchParams.image}
+                    withPagination={withPagination}
+                />
+            </Suspense>
         </main>
     );
 }

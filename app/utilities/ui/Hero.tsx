@@ -3,8 +3,8 @@
 import Image from "next/image";
 // import { motion } from 'framer-motion'
 import { dynamicBlurDataUrl } from "../lib/charactersUtils";
-import { TwicImg } from "@twicpics/components/react";
-import ImagesNextCloudinary from "./ImagesNextCloudinary";
+// import { TwicImg } from "@twicpics/components/react";
+// import ImagesNextCloudinary from "./ImagesNextCloudinary";
 
 type HeroProps = {
   imgLogo: string | null;
@@ -13,17 +13,28 @@ type HeroProps = {
   classes: string | null;
 }
 
-const variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 }
-}
+// const variants = {
+//   hidden: { opacity: 0 },
+//   visible: { opacity: 1 }
+// }
+
+
+const DEFAULT_IMAGES = [
+  'https://assets2.cbsnewsstatic.com/hub/i/r/2016/01/21/9d2ea1b8-9246-480f-82c7-1580f7734de8/thumbnail/1200x630/e39b92d98a826d318d7af4f9cecebfba/nycomiconposter2011.jpg?v=2a01790210e495d24a119503c08f840d',
+  "https://assets-global.website-files.com/5ed7d58749f36f18d80eaf28/5ed7f9ac334769f96b230007_dc-vs.-marvel-1024x661.jpeg",
+  "https://cdn.vox-cdn.com/thumbor/mGSC6KccCK2g545GwRkdyzSaBJs=/0x0:2040x1360/1200x675/filters:focal(857x517:1183x843)/cdn.vox-cdn.com/uploads/chorus_image/image/68511213/jbareham_201208_ecl1048_holiday_streaming_comics.0.jpg",
+  "https://www.cultture.com/pics/2020/11/10-escritores-de-comics-que-se-arrepienten-de-sus-obras-mas-iconicas-y-por-que-0.jpg",
+  "https://images5.alphacoders.com/618/618710.jpg",
+  "https://images6.alphacoders.com/134/1342166.jpeg"
+]
 
 async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
-  const img = imgBg ?? "https://assets-global.website-files.com/5ed7d58749f36f18d80eaf28/5ed7f9ac334769f96b230007_dc-vs.-marvel-1024x661.jpeg"
-  const logo = imgLogo ?? "https://i.ibb.co/5TDyQQR/mvdc.png"
+  const img = imgBg ?? DEFAULT_IMAGES[Math.floor(Math.random() * DEFAULT_IMAGES.length)]
+  const logo = imgLogo ?? "" /* ?? "https://i.ibb.co/5TDyQQR/mvdc.png" */
 
   const blurImgBg = await dynamicBlurDataUrl(img)
   // const blurLogo = await dynamicBlurDataUrl(logo)
+
 
   // https://www.twicpics.com/docs/components/next
   // https://account.twicpics.com/workspace/271a0f00-cd24-11ee-9dae-e32389fc533f
@@ -39,13 +50,13 @@ async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
         src={img}
         alt="bg-hero"
         fill
-        className="object-cover w-full h-full group-hover:opacity-40 transition-all duration-300"
+        className={`object-cover w-full h-full ${logo !== "" ? "group-hover:opacity-40" : ""}  transition-all duration-300`}
 
         placeholder="blur"
         blurDataURL={blurImgBg}
 
-        // placeholder="maincolor"
-        // transition="fade"
+      // placeholder="maincolor"
+      // transition="fade"
       />
       <div
         className="absolute w-full h-full flex justify-start items-end pb-20 pl-20"
@@ -66,14 +77,17 @@ async function Hero({ imgLogo, imgBg, alt, classes }: HeroProps) {
           </h1>
         </div> */}
 
-        <Image
-          height={200}
-          width={200}
-          src={logo}
-          alt={alt ?? "publisher"}
-          // group-hover:animate-bounce-z-16
-          className={`object-contain ${classes} group-hover:scale3d-150 transition-all duration-300`}
-        />
+        {
+          logo !== "" &&
+          <Image
+            height={200}
+            width={200}
+            src={logo}
+            alt={alt ?? "publisher"}
+            // group-hover:animate-bounce-z-16
+            className={`object-contain ${classes} group-hover:scale3d-150 transition-all duration-300`}
+          />
+        }
       </div>
     </header>
   );

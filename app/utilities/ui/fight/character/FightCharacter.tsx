@@ -24,7 +24,7 @@ export default async function FightCharacter({ first, second }: FightCharacterPr
         <>
             <TitlePage
                 label={'Fight Characters'}
-                classesLabel={"py-11"}
+                classesContainer={"pb-11"}
                 secondPart={<div className="flex gap-2">
                 <FightButton
                     first={first}

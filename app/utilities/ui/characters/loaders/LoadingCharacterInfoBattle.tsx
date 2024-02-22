@@ -8,7 +8,7 @@ import { emptyCharacter } from "@/app/utilities/lib/constants";
 
 export default async function LoadingCharacterInfoBattle(/* { urlParameterToChange }: CharacterInfoBattleProps */) {
     return (
-        <div className="flex flex-col gap-2 justify-center items-center mb-10">
+        <div className="flex-shrink flex flex-col gap-2 justify-center items-center mb-10">
             <div
                 className="flex flex-col gap-5"
             >

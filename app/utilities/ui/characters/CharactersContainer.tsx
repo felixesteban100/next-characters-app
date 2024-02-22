@@ -17,9 +17,10 @@ export default function CharactersContainer({ children }: CharactersContainerPro
                 gap-10 gap-y-12 mx-auto 
                 mt-10
                 */
+               //xl:grid-cols-3
         className={
                 `
-                grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 gap-y-28
+                grid 2xl:grid-cols-4  lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 gap-y-28
                 mb-10
                 `
             }

@@ -23,7 +23,7 @@ export default async function Home() {
     <div
       className={`overflow-hidden`}
     >
-      <div className="max-w-[80rem] md:w-[80vw] mx-auto">
+      <div className="max-w-[80rem] md:w-[80vw] mx-auto px-5 md:px-0">
         <Navbar />
       </div>
       <HeroParallaxDemo
