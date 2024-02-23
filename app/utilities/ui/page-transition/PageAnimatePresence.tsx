@@ -1,11 +1,12 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import FrozenRoute from './FrozenRoute'
 
 const PageAnimatePresence = ({ children }: { children: JSX.Element }) => {
     const pathname = usePathname()
+    const searchParams = useSearchParams()
 
     return (
         <AnimatePresence mode="wait">
@@ -14,7 +15,7 @@ const PageAnimatePresence = ({ children }: { children: JSX.Element }) => {
        * The `motion.div` Component gets re-evaluated when the `key` prop updates, triggering the animation's lifecycles.
        * During this re-evaluation, the `<FrozenRoute />` Component also gets updated with the new route components.
        */}
-            <motion.div key={pathname}>
+            <motion.div key={pathname + searchParams}>
                 <FrozenRoute>{children}</FrozenRoute>
             </motion.div>
         </AnimatePresence>

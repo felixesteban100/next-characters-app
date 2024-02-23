@@ -1,5 +1,5 @@
 "use client"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 // const variants = {
 //   hidden: { opacity: 0, x: 0, y: 200 },
@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from "framer-motion"
 // };
 
 const variants = {
-  hidden: { opacity: 0, x: 0, y: -500},
+  hidden: { opacity: 0, x: 0, y: 0},
   enter: { opacity: 1, x: 0, y: 0 },
 }
 
@@ -31,7 +31,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       initial="hidden"
       exit="hidden"
       animate="enter"
-      transition={{ type: 'linear', duration: 0.25 }}
+      transition={{ type: 'linear', duration: 0.25, delay: 0.1 }}
       key="LandingPage"
     >
       {children}
