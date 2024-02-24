@@ -6,6 +6,8 @@
 import { HeroParallaxDemo } from '@/app/utilities/ui/aceternity-ui/HeroParallax';
 import { fetchCharacterByIds, getRandomIdRecursively } from "./utilities/lib/data";
 import Navbar from "./utilities/ui/Navbar";
+import PageAnimatePresence from './utilities/ui/page-transition/PageAnimatePresence';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 // const randomId = allIds[Math.floor(Math.random() * allIds.length)]
 
@@ -20,7 +22,18 @@ export default async function Home() {
   const randomCharacters = await fetchCharacterByIds(randomIds)
 
   return (
-    <div
+    <main >
+      <div className="max-w-[80rem] md:w-[70vw] mx-auto px-5 md:px-0">
+        <Navbar />
+      </div>
+      <HeroParallaxDemo
+        randomCharacters={randomCharacters}
+      />
+    </main>
+  )
+}
+
+/* <div
       className={`overflow-hidden`}
     >
       <div className="max-w-[80rem] md:w-[80vw] mx-auto px-5 md:px-0">
@@ -29,6 +42,4 @@ export default async function Home() {
       <HeroParallaxDemo
         randomCharacters={randomCharacters}
       />
-    </div>
-  )
-}
+    </div> */

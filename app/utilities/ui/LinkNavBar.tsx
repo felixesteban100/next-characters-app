@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Atom } from 'lucide-react';
 
 type LinkNavBarProps = {
@@ -14,32 +14,30 @@ type LinkNavBarProps = {
 
 export default function LinkNavBar({ href, Icon, label, mobile }: LinkNavBarProps) {
     const pathname = usePathname()
+    const { replace } = useRouter()
 
     const isThisPath = (pathname === "/" ? false : href.includes(pathname))
 
-    if (mobile) {
+    function changePage(link: string){
+        replace(link)
+    }
+
+    if (mobile === true) {
         return (
-            <Link
-                href={href}
+            <Button
+                onClick={() => changePage(href)}
+                className={`flex justify-center items-center gap-2 text-3xl ${isThisPath ? "text-primary" : "text-primary/40"}`}
+                variant={"link"}
             >
-                <>
-                    {(label && Icon) ?
-                        <Button className={`flex justify-center items-center gap-2 text-3xl ${isThisPath ? "text-primary" : "text-primary/40"}`} variant={'link'}>
-                            {Icon}
-                            <p className={`text-xl sm:text-3xl text-foreground decoration-primary ${isThisPath ? "underline" : ""}`}>{label}</p>
-                        </Button>
-                        :
-                        <button className="pl-5 flex justify-center items-center gap-2">
-                            <Atom
-                                width={40}
-                                height={40}
-                                className={`object-contain animate-spin1 ${pathname === "/" ? "text-primary" : "text-primary/40"}`}
-                            />
-                            <p className="text-xl sm:text-3xl">Home</p>
-                        </button>
-                    }
-                </>
-            </Link>
+                {/* <Button className={`flex justify-center items-center gap-2 text-3xl ${isThisPath ? "text-primary" : "text-primary/40"}`} variant={'link'}> */}
+                    {Icon ? Icon : <Atom
+                        width={40}
+                        height={40}
+                        className={`object-contain animate-spin1 ${pathname === "/" ? "text-primary" : "text-primary/40"}`}
+                    />}
+                    <p className={`text-xl sm:text-3xl text-foreground decoration-primary ${isThisPath ? "underline" : ""}`}>{label ?? 'Home'}</p>
+                {/* </Button> */}
+            </Button>
         )
     }
 

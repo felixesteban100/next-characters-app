@@ -8,6 +8,8 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 async function Navbar() {
 
@@ -86,47 +88,38 @@ async function Navbar() {
                   mobile={true}
                 />
               </SheetClose>
-
-              <SheetClose asChild>
+              <SheetClose>
                 <LinkNavBar
                   href={`/characters?pageCharacters=${Math.floor(Math.random() * 65)}`}
                   Icon={<UserSquare width={40}
                     height={40} />}
-                  // Icon={UserSquare}
                   label={'Characters'}
                   mobile={true}
                 />
               </SheetClose>
 
-              <SheetClose asChild>
+              <SheetClose>
                 <LinkNavBar
                   href="/teams"
-                  Icon={<Users width={40}
-                    height={40} />}
-                  // Icon={Users}
+                  Icon={<Users width={40} height={40} />}
                   label={'Teams'}
                   mobile={true}
                 />
               </SheetClose>
 
-              <SheetClose asChild>
+              <SheetClose>
                 <LinkNavBar
                   href={`/fightCharacter?first=${await getRandomIdRecursively()}&second=${await getRandomIdRecursively()}`}
-                  // href={`/fightCharacter`}
-                  Icon={<Swords width={40}
-                    height={40} />}
-                  // Icon={Swords}
+                  Icon={<Swords width={40} height={40} />}
                   label={'Fight'}
                   mobile={true}
                 />
               </SheetClose>
 
-              <SheetClose asChild>
+              <SheetClose>
                 <LinkNavBar
                   href={`/rankings`}
-                  Icon={<AreaChart width={40}
-                    height={40} />}
-                  // Icon={AreaChart}
+                  Icon={<AreaChart width={40} height={40} />}
                   label={'Rankings'}
                   mobile={true}
                 />
@@ -136,9 +129,7 @@ async function Navbar() {
               <SheetClose asChild>
                 <LinkNavBar
                   href={`/favorites`}
-                  Icon={<Star width={40}
-                    height={40} />}
-                  // Icon={Star}
+                  Icon={<Star width={40} height={40} />}
                   label={'Favorites'}
                   mobile={true}
                 />
