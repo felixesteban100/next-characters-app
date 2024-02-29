@@ -1,10 +1,10 @@
-import { Character } from "../../lib/definitions"
 import { Separator } from "@/components/ui/separator"
 import { FaFistRaised, FaSuperpowers } from "react-icons/fa"
 import { Brain, ChevronsUp, Heart} from "lucide-react"
 import { GiMuscleUp } from "react-icons/gi";
 import StatNumber from "./stats/StatNumber";
 import StatContainer from "./stats/StatContainer";
+import { Character } from "@/utilities/lib/definitions";
 
 
 type StatsProps = {
