@@ -12,17 +12,17 @@ import Link from "next/link";
 import { Atom } from "lucide-react";
 
 export const HeroParallax = ({
-    products,
+    characters,
 }: {
-    products: {
+    characters: {
         title: string;
         link: string;
         thumbnail: string;
     }[];
 }) => {
-    const firstRow = products.slice(0, 5);
-    const secondRow = products.slice(5, 10);
-    const thirdRow = products.slice(10, 15);
+    const firstRow = characters.slice(0, 15);
+    const secondRow = characters.slice(15, 35);
+    const thirdRow = characters.slice(35, 50);
     const ref = React.useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -39,42 +39,47 @@ export const HeroParallax = ({
         useTransform(scrollYProgress, [0, 1], [0, -1000]),
         springConfig
     );
-    const rotateX = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-        springConfig
-    );
-    const opacity = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-        springConfig
-    );
-    const rotateZ = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-        springConfig
-    );
-    const translateY = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-        springConfig
-    );
+
+    // const rotateX = useSpring(
+    //     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    //     springConfig
+    // );
+    // const opacity = useSpring(
+    //     useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    //     springConfig
+    // );
+    // const rotateZ = useSpring(
+    //     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    //     springConfig
+    // );
+    // const translateY = useSpring(
+    //     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    //     springConfig
+    // );
 
     return (
         <div
-            className="h-[275vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+            //[perspective:1000px] [transform-style:preserve-3d]
+            // pb-40 pt-[70rem]
+            className=" overflow-hidden  antialiased relative flex flex-col self-auto group/hero "
         >
-            <Header />
+
             <motion.div
                 style={{
-                    rotateX,
-                    rotateZ,
-                    translateY,
-                    opacity,
+                    // rotateX,
+                    // rotateZ,
+                    // translateY,
+                    // opacity,
+                    opacity: 0.2,
+                    translateY: 0
                 }}
                 className=""
             >
                 <div
-                    className="flex space-x-20 group"
+                    className="flex space-x-20 group mb-20"
                 >
                     <motion.div
-                        className="flex flex-row-reverse space-x-reverse space-x-20 mb-20 animate-loop-scroll group-hover:paused"
+                        className="group-hover:paused flex flex-row-reverse space-x-reverse space-x-20  animate-loop-scroll "
                     >
                         {firstRow.map((product) => (
                             <ProductCard
@@ -85,7 +90,7 @@ export const HeroParallax = ({
                         ))}
                     </motion.div>
                     <motion.div
-                        className="flex flex-row-reverse space-x-reverse space-x-20 mb-20 animate-loop-scroll group-hover:paused"
+                        className="group-hover:paused flex flex-row-reverse space-x-reverse space-x-20  animate-loop-scroll "
                     >
                         {firstRow.map((product) => (
                             <ProductCard
@@ -94,14 +99,14 @@ export const HeroParallax = ({
                                 key={product.title}
                             />
                         ))}
-                        
+
                     </motion.div>
                 </div>
                 <div
-                    className="flex space-x-20 group"
+                    className="flex space-x-20 group mb-20"
                 >
                     <motion.div
-                        className="flex mb-20 space-x-20 animate-loop-scroll2 group-hover:paused"
+                        className="group-hover:paused flex  space-x-20 animate-loop-scroll2 "
                     >
                         {secondRow.map((product) => (
                             <ProductCard
@@ -112,7 +117,7 @@ export const HeroParallax = ({
                         ))}
                     </motion.div>
                     <motion.div
-                        className="flex  mb-20 space-x-20 animate-loop-scroll2 group-hover:paused"
+                        className="group-hover:paused flex space-x-20 animate-loop-scroll2 "
                     >
                         {secondRow.map((product) => (
                             <ProductCard
@@ -127,7 +132,7 @@ export const HeroParallax = ({
                     className="flex space-x-20 group"
                 >
                     <motion.div
-                        className="flex flex-row-reverse space-x-reverse space-x-20 animate-loop-scroll group-hover:paused"
+                        className="group-hover:paused flex flex-row-reverse space-x-reverse space-x-20 animate-loop-scroll "
                     >
                         {thirdRow.map((product) => (
                             <ProductCard
@@ -138,7 +143,7 @@ export const HeroParallax = ({
                         ))}
                     </motion.div>
                     <motion.div
-                        className="flex flex-row-reverse space-x-reverse space-x-20 animate-loop-scroll group-hover:paused"
+                        className="group-hover:paused flex flex-row-reverse space-x-reverse space-x-20 animate-loop-scroll "
                     >
                         {thirdRow.map((product) => (
                             <ProductCard
@@ -150,6 +155,7 @@ export const HeroParallax = ({
                     </motion.div>
                 </div>
             </motion.div>
+            <Header />
         </div>
     );
 };
@@ -157,21 +163,28 @@ export const HeroParallax = ({
 
 export const Header = () => {
     return (
-        <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-            <Link href={'/characters'} >
-                <div className="z-10 text-4xl text-transparent duration-1000 bg-primary cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text font-bold flex justify-center items-center gap-2 hover:underline">
-                    ch<Atom
-                        width={100}
-                        height={100}
-                        className={`object-contain text-primary animate-spin1`}
-                    />r4c732
-                </div>
-                {/* <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+        <div
+            //py-20 md:py-40 
+            className="group-hover/hero:opacity-10 transition-opacity duration-700 pointer-events-none absolute flex justify-start items-center h-[80vh] w-[100vh]">
+            {/* <Link href={'/characters'} > */}
+
+            <div
+                //text-edge-outline
+                className="text-primary duration-1000  animate-title font-display text-4xl xl:text-9xl font-bold flex justify-center items-center gap-2 pl-5"
+            >
+                ch<Atom
+                    // width={`15%`}
+                    // height={`100%`}
+                    // text-xl sm:text-6xl md:text-9xl
+                    className={`text-primary h-[3rem] w-[3rem] xl:h-[8rem] xl:w-[8rem] animate-spin1 `}
+                />r4c732
+            </div>
+            {/* <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
                     We build beautiful products with the latest technologies and frameworks.
                     We are a team of passionate developers and designers that love to build
                     amazing products.
                 </p> */}
-            </Link>
+            {/* </Link> */}
         </div>
     );
 };
@@ -197,7 +210,7 @@ export const ProductCard = ({
                 y: -20,
             }}
             key={product.title}
-            className={"group/product h-96 w-[30rem] relative flex-shrink-0"}
+            className={"group/product h-56 w-[20rem] relative flex-shrink-0"}
         >
             <Link
                 href={product.link}

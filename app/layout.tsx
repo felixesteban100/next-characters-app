@@ -1,11 +1,14 @@
 import '@/app/globals.css'
-import { inter } from '@/app/utilities/ui/fonts';
+import { inter } from '@/components/custom-ui/fonts';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
 import { Toaster } from "@/components/ui/sonner"
-import Particles from './utilities/ui/Particles';
+import Particles from '@/components/custom-ui/Particles';
 import { TwicInstall } from "@twicpics/components/react";
 import "@twicpics/components/style.css";
+import Navbar from '@/components/custom-ui/Navbar';
+import PageAnimatePresence from '@/components/custom-ui/page-transition/PageAnimatePresence';
+import { ScrollArea } from '@/components/ui/scroll-area';
 // import { baseUrl } from './utilities/lib/charactersUtils';
 
 export const metadata: Metadata = {
@@ -35,7 +38,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: JSX.Element
 }) {
   return (
     <html lang="en">
@@ -65,7 +68,20 @@ export default function RootLayout({
               color="0, 0, 0"
             />
           </div>
-          {children}
+          <main
+            className="max-w-[80rem] md:w-[70vw] mx-auto  px-5 md:px-0"
+            // className="max-w-[200        rem] md:w-[90vw] mx-auto px-5 md:px-0"
+          >
+            <Navbar />
+            <PageAnimatePresence>
+              <ScrollArea
+              //max-w-[80rem] md:w-[70vw]
+              className="  h-[90vh] mx-auto"
+              >
+                {children}
+              </ScrollArea>
+            </PageAnimatePresence>
+          </main>
           <Toaster />
         </ThemeProvider>
       </body>

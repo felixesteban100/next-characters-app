@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 169 0% 95%;
-  --foreground: 169 0% 0%;
-  --card: 169 0% 90%;
-  --card-foreground: 169 0% 10%;
-  --popover: 169 0% 95%;
-  --popover-foreground: 169 95% 0%;
-  --primary: 169 24% 24%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 169 10% 70%;
-  --secondary-foreground: 0 0% 0%;
-  --muted: 131 10% 85%;
-  --muted-foreground: 169 0% 35%;
-  --accent: 131 10% 80%;
-  --accent-foreground: 169 0% 10%;
-  --destructive: 0 50% 30%;
-  --destructive-foreground: 169 0% 90%;
-  --border: 169 20% 50%;
-  --input: 169 20% 18%;
-  --ring: 169 24% 24%;
-  --radius: 0.5rem;
+    --background: 36 0% 95%;
+    --foreground: 36 0% 0%;
+    --card: 36 0% 90%;
+    --card-foreground: 36 0% 10%;
+    --popover: 36 0% 95%;
+    --popover-foreground: 36 95% 0%;
+    --primary: 36 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 36 10% 70%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: -2 10% 85%;
+    --muted-foreground: 36 0% 35%;
+    --accent: -2 10% 80%;
+    --accent-foreground: 36 0% 10%;
+    --destructive: 0 50% 30%;
+    --destructive-foreground: 36 0% 90%;
+    --border: 36 20% 50%;
+    --input: 36 20% 18%;
+    --ring: 36 100% 50%;
+    --radius: 0.5rem;
   }
   .dark {
-    --background: 169 10% 5%;
-  --foreground: 169 0% 90%;
-  --card: 169 0% 0%;
-  --card-foreground: 169 0% 90%;
-  --popover: 169 10% 5%;
-  --popover-foreground: 169 0% 90%;
-  --primary: 169 100% 50%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 169 10% 10%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 131 10% 15%;
-  --muted-foreground: 169 0% 60%;
-  --accent: 131 10% 15%;
-  --accent-foreground: 169 0% 90%;
-  --destructive: 0 50% 30%;
-  --destructive-foreground: 169 0% 90%;
-  --border: 169 20% 18%;
-  --input: 169 20% 18%;
-  --ring: 169 100% 50%;
-  --radius: 0.5rem;
+    --background: 36 10% 5%;
+    --foreground: 36 0% 90%;
+    --card: 36 0% 0%;
+    --card-foreground: 36 0% 90%;
+    --popover: 36 10% 5%;
+    --popover-foreground: 36 0% 90%;
+    --primary: 36 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 36 10% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: -2 10% 15%;
+    --muted-foreground: 36 0% 60%;
+    --accent: -2 10% 15%;
+    --accent-foreground: 36 0% 90%;
+    --destructive: 0 50% 30%;
+    --destructive-foreground: 36 0% 90%;
+    --border: 36 20% 18%;
+    --input: 36 20% 18%;
+    --ring: 36 100% 50%;
+    --radius: 0.5rem;
   }
 }
 
@@ -99,8 +99,9 @@
   }
   .text-stroke-custom {
     @apply text-foreground;
-    -webkit-text-stroke: 1px hsl(var(--secondary));
-    text-stroke: 1px hsl(var(--secondary));
+    /* @apply text-primary; */
+    -webkit-text-stroke: 1px hsl(var(--background));
+    text-stroke: 1px hsl(var(--background));
     letter-spacing: 1px;
   }
 
@@ -136,6 +137,19 @@
     }
   }
 
+  /* @keyframes characterCarouselZoom-animation {
+    20%,
+    100% {
+      left: 1000px;
+    }
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+  } */
+
   .box:before {
     content: "";
     position: absolute;
@@ -157,6 +171,11 @@
     left: -1000px;
     animation: characterId-animation 8s ease-in-out infinite;
   }
+
+  /* .characterCarouselZoom:before{
+    left: -1000px;
+    animation: characterCarouselZoom-animation 8s ease-in-out infinite;
+  } */
 }
 
 /* .card.image-full::before,
