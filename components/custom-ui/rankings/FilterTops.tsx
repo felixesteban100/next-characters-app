@@ -16,7 +16,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Slider } from "@/components/ui/slider"
-import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, DEFAULT_NUMBEROFTOP, getTeamByUniverse } from "@/utilities/lib/constants"
+import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, DEFAULT_NUMBEROFTOP, getTeamByUniverse } from "@/utilities/constants"
 
 const formSchema = z.object({
     fixedAttribute: z.string(),

@@ -1,11 +1,10 @@
-import { Character } from "@/utilities/lib/definitions"
 import FeatureTabContainer from "./FeatureTabContainer"
 import StatContainer from "../stats/StatContainer"
 import StatString from "../stats/StatString"
 import { Separator } from "@/components/ui/separator"
 import { Accordion } from "@/components/ui/accordion"
 import StatAccordion from "../stats/StatAccordion"
-import { AlignmentTranslator, GetColorLogosByPublisher, getAlignmentIcon, publisherIMG } from "@/utilities/lib/charactersUtils"
+import { AlignmentTranslator, GetColorLogosByPublisher, getAlignmentIcon, publisherIMG } from "@/utilities/charactersUtils"
 import { Briefcase, Calendar, CaseSensitive, Globe2, LibraryBig, } from "lucide-react"
 import { GrGroup } from "react-icons/gr";
 import Image from "next/image"

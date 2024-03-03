@@ -1,5 +1,4 @@
 import { MongoClient } from "mongodb"; 
-import { Character } from "../definitions";
 
 export function connectToCluster() {
     let mongoClient;

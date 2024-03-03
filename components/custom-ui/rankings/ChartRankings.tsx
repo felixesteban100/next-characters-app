@@ -1,8 +1,7 @@
-import { CharacterAttributes } from "@/utilities/lib/definitions";
-import fetchCharactersTop, { removeAttributesAllJustValues } from "@/utilities/lib/data";
+import fetchCharactersTop, { removeAttributesAllJustValues } from "@/utilities/data";
 import { Subtitle, BarChart, Card, AreaChart } from "@tremor/react";
-import { FixedAttributeTranslator, getTeamByUniverse } from "@/utilities/lib/constants";
-import { AlignmentTranslator, getAlignmentIcon, getGenderIcon, getRaceIcon, publisherIMG } from "@/utilities/lib/charactersUtils";
+import { FixedAttributeTranslator, getTeamByUniverse } from "@/utilities/constants";
+import { AlignmentTranslator, getAlignmentIcon, getGenderIcon, getRaceIcon, publisherIMG } from "@/utilities/charactersUtils";
 // import Image from "next/image";
 import {
     HoverCard,

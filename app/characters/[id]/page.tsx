@@ -1,5 +1,4 @@
-import { fetchCharacterById } from '@/utilities/lib/data';
-import { Character } from '@/utilities/lib/definitions';
+import { fetchCharacterById } from '@/utilities/data';
 import FavoriteButton from '@/components/custom-ui/FavoriteButton';
 import CharacterInfo from '@/components/custom-ui/characters/CharacterInfo';
 // import LoadingCharacterInfo from '@/components/custom-ui/characters/loaders/LoadingCharacterInfo';
@@ -59,7 +58,7 @@ export default async function Page({ params, searchParams }: { params: { id: str
             <Suspense key={searchParams.name} fallback={<LoadingCharacterInfo />}>
                 <CharacterInfo
                     selectedCharacter={selectedCharacter}
-                    image={searchParams.image}
+                    image={searchParams.image ?? "md"}
                     withPagination={withPagination}
                 />
             </Suspense>

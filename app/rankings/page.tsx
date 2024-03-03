@@ -1,4 +1,4 @@
-import { FixedAttributeTranslator } from "@/utilities/lib/constants";
+import { FixedAttributeTranslator } from "@/utilities/constants";
 import LoaderSpinner from "@/components/custom-ui/LoaderSpinner";
 import ChartRankings from "@/components/custom-ui/rankings/ChartRankings";
 import FilterTops from "@/components/custom-ui/rankings/FilterTops";

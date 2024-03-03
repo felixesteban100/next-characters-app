@@ -1,24 +1,24 @@
-import { Character } from "@/utilities/lib/definitions"
 import FeatureTabContainer from "./FeatureTabContainer"
-import Image from "next/image"
+// import Image from "next/image"
 import CarouselCharacterImages from "../CarouselCharacterImage"
-import { getJustTheImagesFromTheImagesObject } from "@/utilities/lib/charactersUtils"
+import { getJustTheImagesFromTheImagesObject } from "@/utilities/charactersUtils"
 
 
 type FeatureTabComicsProps = {
     selectedCharacter: Character;
-    withPagination: boolean
+    withPagination: boolean;
+    image: string;
 }
 
-function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComicsProps) {
+function FeatureTabComics({ selectedCharacter, withPagination, image }: FeatureTabComicsProps) {
     const images = Object.entries(organizedComicsProperty(selectedCharacter.comics, selectedCharacter.biography.publisher).slice().sort(() => Math.random() - 0.5)).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => { return {key: c[0], value: c[1]} })
 
     const allImages: { key: string, value: string }[] = [
         {
-            key: 'md',
-            value: selectedCharacter.images.md,
+            key: image,
+            value: selectedCharacter.images[image],
         },
-        ...getJustTheImagesFromTheImagesObject(selectedCharacter.images)
+        ...getJustTheImagesFromTheImagesObject(selectedCharacter.images, image)
     ]
 
     return (
@@ -33,6 +33,8 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                     withPagination={withPagination}
                     characterName={selectedCharacter.name}
                     characterId={selectedCharacter.id.toString()}
+                    label={'Character'}
+                    changeImage={true}
                 />
 
                 <CarouselCharacterImages
@@ -41,6 +43,7 @@ function FeatureTabComics({ selectedCharacter, withPagination }: FeatureTabComic
                     withPagination={withPagination}
                     characterName={selectedCharacter.name}
                     characterId={selectedCharacter.id.toString()}
+                    label={'Comics'}
                 />
 
 

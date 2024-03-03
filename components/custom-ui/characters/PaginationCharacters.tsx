@@ -1,6 +1,6 @@
 'use client';
 
-import { generatePagination } from '@/utilities/lib/utils';
+import { generatePagination } from '@/utilities/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 import {

@@ -1,9 +1,8 @@
-import { Character } from "@/utilities/lib/definitions"
 import FeatureTabContainer from "./FeatureTabContainer"
 import Stats from "../Stats"
 import { Button } from "@/components/ui/button"
 import Link from "next/link";
-import { getRandomIdRecursively } from "@/utilities/lib/data";
+import { getRandomIdRecursively } from "@/utilities/data";
 
 type FeatureTabStatsProps = {
     selectedCharacter: Character

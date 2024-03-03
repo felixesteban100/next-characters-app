@@ -2,8 +2,7 @@ import { FaFemale, FaMale } from "react-icons/fa";
 import { Dna, Globe2, Angry, Meh, Smile } from "lucide-react"
 import { FaRobot } from "react-icons/fa";
 import { RiAliensFill } from 'react-icons/ri'
-import { Character } from "./definitions";
-import { WithId } from "mongodb";
+// import { WithId } from "mongodb";
 // import { getPlaiceholder } from "plaiceholder";
 
 export function publisherIMG(publisher: string) {
@@ -177,8 +176,8 @@ export function AlignmentTranslator(alignment: string) {
   return alignment === "good" ? "Hero" : alignment === "bad" ? "Villain" : "Anti-Hero"
 }
 
-export function getJustTheImagesFromTheImagesObject(images: { [key: string]: string }) {
-  return Object.entries(images).filter(([key, value]) => key !== "md" && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => {
+export function getJustTheImagesFromTheImagesObject(images: { [key: string]: string }, otherKey?: string) {
+  return Object.entries(images).filter(([key, value]) => key !== otherKey && value !== "-" && value !== "" && !value.includes('/api/images/xs/')).map(c => {
     return { key: c[0], value: c[1] }
   })
 }

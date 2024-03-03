@@ -1,14 +1,13 @@
 'use client'
 // this is not so necessary because the parent component is client also (but later I realized it is in on place in other the parent component is server)
 
-import { GetColorLogosByPublisher, publisherIMG } from '@/utilities/lib/charactersUtils';
-import { GetDimentionsOfTheLogoForCard } from '@/utilities/lib/charactersUtils';
+import { GetColorLogosByPublisher, publisherIMG } from '@/utilities/charactersUtils';
+import { GetDimentionsOfTheLogoForCard } from '@/utilities/charactersUtils';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { motion } from "framer-motion"
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
-import { Character, RandomImage } from '@/utilities/lib/definitions';
 
 type CharacterProps = {
     index: number
@@ -53,15 +52,15 @@ export default function CharacterComponent({ index, currentCharacter, withPagina
         // href={link+`&pagination=${withPagination}`}
         >
             <motion.div
-                // variants={variants}
-                // initial={'hidden'}
-                // animate={'visible'}
-                // transition={{
-                //     delay: index * 0.25,
-                //     ease: 'easeInOut',
-                //     duration: 0.5,
-                // }}
-                // viewport={{ amount: 0 }}
+                variants={variants}
+                initial={'hidden'}
+                animate={'visible'}
+                transition={{
+                    delay: index * 0.25,
+                    ease: 'easeInOut',
+                    duration: 0.5,
+                }}
+                viewport={{ amount: 0 }}
             >
                 <CardContainer className="inter-var">
                     {/* w-auto sm:w-[30rem] h-auto p-6 */}

@@ -3,10 +3,9 @@ import { Button } from '@/components/ui/button';
 import { SlidersHorizontal } from 'lucide-react';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import FilterCharacters, { sortByType, sortDirectionType } from '@/components/custom-ui/characters/FilterCharacters';
-import { getQueryOptions } from '@/utilities/lib/data';
-import { CHARACTERS_PER_PAGE, getTeamBackgroundImageByUniverse, getTeamByUniverse } from '@/utilities/lib/constants';
-import { QueryOptions } from '@/utilities/lib/definitions';
-import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/utilities/lib/charactersUtils';
+import { getQueryOptions } from '@/utilities/data';
+import { CHARACTERS_PER_PAGE, getTeamBackgroundImageByUniverse, getTeamByUniverse } from '@/utilities/constants';
+import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, publisherIMG } from '@/utilities/charactersUtils';
 import { organizedComicsProperty } from '@/components/custom-ui/characters/tabs/FeatureTabComics';
 // import Hero from '@/components/custom-ui/Hero';
 import Characters from '@/components/custom-ui/characters/Characters';

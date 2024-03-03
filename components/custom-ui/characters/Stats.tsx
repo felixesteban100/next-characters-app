@@ -4,7 +4,6 @@ import { Brain, ChevronsUp, Heart} from "lucide-react"
 import { GiMuscleUp } from "react-icons/gi";
 import StatNumber from "./stats/StatNumber";
 import StatContainer from "./stats/StatContainer";
-import { Character } from "@/utilities/lib/definitions";
 
 
 type StatsProps = {

@@ -1,5 +1,5 @@
-import { fetchCharacterById } from "@/utilities/lib/data";
-import { getCharacterStatsNumber, getWinnerBetweenTwoCharacters } from "@/utilities/lib/charactersUtils";
+import { fetchCharacterById } from "@/utilities/data";
+import { getCharacterStatsNumber, getWinnerBetweenTwoCharacters } from "@/utilities/charactersUtils";
 
 type FightButtonProps = {
     first: string | undefined;

@@ -1,7 +1,7 @@
 "use client"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button";
-import { fetchCharacterById } from "@/utilities/lib/data";
+import { fetchCharacterById } from "@/utilities/data";
 
 export default function RandomizeButton() {
     const searchParams = useSearchParams()

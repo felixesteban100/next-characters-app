@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { fetchCharacterById } from "@/utilities/lib/data";
-import { Character } from "@/utilities/lib/definitions";
+import { fetchCharacterById } from "@/utilities/data";
 import Image from "next/image";
 import { WithId } from "mongodb";
-import { getCharacterStatsNumber, getWinnerBetweenTwoCharacters } from "@/utilities/lib/charactersUtils";
+import { getCharacterStatsNumber, getWinnerBetweenTwoCharacters } from "@/utilities/charactersUtils";
 import { DrawerDialogDemo } from "../../dialog-drawer";
 
 type FightButtonProps = {

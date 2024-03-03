@@ -1,10 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Character, CharacterInfo } from "@/utilities/lib/definitions";
 import { toast } from "sonner"
 import { Star } from "lucide-react";
-import useCharacterStorage from "@/utilities/hooks/useCharacterStorage";
+import useCharacterStorage from "@/hooks/useCharacterStorage";
 
 type FavoriteButtonProps = {
     character: Character

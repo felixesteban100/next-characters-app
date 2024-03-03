@@ -1,6 +1,6 @@
 import { ModeToggle } from '@/components/mode-toogle';
 import { AreaChart, Atom, Swords, UserSquare, Users, Star } from 'lucide-react';
-import { getRandomIdRecursively } from '@/utilities/lib/data';
+import { getRandomIdRecursively } from '@/utilities/data';
 import LinkNavBar from './LinkNavBar';
 import {
   Sheet,

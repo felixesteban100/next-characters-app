@@ -1,11 +1,10 @@
 import { sortByType, sortDirectionType } from './FilterCharacters';
 import PaginationCharacters from './PaginationCharacters';
 import NoCharactersFound from './NoCharactersFound';
-import { QueryOptions } from '@/utilities/lib/definitions';
-import { fetchCharacters, fetchPages } from '@/utilities/lib/data';
+import { fetchCharacters, fetchPages } from '@/utilities/data';
 import CharactersContainer from './CharactersContainer';
 import CharacterComponent from './CharacterComponent';
-import { getRandomImage } from '@/utilities/lib/charactersUtils';
+import { getRandomImage } from '@/utilities/charactersUtils';
 // import Image from 'next/image';
 
 type CharactersProps = {

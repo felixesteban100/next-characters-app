@@ -1,8 +1,7 @@
 "use client";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 import React from "react";
-import { Character } from "@/utilities/lib/definitions";
-import { Atom } from "lucide-react";
+// import { Atom } from "lucide-react";
 
 export function HeroParallaxDemo({ randomCharacters }: { randomCharacters: Character[] }) {
 

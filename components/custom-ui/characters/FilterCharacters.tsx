@@ -19,7 +19,8 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Slider } from "@/components/ui/slider"
-import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, CHARACTERS_PER_PAGE, getTeamByUniverse } from "@/utilities/lib/constants"
+import { ALLALIGMENTS, ALLGENDERS, ALLRACES, ALLUNIVERSE, CHARACTERS_PER_PAGE, getTeamByUniverse } from "@/utilities/constants"
+import { revalidatePath } from "next/cache"
 
 const formSchema = z.object({
     name: z.string(),
@@ -126,6 +127,7 @@ export default function FilterCharacters({ link }: { link: string }) {
 
         // replace(`${pathname}?${params.toString()}`)
         replace(`${link}?${params.toString()}`)
+        // revalidatePath(`${link}?${params.toString()}`)
     }
 
     return (

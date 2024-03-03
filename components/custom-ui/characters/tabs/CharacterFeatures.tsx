@@ -1,4 +1,3 @@
-import { Character } from "@/utilities/lib/definitions";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FeatureTabStats from "./FeatureTabStats";
 import FeatureTabAppereance from "./FeatureTabAppereance";
@@ -10,10 +9,11 @@ import { GrGroup } from "react-icons/gr";
 
 type CharacterFeaturesProps = {
     selectedCharacter: Character,
-    withPagination: boolean
+    withPagination: boolean;
+    image: string
 }
 
-function CharacterFeatures({ selectedCharacter, withPagination }: CharacterFeaturesProps) {
+function CharacterFeatures({ selectedCharacter, withPagination, image }: CharacterFeaturesProps) {
     return (
         <Tabs
             defaultValue={'Stats'}
@@ -36,7 +36,7 @@ function CharacterFeatures({ selectedCharacter, withPagination }: CharacterFeatu
             <FeatureTabAppereance selectedCharacter={selectedCharacter}/>
             <FeatureTabBiography selectedCharacter={selectedCharacter}/>
             <FeatureTabTeams selectedCharacter={selectedCharacter} withPagination={withPagination}/>
-            <FeatureTabComics selectedCharacter={selectedCharacter} withPagination={withPagination} />
+            <FeatureTabComics image={image} selectedCharacter={selectedCharacter} withPagination={withPagination} />
         </Tabs>
     )
 }

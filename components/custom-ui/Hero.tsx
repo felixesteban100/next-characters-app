@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 // import { motion } from 'framer-motion'
-import { dynamicBlurDataUrl } from "@/utilities/lib/charactersUtils";
+import { dynamicBlurDataUrl } from "@/utilities/charactersUtils";
 // import { TwicImg } from "@twicpics/components/react";
 // import ImagesNextCloudinary from "./ImagesNextCloudinary";
 

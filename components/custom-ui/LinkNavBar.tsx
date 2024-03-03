@@ -20,6 +20,7 @@ export default function LinkNavBar({ href, Icon, label, mobile }: LinkNavBarProp
 
     function changePage(link: string){
         replace(link)
+        // revalidateTag(link)
     }
 
     function getTextColor(constrain:  boolean): string{
@@ -46,6 +47,7 @@ export default function LinkNavBar({ href, Icon, label, mobile }: LinkNavBarProp
     return (
         <Link
             href={href}
+            // prefetch={false}
         >
             {(label && Icon) ?
                 <>

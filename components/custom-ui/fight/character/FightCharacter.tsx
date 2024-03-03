@@ -3,9 +3,9 @@ import { Separator } from '@/components/ui/separator'
 
 import FightButton from "@/components/custom-ui/fight/character/FightButton";
 import RandomizeButton from './RandomizeButton';
-import { fetchCharacterById } from '@/utilities/lib/data';
-import { emptyCharacter } from '@/utilities/lib/constants';
-import { getRandomImage } from '@/utilities/lib/charactersUtils';
+import { fetchCharacterById } from '@/utilities/data';
+import { emptyCharacter } from '@/utilities/constants';
+import { getRandomImage } from '@/utilities/charactersUtils';
 import TitlePage from '../../TitlePage';
 
 type FightCharacterProps = {

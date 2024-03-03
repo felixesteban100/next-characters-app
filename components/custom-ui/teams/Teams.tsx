@@ -3,8 +3,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ALLUNIVERSE, UNIVERSES_WITH_TEAMS, getTeamByUniverse } from '@/utilities/lib/constants';
-import { GetColorOfTheLogoByTeam, publisherIMG } from '@/utilities/lib/charactersUtils';
+import { ALLUNIVERSE, UNIVERSES_WITH_TEAMS, getTeamByUniverse } from '@/utilities/constants';
+import { GetColorOfTheLogoByTeam, publisherIMG } from '@/utilities/charactersUtils';
 import { cn } from '@/lib/utils';
 
 

@@ -1,7 +1,6 @@
-import { Character, RandomImage } from "@/utilities/lib/definitions";
 import Stats from "./Stats";
 import SelectCharacterForBattle from "./SelectCharacterForBattle";
-import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, getCharacterStatsNumber, publisherIMG } from "@/utilities/lib/charactersUtils";
+import { GetColorLogosByPublisher, GetColorOfTheLogoByTeam, getCharacterStatsNumber, publisherIMG } from "@/utilities/charactersUtils";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

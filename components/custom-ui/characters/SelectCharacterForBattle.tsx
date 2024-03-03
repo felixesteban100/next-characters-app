@@ -3,10 +3,9 @@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Character } from "@/utilities/lib/definitions";
 import { useSearchParams, useRouter } from "next/navigation"
 
-import { fetchCharacterByNameToSearch, getRandomIdRecursively } from "@/utilities/lib/data";
+import { fetchCharacterByNameToSearch, getRandomIdRecursively } from "@/utilities/data";
 import { useState } from "react";
 
 import { Input } from "@/components/ui/input";

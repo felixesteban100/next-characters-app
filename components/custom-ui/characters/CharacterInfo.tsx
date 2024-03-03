@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Character } from "@/utilities/lib/definitions";
 import CharacterFeatures from "./tabs/CharacterFeatures";
 
 import FavoriteButton from "../FavoriteButton";
@@ -8,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 type CharacterInfoProps = { 
     selectedCharacter: Character,
     // characterId: string, 
-    image?: string, 
+    image: string, 
     withPagination: boolean 
 }
 
@@ -30,7 +29,7 @@ export default async function CharacterInfo({ selectedCharacter, /* characterId,
                         height={500}
                         // className={`transition-all duration-300 absolute w-[95%] h-[95%] object-cover rounded-md right-[15px] top-[15px] md:object-top`}
                         className={`transition-all duration-300  w-[100%] h-[100%] object-cover rounded-md md:object-top`}
-                        src={image ? selectedCharacter.images[`${image}`] : selectedCharacter.images.md}
+                        src={selectedCharacter.images[`${image}`]}
                         alt={selectedCharacter.name}
                         loading="lazy"
                     />
@@ -40,7 +39,7 @@ export default async function CharacterInfo({ selectedCharacter, /* characterId,
                         character={selectedCharacter}
                     />
                 </div>
-                <CharacterFeatures selectedCharacter={selectedCharacter} withPagination={withPagination} />
+                <CharacterFeatures image={image} selectedCharacter={selectedCharacter} withPagination={withPagination} />
             </div>
         </ScrollArea>
     )

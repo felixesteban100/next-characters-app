@@ -1,6 +1,5 @@
 'use server' // I have to write this because this is a .jsx not .ts file
 
-import { Character, CharacterAttributes, QueryOptions } from "./definitions";
 import { sortByType, sortDirectionType } from "@/components/custom-ui/characters/FilterCharacters";
 import { CHARACTERS_PER_PAGE, CHARACTERS_PER_PAGE_NOPAGINATION } from "./constants";
 import { collectionCharacters } from "./mongodb/mongodb";

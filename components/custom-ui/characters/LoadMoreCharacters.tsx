@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect } from 'react'
-import { fetchCharactersNoPagination } from '@/utilities/lib/data'
+import { fetchCharactersNoPagination } from '@/utilities/data'
 import { sortByType, sortDirectionType } from './FilterCharacters';
 import CharactersContainer from './CharactersContainer'
 import { useInView } from 'react-intersection-observer'
-import { CHARACTERS_PER_PAGE_NOPAGINATION } from '@/utilities/lib/constants';
+import { CHARACTERS_PER_PAGE_NOPAGINATION } from '@/utilities/constants';
 import LoadingCharactersCard from './loaders/LoadingCharacterCard';
 
 type LoadMoreCharactersProps = {

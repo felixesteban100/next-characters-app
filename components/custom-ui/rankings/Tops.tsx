@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
-import fetchCharactersTop, { removeAttributesAllJustValues } from "@/utilities/lib/data";
-import { Character, CharacterAttributes } from "@/utilities/lib/definitions";
+import fetchCharactersTop, { removeAttributesAllJustValues } from "@/utilities/data";
 import Link from "next/link";
 import Image from "next/image";
-import { FixedAttributeTranslator } from "@/utilities/lib/constants";
-import { dynamicBlurDataUrl, getJustTheImagesFromTheImagesObject } from "@/utilities/lib/charactersUtils";
+import { FixedAttributeTranslator } from "@/utilities/constants";
+import { dynamicBlurDataUrl, getJustTheImagesFromTheImagesObject } from "@/utilities/charactersUtils";
 
 type TopsProps = {
     fixedAttribute: string;

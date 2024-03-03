@@ -1,4 +1,4 @@
-export type Character = {
+declare type Character = {
     powerstats: {
         intelligence: number;
         strength: number;
@@ -48,7 +48,7 @@ export type Character = {
     comics?: string[];
 }
 
-export type QueryOptions = {
+declare type QueryOptions = {
     name?: /* string | */ RegExp /* | string[] */ /* | RegExp[] */;
     "biography.fullName"?: /* string | */ RegExp /* | RegExp[] */;
     "biography.alignment"?: string;
@@ -62,13 +62,13 @@ export type QueryOptions = {
   } */
 
 
-export type CharacterInfo = {
+declare type CharacterInfo = {
     // name: string;
     // id: string;
     link: string
 } & Character
 
-export type CharacterAttributes = {
+declare type CharacterAttributes = {
     'connections.groupAffiliation': string,
     'biography.alignment': string,
     'appearance.gender': string,
@@ -76,4 +76,4 @@ export type CharacterAttributes = {
     'biography.publisher': string
 }
 
-export type RandomImage = { selectedRandomImage: { key: string, value: string }, blurSelectedRandomImage: string }
+declare type RandomImage = { selectedRandomImage: { key: string, value: string }, blurSelectedRandomImage: string }

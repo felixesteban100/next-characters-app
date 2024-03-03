@@ -1,8 +1,7 @@
 "use client";
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Character } from '../lib/definitions';
-import { STORAGE_KEY } from '../lib/constants';
+import { STORAGE_KEY } from '../utilities/constants';
 
 export default function useCharacterStorage(): [Character[], Dispatch<SetStateAction<Character[]>>] {
   const fromLocal = (): Character[] => {

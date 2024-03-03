@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Stats from "../Stats";
-import { emptyCharacter } from "@/utilities/lib/constants";
+import { emptyCharacter } from "@/utilities/constants";
 
 // type CharacterInfoBattleProps = {
 //     urlParameterToChange: string

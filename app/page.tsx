@@ -4,7 +4,7 @@
 // unstable_noStore()
 // import NavLinks from "@/components/custom-ui/NavLinks";
 import { HeroParallaxDemo } from '@/components/custom-ui/aceternity-ui/HeroParallax';
-import { fetchCharacterByIds, getRandomIdRecursively } from "@/utilities/lib/data";
+import { fetchCharacterByIds, getRandomIdRecursively } from "@/utilities/data";
 // import Navbar from "./utilities/ui/Navbar";
 // import PageAnimatePresence from './utilities/ui/page-transition/PageAnimatePresence';
 // import { ScrollArea } from '@/components/ui/scroll-area';

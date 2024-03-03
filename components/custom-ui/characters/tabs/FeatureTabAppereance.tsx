@@ -1,11 +1,10 @@
-import { Character } from "@/utilities/lib/definitions"
 import StatContainer from "../stats/StatContainer"
 import FeatureTabContainer from "./FeatureTabContainer"
 import StatString from "../stats/StatString"
 // import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import { Eye, Rainbow, Ruler, Weight } from "lucide-react"
-import { getGenderIcon, getRaceIcon } from "@/utilities/lib/charactersUtils"
+import { getGenderIcon, getRaceIcon } from "@/utilities/charactersUtils"
 
 type FeatureTabAppereanceProps = {
     selectedCharacter: Character

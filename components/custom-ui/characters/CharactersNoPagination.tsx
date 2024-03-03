@@ -1,4 +1,4 @@
-import { fetchCharactersNoPagination } from '@/utilities/lib/data'
+import { fetchCharactersNoPagination } from '@/utilities/data'
 import { sortByType, sortDirectionType } from './FilterCharacters'
 import NoCharactersFound from './NoCharactersFound';
 import LoadMoreCharacters from './LoadMoreCharacters';

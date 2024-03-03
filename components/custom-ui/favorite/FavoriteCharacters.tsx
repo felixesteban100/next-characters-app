@@ -3,8 +3,8 @@
 import CharacterComponent from '../characters/CharacterComponent';
 import CharactersContainer from '../characters/CharactersContainer';
 // import NoCharactersFound from '../characters/NoCharactersFound';
-import useCharacterStorage from '@/utilities/hooks/useCharacterStorage';
-import { getJustTheImagesFromTheImagesObject } from '@/utilities/lib/charactersUtils';
+import useCharacterStorage from '@/hooks/useCharacterStorage';
+import { getJustTheImagesFromTheImagesObject } from '@/utilities/charactersUtils';
 import TitlePage from '@/components/custom-ui/TitlePage';
 // import { useEffect, useState } from 'react';
 
