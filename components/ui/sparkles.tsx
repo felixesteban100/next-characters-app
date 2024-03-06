@@ -134,7 +134,7 @@ export const SparklesCore = (props: ParticlesProps) => {
                 },
               },
               color: {
-                value: particleColor || /* "var(--primary)" */ "#ffffff",
+                value: particleColor ||  "random",
                 animation: {
                   h: {
                     count: 0,

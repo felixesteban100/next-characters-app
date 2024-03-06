@@ -3,8 +3,7 @@ import { inter } from '@/components/custom-ui/fonts';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Metadata } from 'next';
 import { Toaster } from "@/components/ui/sonner"
-// import Particles from '@/components/custom-ui/Particles';
-import { TwicInstall } from "@twicpics/components/react";
+// import { TwicInstall } from "@twicpics/components/react";
 import "@twicpics/components/style.css";
 import Navbar from '@/components/custom-ui/Navbar';
 import PageAnimatePresence from '@/components/custom-ui/page-transition/PageAnimatePresence';
@@ -47,16 +46,32 @@ export default function RootLayout({
   children: JSX.Element
 }) {
 
-  // console.log(resolveConfig(config.theme?.extend?.colors?.primary.DEFAULT));
+  // console.log(fullConfig.theme.colors);
+
+  const props = {
+    id: "tsparticlesfullpage",
+    background: "transparent",
+    minSize: 0.6,
+    // minSize={2}
+    maxSize: 1.4,
+    // maxSize={4}
+    particleDensity: 50,
+    // classNameContainer: "w-[100vw] h-[100vh]",
+    // classNameParticles: "w-[100vw] h-[100vh]",
+    // particleColor="hsl(241, 100%, 50%)"
+    particleColor: '#000000',
+  }
+
+  const props2 = { ...props, particleColor: '#fff', id: 'tsparticlesfullpage2' }
 
   return (
     <html lang="en">
-      <TwicInstall
+      {/* <TwicInstall
         // domain is mandatory
         // domain={baseUrl}
         // domain={"https://pngimg.com/d/"}
         domain='https://next-characters-app.twic.pics/'
-      />
+      /> */}
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
@@ -66,40 +81,19 @@ export default function RootLayout({
         >
 
           <div className='absolute inset-0 -z-10 min-h-screen'>
-            {/* <Particles
-              className="absolute inset-0 -z-10 animate-fade-in"
-              quantity={500}
-              color="255, 255, 255"
-            />
-            <Particles
-              className="absolute inset-0 -z-10 animate-fade-in"
-              quantity={500}
-              color="0, 0, 0"
-            /> */}
-
             {/* 
               https://www.google.com/search?q=import+css+globals+variables+react&client=opera-gx&hs=xzp&sca_esv=ae0256cbc04b73df&sxsrf=ACQVn080YU6O6Np1RO7X3bDMKQdogU370w%3A1709471292746&ei=PHbkZeCQLfmgptQPq5qewAs&ved=0ahUKEwjgnqHplNiEAxV5kIkEHSuNB7gQ4dUDCBA&uact=5&oq=import+css+globals+variables+react&gs_lp=Egxnd3Mtd2l6LXNlcnAiImltcG9ydCBjc3MgZ2xvYmFscyB2YXJpYWJsZXMgcmVhY3QyBxAhGAoYoAEyBxAhGAoYoAEyBxAhGAoYoAEyBRAhGJ8FMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBTIFECEYnwVIpktQAFjMSnAEeAGQAQCYAYMBoAHIGqoBBDI5Ljm4AQPIAQD4AQGYAiqgArYbqAIUwgIKECMYgAQYigUYJ8ICBBAjGCfCAgsQABiABBiKBRiRAsICDhAuGIAEGLEDGMcBGNEDwgIIEAAYgAQYsQPCAgsQLhiABBixAxjUAsICBRAAGIAEwgIHECMY6gIYJ8ICFhAuGAMYjwEY5QIY6gIYtAIYjAPYAQHCAhYQABgDGI8BGOUCGOoCGLQCGIwD2AEBwgIZEC4YAxiPARjlAhjHAxjqAhi0AhiMA9gBAcICDhAuGIAEGIoFGLEDGIMBwgIKEAAYgAQYigUYQ8ICEBAuGIAEGIoFGEMYxwEY0QPCAgoQLhiABBiKBRhDwgIFEC4YgATCAg4QLhiABBjHARivARiOBcICBxAAGIAEGArCAgoQABiABBgUGIcCwgILEC4YgAQYxwEY0QPCAgYQABgWGB7CAggQABgWGB4YD8ICCBAAGAUYHhgNwgIIEAAYCBgeGA3CAgUQIRigAcICBBAhGBWYAwe6BgYIARABGAuSBwUzMi4xMKAHvKwC&sclient=gws-wiz-serp
               https://medium.com/@toshvelaga/using-global-css-variables-in-react-js-216f03fcdc56
               https://stackoverflow.com/questions/40779623/how-to-use-global-variables-in-css-modules
               https://ui.aceternity.com/components/sparkles
-            
             */}
 
-
-            <SparklesCore
-              id="tsparticlesfullpage"
-              background="transparent"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={100}
-              classNameContainer="w-[100vw] h-[100vh]"
-              classNameParticles="w-[100vw] h-[100vh]"
-              // particleColor="hsl()"
-            />
+            <SparklesCore {...props} />
+            <SparklesCore {...props2} />
           </div>
           <main
             className="max-w-[80rem] md:w-[70vw] mx-auto  px-5 md:px-0"
-            // className="max-w-[200        rem] md:w-[90vw] mx-auto px-5 md:px-0"
+          // className="max-w-[200        rem] md:w-[90vw] mx-auto px-5 md:px-0"
           >
             <Navbar />
             <PageAnimatePresence>

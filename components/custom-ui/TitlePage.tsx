@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 
 type TitlePageProps = {
     label: string;
@@ -8,8 +9,17 @@ type TitlePageProps = {
 
 export default function TitlePage({ classesContainer, label, classesLabel, secondPart }: TitlePageProps) {
     return (
-        <div className={`w-full flex justify-between items-center ${classesContainer}`}>
-            <h2 className={`text-3xl font-bold flex items-center ${classesLabel}`}>{label}</h2>
+        <div
+            // className={cn(`w-full flex justify-between items-center`, classesContainer)}
+            className={`w-full flex justify-between items-center ${classesContainer}`}
+        >
+            <h2
+                // className={cn(` text-background text-4xl font-bold flex items-center `, classesLabel, "text-stroke-title-page")}
+                //text-stroke-title-page
+                className={`text-stroke-title-page  text-4xl font-bold flex items-center ${classesLabel ?? 'text-foreground'}`}
+            >
+                {label}
+            </h2>
             {secondPart}
         </div>
     )

@@ -7,7 +7,7 @@ import FrozenRoute from './FrozenRoute'
 const PageAnimatePresence = ({ children }: { children: JSX.Element }) => {
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const params = useParams()
+    // const params = useParams()
 
     /* const conffirm = (pathname === "/rankings" && searchParams.get('fixedAttribute') !== undefined) || (pathname === "/characters" && searchParams.get('pageCharacters') !== undefined)
 

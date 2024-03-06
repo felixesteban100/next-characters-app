@@ -288,6 +288,14 @@ const config: Config = {
           from: { transform: 'translateX(-100%)' },
           to: { transform: 'translateX(0)' },
         },
+
+        'logo-color':{
+          '0%': { color: 'hsl(var(--primary))' },
+          // '25%': { color: 'hsl(var(--secondary))' },
+          '50%': { color: 'hsl(var(--primary-foreground))' },
+          // '75%': { color: 'hsl(var(--primary-foreground))' },
+          "100%": {  color: 'hsl(var(--primary))' },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -306,6 +314,7 @@ const config: Config = {
 
         'loop-scroll': 'loop-scroll 50s linear infinite',
         'loop-scroll2': 'loop-scroll2 50s linear infinite',
+        'logo-color': 'logo-color 8s linear infinite, spin 8s linear infinite'
       },
     },
   },

@@ -170,14 +170,15 @@ export const Header = () => {
 
             <div
                 //text-edge-outline
-                className="text-primary duration-1000  animate-title font-display text-4xl xl:text-9xl font-bold flex justify-center items-center gap-2 pl-5"
+                className="text-stroke-custom-main text-secondary duration-1000  animate-title font-display text-4xl xl:text-9xl font-bold flex justify-center items-center gap-2 pl-5"
             >
-                ch<Atom
+                CH<Atom
                     // width={`15%`}
                     // height={`100%`}
                     // text-xl sm:text-6xl md:text-9xl
-                    className={`text-primary h-[3rem] w-[3rem] xl:h-[8rem] xl:w-[8rem] animate-spin1 `}
-                />r4c732
+                    // animate-spin1
+                    className={`animate-logo-color h-[3rem] w-[3rem] xl:h-[8rem] xl:w-[8rem] `}
+                />R4CT3R5
             </div>
             {/* <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
                     We build beautiful products with the latest technologies and frameworks.
